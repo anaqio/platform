@@ -1,0 +1,19 @@
+{
+  "name": "@anaqio/eslint-config",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./index.mjs",
+    "./nextjs": "./nextjs.mjs"
+  },
+  "files": ["index.mjs", "nextjs.mjs"],
+  "peerDependencies": {
+    "@next/eslint-plugin-next": ">=14",
+    "eslint": ">=9",
+    "eslint-config-prettier": ">=9",
+    "eslint-plugin-import": ">=2",
+    "eslint-plugin-react": ">=7",
+    "eslint-plugin-react-hooks": ">=5",
+    "typescript-eslint": ">=8"
+  }
+}

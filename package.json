@@ -1,0 +1,28 @@
+{
+  "name": "com.anaqio",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "bun@1.3.10",
+  "workspaces": [
+    "studio",
+    "landing-page",
+    "backoffice",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "type-check": "turbo run type-check",
+    "test": "turbo run test",
+    "clean": "turbo run clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4",
+    "prettier": "^3",
+    "prettier-plugin-tailwindcss": "^0.6",
+    "turbo": "^2"
+  }
+}

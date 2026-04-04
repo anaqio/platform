@@ -1,0 +1,34 @@
+# Turborepo
+.turbo/
+
+# Node modules at root
+node_modules/
+
+# Bun workspace lockfile
+bun.lockb
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Env files (never commit secrets)
+.env
+.env.local
+.env.*.local
+
+# Vercel CLI
+.vercel
+
+# Logs
+*.log
+npm-debug.log*
+bun-error.pid
+
+# Build outputs (each app has its own .gitignore for .next/)
+dist/
