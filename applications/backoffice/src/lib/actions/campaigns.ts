@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache'
 
 import type { CampaignCreate } from '@/types/database'
-import { createAdminClient } from '@/lib/supabase/admin'
+import { createLandingAdminClient } from '@/lib/supabase/landing'
 
 function slugify(str: string) {
   return str
@@ -15,7 +15,7 @@ function slugify(str: string) {
 }
 
 export async function createCampaign(data: Omit<CampaignCreate, 'slug'> & { slug?: string }) {
-  const supabase = createAdminClient()
+  const supabase = createLandingAdminClient()
 
   const slug = data.slug || `${slugify(data.name)}-${Date.now()}`
 
@@ -39,4 +39,14 @@ export async function createCampaign(data: Omit<CampaignCreate, 'slug'> & { slug
 
   revalidatePath('/campaigns')
   return campaign
+}
+
+export async function toggleCampaignActive(id: string, isActive: boolean) {
+  const supabase = createLandingAdminClient()
+
+  const { error } = await supabase.from('campaigns').update({ is_active: isActive }).eq('id', id)
+
+  if (error) throw new Error(`[campaigns.update] ${error.message}`)
+
+  revalidatePath('/campaigns')
 }
