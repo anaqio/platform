@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LayoutDashboard, Megaphone, Settings, Users } from 'lucide-react'
+import { Calendar, LayoutDashboard, Megaphone, Settings, Users } from 'lucide-react'
 
 import { cn } from '@/lib/utils/cn'
 
@@ -10,6 +10,7 @@ const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/crm', label: 'CRM', icon: Users },
   { href: '/campaigns', label: 'Campaigns', icon: Megaphone },
+  { href: '/events', label: 'Events', icon: Calendar },
   { href: '/settings', label: 'Settings', icon: Settings },
 ]
 
