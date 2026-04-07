@@ -1,7 +1,12 @@
 'use client'
 
+import { useTransition } from 'react'
+import { Loader2, Power } from 'lucide-react'
+
 import type { CampaignSignupStats } from '@/types/database'
+import { toggleCampaignActive } from '@/lib/actions/campaigns'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -52,7 +57,16 @@ export function CampaignSheet({
   onOpenChange,
   defaultTab = 'overview',
 }: CampaignSheetProps) {
+  const [isToggling, startToggle] = useTransition()
+
   if (!campaign) return null
+
+  function handleToggle() {
+    startToggle(async () => {
+      await toggleCampaignActive(campaign!.id, !campaign!.is_active)
+      onOpenChange(false)
+    })
+  }
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -90,6 +104,21 @@ export function CampaignSheet({
               <StatCard label="Invited" value={campaign.signups_invited} />
               <StatCard label="Active" value={campaign.signups_active} />
             </div>
+
+            <Button
+              variant={campaign.is_active ? 'outline' : 'default'}
+              size="sm"
+              className="w-full gap-2"
+              disabled={isToggling}
+              onClick={handleToggle}
+            >
+              {isToggling ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <Power className="h-4 w-4" />
+              )}
+              {campaign.is_active ? 'Deactivate Campaign' : 'Activate Campaign'}
+            </Button>
 
             {campaign.avg_lead_score != null && (
               <div className="bg-muted rounded-lg p-4">
