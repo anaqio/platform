@@ -1,11 +1,11 @@
 import type { WaitlistStatus, WaitlistUser } from '@/types/database'
-import { createClient } from '@/lib/supabase/server'
+import { createLandingAdminClient } from '@/lib/supabase/landing'
 
 export async function getWaitlistUsers(filters?: {
   status?: WaitlistStatus
   search?: string
 }): Promise<WaitlistUser[]> {
-  const supabase = await createClient()
+  const supabase = createLandingAdminClient()
 
   let query = supabase
     .from('waitlist')
@@ -30,7 +30,7 @@ export async function getWaitlistUsers(filters?: {
 }
 
 export async function getWaitlistStats() {
-  const supabase = await createClient()
+  const supabase = createLandingAdminClient()
 
   const { data, error } = await supabase.from('waitlist').select('status, created_at')
 

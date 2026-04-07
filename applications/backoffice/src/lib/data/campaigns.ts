@@ -1,8 +1,8 @@
 import type { CampaignSignupStats } from '@/types/database'
-import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 
 export async function getCampaignStats(): Promise<CampaignSignupStats[]> {
-  const supabase = await createClient()
+  const supabase = createAdminClient()
 
   const { data, error } = await supabase
     .from('campaign_signup_stats')
