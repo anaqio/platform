@@ -4,7 +4,7 @@ import { z } from 'zod/v4'
 
 export const generationModeSchema = z.enum(['single_item', 'full_outfit'])
 export const imageQualitySchema = z.enum(['draft', 'standard', 'high'])
-export const aiProviderSchema = z.enum(['idm_vton', 'gemini', 'fal_ai'])
+export const aiProviderSchema = z.literal('gemini')
 export const fitStyleSchema = z.enum(['standard', 'loose', 'oversized', 'slim'])
 export const artisticStyleSchema = z.enum([
   'default',
@@ -23,6 +23,7 @@ export const generationOptionsSchema = z.object({
   fitStyle: fitStyleSchema,
   artisticStyle: artisticStyleSchema,
   presetModelId: z.string().default(''),
+  fashionPose: z.string().default(''),
 })
 
 /** Zod schema for the /api/generate request body */
@@ -32,7 +33,7 @@ export const generateRequestSchema = z.object({
   sessionId: z.string().nullable().optional(),
   description: z.string().optional(),
   denoiseSteps: z.number().int().min(1).max(100).optional(),
-  aiProvider: aiProviderSchema.optional(),
+  aiProvider: z.literal('gemini').optional(),
 })
 
 // ── Inferred types ───────────────────────────────────────────
@@ -58,10 +59,11 @@ export const DEFAULT_OPTIONS: GenerationOptions = {
   description: '',
   backgroundColor: 'Cool Grey',
   quality: 'standard',
-  aiProvider: 'idm_vton',
+  aiProvider: 'gemini',
   fitStyle: 'standard',
   artisticStyle: 'default',
   presetModelId: '',
+  fashionPose: '',
 }
 
 // ── Prompt templates (adapted from aistudio reference) ───────
@@ -132,20 +134,9 @@ const DEFAULT_MODEL_DESCRIPTION =
 // ── Prompt builder ───────────────────────────────────────────
 
 /**
- * Builds a description string from the selected options.
- * For VTON providers (IDM-VTON, fal.ai) this is a short hint string.
- * For Gemini, this is a rich, detailed prompt built from templates.
+ * Builds a rich, detailed Gemini prompt string from the selected options.
  */
 export function buildPrompt(options: GenerationOptions): string {
-  // VTON providers ignore most prompt details — keep it short
-  if (options.aiProvider !== 'gemini') {
-    const parts: string[] = []
-    if (options.mode === 'full_outfit') parts.push('full outfit styling')
-    if (options.description.trim()) parts.push(options.description.trim())
-    return parts.join(', ') || 'fashion garment'
-  }
-
-  // Gemini: build a rich, structured prompt
   const bg = BACKGROUND_PROMPTS[options.backgroundColor] ?? BACKGROUND_PROMPTS['Cool Grey']
   const fit = FIT_STYLE_PROMPTS[options.fitStyle]
   const quality = QUALITY_PROMPTS[options.quality]
@@ -169,6 +160,10 @@ export function buildPrompt(options: GenerationOptions): string {
         '',
         `${quality} The garment fit is critical: ${fit.toLowerCase()}`,
       ]
+
+      if (options.fashionPose) {
+        parts.push(`The model must be in the following pose: ${options.fashionPose}.`)
+      }
 
       if (userDesc) {
         parts.push(`Additional garment details: ${userDesc}`)
@@ -194,6 +189,12 @@ export function buildPrompt(options: GenerationOptions): string {
   ]
 
   let step = 4
+  if (options.fashionPose) {
+    lines.push(
+      `${step}. **Pose:** The model must be in the following pose: ${options.fashionPose}.`,
+    )
+    step++
+  }
   if (userDesc) {
     lines.push(`${step}. **Garment Details:** ${userDesc}`)
     step++

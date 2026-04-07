@@ -2,19 +2,12 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 import { generateRequestSchema } from '@/lib/generation-options'
-import type { InferenceProvider } from '@/lib/inference'
 import { runInference } from '@/lib/inference'
 import { createClient as createAdmin } from '@/lib/supabase/admin'
 import { createClient } from '@/lib/supabase/server'
 import { uploadOutput } from '@/lib/utils/storage'
 
 export const maxDuration = 300
-
-const PROVIDER_MAP: Record<string, InferenceProvider> = {
-  idm_vton: 'hf_spaces',
-  gemini: 'gemini',
-  fal_ai: 'fal_ai',
-}
 
 export async function POST(request: NextRequest) {
   const supabase = await createClient()
@@ -39,7 +32,9 @@ export async function POST(request: NextRequest) {
   const { garmentPath, presetModelId, sessionId, description, denoiseSteps, aiProvider } =
     parsed.data
 
-  const resolvedProvider: InferenceProvider = PROVIDER_MAP[aiProvider ?? 'idm_vton'] ?? 'hf_spaces'
+  if (aiProvider !== undefined && aiProvider !== 'gemini') {
+    return NextResponse.json({ error: 'Only gemini provider is supported' }, { status: 400 })
+  }
 
   const admin = createAdmin()
 
@@ -54,7 +49,7 @@ export async function POST(request: NextRequest) {
       preset_model_id: presetModelId,
       // DB constraint allows 'hf_spaces' | 'fal_ai' | 'gemini' (migration 20260319000002)
       // Cast needed until types are regenerated with `bun run db:types`
-      inference_provider: resolvedProvider as 'hf_spaces' | 'fal_ai',
+      inference_provider: 'gemini' as 'hf_spaces' | 'fal_ai',
     })
     .select('id')
     .single()
@@ -118,14 +113,21 @@ export async function POST(request: NextRequest) {
   // 5. Run inference
   const start = Date.now()
   try {
-    const result = await runInference(
-      { garmentUrl: garmentSigned.signedUrl, modelUrl, description, denoiseSteps },
-      resolvedProvider,
-    )
+    const result = await runInference({
+      garmentUrl: garmentSigned.signedUrl,
+      modelUrl,
+      description,
+      denoiseSteps,
+    })
     const inferenceMs = Date.now() - start
 
     // 6. Upload output to Storage
     const outputPath = await uploadOutput(result.outputUrl, user?.id ?? sessionId ?? 'anon')
+
+    // Extract base64 and mimeType from the data: URL to seed the modification loop
+    const dataUrlMatch = result.outputUrl.match(/^data:([^;]+);base64,(.+)$/)
+    const outputMimeType = dataUrlMatch?.[1] ?? 'image/png'
+    const outputBase64 = dataUrlMatch?.[2] ?? ''
 
     // 7. Mark completed (Realtime fires)
     await admin
@@ -137,7 +139,12 @@ export async function POST(request: NextRequest) {
       })
       .eq('id', generation.id)
 
-    return NextResponse.json({ generationId: generation.id, outputPath })
+    return NextResponse.json({
+      generationId: generation.id,
+      outputPath,
+      outputBase64,
+      outputMimeType,
+    })
   } catch (err) {
     const errorMessage = err instanceof Error ? err.message : 'Inference failed'
     console.error('[generate] Inference error:', errorMessage, err)

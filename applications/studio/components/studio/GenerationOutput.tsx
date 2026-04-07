@@ -8,16 +8,32 @@ import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 
 import { ImageModal } from './ImageModal'
+import { ModificationPanel } from './ModificationPanel'
+
+interface ImageSnapshot {
+  base64: string
+  mimeType: string
+}
 
 interface GenerationOutputProps {
   outputPath: string
   onReset: () => void
+  initialBase64?: string
+  initialMimeType?: string
 }
 
-export function GenerationOutput({ outputPath, onReset }: GenerationOutputProps) {
+export function GenerationOutput({
+  outputPath,
+  onReset,
+  initialBase64 = '',
+  initialMimeType = '',
+}: GenerationOutputProps) {
   const [signedUrl, setSignedUrl] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
+  const [imageHistory, setImageHistory] = useState<ImageSnapshot[]>(() =>
+    initialBase64 ? [{ base64: initialBase64, mimeType: initialMimeType }] : [],
+  )
 
   useEffect(() => {
     async function getUrl() {
@@ -29,11 +45,20 @@ export function GenerationOutput({ outputPath, onReset }: GenerationOutputProps)
     getUrl()
   }, [outputPath])
 
-  if (loading) {
-    return <Skeleton className="aspect-[3/4] w-full rounded-lg" />
+  const latestSnapshot = imageHistory.length > 0 ? imageHistory[imageHistory.length - 1] : null
+  const displaySrc = latestSnapshot
+    ? `data:${latestSnapshot.mimeType};base64,${latestSnapshot.base64}`
+    : signedUrl
+
+  function handleModified(base64: string, mimeType: string) {
+    setImageHistory((prev) => [...prev, { base64, mimeType }])
   }
 
-  if (!signedUrl) {
+  if (loading) {
+    return <Skeleton className="aspect-3/4 w-full rounded-lg" />
+  }
+
+  if (!displaySrc) {
     return (
       <div className="py-8 text-center">
         <p className="text-destructive text-sm">Could not load output image</p>
@@ -52,14 +77,14 @@ export function GenerationOutput({ outputPath, onReset }: GenerationOutputProps)
         onClick={() => setShowModal(true)}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={signedUrl} alt="Generated try-on result" className="w-full object-contain" />
+        <img src={displaySrc} alt="Generated try-on result" className="w-full object-contain" />
         <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/20">
           <Maximize2 className="h-8 w-8 text-white opacity-0 transition-opacity group-hover:opacity-100" />
         </div>
       </div>
       <div className="flex gap-2">
         <Button asChild className="flex-1 gap-2">
-          <a href={signedUrl} download="anaqio-tryon.webp">
+          <a href={displaySrc} download="anaqio-tryon.webp">
             <Download className="h-4 w-4" />
             Download
           </a>
@@ -69,7 +94,14 @@ export function GenerationOutput({ outputPath, onReset }: GenerationOutputProps)
           New
         </Button>
       </div>
-      {showModal && <ImageModal src={signedUrl} onClose={() => setShowModal(false)} />}
+      {latestSnapshot && (
+        <ModificationPanel
+          currentImageBase64={latestSnapshot.base64}
+          currentMimeType={latestSnapshot.mimeType}
+          onModified={handleModified}
+        />
+      )}
+      {showModal && <ImageModal src={displaySrc} onClose={() => setShowModal(false)} />}
     </div>
   )
 }

@@ -87,6 +87,20 @@ export interface CampaignSignupStats {
   last_signup_at: string | null
 }
 
+// ── Campaign Create ────────────────────────────────────
+
+export interface CampaignCreate {
+  name: string
+  slug: string
+  type: CampaignType
+  platform?: CampaignPlatform | null
+  description?: string | null
+  start_date?: string | null
+  end_date?: string | null
+  budget_mad?: number | null
+  is_active?: boolean
+}
+
 // ── Dashboard ──────────────────────────────────────────
 
 export interface DashboardStats {

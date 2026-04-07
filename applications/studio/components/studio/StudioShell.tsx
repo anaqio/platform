@@ -9,9 +9,9 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 
-import { AIProviderSelector } from './AIProviderSelector'
 import { ArtisticStyleSelector } from './ArtisticStyleSelector'
 import { BackgroundColorPicker } from './BackgroundColorPicker'
+import { FashionPoseSelector } from './FashionPoseSelector'
 import { FitStyleSelector } from './FitStyleSelector'
 import { GarmentDescription } from './GarmentDescription'
 import { GarmentUploader } from './GarmentUploader'
@@ -30,34 +30,36 @@ interface StudioShellProps {
 export function StudioShell({ presets }: StudioShellProps) {
   const store = useStudioStore()
   const isGenerating = store.workflowState === 'uploading' || store.workflowState === 'generating'
-  const isGemini = store.aiProvider === 'gemini'
 
   // Can the user advance past this step?
   const canProceed = useCallback(() => {
     switch (store.step) {
       case 1:
-        return true // AI model always has a default
-      case 2:
         return true // Mode always has a default
-      case 3:
+      case 2:
         return !!store.garmentFile
+      case 3:
+        return !!store.fashionPose
       case 4:
         return true // Description is optional
       case 5:
         return !!store.selectedPresetId
-      case 6:
-        return true // Style options are optional
       default:
         return false
     }
-  }, [store.step, store.garmentFile, store.selectedPresetId])
+  }, [store.step, store.garmentFile, store.fashionPose, store.selectedPresetId])
 
   // Show output when completed
   if (store.outputPath) {
     return (
       <div className="flex min-h-[80vh] items-center justify-center px-4">
         <Card className="w-full max-w-lg p-6">
-          <GenerationOutput outputPath={store.outputPath} onReset={store.reset} />
+          <GenerationOutput
+            outputPath={store.outputPath}
+            initialBase64={store.outputBase64 ?? ''}
+            initialMimeType={store.outputMimeType ?? ''}
+            onReset={store.reset}
+          />
         </Card>
       </div>
     )
@@ -94,7 +96,7 @@ export function StudioShell({ presets }: StudioShellProps) {
       {/* Step content — centered, single card, mobile-first */}
       <div className="flex flex-1 items-center justify-center py-6">
         <Card className="w-full max-w-lg p-6">
-          <StepContent step={store.step} presets={presets} isGemini={isGemini} />
+          <StepContent step={store.step} presets={presets} />
         </Card>
       </div>
 
@@ -120,7 +122,9 @@ export function StudioShell({ presets }: StudioShellProps) {
           <Button
             size="sm"
             onClick={store.startGeneration}
-            disabled={!store.garmentFile || !store.selectedPresetId || isGenerating}
+            disabled={
+              !store.garmentFile || !store.selectedPresetId || !store.fashionPose || isGenerating
+            }
             className="gap-2"
           >
             {isGenerating ? (
@@ -150,36 +154,18 @@ export function StudioShell({ presets }: StudioShellProps) {
 
 // ── Step content renderer ─────────────────────────────────────
 
-function StepContent({
-  step,
-  presets,
-  isGemini,
-}: {
-  step: number
-  presets: PresetModel[]
-  isGemini: boolean
-}) {
+function StepContent({ step, presets }: { step: number; presets: PresetModel[] }) {
   const store = useStudioStore()
 
   switch (step) {
     case 1:
       return (
         <>
-          <StepHeader
-            title="Select AI Model"
-            subtitle="Choose the engine that powers your generation."
-          />
-          <AIProviderSelector value={store.aiProvider} onChange={store.setAiProvider} />
-        </>
-      )
-    case 2:
-      return (
-        <>
           <StepHeader title="Select Mode" subtitle="What are you creating today?" />
           <ModeSelector value={store.mode} onChange={store.setMode} />
         </>
       )
-    case 3:
+    case 2:
       return (
         <>
           <StepHeader title="Upload Garment" subtitle="Upload a photo of the garment to try on." />
@@ -188,6 +174,13 @@ function StepContent({
             onFileSelect={store.setGarmentFile}
             onClear={() => store.setGarmentFile(null)}
           />
+        </>
+      )
+    case 3:
+      return (
+        <>
+          <StepHeader title="Select Pose" subtitle="Choose a pose for the model." />
+          <FashionPoseSelector value={store.fashionPose} onChange={store.setFashionPose} />
         </>
       )
     case 4:
@@ -204,32 +197,18 @@ function StepContent({
     case 5:
       return (
         <>
-          <StepHeader title="Select Model" subtitle="Choose a model to wear the garment." />
-          <ModelPresetGrid
-            presets={presets}
-            selectedId={store.selectedPresetId}
-            onSelect={store.setSelectedPresetId}
-          />
-        </>
-      )
-    case 6:
-      return (
-        <>
           <StepHeader
             title="Style & Quality"
             subtitle="Fine-tune the look and feel of your generation."
-            optional
           />
           <div className="space-y-5">
-            {isGemini && (
-              <div>
-                <p className="text-muted-foreground mb-2 text-xs font-medium">Artistic Style</p>
-                <ArtisticStyleSelector
-                  value={store.artisticStyle}
-                  onChange={store.setArtisticStyle}
-                />
-              </div>
-            )}
+            <div>
+              <p className="text-muted-foreground mb-2 text-xs font-medium">Artistic Style</p>
+              <ArtisticStyleSelector
+                value={store.artisticStyle}
+                onChange={store.setArtisticStyle}
+              />
+            </div>
             <div>
               <p className="text-muted-foreground mb-2 text-xs font-medium">Garment Fit</p>
               <FitStyleSelector value={store.fitStyle} onChange={store.setFitStyle} />
@@ -244,6 +223,14 @@ function StepContent({
             <div>
               <p className="text-muted-foreground mb-2 text-xs font-medium">Image Quality</p>
               <QualitySelector value={store.quality} onChange={store.setQuality} />
+            </div>
+            <div>
+              <p className="text-muted-foreground mb-2 text-xs font-medium">Model</p>
+              <ModelPresetGrid
+                presets={presets}
+                selectedId={store.selectedPresetId}
+                onSelect={store.setSelectedPresetId}
+              />
             </div>
           </div>
         </>
