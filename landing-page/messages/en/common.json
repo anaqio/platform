@@ -1,0 +1,49 @@
+{
+  "newsletter": {
+    "title": "Subscribe to our newsletter",
+    "desc": "Get the latest updates on AI fashion technology and exclusive offers.",
+    "placeholder": "Enter your email",
+    "submit": "Subscribe"
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page",
+    "of": "of"
+  },
+  "search": {
+    "placeholder": "Search...",
+    "noResults": "No results found",
+    "submit": "Search"
+  },
+  "filters": {
+    "title": "Filters",
+    "clear": "Clear all",
+    "apply": "Apply filters"
+  },
+  "sort": {
+    "label": "Sort by",
+    "newest": "Newest first",
+    "oldest": "Oldest first",
+    "popular": "Most popular"
+  },
+  "status": {
+    "loading": "Loading...",
+    "success": "Success",
+    "error": "Error",
+    "empty": "Nothing to show"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email",
+    "minLength": "Must be at least {min} characters",
+    "maxLength": "Must be at most {max} characters"
+  },
+  "dates": {
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "daysAgo": "{count} days ago",
+    "weeksAgo": "{count} weeks ago",
+    "monthsAgo": "{count} months ago"
+  }
+}

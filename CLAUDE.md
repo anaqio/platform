@@ -6,24 +6,38 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Anaqio** — AI-powered fashion commerce platform for the Moroccan market. Democratizes professional fashion imagery for Moroccan brands via AI virtual try-on and studio photography. Target: 90% cost reduction vs traditional photoshoots (5,000–20,000 MAD/collection).
 
-This directory is a multi-project workspace (not a monorepo). Each sub-project has its own git repo, dependencies, and deployment pipeline. There is no shared `package.json` or Turborepo config.
+This directory is a **Bun workspaces monorepo** orchestrated by Turborepo. Each app has its own git repo and deploys independently, but all share tooling configs and utility packages via `packages/`.
 
 **Team:** 2 founders — Amal (Visionary: strategy, brand, partnerships) and Moughamir (Integrator: technical execution, architecture, shipping).
 
-### Projects
+### Apps (Bun workspace members)
 
 | Directory | What | Stack | Deploys to | Git |
 |-----------|------|-------|------------|-----|
 | `studio/` | AI Virtual Fashion Studio (virtual try-on MVP) | Next.js 16, Supabase, Zustand, Vitest, Playwright | studio.anaqio.com | own repo |
 | `landing-page/` | Corporate waitlist + brand site | Next.js 16, Framer Motion, next-intl, Remotion, Supabase | anaqio.com | own repo |
-| `ai-studio-base/` | Google AI Studio prototype (exported app) | Vite + React, Gemini API | n/a (local dev) | untracked |
 | `backoffice/` | Internal backoffice (CRM, campaigns, dashboard) | Next.js 16, Supabase, Tailwind v4 | backoffice.anaqio.com (TBD) | own repo |
-| `tsx-playground/` | Bun + React component playground | Bun, React, TypeScript | n/a (local dev) | untracked |
-| `design/` | Design assets (placeholder) | — | — | — |
-| `docs/` | Documentation + Company OS | — | — | — |
-| `legals/` | Legal documents (placeholder) | — | — | — |
 
-**Always `cd` into the specific sub-project before running commands.** Each project has its own CLAUDE.md with architecture details, commands, and rules — defer to those.
+### Shared Packages (`packages/`)
+
+| Package | What |
+|---------|------|
+| `@anaqio/tsconfig` | Base tsconfig presets (`base.json`, `nextjs.json`) |
+| `@anaqio/eslint-config` | Shared ESLint flat config (`index.mjs`, `nextjs.mjs`) |
+| `@anaqio/utils` | `cn()` utility (clsx + tailwind-merge) |
+| `@anaqio/supabase` | Supabase 3-client factories (browser/server/admin) |
+
+### Other Directories
+
+| Directory | What |
+|-----------|------|
+| `ai-studio-base/` | Google AI Studio prototype (Vite + React, untracked) |
+| `tsx-playground/` | Component playground (Bun + React, untracked) |
+| `design/` | Design assets (placeholder) |
+| `docs/` | Documentation + Company OS |
+| `legals/` | Legal documents (placeholder) |
+
+**For app-specific work, `cd` into the sub-project.** Each app has its own CLAUDE.md — defer to those for architecture details. For cross-app tasks (lint all, build all, type-check all), run from root with `turbo`.
 
 ### Dev Ports
 
@@ -42,7 +56,29 @@ This directory is a multi-project workspace (not a monorepo). Each sub-project h
 - **Formatting:** Prettier + Husky + lint-staged (auto-runs on commit)
 - **Testing:** Vitest (unit) + Playwright (e2e)
 
-## Quick Reference — Per-Project Commands
+## Workspace Commands (from root)
+
+```bash
+# Run across all apps in parallel (Turbo caches results)
+TURBO_TELEMETRY_DISABLED=1 bunx turbo run build
+TURBO_TELEMETRY_DISABLED=1 bunx turbo run lint
+TURBO_TELEMETRY_DISABLED=1 bunx turbo run type-check
+TURBO_TELEMETRY_DISABLED=1 bunx turbo run test
+
+# Filter to a single app
+TURBO_TELEMETRY_DISABLED=1 bunx turbo run build --filter=studio
+
+# Format all files
+bun run format          # prettier --write .
+bun run format:check    # prettier --check .
+
+# Install all workspace dependencies
+bun install
+```
+
+> Set `TURBO_TELEMETRY_DISABLED=1` globally in `~/.exports` to skip the flag.
+
+## Per-App Commands
 
 ### studio/
 
@@ -54,6 +90,7 @@ bun run lint          # eslint
 bun run type-check    # tsc --noEmit
 bun run test          # vitest run
 bun run test:e2e      # playwright test
+bun run clean         # rm -rf .next
 bun run db:types      # regenerate Supabase types
 ```
 
@@ -61,11 +98,12 @@ bun run db:types      # regenerate Supabase types
 
 ```bash
 cd landing-page
-bun dev               # next dev
+bun run dev           # next dev
 bun run build         # next build
 bun run lint          # eslint
 bun run test          # vitest
 bun run test:e2e      # playwright test
+bun run clean         # rm -rf .next
 bun run video:dev     # remotion studio (video compositions)
 bun run audit         # full brand/performance/supabase audit
 ```
@@ -74,13 +112,14 @@ bun run audit         # full brand/performance/supabase audit
 
 ```bash
 cd backoffice
-bun dev           # next dev on port 3001
+bun run dev           # next dev --turbopack on port 3001
 bun run build
-bun run lint
+bun run lint          # eslint (shared @anaqio/eslint-config/nextjs)
 bun run type-check
+bun run clean         # rm -rf .next
 ```
 
-### ai-studio-base/
+### ai-studio-base/ (untracked prototype)
 
 ```bash
 cd ai-studio-base
@@ -91,14 +130,27 @@ Requires `GEMINI_API_KEY` in `.env.local`.
 
 ## Cross-Project Conventions
 
-- **Supabase client separation is strict:** browser client (`lib/supabase/client.ts`), server client (`lib/supabase/server.ts`), admin/service-role client (`lib/supabase/admin.ts`). Never inline `createClient()`. Never expose `SUPABASE_SERVICE_ROLE_KEY` to the browser.
+### Shared packages
+- **`cn()`** — import from `@anaqio/utils/cn` (re-exported at `lib/utils/cn.ts` in each app)
+- **Supabase clients** — thin wrappers in `lib/supabase/{client,server,admin}.ts` call factory functions from `@anaqio/supabase`. Never inline `createClient()`. Never expose `SUPABASE_SERVICE_ROLE_KEY` to the browser.
+- **ESLint** — all apps extend `@anaqio/eslint-config/nextjs`; app-level overrides added locally
+- **TypeScript** — all apps extend `@anaqio/tsconfig/nextjs`; paths (`@/*`) defined locally per app
+- **Prettier** — root `.prettierrc` is canonical (semi: false, width: 100); no per-app overrides needed
+
+### React / Next.js
 - **No `forwardRef`** — React 19 removed it; use ref-as-prop.
 - **Async request APIs** — Next.js 16: `await cookies()`, `await headers()`, `await params`, `await searchParams`.
 - **`tw-animate-css`** not `tailwindcss-animate` — the latter is incompatible with Tailwind v4.
-- **`cn()` utility** lives at `lib/utils/cn.ts` (clsx + tailwind-merge) in each project.
-- **Conventional Commits:** `feat:`, `fix:`, `refactor:`, `test:`, `chore:`, `docs:` with optional scope (e.g., `feat(studio): ...`).
+
+### Database
 - **No `select('*')`** in Supabase queries — always name columns explicitly.
 - **Env vars never hardcoded** — copy `.env.example` → `.env.local`, never commit `.env*.local`.
+- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY` (landing-page, backoffice) vs `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` (studio) — each app uses its own key name.
+
+### Git
+- **Root git** (`com.anaqio/.git`) tracks workspace-layer files only: `package.json`, `turbo.json`, `packages/`, `.prettierrc`, `.gitignore`, `CHANGELOG.md`, `bun.lock`.
+- **App gits** (`studio/.git`, `landing-page/.git`, `backoffice/.git`) are independent — commit app changes there.
+- **Conventional Commits:** `feat:`, `fix:`, `refactor:`, `test:`, `chore:`, `docs:` with optional scope (e.g., `feat(studio): ...`).
 
 ## Key Architectural Differences
 
@@ -130,13 +182,6 @@ Root-level session context files: `review.prompt.md` (code review prompt), `resu
 ## Company Operations
 
 See `docs/COMPANY-OS.md` for the full operating system (V/TO, Rocks, Scorecard, L10, ADRs, Build vs Buy).
-
-### Current Quarter (Q1 2026 — ends Mar 31)
-
-- **Expo deadline: March 28, 2026** — feature freeze, bug fixes and polish only after that date
-- Studio MVP must be feature-complete (upload → generate → download)
-- Landing page live at anaqio.com with waitlist capture + Brevo automation
-- Kiosk mode working at 1920×1080 landscape for expo demo
 
 ### Key Decisions (ADRs)
 

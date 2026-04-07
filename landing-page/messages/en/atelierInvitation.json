@@ -1,0 +1,83 @@
+{
+  "card": {
+    "eyebrow": "Application",
+    "title": "Request an invitation to the atelier",
+    "footnote": "Each application is reviewed personally"
+  },
+  "ui": {
+    "skip": "Skip →",
+    "selectPlaceholder": "Select an option…",
+    "enterHint": "Press Enter ↵ to continue",
+    "prevAriaLabel": "Previous question",
+    "continue": "Continue",
+    "requestInvitation": "Request Invitation",
+    "sending": "Sending…",
+    "fieldRequired": "This field is required."
+  },
+  "success": {
+    "title": "Your request is received",
+    "desc": "We review each application personally. You will hear from us soon."
+  },
+  "steps": {
+    "email": {
+      "question": "What is your email address?",
+      "hint": "We will send your invitation here.",
+      "placeholder": "you@brand.com",
+      "errors": {
+        "required": "Please enter your email address.",
+        "invalid": "Please enter a valid email address."
+      }
+    },
+    "entity_name": {
+      "question": "What is the name of your brand or studio?",
+      "hint": "Your label, atelier, or creative entity.",
+      "placeholder": "Maison Leila, Studio Nour…",
+      "errors": {
+        "required": "Please enter your brand or studio name.",
+        "tooShort": "Name must be at least 2 characters."
+      }
+    },
+    "whatsapp": {
+      "question": "Your WhatsApp number?",
+      "hint": "(Optional) for a faster personal welcome.",
+      "placeholder": "+212 6XX XXX XXX"
+    },
+    "role": {
+      "question": "How would you describe yourself?",
+      "errors": {
+        "required": "Please select your role."
+      },
+      "options": {
+        "Brand": "Fashion Brand / Retailer",
+        "Designer": "Independent Designer",
+        "Stylist": "Stylist / Creative Director",
+        "Ecommerce": "E-Commerce Seller",
+        "Photographer": "Fashion Photographer",
+        "Other": "Other"
+      }
+    },
+    "revenue_range": {
+      "question": "What is your monthly revenue range?",
+      "hint": "Optional — helps us tailor your onboarding.",
+      "options": {
+        "pre-revenue": "Pre-revenue / Starting out",
+        "0-10k": "Under 10 000 DH",
+        "10k-50k": "10 000 - 50 000 DH",
+        "50k-250k": "50 000 - 250 000 DH",
+        "250k+": "250 000 DH +"
+      }
+    },
+    "referral_source": {
+      "question": "How did you hear about ANAQIO?",
+      "hint": "Optional.",
+      "options": {
+        "Instagram": "Instagram",
+        "LinkedIn": "LinkedIn",
+        "Word of mouth": "Word of mouth",
+        "Press / Media": "Press / Media",
+        "Search": "Google / Search",
+        "Other": "Other"
+      }
+    }
+  }
+}

@@ -1,0 +1,332 @@
+{
+  "hero": {
+    "eyebrow": "Where garments become campaigns",
+    "headline": {
+      "pre": "Visual Infrastructure",
+      "pro": "for Fashion Commerce"
+    },
+    "subheadline": {
+      "a": "Transform garments into photorealistic campaign visuals in minutes.",
+      "b": "Anaqio optimizes fashion art for scalable commerce."
+    },
+    "supportLine": {
+      "pre": "Built for ",
+      "words": ["designers", "brands", "agencies"],
+      "post": " who need consistent, brand-safe visuals at scale."
+    },
+    "cta": {
+      "act": "Join the Waitlist",
+      "learn": "See How It Works"
+    }
+  },
+  "styleShowcase": {
+    "eyebrow": "The Aesthetic",
+    "title": {
+      "pre": "Endless styles for",
+      "accent": "High-End Brands"
+    },
+    "description": "From Marrakech Riads to Minimalist Studios. Generate any aesthetic your brand demands without renting a single light."
+  },
+  "problem": {
+    "eyebrow": "The Challenge",
+    "headline": {
+      "pre": "Fashion Content Demand.",
+      "gradient": "Exploding"
+    },
+    "visualHeadline": {
+      "line1": "Fashion moves fast.",
+      "line2": "Production doesn't."
+    },
+    "intro": {
+      "a": "Fashion brands today need an enormous volume of visuals.",
+      "b": "But traditional production wasn't built for this speed.",
+      "detail": "Photoshoots require studios, models, logistics, and post-production — making them expensive, slow, and difficult to scale. For emerging designers and growing brands, this creates a bottleneck between creative vision and commercial growth.",
+      "quote": "Fashion is art. Commerce requires optimization."
+    },
+    "painPoints": [
+      {
+        "text": "Product launches."
+      },
+      {
+        "text": "Social media campaigns."
+      },
+      {
+        "text": "E-commerce catalogs."
+      },
+      {
+        "text": "Marketplace listings."
+      }
+    ]
+  },
+  "solution": {
+    "eyebrow": "The Solution",
+    "headline": {
+      "pre": "Meet the AI-Native",
+      "gradient": "Production Layer",
+      "post": "for Fashion"
+    },
+    "description": "Anaqio transforms simple garment images into photorealistic visuals using a structured AI pipeline built specifically for fashion brands.",
+    "footer": "No photoshoot. No production delays. Just scalable visual generation.",
+    "stat": {
+      "traditional": {
+        "value": "14 days",
+        "label": "Traditional shoot"
+      },
+      "anaqio": {
+        "value": "2 hours",
+        "label": "With ANAQIO"
+      }
+    },
+    "pipeline": [
+      {
+        "stage": "Input",
+        "label": "Flat Lay",
+        "body": "Upload your raw garment imagery and brand assets to begin."
+      },
+      {
+        "stage": "Process",
+        "label": "AI Pipeline",
+        "body": "We orchestrate your asset generation using bleeding-edge pipelines."
+      },
+      {
+        "stage": "Output",
+        "label": "Campaign Visual",
+        "body": "Receive photorealistic campaign visuals ready for commerce."
+      }
+    ]
+  },
+  "howItWorks": {
+    "eyebrow": "How It Works",
+    "headline": {
+      "pre": "Four Steps to",
+      "gradient": "Campaign-Ready",
+      "post": "Visuals"
+    },
+    "steps": [
+      {
+        "num": "01",
+        "title": "Upload Your Garment",
+        "body": "Upload a flat lay or ghost mannequin image."
+      },
+      {
+        "num": "02",
+        "title": "Define the Visual Style",
+        "body": "Choose poses, lighting, and environments designed for fashion campaigns."
+      },
+      {
+        "num": "03",
+        "title": "Generate Photorealistic Output",
+        "body": "Our AI pipeline transforms the garment into high-quality visuals ready for e-commerce, campaigns, and social media."
+      },
+      {
+        "num": "04",
+        "title": "Scale Instantly",
+        "body": "Generate multiple variations for different markets, campaigns, or product launches. Minutes — not weeks."
+      }
+    ]
+  },
+  "whyAnaqio": {
+    "eyebrow": "Product Benefits",
+    "headline": {
+      "pre": "Why",
+      "gradient": "Anaqio",
+      "post": "is Better?"
+    },
+    "footer": "Anaqio is built for reliability, consistency, and scale.",
+    "points": [
+      {
+        "title": "Garment Precision",
+        "body": "Faithful reproduction of textures, cuts, colors, and brand details."
+      },
+      {
+        "title": "Controlled Poses",
+        "body": "Consistent positioning across product collections."
+      },
+      {
+        "title": "Lighting Consistency",
+        "body": "Uniform lighting that preserves accurate color representation."
+      },
+      {
+        "title": "Scalable Production",
+        "body": "Generate hundreds of visuals without increasing production costs."
+      },
+      {
+        "title": "Brand-Safe Outputs",
+        "body": "Structured AI pipelines designed for fashion brands — not experimental image generation."
+      }
+    ]
+  },
+  "whoItsFor": {
+    "eyebrow": "Who It's For",
+    "headline": {
+      "pre": "Built for the Fashion",
+      "gradient": "Ecosystem"
+    },
+    "footer": "Anyone producing fashion visuals at scale.",
+    "audiences": [
+      {
+        "title": "Fashion Brands",
+        "body": "Scale product visuals for e-commerce and marketing campaigns."
+      },
+      {
+        "title": "Emerging Designers",
+        "body": "Create professional visuals without expensive photoshoots."
+      },
+      {
+        "title": "Creative Studios",
+        "body": "Accelerate production for client campaigns."
+      },
+      {
+        "title": "Marketplaces",
+        "body": "Standardize visual quality across large product inventories."
+      }
+    ],
+    "features": [
+      "Dedicated studio workspace",
+      "Lightning-fast asset rendering",
+      "Tailored brand parameters"
+    ]
+  },
+  "vision": {
+    "eyebrow": "Our Vision",
+    "headline": {
+      "pre": "The Future of",
+      "gradient": "Fashion Production"
+    },
+    "intro": "The fashion industry is entering a new era where visual production must keep pace with digital commerce.",
+    "quote": "Anaqio's vision is to become the visual infrastructure layer of the global fashion industry, transforming visual production from a bottleneck into a growth engine.",
+    "points": [
+      {
+        "text": "Collections launch faster."
+      },
+      {
+        "text": "Content cycles move quicker."
+      },
+      {
+        "text": "Brands reach global audiences instantly."
+      }
+    ]
+  },
+  "philosophy": {
+    "eyebrow": "Our Philosophy",
+    "body": "Fashion has always been a form of artistic expression. Technology should not replace creativity — it should empower it. Anaqio was built with a simple belief: AI should optimize the operational side of fashion production so designers and brands can focus on creativity and storytelling. We are not replacing fashion art. We are building the infrastructure that allows it to scale."
+  },
+  "features": {
+    "eyebrow": "Core Capabilities",
+    "heading": {
+      "pre": "Everything you need to",
+      "highlight": "transform",
+      "post": "your production"
+    },
+    "items": [
+      {
+        "icon": "🎨",
+        "title": "AI Virtual Try-On",
+        "description": "Let customers visualize products before purchase with our advanced virtual try-on technology."
+      },
+      {
+        "icon": "📸",
+        "title": "Automated Studio Photography",
+        "description": "Generate professional product shots with adjustable lighting, backgrounds, and angles instantly."
+      },
+      {
+        "icon": "⚡",
+        "title": "Production at Scale",
+        "description": "Create unlimited lookbooks, variations, and campaigns without the cost of traditional photoshoots."
+      }
+    ]
+  },
+  "results": {
+    "eyebrow": "Proven Results",
+    "items": [
+      {
+        "metric": "Cost per Shoot",
+        "traditional": "5,000 MAD",
+        "anaqio": "500 MAD",
+        "improvement": "90% reduction"
+      },
+      {
+        "metric": "Production Time",
+        "traditional": "2–3 weeks",
+        "anaqio": "2–3 hours",
+        "improvement": "99% faster"
+      },
+      {
+        "metric": "Photo Variations",
+        "traditional": "20–50 per session",
+        "anaqio": "Unlimited",
+        "improvement": "10x+ more"
+      }
+    ]
+  },
+  "segments": {
+    "heading": {
+      "pre": "Built for",
+      "highlight": "fashion creators",
+      "post": "at any scale"
+    },
+    "subheading": "From emerging brands to established agencies",
+    "labels": {
+      "segment": "Segment",
+      "problem": "Problem",
+      "solution": "Solution"
+    },
+    "items": [
+      {
+        "icon": "👨‍💼",
+        "name": "Emerging Brand Owner",
+        "role": "Founder / CEO",
+        "problem": "Budget constraints limit photoshoot frequency",
+        "solution": "Generate unlimited content at a fraction of cost"
+      },
+      {
+        "icon": "👩‍🎨",
+        "name": "Established Fashion Director",
+        "role": "Creative Director",
+        "problem": "Long production cycles delay collections",
+        "solution": "Create lookbooks and variations in hours"
+      },
+      {
+        "icon": "📦",
+        "name": "E-commerce Operations Manager",
+        "role": "Operations Lead",
+        "problem": "Maintaining catalog consistency across platforms",
+        "solution": "Ensure uniform styling with AI-driven standards"
+      },
+      {
+        "icon": "🎬",
+        "name": "Creative Freelancer",
+        "role": "Freelance Stylist/Photographer",
+        "problem": "High equipment and location costs per project",
+        "solution": "Offer clients premium output without overhead"
+      }
+    ]
+  },
+  "team": {
+    "eyebrow": "Meet our",
+    "heading": "Founders",
+    "linkedin": "LinkedIn",
+    "members": [
+      {
+        "role": "Co-Founder & Visionary",
+        "bio": "Shapes Anaqio's vision and brand identity. Leads strategy, partnerships, and go-to-market across the Moroccan fashion ecosystem."
+      },
+      {
+        "role": "Co-Founder & CTO",
+        "bio": "Architects the technical systems behind every AI generation. Full-stack engineering, product design, and infrastructure at scale."
+      }
+    ]
+  },
+  "finalCta": {
+    "srHeading": "Get Early Access",
+    "headline": {
+      "pre": "Join the Evolution of",
+      "gradient": "Fashion Production"
+    },
+    "cta": {
+      "primary": "Join the Waitlist",
+      "secondary": "See How It Works",
+      "tertiary": "or scroll to learn more"
+    }
+  }
+}

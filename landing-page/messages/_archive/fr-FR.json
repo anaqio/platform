@@ -1,0 +1,737 @@
+{
+  "meta": {
+    "home": {
+      "title": "ANAQIO — Studio d'IA pour la Mode | À Venir",
+      "desc": "ANAQIO est un studio de mode alimenté par l'IA pour le marché du luxe marocain. Générez des lookbooks, modifiez les arrière-plans, ajustez l'éclairage et produisez des vidéos de mode cinématographiques. Lancement 2026."
+    },
+    "about": {
+      "title": "À propos d'Anaqio",
+      "desc": "Anaqio est un studio visuel alimenté par l'IA pour le commerce de la mode, construit à Casablanca par des designers et des ingénieurs passionnés par l'élévation de l'industrie de la mode marocaine."
+    },
+    "contact": {
+      "title": "Contacter Anaqio",
+      "desc": "Contactez Anaqio — Studio Visuel IA pour le Commerce de la Mode. Partenariats, support et demandes générales."
+    },
+    "login": {
+      "title": "Connexion — Anaqio"
+    },
+    "signup": {
+      "title": "S'inscrire — Anaqio"
+    },
+    "forgot": {
+      "title": "Mot de passe oublié — Anaqio"
+    },
+    "update": {
+      "title": "Mettre à Jour le Mot de Passe — Anaqio"
+    },
+    "protected": {
+      "title": "Vue d'ensemble du Studio — Anaqio"
+    },
+    "brand": {
+      "title": "Directives d'Identité de Marque — Anaqio"
+    },
+    "early": {
+      "title": "Accès Anticipé — Anaqio",
+      "desc": "Rejoignez la liste d'attente pour un accès anticipé au Studio Visuel IA d'Anaqio. Soyez le premier à vivre l'avenir du commerce de la mode."
+    },
+    "terms": {
+      "title": "Conditions d'Utilisation — Anaqio",
+      "desc": "Conditions d'utilisation d'Anaqio, un studio virtuel pour le commerce de la mode."
+    },
+    "privacy": {
+      "title": "Politique de Confidentialité — Anaqio",
+      "desc": "Politique de confidentialité d'Anaqio, un studio virtuel pour le commerce de la mode."
+    },
+    "cookies": {
+      "title": "Politique de Cookies — Anaqio",
+      "desc": "Politique de cookies d'Anaqio. Découvrez comment nous utilisons les cookies pour améliorer votre expérience dans notre studio IA."
+    },
+    "legal": {
+      "title": "Mentions Légales — Anaqio",
+      "desc": "Mentions légales d'Anaqio, un studio virtuel pour le commerce de la mode."
+    }
+  },
+  "header": {
+    "nav": {
+      "about": "À Propos",
+      "brand": "Identité Visuelle",
+      "contact": "Nous Contacter",
+      "legal": "Légal",
+      "terms": "Conditions d'Utilisation",
+      "privacy": "Politique de Confidentialité",
+      "cookies": "Politique des Cookies",
+      "legalMentions": "Mentions Légales",
+      "solution": "Solution",
+      "howItWorks": "Comment ça marche",
+      "whyAnaqio": "Pourquoi Nous",
+      "vision": "Vision",
+      "more": "Plus"
+    },
+    "button": {
+      "waitlist": "Rejoindre la Liste d'Attente"
+    },
+    "logo": {
+      "aria": "Accueil Anaqio"
+    },
+    "menu": {
+      "aria": "Basculer le menu"
+    }
+  },
+  "footer": {
+    "desc": "Votre Atelier Numérique. Créez des lookbooks époustouflants, modifiez les arrière-plans et générez des visuels éditoriaux — alimentés par l'IA, conçus pour les marques de mode marocaines.",
+    "copyright": "© 2026 Anaqio",
+    "rights": "Tous droits réservés.",
+    "platform": {
+      "title": "Plateforme",
+      "studio": "Studio d'IA",
+      "lookbook": "Générateur de Lookbook",
+      "tryon": "Essayage Virtuel",
+      "pricing": "Tarification"
+    },
+    "resources": {
+      "title": "Ressources",
+      "brand": "Identité Visuelle",
+      "blog": "Blog",
+      "help": "Centre d'Aide"
+    },
+    "company": {
+      "title": "Entreprise",
+      "about": "À Propos",
+      "early": "Accès Anticipé",
+      "badge": "REJOINDRE",
+      "privacy": "Politique de Confidentialité",
+      "terms": "Conditions d'Utilisation",
+      "legal": "Mentions Légales",
+      "cookies": "Cookies"
+    }
+  },
+  "social": {
+    "twitter": "X (Twitter)",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "linkedin": "LinkedIn",
+    "youtube": "YouTube",
+    "pinterest": "Pinterest"
+  },
+  "comingSoon": {
+    "hero": {
+      "tagline": "Arrivée Bientôt",
+      "main": "ANAQIO est un Studio Virtuel alimenté par l'IA, conçu pour le Commerce de Mode.",
+      "sub1": "Générez des lookbooks, modifiez les arrière-plans, ajustez l'éclairage et produisez des collections cinématographiques.",
+      "sub2": "— le tout à partir d'une seule photo."
+    },
+    "form": {
+      "email": {
+        "placeholder": "Entrez votre e-mail",
+        "aria": "Adresse e-mail"
+      },
+      "button": {
+        "submit": "Notifiez-moi",
+        "pending": "Envoi en cours..."
+      },
+      "terms": "En rejoignant, vous acceptez nos Conditions et notre Politique de Confidentialité."
+    },
+    "footer": {
+      "launch": "Lancement Q3 2026 · Casablanca",
+      "copyright": "Anaqio © 2026",
+      "links": {
+        "about": "À Propos",
+        "terms": "Conditions",
+        "policy": "Politique",
+        "legal": "Légal"
+      }
+    }
+  },
+  "loading": {
+    "tagline": "Atelier Numérique",
+    "stages": {
+      "initializing": "Initialisation",
+      "assets": "Chargement des ressources",
+      "rendering": "Rendu",
+      "studio": "Préparation du studio",
+      "ready": "Prêt"
+    }
+  },
+  "about": {
+    "hero": {
+      "label": "ANAQIO · Studio Visuel IA",
+      "title": "La Mode, Réimaginée.",
+      "desc": "Le studio visuel alimenté par l'IA donnant aux marques de mode marocaines l'infrastructure pour produire des images de qualité studio — sans studio.",
+      "founded": "Fondée 2026",
+      "location": "Casablanca, Maroc",
+      "launch": "Lancement Q3 2026",
+      "imageAlt": "Mannequin présentant les images de qualité studio Anaqio",
+      "titleLine1": "La Mode,",
+      "titleLine2": "Réimaginée.",
+      "back": "Retour à l'accueil"
+    },
+    "problem": {
+      "overline": "Le Problème",
+      "title": "Le pipeline d'atelier brisé.",
+      "desc": "Chaque séance photo de mode au Maroc signifie louer un espace, réserver des mannequins, coordonner l'éclairage, post-traiter des centaines de fichiers RAW — et ensuite tout refaire la saison suivante. Le résultat : des marques qui évoluent lentement, dépensent lourdement, et finissent quand même avec des images qui ressemblent à celles de tout le monde."
+    },
+    "pain": {
+      "cost": {
+        "number": "MAD 50K+",
+        "label": "coût moyen par séance studio"
+      },
+      "time": {
+        "number": "3-6 sem.",
+        "label": "cycle de production par collection"
+      },
+      "skus": {
+        "number": "Centaines",
+        "label": "de SKU, une seule séance ne peut pas tous les couvrir"
+      }
+    },
+    "solution": {
+      "overline": "La Solution",
+      "title": "Un espace de travail. Des looks infinis.",
+      "desc": "Téléchargez vos vêtements — modèles ou ressources de marque. Anaqio génère des images de qualité studio en minutes — pas en semaines.",
+      "titleLine1": "Un espace de travail.",
+      "titleLine2": "Des looks infinis."
+    },
+    "lookbook": {
+      "1alt": "Image lookbook — composition de mode éditoriale",
+      "2alt": "Image lookbook — scène de mode paysagère",
+      "3alt": "Image lookbook — photographie produit stylisée"
+    },
+    "workflow": {
+      "upload": {
+        "step": "01 — Télécharger",
+        "title": "Télécharger",
+        "desc": "Déposez vos vêtements, modèles ou ressources brutes."
+      },
+      "generate": {
+        "step": "02 — Générer",
+        "title": "Générer",
+        "desc": "L'IA compose des scènes de qualité studio en quelques minutes."
+      },
+      "export": {
+        "step": "03 — Exporter",
+        "title": "Exporter",
+        "desc": "Téléchargez des lookbooks, des vidéos ou des photos individuelles."
+      }
+    },
+    "morocco": {
+      "quote": "Le Maroc a l'une des cultures de la mode les plus riches du monde. Elle mérite",
+      "quoteAccent": "des outils de classe mondiale.",
+      "attr": "— Anaqio, Casablanca 2026",
+      "imageAlt": "Mode marocaine — images de qualité studio générées par IA",
+      "srLabel": "Conçu pour le Maroc"
+    },
+    "team": {
+      "overline": "Les Fondateurs",
+      "title": "Expertise diversifiée, une mission.",
+      "desc": "Construit par des personnes qui croient que la mode marocaine mérite la même infrastructure créative que le marché du luxe mondial.",
+      "titleLine1": "Expertise diversifiée,",
+      "titleLine2": "une mission."
+    },
+    "founder": {
+      "amal": {
+        "role": "Fondatrice & CEO",
+        "bio": "Amal apporte une compréhension approfondie du commerce de la mode et de l'identité de marque à Anaqio. Sa vision de ce que l'IA peut déverrouiller pour les marques de mode marocaines est au cœur du produit."
+      },
+      "mo": {
+        "role": "Co-Fondateur & CTO",
+        "bio": "Mohamed est un développeur full-stack et designer d'expérience avec 9+ ans de création de produits numériques intuitifs. Il façonne la direction de l'ingénierie et du design du pipeline IA d'Anaqio."
+      },
+      "chaimae": {
+        "role": "Directrice Marketing",
+        "bio": "Chaimae dirige la stratégie marketing et la création de communauté. Elle fait le pont entre la technologie IA et le storytelling créatif pour valoriser le patrimoine de la mode marocaine."
+      },
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "twitter": "X / Twitter",
+      "website": "Portfolio"
+    },
+    "cta": {
+      "overline": "Accès Anticipé",
+      "title": "Rejoignez la première vague.",
+      "desc": "Nous intégrons des marques de mode sélectionnées avant notre lancement Q3 2026. Rejoignez-nous tôt.",
+      "primary": "Rejoindre la liste d'attente",
+      "secondary": "Nous contacter"
+    }
+  },
+  "scrollNav": {
+    "intro": "Intro",
+    "problem": "Problème",
+    "solution": "Solution",
+    "morocco": "Maroc",
+    "team": "Équipe",
+    "join": "Rejoindre"
+  },
+  "contact": {
+    "title": "Contacter Anaqio",
+    "desc": "Pour les partenariats et les demandes générales utilisez cette page de contact.",
+    "section": {
+      "heading": "Contact"
+    },
+    "form": {
+      "name": {
+        "label": "Nom",
+        "placeholder": "Votre nom"
+      },
+      "email": {
+        "label": "E-mail",
+        "placeholder": "vous@exemple.com"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Comment pouvons-nous vous aider?"
+      },
+      "submit": "Envoyer (à venir)",
+      "note": "Pendant que nous finalisons la gestion des contacts contactez-nous via les liens sociaux ci-dessus."
+    },
+    "waitlistNote": "Pour les mises à jour d'accès produit, rejoignez la",
+    "waitlistLink": "liste d'accès anticipé",
+    "labels": {
+      "website": "Site web",
+      "social": "Réseaux sociaux"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Bienvenue",
+      "desc": "Connectez-vous à votre compte Anaqio Studio",
+      "email": {
+        "label": "E-mail",
+        "placeholder": "nom@entreprise.com"
+      },
+      "password": {
+        "label": "Mot de passe"
+      },
+      "forgot": "Mot de passe oublié?",
+      "submit": "Connexion",
+      "submitPending": "Authentification...",
+      "signupIntro": "Nouveau sur Anaqio?",
+      "signupLink": "Créer un compte"
+    },
+    "signup": {
+      "title": "Rejoindre Anaqio",
+      "desc": "Créez votre compte studio pour commencer",
+      "passwordRepeat": "Répéter le mot de passe",
+      "submit": "Créer un compte",
+      "submitPending": "Provisionnement du compte...",
+      "loginIntro": "Vous avez déjà un compte?",
+      "loginLink": "Se connecter"
+    },
+    "forgot": {
+      "title": "Récupérer l'accès",
+      "desc": "Entrez votre e-mail pour recevoir les instructions de récupération",
+      "submit": "Récupérer le mot de passe",
+      "submitPending": "Envoi du lien...",
+      "success": {
+        "title": "Vérifiez votre boîte de réception",
+        "desc": "Instructions de réinitialisation envoyées",
+        "msg": "Si vous avez un compte associé à cet e-mail, vous recevrez sous peu un lien pour réinitialiser vos identifiants en toute sécurité."
+      },
+      "back": "Retour à la connexion"
+    },
+    "update": {
+      "title": "Mise à Jour Sécurité",
+      "desc": "Configurez vos nouveaux identifiants d'accès studio",
+      "password": {
+        "label": "Nouveau Mot de Passe"
+      },
+      "submit": "Confirmer le Nouveau Mot de Passe",
+      "submitPending": "Mise à jour en cours..."
+    },
+    "button": {
+      "signIn": "Connexion",
+      "signUp": "S'inscrire",
+      "greeting": "Bonjour, {email} !",
+      "logout": "Déconnexion"
+    }
+  },
+  "notFound": {
+    "title": "Anomalie Système",
+    "desc": "Cet espace n'existe pas dans notre simulation actuelle. Il a peut-être été déplacé, renommé, ou se rend encore dans le vide.",
+    "back": "Retour à la Réalité",
+    "waitlist": "Accéder à la Liste d'Attente"
+  },
+  "protected": {
+    "footer": {
+      "workspace": "Espace de Travail Virtuel",
+      "terms": "Conditions",
+      "privacy": "Confidentialité"
+    },
+    "workspace": {
+      "badge": "Tableau de Bord",
+      "title": "Vue d'ensemble du Studio",
+      "claims": {
+        "title": "Revendications Système",
+        "loading": "Déchiffrement en cours..."
+      },
+      "access": {
+        "title": "Niveau d'Accès",
+        "descPre": "Vous consultez actuellement",
+        "studio": "Anaqio Studio Alpha",
+        "descPost": ". Des fonctionnalités comme le Générateur de Lookbook et l'Essayage Virtuel sont activées progressivement."
+      },
+      "status": {
+        "title": "Statut du Compte",
+        "verified": "Membre Vérifié"
+      }
+    }
+  },
+  "waitlist": {
+    "disclaimer": {
+      "prefix": "En vous inscrivant, vous acceptez nos",
+      "terms": "Conditions",
+      "and": "et notre",
+      "privacy": "Politique de Confidentialité"
+    },
+    "headline": {
+      "pre": "Pourquoi rejoindre",
+      "gradient": "tôt ?"
+    },
+    "socialProof": "Rejoignez plus de 200 marques marocaines qui développent leur commerce visuel.",
+    "formHeadline": "Demandez une invitation à l'atelier.",
+    "formSubline": "Seulement 200 places d'accès anticipé. Prend 30 secondes."
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "Là où les vêtements deviennent des campagnes",
+      "headline": {
+        "pre": "Infrastructure visuelle",
+        "pro": "pour la mode commerciale"
+      },
+      "subheadline": {
+        "a": "Transformez des vêtements en visuels de campagne photoréalistes en quelques minutes.",
+        "b": "Anaqio optimise la production visuelle pour la mode commerciale à grande échelle."
+      },
+      "supportLine": {
+        "pre": "Conçu pour les ",
+        "words": ["designers", "marques", "agences"],
+        "post": " qui ont besoin de visuels cohérents à grande échelle."
+      },
+      "cta": {
+        "act": "Rejoindre la liste d'attente",
+        "learn": "Voir comment ça marche"
+      }
+    },
+    "styleShowcase": {
+      "eyebrow": "L'Esthétique",
+      "title": {
+        "pre": "Des styles infinis pour les",
+        "accent": "Marques de Luxe"
+      },
+      "description": "Des Riads de Marrakech aux studios minimalistes. Générez n'importe quelle esthétique exigée par votre marque sans louer un seul projecteur."
+    },
+    "problem": {
+      "eyebrow": "Le Défi",
+      "headline": {
+        "pre": "La demande en contenu mode.",
+        "gradient": "Explosive"
+      },
+      "visualHeadline": {
+        "line1": "La mode va vite.",
+        "line2": "La production, non."
+      },
+      "intro": {
+        "a": "Les marques de mode ont aujourd'hui besoin d'un volume considérable de visuels.",
+        "b": "But la production traditionnelle n'a pas été conçue pour cette cadence.",
+        "detail": "Les shootings nécessitent des studios, des mannequins, une logistique et de la post-production — les rendant coûteux, lents et difficiles à mettre à l'échelle. Pour les designers émergents et les marques en croissance, cela crée un goulot d'étranglement entre la vision créative et la croissance commerciale.",
+        "quote": "La mode est un art. Le commerce exige de l'optimisation."
+      },
+      "painPoints": [
+        {
+          "text": "Lancements de produits."
+        },
+        {
+          "text": "Campagnes sur les réseaux sociaux."
+        },
+        {
+          "text": "Catalogues e-commerce."
+        },
+        {
+          "text": "Fiches marketplace."
+        }
+      ]
+    },
+    "solution": {
+      "eyebrow": "La Solution",
+      "headline": {
+        "pre": "Découvrez la",
+        "gradient": "Couche de Production IA",
+        "post": "pour la mode"
+      },
+      "description": "Anaqio transforme de simples images de vêtements en visuels photoréalistes grâce à un pipeline IA structuré, spécialement conçu pour les marques de mode.",
+      "footer": "Pas de shooting. Pas de délais de production. Juste une génération visuelle évolutive.",
+      "stat": {
+        "traditional": {
+          "value": "14 jours",
+          "label": "Shooting traditionnel"
+        },
+        "anaqio": { "value": "2 heures", "label": "Avec ANAQIO" }
+      },
+      "pipeline": [
+        {
+          "stage": "Entrée",
+          "label": "À plat",
+          "body": "Téléchargez vos images de vêtements brutes et vos ressources de marque."
+        },
+        {
+          "stage": "Traitement",
+          "label": "Pipeline IA",
+          "body": "Nous orchestrons la génération de vos ressources avec des pipelines de pointe."
+        },
+        {
+          "stage": "Sortie",
+          "label": "Visuel de campagne",
+          "body": "Recevez des visuels de campagne photoréalistes prêts pour le commerce."
+        }
+      ]
+    },
+    "howItWorks": {
+      "eyebrow": "Comment ça marche",
+      "headline": {
+        "pre": "Quatre étapes vers des",
+        "gradient": "Visuels prêts",
+        "post": "pour la campagne"
+      },
+      "steps": [
+        {
+          "num": "01",
+          "title": "Téléchargez votre vêtement",
+          "body": "Téléchargez une image à plat ou sur mannequin invisible."
+        },
+        {
+          "num": "02",
+          "title": "Définissez le style visuel",
+          "body": "Choisissez des poses, un éclairage et des environnements conçus pour les campagnes de mode."
+        },
+        {
+          "num": "03",
+          "title": "Générez un résultat photoréaliste",
+          "body": "Notre pipeline IA transforme le vêtement en visuels de haute qualité prêts pour l'e-commerce, les campagnes et les réseaux sociaux."
+        },
+        {
+          "num": "04",
+          "title": "Évoluez instantanément",
+          "body": "Générez plusieurs variations pour différents marchés, campagnes ou lancements. En quelques minutes — pas des semaines."
+        }
+      ]
+    },
+    "whyAnaqio": {
+      "eyebrow": "Avantages du produit",
+      "headline": {
+        "pre": "Pourquoi",
+        "gradient": "Anaqio",
+        "post": "est meilleur ?"
+      },
+      "footer": "Anaqio est conçu pour la fiabilité, la cohérence et l'évolutivité.",
+      "points": [
+        {
+          "title": "Précision des vêtements",
+          "body": "Reproduction fidèle des textures, coupes, couleurs et détails de marque."
+        },
+        {
+          "title": "Poses contrôlées",
+          "body": "Positionnement cohérent sur toutes les collections de produits."
+        },
+        {
+          "title": "Cohérence de l'éclairage",
+          "body": "Éclairage uniforme qui préserve une représentation précise des couleurs."
+        },
+        {
+          "title": "Production évolutive",
+          "body": "Générez des centaines de visuels sans augmenter les coûts de production."
+        },
+        {
+          "title": "Résultats sécurisés pour la marque",
+          "body": "Pipelines IA structurés conçus pour les marques de mode — pas de génération expérimentale."
+        }
+      ]
+    },
+    "whoItsFor": {
+      "eyebrow": "À qui s'adresse-t-il",
+      "headline": {
+        "pre": "Conçu pour l'écosystème",
+        "gradient": "Mode"
+      },
+      "footer": "Quiconque produit des visuels de mode à grande échelle.",
+      "audiences": [
+        {
+          "title": "Marques de mode",
+          "body": "Développez les visuels de produits pour l'e-commerce et les campagnes marketing."
+        },
+        {
+          "title": "Designers émergents",
+          "body": "Créez des visuels professionnels sans shootings coûteux."
+        },
+        {
+          "title": "Studios créatifs",
+          "body": "Accélérez la production pour les campagnes clients."
+        },
+        {
+          "title": "Marchés en ligne",
+          "body": "Standardisez la qualité visuelle sur de grands inventaires de produits."
+        }
+      ],
+      "features": [
+        "Espace studio dédié",
+        "Rendu d'actifs ultra-rapide",
+        "Paramètres de marque personnalisés"
+      ]
+    },
+    "vision": {
+      "eyebrow": "Notre Vision",
+      "headline": {
+        "pre": "L'avenir de la",
+        "gradient": "Production Mode"
+      },
+      "intro": "L'industrie de la mode entre dans une nouvelle ère où la production visuelle doit suivre le rythme du commerce numérique.",
+      "quote": "La vision d'Anaqio est de devenir la couche d'infrastructure visuelle de l'industrie mondiale de la mode, transformant la production visuelle d'un goulot d'étranglement en moteur de croissance.",
+      "points": [
+        { "text": "Les collections se lancent plus vite." },
+        { "text": "Les cycles de contenu s'accélèrent." },
+        {
+          "text": "Les marques atteignent des audiences mondiales instantanément."
+        }
+      ]
+    },
+    "philosophy": {
+      "eyebrow": "Our Philosophy",
+      "body": "Fashion has always been a form of artistic expression. Technology should not replace creativity — it should empower it. Anaqio was built with a simple belief: AI should optimize the operational side of fashion production so designers and brands can focus on creativity and storytelling. We are not replacing fashion art. We are building the infrastructure that allows it to scale."
+    },
+    "finalCta": {
+      "srHeading": "Accès anticipé",
+      "headline": {
+        "pre": "Rejoignez l'évolution de la",
+        "gradient": "Production Mode"
+      },
+      "cta": {
+        "primary": "Rejoindre la liste d'attente",
+        "secondary": "Voir comment ça marche",
+        "tertiary": "ou défiler pour en savoir plus"
+      }
+    }
+  },
+  "earlyAccess": {
+    "meta": {
+      "title": "Accès Anticipé — Anaqio",
+      "desc": "Rejoignez la liste d'attente pour un accès anticipé au Studio Visuel IA d'Anaqio. Soyez le premier à vivre l'avenir du commerce de la mode."
+    },
+    "badge": "Accès Anticipé · T3 2026",
+    "hero": {
+      "titleLine1": "Le Studio",
+      "titleGradient": "Virtuel de Mode",
+      "titleLine3": "propulsé par l'IA.",
+      "desc": "Anaqio fournit un espace de travail professionnel basé sur l'IA pour créer, mettre en scène et vendre de la mode — sans frais de production traditionnels."
+    },
+    "disclaimer": {
+      "prefix": "En vous inscrivant, vous acceptez notre",
+      "privacy": "Confidentialité",
+      "and": "&",
+      "terms": "Conditions"
+    },
+    "stats": {
+      "speed": {
+        "num": "10×",
+        "label": "Création de Contenu Plus Rapide"
+      },
+      "cost": {
+        "num": "90%",
+        "label": "Réduction des Coûts de Production"
+      },
+      "creative": {
+        "num": "∞",
+        "label": "Liberté Créative"
+      },
+      "platform": {
+        "num": "01",
+        "label": "Plateforme Studio Unifiée"
+      }
+    },
+    "cta": {
+      "titlePre": "Soyez le premier à entrer dans",
+      "titleGradient": "l'avenir de la mode",
+      "subtext": "Places limitées pour la v1.0"
+    }
+  },
+  "atelierInvitation": {
+    "card": {
+      "eyebrow": "Candidature",
+      "title": "Demander une invitation à l'atelier",
+      "footnote": "Chaque candidature est examinée personnellement"
+    },
+    "ui": {
+      "skip": "Passer →",
+      "selectPlaceholder": "Sélectionnez une option…",
+      "enterHint": "Appuyez sur Entrée ↵ pour continuer",
+      "prevAriaLabel": "Question précédente",
+      "continue": "Continuer",
+      "requestInvitation": "Demander une invitation",
+      "sending": "Envoi en cours…",
+      "fieldRequired": "Ce champ est obligatoire."
+    },
+    "success": {
+      "title": "Votre demande a été reçue",
+      "desc": "Nous examinons chaque candidature personnellement. Nous vous contacterons bientôt."
+    },
+    "steps": {
+      "email": {
+        "question": "Quelle est votre adresse e-mail ?",
+        "hint": "Nous vous enverrons votre invitation ici.",
+        "placeholder": "vous@marque.com",
+        "errors": {
+          "required": "Veuillez saisir votre adresse e-mail.",
+          "invalid": "Veuillez saisir une adresse e-mail valide."
+        }
+      },
+      "entity_name": {
+        "question": "Quel est le nom de votre marque ou studio ?",
+        "hint": "Votre label, atelier ou entité créative.",
+        "placeholder": "Maison Leila, Studio Nour…",
+        "errors": {
+          "required": "Veuillez saisir le nom de votre marque ou studio.",
+          "tooShort": "Le nom doit contenir au moins 2 caractères."
+        }
+      },
+      "whatsapp": {
+        "question": "Votre numéro WhatsApp ?",
+        "hint": "Facultatif — pour un accueil personnel plus rapide.",
+        "placeholder": "+212 6XX XXX XXX"
+      },
+      "role": {
+        "question": "Comment vous décririez-vous ?",
+        "errors": {
+          "required": "Veuillez sélectionner votre rôle."
+        },
+        "options": {
+          "Brand": "Marque de mode / Revendeur",
+          "Designer": "Designer indépendant",
+          "Stylist": "Styliste / Directeur créatif",
+          "Ecommerce": "Vendeur e-commerce",
+          "Photographer": "Photographe de mode",
+          "Other": "Autre"
+        }
+      },
+      "revenue_range": {
+        "question": "Quelle est votre fourchette de chiffre d'affaires mensuel ?",
+        "hint": "Facultatif — nous aide à personnaliser votre intégration.",
+        "options": {
+          "pre-revenue": "Pré-lancement / En démarrage",
+          "0-10k": "Moins de 10 000 DH",
+          "10k-50k": "10 000 – 50 000 DH",
+          "50k-250k": "50 000 – 250 000 DH",
+          "250k+": "250 000 DH +"
+        }
+      },
+      "referral_source": {
+        "question": "Comment avez-vous entendu parler d'ANAQIO ?",
+        "hint": "Facultatif.",
+        "options": {
+          "Instagram": "Instagram",
+          "LinkedIn": "LinkedIn",
+          "Word of mouth": "Bouche à oreille",
+          "Press / Media": "Presse / Médias",
+          "Search": "Google / Recherche",
+          "Other": "Autre"
+        }
+      }
+    }
+  }
+}

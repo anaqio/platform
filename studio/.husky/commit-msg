@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Enforce conventional commit format
+commit_msg=$(cat "$1")
+pattern="^(feat|fix|perf|chore|docs|style|refactor|test|build|ci|db)(\([a-z0-9-]+\))?: .{1,72}"
+
+if ! echo "$commit_msg" | head -1 | grep -qE "$pattern"; then
+  echo ""
+  echo "❌ Invalid commit message format."
+  echo ""
+  echo "Expected: <type>(<scope>): <description>"
+  echo "Types: feat|fix|perf|chore|docs|style|refactor|test|build|ci|db"
+  echo "Example: feat(studio): add preset model grid"
+  echo ""
+  exit 1
+fi

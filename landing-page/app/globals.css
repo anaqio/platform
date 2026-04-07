@@ -1,0 +1,1084 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==============================
+   View Transition API
+   @see https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API
+   ============================== */
+
+/* Slide-up + crossfade transition keyframes */
+@keyframes vt-slide-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+}
+
+@keyframes vt-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply custom transition animations when the API is supported */
+@supports (view-transition-name: test) {
+  /* Root page transition: old content slides up and fades out */
+  ::view-transition-old(root) {
+    animation: vt-slide-out 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  /* Root page transition: new content slides up and fades in */
+  ::view-transition-new(root) {
+    animation: vt-slide-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  /* Named elements transition independently with a smooth morph */
+  ::view-transition-group(site-header) {
+    animation-duration: 0.35s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  ::view-transition-group(site-logo) {
+    animation-duration: 0.35s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Prevent named elements from participating in the root crossfade */
+  ::view-transition-old(site-header),
+  ::view-transition-new(site-header) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  ::view-transition-old(site-logo),
+  ::view-transition-new(site-logo) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+}
+
+/* Disable view transition animations for users preferring reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    /* 60% dominant — ANAQIO Ink */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    /* 30% secondary — ANAQIO Indigo (Heritage Soul) */
+    --secondary: 227 47% 47%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* 10% accent — Burnished Gold (Luxury Spark) */
+    --primary: 46 65% 52%;
+    --primary-foreground: 222 47% 11%;
+
+    /* Card surfaces */
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Supporting tones */
+    --muted: 215 25% 27%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 227 47% 47%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 25% 27%;
+    --input: 215 25% 27%;
+    --ring: 46 65% 52%;
+    --radius: 0.75rem;
+
+    /* Typography System Variables */
+    --font-display: var(--font-syne);
+    --font-ui: var(--font-jakarta);
+    --font-body: var(--font-jakarta);
+    --font-label: var(--font-jakarta);
+    --font-editorial: var(--font-instrument-serif);
+    --font-wordmark: Georgia, serif;
+
+    /* Anaqio Brand Tokens (always use these — never inline hex) */
+    --aq-navy: #1b2f52;
+    --aq-gold: #d4af37;
+    --aq-anaqio-white: #f8f6f0;
+
+    /* Vooban-style electric blue surface */
+    --aq-electric: #2b3ae7;
+    --aq-electric-deep: #1e2fc7;
+    --aq-white-warm: #f5f5f0;
+    --aq-gold-underline: #d4af37;
+
+    /* 60-30-10 tone mapping (dominant-secondary-accent) */
+    --tone-dominant: var(--background);
+    --tone-dominant-foreground: var(--foreground);
+    --tone-secondary: var(--secondary);
+    --tone-secondary-foreground: var(--secondary-foreground);
+    --tone-accent: var(--primary);
+    --tone-accent-foreground: var(--primary-foreground);
+
+    /* Brand Gradient Stops (Indigo to Gold) */
+    --aq-grad-start: #3f57af;
+    --aq-grad-mid1: #484da9;
+    --aq-grad-mid2: #d4af37; /* Replaced purple stop with Gold for warmer Moroccan feel */
+    --aq-grad-end: #c58940; /* Burnished Bronze */
+  }
+}
+
+/* ── Vooban section surfaces ──────────────────── */
+.vb-blue {
+  background-color: var(--aq-electric);
+  color: #ffffff;
+}
+
+.vb-white {
+  background-color: var(--aq-white-warm);
+  color: #0a0a0a;
+}
+
+/* Gold underline accent (replaces Vooban cyan) */
+.vb-underline {
+  text-decoration: underline;
+  text-decoration-color: var(--aq-gold-underline);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
+/* Left sidebar body offset */
+body.has-sidebar {
+  padding-left: 64px;
+}
+
+@media (max-width: 767px) {
+  body.has-sidebar {
+    padding-left: 0;
+  }
+}
+
+/* Subtle animated grid for hero media */
+@keyframes aq-grid-move {
+  0% {
+    background-position:
+      0 0,
+      0 0;
+  }
+  100% {
+    background-position:
+      40px 0,
+      0 40px;
+  }
+}
+
+.animated-grid {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.06) 0,
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px,
+      transparent 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.06) 0,
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px,
+      transparent 40px
+    );
+  animation: aq-grid-move 18s linear infinite;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  ::selection {
+    @apply bg-aq-blue/20 text-aq-blue;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-body);
+    @apply bg-background text-foreground antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+/* ==============================
+   Custom Animations
+   ============================== */
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes theme-transition {
+  0% {
+    opacity: 0.7;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
+@keyframes depth-pulse {
+  0%,
+  100% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateZ(20px);
+    opacity: 0.95;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes hero-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(37, 99, 235, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(37, 99, 235, 0.2);
+  }
+}
+
+@keyframes glass-bubble-float {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(15px, -20px) rotate(2deg);
+  }
+  66% {
+    transform: translate(-10px, 15px) rotate(-1deg);
+  }
+}
+
+@keyframes entrance {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes glitch-1 {
+  0% {
+    clip-path: inset(20% 0 80% 0);
+    transform: translate(-4px, 1px);
+  }
+  20% {
+    clip-path: inset(60% 0 10% 0);
+    transform: translate(4px, -1px);
+  }
+  40% {
+    clip-path: inset(40% 0 50% 0);
+    transform: translate(-4px, 2px);
+  }
+  60% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(4px, -2px);
+  }
+  80% {
+    clip-path: inset(10% 0 70% 0);
+    transform: translate(-2px, 1px);
+  }
+  100% {
+    clip-path: inset(30% 0 50% 0);
+    transform: translate(2px, -1px);
+  }
+}
+
+@keyframes glitch-2 {
+  0% {
+    clip-path: inset(10% 0 60% 0);
+    transform: translate(4px, -1px);
+    filter: hue-rotate(90deg);
+  }
+  20% {
+    clip-path: inset(30% 0 20% 0);
+    transform: translate(-4px, 1px);
+    filter: hue-rotate(-90deg);
+  }
+  40% {
+    clip-path: inset(70% 0 10% 0);
+    transform: translate(4px, -2px);
+    filter: hue-rotate(45deg);
+  }
+  60% {
+    clip-path: inset(20% 0 50% 0);
+    transform: translate(-4px, 2px);
+    filter: hue-rotate(-45deg);
+  }
+  80% {
+    clip-path: inset(50% 0 30% 0);
+    transform: translate(2px, -1px);
+    filter: hue-rotate(90deg);
+  }
+  100% {
+    clip-path: inset(5% 0 80% 0);
+    transform: translate(-2px, 1px);
+    filter: hue-rotate(-90deg);
+  }
+}
+
+@keyframes border-glitch {
+  0%,
+  100% {
+    border-color: rgba(255, 255, 255, 0.05);
+    transform: translate(0);
+    box-shadow: none;
+  }
+  20% {
+    border-color: rgba(37, 99, 235, 0.5);
+    transform: translate(-2px, 2px);
+    box-shadow: -2px 0 0 rgba(37, 99, 235, 0.2);
+  }
+  25% {
+    border-color: rgba(255, 255, 255, 0.05);
+    transform: translate(0);
+    box-shadow: none;
+  }
+  45% {
+    border-color: rgba(124, 58, 237, 0.5);
+    transform: translate(2px, -2px);
+    box-shadow: 2px 0 0 rgba(124, 58, 237, 0.2);
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 0.05);
+    transform: translate(0);
+    box-shadow: none;
+  }
+  75% {
+    border-color: rgba(63, 87, 175, 0.5);
+    transform: translate(-2px, -2px);
+    box-shadow: 0 2px 0 rgba(63, 87, 175, 0.2);
+  }
+  80% {
+    border-color: rgba(255, 255, 255, 0.05);
+    transform: translate(0);
+    box-shadow: none;
+  }
+}
+
+/* ==============================
+   Utility Components
+   ============================== */
+
+@layer components {
+  /* Perspective grid — designed for dark backgrounds (white line rules) */
+  .perspective-grid {
+    @apply relative w-full will-change-transform;
+    background-image:
+      linear-gradient(rgba(250, 250, 250, 0.22) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(250, 250, 250, 0.22) 1px, transparent 1px);
+    background-size:
+      40px 40px,
+      40px 40px;
+    background-position:
+      0 0,
+      0 0;
+    transform: perspective(600px) rotateX(62deg) scale(1.3);
+    transform-origin: top center;
+    /* Fade: solid near the horizon (top), transparent at the viewer edge (bottom) */
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.55) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    animation: grid-pan 30s linear infinite;
+  }
+
+  .grid-shimmer {
+    @apply pointer-events-none absolute inset-0 -z-10 opacity-40;
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(99, 102, 241, 0.15) 15%,
+      rgba(255, 255, 255, 0.55) 28%,
+      rgba(139, 92, 246, 0.15) 42%,
+      transparent 55%
+    );
+    background-size: 1200px 100%;
+    animation: shimmer 8s ease-in-out infinite;
+  }
+
+  @keyframes grid-pan {
+    0% {
+      background-position:
+        0 0,
+        0 0;
+    }
+    100% {
+      background-position:
+        80px 0,
+        0 80px;
+    }
+  }
+
+  /* Shared Noise Pattern Base */
+  .noise-base {
+    @apply pointer-events-none absolute inset-0 z-0 content-[''];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  }
+
+  /* Glass Effects */
+  .glass {
+    @apply relative overflow-hidden border border-border/30 bg-card/60 backdrop-blur-xl;
+  }
+  .glass::after {
+    @apply noise-base;
+  }
+
+  .glass-strong {
+    @apply relative overflow-hidden border border-border/20 bg-card/80 backdrop-blur-2xl;
+  }
+  .glass-strong::after {
+    @apply noise-base;
+    opacity: 0.03;
+  }
+
+  .glass-card {
+    @apply relative overflow-hidden border border-border/10 bg-card/40 backdrop-blur-lg;
+  }
+  .glass-card::after {
+    @apply noise-base;
+  }
+
+  /* Brand Gradients */
+  .text-brand-gradient {
+    @apply bg-gradient-to-r from-aq-grad-start via-aq-grad-mid1 to-aq-grad-end bg-clip-text text-transparent;
+  }
+
+  .bg-brand-gradient {
+    @apply bg-gradient-to-r from-aq-grad-start via-aq-grad-mid1 to-aq-grad-end;
+  }
+
+  .bg-brand-diag {
+    @apply bg-gradient-to-br from-aq-blue to-aq-purple transition-all duration-1000 ease-in-out hover:bg-gradient-to-tl;
+  }
+
+  .noise-overlay {
+    @apply relative;
+  }
+  .noise-overlay::after {
+    @apply noise-base;
+    opacity: 0.045;
+  }
+
+  .bg-grain {
+    @apply relative;
+  }
+  .bg-grain::before {
+    @apply pointer-events-none fixed inset-0 z-50 opacity-[0.03] content-[''];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* Animation Classes */
+  .animate-gradient {
+    @apply bg-[length:200%_200%];
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .animate-glow {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-float-slow {
+    animation: float 10s ease-in-out infinite;
+  }
+  .animate-theme-transition {
+    animation: theme-transition 0.4s ease-in-out;
+  }
+  .animate-depth-pulse {
+    animation: depth-pulse 3s ease-in-out infinite;
+  }
+  .animate-shimmer {
+    @apply bg-[length:1000px_100%];
+    animation: shimmer 3s infinite;
+  }
+  .animate-hero-glow {
+    animation: hero-glow 3s ease-in-out infinite;
+  }
+  .animate-border-glitch {
+    animation: border-glitch 4s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Gravitate wrapper uses mouse-based offsets */
+  .gravitate {
+    transform: translate3d(
+      calc(var(--grav-x, 0) * 30px),
+      calc(var(--grav-y, 0) * 30px),
+      0
+    );
+    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+
+  .hero-gradient {
+    background:
+      radial-gradient(
+        ellipse 100% 60% at 50% 0%,
+        rgba(37, 99, 235, 0.12),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 70% 50% at 80% 60%,
+        rgba(124, 58, 237, 0.06),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 70% 50% at 20% 70%,
+        rgba(63, 87, 175, 0.06),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 120% 80% at 50% 50%,
+        rgba(37, 99, 235, 0.02),
+        transparent
+      );
+  }
+}
+
+@layer utilities {
+  /* Easing helpers to avoid ambiguous arbitrary classes */
+  .ease-smooth {
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* 60-30-10 helpers */
+  .bg-dominant {
+    @apply bg-background;
+  }
+  .text-dominant {
+    @apply text-foreground;
+  }
+
+  .bg-secondary-surface {
+    @apply bg-secondary;
+  }
+  .text-secondary-surface {
+    @apply text-secondary-foreground;
+  }
+
+  .bg-accent-surface {
+    @apply bg-primary;
+  }
+  .text-accent-surface {
+    @apply text-primary-foreground;
+  }
+}
+
+.page-entrance {
+  animation: entrance 1s ease-out forwards;
+}
+
+/* ==============================
+   AbstractBackground Blob System
+   ============================== */
+
+/* Blobs traverse the full canvas — each path is unique (different quadrants,
+   full 360 ° rotation, breathing scale). Works with the individual `translate`
+   CSS property used for mouse/gyro parallax — they compose independently. */
+
+@keyframes blob-drift-0 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  15% {
+    transform: translate3d(320px, 60px, 0) rotate(55deg) scale(1.12);
+  }
+  35% {
+    transform: translate3d(460px, 340px, 0) rotate(120deg) scale(0.88);
+  }
+  55% {
+    transform: translate3d(120px, 480px, 0) rotate(210deg) scale(1.18);
+  }
+  75% {
+    transform: translate3d(-100px, 220px, 0) rotate(295deg) scale(0.94);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(360deg) scale(1);
+  }
+}
+
+@keyframes blob-drift-1 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  20% {
+    transform: translate3d(-380px, 180px, 0) rotate(-65deg) scale(1.08);
+  }
+  42% {
+    transform: translate3d(-260px, 400px, 0) rotate(-145deg) scale(1.22);
+  }
+  65% {
+    transform: translate3d(160px, 360px, 0) rotate(-230deg) scale(0.87);
+  }
+  85% {
+    transform: translate3d(80px, -60px, 0) rotate(-320deg) scale(1.05);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-360deg) scale(1);
+  }
+}
+
+@keyframes blob-drift-2 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate3d(-280px, -200px, 0) rotate(80deg) scale(0.86);
+  }
+  50% {
+    transform: translate3d(240px, -160px, 0) rotate(180deg) scale(1.14);
+  }
+  75% {
+    transform: translate3d(180px, 260px, 0) rotate(270deg) scale(0.92);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(360deg) scale(1);
+  }
+}
+
+@keyframes blob-drift-3 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  22% {
+    transform: translate3d(-300px, -240px, 0) rotate(100deg) scale(1.16);
+  }
+  45% {
+    transform: translate3d(-420px, 80px, 0) rotate(190deg) scale(0.9);
+  }
+  68% {
+    transform: translate3d(-140px, -320px, 0) rotate(275deg) scale(1.08);
+  }
+  85% {
+    transform: translate3d(60px, -180px, 0) rotate(330deg) scale(0.96);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(360deg) scale(1);
+  }
+}
+
+@keyframes blob-drift-4 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  28% {
+    transform: translate3d(340px, -180px, 0) rotate(-95deg) scale(1.1);
+  }
+  52% {
+    transform: translate3d(420px, -380px, 0) rotate(-190deg) scale(0.85);
+  }
+  76% {
+    transform: translate3d(180px, -280px, 0) rotate(-285deg) scale(1.2);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-360deg) scale(1);
+  }
+}
+
+@keyframes blob-drift-5 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  18% {
+    transform: translate3d(-200px, 220px, 0) rotate(72deg) scale(0.9);
+  }
+  40% {
+    transform: translate3d(-360px, -80px, 0) rotate(150deg) scale(1.15);
+  }
+  62% {
+    transform: translate3d(80px, -260px, 0) rotate(235deg) scale(0.88);
+  }
+  82% {
+    transform: translate3d(220px, 100px, 0) rotate(315deg) scale(1.06);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(360deg) scale(1);
+  }
+}
+
+.abstract-blob {
+  @apply absolute opacity-70 will-change-transform;
+  left: var(--blob-x);
+  top: var(--blob-y);
+  width: var(--blob-size);
+  height: var(--blob-size);
+  border-radius: 40% 60% 55% 45% / 55% 40% 60% 45%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    var(--blob-color),
+    transparent 70%
+  );
+  translate: calc(
+      (var(--mouse-x, 0.5) - 0.5) * var(--blob-parallax) * 600px +
+        (var(--gyro-x, 0) * var(--blob-parallax) * 300px)
+    )
+    calc(
+      (var(--mouse-y, 0.5) - 0.5) * var(--blob-parallax) * 600px +
+        (var(--gyro-y, 0) * var(--blob-parallax) * 300px)
+    );
+  transition:
+    border-radius 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.8s ease,
+    scale 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.abstract-blob:nth-child(1) {
+  animation: blob-drift-0 var(--blob-drift-dur) ease-in-out infinite;
+}
+.abstract-blob:nth-child(2) {
+  animation: blob-drift-1 var(--blob-drift-dur) ease-in-out infinite;
+}
+.abstract-blob:nth-child(3) {
+  animation: blob-drift-2 var(--blob-drift-dur) ease-in-out infinite;
+}
+.abstract-blob:nth-child(4) {
+  animation: blob-drift-3 var(--blob-drift-dur) ease-in-out infinite;
+}
+.abstract-blob:nth-child(5) {
+  animation: blob-drift-4 var(--blob-drift-dur) ease-in-out infinite;
+}
+.abstract-blob:nth-child(6) {
+  animation: blob-drift-5 var(--blob-drift-dur) ease-in-out infinite;
+}
+
+.abstract-blob--morphed {
+  @apply scale-[1.15] opacity-40;
+  border-radius: 60% 40% 45% 55% / 40% 60% 45% 55%;
+}
+
+/* Glass bubbles layer (Apple-style) */
+.glass-bubble {
+  @apply absolute rounded-full border border-white/10 bg-white/5 shadow-[inset_0_1px_0_rgba(255,255,255,.2),0_16px_40px_rgba(2,6,23,.05)] backdrop-blur-3xl will-change-transform;
+  animation: glass-bubble-float 20s ease-in-out infinite;
+}
+.glass-bubble::before {
+  content: '';
+  @apply absolute left-1/4 top-1/4 h-1/2 w-1/2 rounded-full opacity-20;
+  background: radial-gradient(circle at center, white 0%, transparent 80%);
+  filter: blur(4px);
+}
+.glass-bubble {
+  translate: calc((var(--mouse-x, 0.5) - 0.5) * 60px)
+    calc((var(--mouse-y, 0.5) - 0.5) * 60px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    @apply transition-none !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .abstract-blob {
+    animation: none !important;
+    translate: 0 0;
+  }
+}
+
+/* ==============================
+   Typography System
+   ============================== */
+
+@layer components {
+  .text-display {
+    @apply font-display font-semibold leading-[1.05] tracking-display;
+  }
+
+  .text-headline {
+    @apply font-display font-semibold leading-tight tracking-tight;
+  }
+
+  .text-subheading {
+    @apply font-body font-medium tracking-wide;
+  }
+
+  .text-body {
+    @apply font-body font-normal leading-7;
+  }
+
+  .text-caption {
+    @apply font-body text-[0.72rem] font-light tracking-wider;
+  }
+
+  .text-cta {
+    @apply font-label text-[0.65rem] font-medium uppercase tracking-label;
+  }
+
+  .text-wordmark {
+    @apply font-wordmark font-light italic;
+  }
+
+  /* ── .typography prose container ─────────────────────────────
+     Apply to any long-form content block (legal pages, about,
+     docs). Children inherit heading fonts from the global h* rule.
+     Mirrors shadcn/ui typography page patterns, mapped to ANAQIO
+     font tokens.                                               */
+
+  .typography {
+    @apply max-w-prose text-foreground;
+  }
+  .typography > * + * {
+    @apply mt-5;
+  }
+  .typography h1 {
+    @apply scroll-m-20 font-display text-4xl font-bold leading-tight tracking-tight;
+  }
+  .typography h2 {
+    @apply scroll-m-20 border-b border-border/40 pb-2 font-display text-3xl font-semibold leading-tight tracking-tight first:mt-0;
+  }
+  .typography h3 {
+    @apply scroll-m-20 font-display text-2xl font-semibold leading-snug tracking-tight;
+  }
+  .typography h4 {
+    @apply scroll-m-20 font-display text-xl font-semibold leading-snug tracking-tight;
+  }
+  .typography p {
+    @apply font-body leading-7;
+  }
+  .typography blockquote {
+    @apply mt-6 border-l-2 border-aq-blue/40 pl-6 font-editorial text-lg italic leading-relaxed;
+  }
+  .typography ul {
+    @apply my-4 ml-6 list-disc [&>li]:mt-2;
+  }
+  .typography ol {
+    @apply my-4 ml-6 list-decimal [&>li]:mt-2;
+  }
+  .typography li {
+    @apply font-body leading-7;
+  }
+  .typography table {
+    @apply w-full text-sm;
+  }
+  .typography thead {
+    @apply border-b border-border;
+  }
+  .typography th {
+    @apply h-12 px-4 text-left align-middle font-label text-xs font-medium uppercase tracking-label text-muted-foreground;
+  }
+  .typography td {
+    @apply p-4 align-middle font-body;
+  }
+  .typography tr {
+    @apply border-b border-border/50 transition-colors hover:bg-muted/20;
+  }
+  .typography code {
+    @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+  }
+  .typography pre {
+    @apply mt-6 overflow-x-auto rounded-xl bg-muted p-4;
+  }
+  .typography pre code {
+    @apply bg-transparent p-0 font-normal;
+  }
+  .typography hr {
+    @apply my-8 border-border/40;
+  }
+  .typography a {
+    @apply font-medium text-aq-blue underline underline-offset-4 hover:text-aq-blue/80;
+  }
+  .typography strong {
+    @apply font-semibold;
+  }
+  .typography em {
+    @apply font-editorial italic;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Arabic / RTL typography
+   Noto Sans Arabic replaces DM Sans for body text in ar-MA.
+   Cormorant Garamond brand headings are kept for visual
+   consistency — the script mix is intentional.
+   ═══════════════════════════════════════════════════════════ */
+:lang(ar) body,
+:lang(ar) .font-body {
+  font-family: var(--font-arabic), system-ui, sans-serif;
+}
+
+:lang(ar) h1,
+:lang(ar) h2,
+:lang(ar) h3,
+:lang(ar) .font-display {
+  font-family: var(--font-arabic), serif;
+}
+
+/* ── Scroll Grid Section ──────────────────────── */
+.scroll-grid {
+  --sg-gap: clamp(10px, 4vw, 40px);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: min(1200px, calc(100% - 4rem));
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: var(--sg-gap);
+  align-content: center;
+}
+
+.scroll-grid-layer {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+}
+
+/* Layer 1: outer edges — col 1 (odd) + col 5 (even) */
+.scroll-grid-layer[data-layer='1'] div:nth-of-type(odd) {
+  grid-column: 1;
+}
+.scroll-grid-layer[data-layer='1'] div:nth-of-type(even) {
+  grid-column: -2;
+}
+
+/* Layer 2: inner columns — col 2 (odd) + col 4 (even) */
+.scroll-grid-layer[data-layer='2'] div:nth-of-type(odd) {
+  grid-column: 2;
+}
+.scroll-grid-layer[data-layer='2'] div:nth-of-type(even) {
+  grid-column: -3;
+}
+
+/* Layer 3: center column — top row 1, bottom row -1 */
+.scroll-grid-layer[data-layer='3'] div:first-of-type {
+  grid-column: 3;
+  grid-row: 1;
+}
+.scroll-grid-layer[data-layer='3'] div:last-of-type {
+  grid-column: 3;
+  grid-row: -1;
+}
+
+/* Grid images */
+.scroll-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+/* Center scaler — sits in row 2, col 3 */
+.scroll-grid-scaler {
+  grid-area: 2 / 3;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.scroll-grid-scaler img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+/* Mobile: hide outer edges, use 3 cols */
+@media (max-width: 600px) {
+  .scroll-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .scroll-grid-layer[data-layer='1'] {
+    display: none;
+  }
+  .scroll-grid-layer[data-layer='2'] div:nth-of-type(odd) {
+    grid-column: 1;
+  }
+  .scroll-grid-layer[data-layer='2'] div:nth-of-type(even) {
+    grid-column: -2;
+  }
+  .scroll-grid-layer[data-layer='3'] div {
+    grid-column: 2 !important;
+  }
+  .scroll-grid-scaler {
+    grid-area: 2 / 2;
+  }
+}

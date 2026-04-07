@@ -1,0 +1,28 @@
+{
+  "desc": "Your Digital Atelier. Create stunning lookbooks, swap backgrounds, and generate editorial visuals — powered by AI, designed for Moroccan fashion brands.",
+  "copyright": "© 2026 Anaqio",
+  "rights": "All rights reserved.",
+  "platform": {
+    "title": "Platform",
+    "studio": "AI Studio",
+    "lookbook": "Lookbook Generator",
+    "tryon": "Virtual Try-On",
+    "pricing": "Pricing"
+  },
+  "resources": {
+    "title": "Resources",
+    "brand": "Brand",
+    "blog": "Blog",
+    "help": "Help Center"
+  },
+  "company": {
+    "title": "Company",
+    "about": "About",
+    "early": "Early Access",
+    "badge": "JOIN",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "legal": "Legal Mentions",
+    "cookies": "Cookies"
+  }
+}

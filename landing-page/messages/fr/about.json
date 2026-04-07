@@ -1,0 +1,104 @@
+{
+  "hero": {
+    "label": "ANAQIO · AI Visual Studio",
+    "title": "Fashion, réinventé.",
+    "desc": "Le studio visuel propulsé par AI, qui donne aux marques marocaines de mode l’infrastructure nécessaire à la production d’images de qualité studio – sans studio.",
+    "founded": "Est. 2026",
+    "location": "Casablanca, Morocco",
+    "launch": "Lancement du T3 2026",
+    "imageAlt": "Modèle de mode présentant des images de qualité studio Anaqio",
+    "titleLine1": "Mode",
+    "titleLine2": "Réinventé.",
+    "back": "Retour à la page d'accueil"
+  },
+  "problem": {
+    "overline": "Le problème",
+    "title": "Le pipeline de studio cassé.",
+    "desc": "Chaque tournage de mode au Maroc signifie louer un espace, réserver des modèles, coordonner l'éclairage, post-traitement de centaines de fichiers RAW — puis tout recommencer la saison prochaine. Le résultat : les marques qui bougent lentement, qui passent lourdement et qui finissent toujours avec des images qui ressemblent à celles de tout le monde."
+  },
+  "pain": {
+    "cost": {
+      "number": "MAD50K+",
+      "label": "coût moyen par studio"
+    },
+    "time": {
+      "number": "3-6 wks",
+      "label": "cycle de production par collection"
+    },
+    "skus": {
+      "number": "100s",
+      "label": "des SKUs, un tir ne peut pas tous les couvrir"
+    }
+  },
+  "solution": {
+    "overline": "La solution",
+    "title": "Un espace de travail. Aspect infini.",
+    "desc": "Téléchargez vos vêtements, modèles ou biens de marque. Anaqio génère des images de qualité studio en quelques minutes, pas des semaines.",
+    "titleLine1": "Un espace de travail.",
+    "titleLine2": "Apparences infinies."
+  },
+  "lookbook": {
+    "1alt": "Image du Lookbook — composition de mode éditoriale",
+    "2alt": "Image du Lookbook — scène mode paysage",
+    "3alt": "Image du Lookbook — photo de produit stylisée"
+  },
+  "workflow": {
+    "upload": {
+      "step": "01 — Envoi",
+      "title": "Charger",
+      "desc": "Laissez tomber dans vos vêtements, modèles ou actifs bruts."
+    },
+    "generate": {
+      "step": "02 — Générer",
+      "title": "Générer",
+      "desc": "AI compose des scènes de qualité studio en quelques minutes."
+    },
+    "export": {
+      "step": "03 — Exportation",
+      "title": "Exportation",
+      "desc": "Télécharger les livres d'apparence, les vidéos ou les photos individuelles."
+    }
+  },
+  "morocco": {
+    "quote": "Le Maroc a l'une des cultures de mode les plus riches au monde. Il mérite",
+    "quoteAccent": "outils de classe mondiale.",
+    "attr": "— Anaqio, Casablanca 2026",
+    "imageAlt": "Mode marocain — imagerie générée par AI de qualité studio",
+    "srLabel": "Construit pour le Maroc"
+  },
+  "team": {
+    "overline": "Les fondateurs",
+    "title": "Diverses compétences, une mission.",
+    "desc": "Construit par des gens qui croient que la mode marocaine mérite la même infrastructure créative que le marché mondial du luxe.",
+    "titleLine1": "Diverse expertise,",
+    "titleLine2": "une mission."
+  },
+  "founder": {
+    "amal": {
+      "name": "Amal AIT OUKHARAZ",
+      "role": "Fondateur et PDG",
+      "bio": "Amal apporte une profonde compréhension du commerce de la mode et de l’identité de marque à Anaqio. Sa vision de ce que AI peut débloquer pour les marques marocaines de mode est au cœur du produit."
+    },
+    "mo": {
+      "name": "MOUGHAMIR Mohamed",
+      "role": "Co-fondateur & CIO",
+      "bio": "Mohamed est un développeur et concepteur d'expérience avec plus de 9 ans de construction de produits numériques intuitifs. Il forme la direction d'ingénierie et de conception du pipeline IA d'Anaqio."
+    },
+    "chaimae": {
+      "role": "Directeur Marketing",
+      "name": "Chaimae ZAHIR",
+      "bio": "Chaimae dirige la stratégie marketing et le développement de la communauté, elle fait le pont entre la technologie AI et l'histoire créative pour élever le patrimoine de la mode marocaine."
+    },
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "twitter": "X / Twitter",
+    "website": "Portefeuille de projet"
+  },
+  "cta": {
+    "overline": "Accès anticipé",
+    "title": "Rejoignez la première vague.",
+    "desc": "Nous embarquons des marques de mode sélectionnées avant le lancement du T3 2026.",
+    "primary": "Rejoindre la liste d'attente",
+    "secondary": "Contactez-nous"
+  }
+}

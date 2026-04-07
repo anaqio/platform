@@ -1,0 +1,75 @@
+{
+  "title": "Startup Profile",
+  "description": "Parlez-nous de votre marque de mode ou de votre studio",
+  "form": {
+    "brandName": {
+      "label": "Nom de la marque/studio",
+      "placeholder": "ex: Maison Leila, Studio Nour",
+      "hint": "Nom de votre étiquette, atelier ou entité créative"
+    },
+    "founderName": {
+      "label": "Nom du Fondateur",
+      "placeholder": "Votre nom complet"
+    },
+    "location": {
+      "label": "Localisation",
+      "placeholder": "Ville, Maroc",
+      "hint": "Où est basée votre marque?"
+    },
+    "category": {
+      "label": "Catégorie de la marque",
+      "placeholder": "Sélectionner une catégorie",
+      "options": {
+        "luxury": "Prêt à Porter de Luxe",
+        "streetwear": "Vêtements de rue",
+        "accessories": "Accessoires",
+        "jewelry": "Bijoux",
+        "kaftan": "Modern Kaftan",
+        "jellaba": "Jellaba contemporaine",
+        "other": "Autres"
+      }
+    },
+    "stage": {
+      "label": "Etape de la marque",
+      "options": {
+        "concept": "Concept/Pré-lancement",
+        "launching": "Lancement imminent",
+        "early": "Étape précoce (0-2 ans)",
+        "growing": "Croissance (2-5 ans)",
+        "established": "Établi (5+ ans)"
+      }
+    },
+    "goals": {
+      "label": "Objectif principal",
+      "placeholder": "Que voulez-vous obtenir avec Anaqio?",
+      "options": {
+        "ecommerce": "Croissance du commerce électronique",
+        "social": "Contenu des médias sociaux",
+        "lookbook": "Lookbook saisonnier",
+        "marketplace": "Annonces sur le marché",
+        "branding": "Identité de la marque"
+      }
+    },
+    "budget": {
+      "label": "Budget mensuel",
+      "options": {
+        "pre-revenue": "Pré-revenus / Début",
+        "0-10k": "Moins de 10 000 MAD",
+        "10k-50k": "10 000 - 50 000 MAD",
+        "50k-250k": "50,000 - 250,000 MAD",
+        "250k+": "250.000 MAD+"
+      }
+    },
+    "timeline": {
+      "label": "Quand avez-vous besoin de cela?",
+      "options": {
+        "immediately": "Immédiatement",
+        "month": "Dans un mois",
+        "quarter": "En un quart",
+        "exploring": "Juste des options d'exploration"
+      }
+    }
+  },
+  "submit": "Compléter le profil",
+  "success": "Profil enregistré avec succès !"
+}

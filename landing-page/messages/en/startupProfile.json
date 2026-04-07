@@ -1,0 +1,75 @@
+{
+  "title": "Startup Profile",
+  "description": "Tell us about your fashion brand or studio",
+  "form": {
+    "brandName": {
+      "label": "Brand/Studio Name",
+      "placeholder": "e.g., Maison Leila, Studio Nour",
+      "hint": "Your label, atelier, or creative entity name"
+    },
+    "founderName": {
+      "label": "Founder Name",
+      "placeholder": "Your full name"
+    },
+    "location": {
+      "label": "Location",
+      "placeholder": "City, Morocco",
+      "hint": "Where is your brand based?"
+    },
+    "category": {
+      "label": "Brand Category",
+      "placeholder": "Select category",
+      "options": {
+        "luxury": "Luxury Ready-to-Wear",
+        "streetwear": "Streetwear",
+        "accessories": "Accessories",
+        "jewelry": "Jewelry",
+        "kaftan": "Modern Kaftan",
+        "jellaba": "Contemporary Jellaba",
+        "other": "Other"
+      }
+    },
+    "stage": {
+      "label": "Brand Stage",
+      "options": {
+        "concept": "Concept/Pre-launch",
+        "launching": "Launching Soon",
+        "early": "Early Stage (0-2 years)",
+        "growing": "Growing (2-5 years)",
+        "established": "Established (5+ years)"
+      }
+    },
+    "goals": {
+      "label": "Primary Goal",
+      "placeholder": "What do you want to achieve with Anaqio?",
+      "options": {
+        "ecommerce": "E-commerce Growth",
+        "social": "Social Media Content",
+        "lookbook": "Seasonal Lookbook",
+        "marketplace": "Marketplace Listings",
+        "branding": "Brand Identity"
+      }
+    },
+    "budget": {
+      "label": "Monthly Budget",
+      "options": {
+        "pre-revenue": "Pre-revenue / Starting out",
+        "0-10k": "Under 10,000 MAD",
+        "10k-50k": "10,000 - 50,000 MAD",
+        "50k-250k": "50,000 - 250,000 MAD",
+        "250k+": "250,000 MAD+"
+      }
+    },
+    "timeline": {
+      "label": "When do you need this?",
+      "options": {
+        "immediately": "Immediately",
+        "month": "Within a month",
+        "quarter": "Within a quarter",
+        "exploring": "Just exploring options"
+      }
+    }
+  },
+  "submit": "Complete Profile",
+  "success": "Profile saved successfully!"
+}

@@ -1,10 +1,10 @@
 # Turborepo
 .turbo/
 
-# Node modules at root
+# Node modules
 node_modules/
 
-# Bun workspace lockfile
+# Bun
 bun.lockb
 
 # OS artifacts
@@ -30,5 +30,23 @@ Thumbs.db
 npm-debug.log*
 bun-error.pid
 
-# Build outputs (each app has its own .gitignore for .next/)
+# Build outputs
 dist/
+out/
+**/.next/
+
+# App test outputs
+**/playwright-report/
+**/test-results/
+
+# Supabase local
+**/supabase/.temp/
+
+# Excluded from monorepo — separate repos/prototypes
+mobile-app/
+ai-studio-base/
+tsx-playground/
+
+# Session context files (not source code)
+resume.claude
+review.prompt.md

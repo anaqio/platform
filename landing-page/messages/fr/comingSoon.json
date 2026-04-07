@@ -1,0 +1,29 @@
+{
+  "hero": {
+    "tagline": "Bientôt disponible",
+    "main": "ANAQIO est un produit virtuel conçu pour le commerce de la mode.",
+    "sub1": "Générez des livres d'apparence, échangez des arrière-plans, ajustez l'éclairage et produisez des collections cinématographiques.",
+    "sub2": "— le tout à partir d'un seul coup."
+  },
+  "form": {
+    "email": {
+      "placeholder": "Entrez votre adresse e-mail",
+      "aria": "Adresse e-mail"
+    },
+    "button": {
+      "submit": "M'avertir",
+      "pending": "Envoi..."
+    },
+    "terms": "En vous inscrivant, vous acceptez nos conditions générales et notre politique de confidentialité."
+  },
+  "footer": {
+    "launch": "Lancement Q3 2026 · Casablanca",
+    "copyright": "Anaqio ©️ 2026",
+    "links": {
+      "about": "À propos de",
+      "terms": "Conditions générales de vente",
+      "policy": "Politique de confidentialité",
+      "legal": "Mentions légales"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "workspace": {
+    "badge": "Workspace Dashboard",
+    "title": "Studio Overview",
+    "claims": {
+      "title": "System Claims",
+      "loading": "Decrypting claims..."
+    },
+    "access": {
+      "title": "Access Level",
+      "descPre": "You are currently viewing the",
+      "studio": "Anaqio Studio Alpha",
+      "descPost": ". Features like Lookbook Gen and Virtual Try-On are being enabled progressively."
+    },
+    "status": {
+      "title": "Account Status",
+      "verified": "Verified Member"
+    }
+  },
+  "footer": {
+    "workspace": "Virtual Workspace",
+    "terms": "Terms",
+    "privacy": "Privacy"
+  },
+  "upload": {
+    "title": "Upload Garment",
+    "dropzone": "Drop your garment image here",
+    "or": "or",
+    "browse": "Browse files",
+    "acceptedFormats": "PNG, JPG up to 10MB",
+    "preview": "Preview"
+  },
+  "modelSelection": {
+    "title": "Select Model",
+    "placeholder": "Choose a preset model",
+    "custom": "Custom model (coming soon)"
+  },
+  "generate": {
+    "title": "Generate",
+    "button": "Generate Lookbook",
+    "processing": "Generating...",
+    "estimatedTime": "Est. 2-5 minutes"
+  },
+  "results": {
+    "title": "Your Lookbook",
+    "download": "Download All",
+    "regenerate": "Regenerate",
+    "share": "Share",
+    "empty": "No results yet. Upload a garment to get started."
+  },
+  "errors": {
+    "uploadFailed": "Failed to upload image",
+    "generationFailed": "Generation failed. Please try again.",
+    "timeout": "Request timed out. Please try again.",
+    "invalidFormat": "Invalid file format. Please upload PNG or JPG."
+  }
+}

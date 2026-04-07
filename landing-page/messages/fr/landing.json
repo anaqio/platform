@@ -1,0 +1,332 @@
+{
+  "hero": {
+    "eyebrow": "Là où les vêtements deviennent des campagnes",
+    "headline": {
+      "pre": "Infrastructure visuelle",
+      "pro": "Pour le commerce de mode"
+    },
+    "subheadline": {
+      "a": "Transformez vos vêtements en visuels photoréalistes de campagne en quelques minutes.",
+      "b": "Anaqio optimise l'art de la mode pour le commerce évolutif."
+    },
+    "supportLine": {
+      "pre": "Construit pour ",
+      "words": ["concepteurs", "marques", "agences"],
+      "post": " qui ont besoin de visuels cohérents et sûrs à l'échelle."
+    },
+    "cta": {
+      "act": "Rejoignez la liste d'attente",
+      "learn": "Voir comment ça marche"
+    }
+  },
+  "styleShowcase": {
+    "eyebrow": "L'esthétique",
+    "title": {
+      "pre": "Styles infinis pour",
+      "accent": "Marques de haut niveau"
+    },
+    "description": "Des Riads Marrakech aux Studios minimalistes."
+  },
+  "problem": {
+    "eyebrow": "Le Défi",
+    "headline": {
+      "pre": "Demande de contenu de mode.",
+      "gradient": "Explosion"
+    },
+    "visualHeadline": {
+      "line1": "La mode se déplace rapidement.",
+      "line2": "Ce n'est pas le cas."
+    },
+    "intro": {
+      "a": "Aujourd'hui, les marques de mode ont besoin d'un énorme volume de visuels.",
+      "b": "Mais la production traditionnelle n'a pas été construite pour cette vitesse.",
+      "detail": "Les photoshoots nécessitent des studios, des modèles, de la logistique et de la post-production — ce qui les rend coûteux, lents et difficiles à mettre à l'échelle. Pour les créateurs émergents et les marques en pleine expansion, cela crée un goulot d'étranglement entre la vision créative et la croissance commerciale.",
+      "quote": "La mode est l'art. Le commerce nécessite une optimisation."
+    },
+    "painPoints": [
+      {
+        "text": "Lancement du produit."
+      },
+      {
+        "text": "Campagnes dans les médias sociaux."
+      },
+      {
+        "text": "Catalogues e-commerce."
+      },
+      {
+        "text": "Annonces sur le marché."
+      }
+    ]
+  },
+  "solution": {
+    "eyebrow": "La solution",
+    "headline": {
+      "pre": "Rencontrez l'IA autochtone",
+      "gradient": "Couche de production",
+      "post": "pour la mode"
+    },
+    "description": "Anaqio transforme de simples images de vêtements en visuels photoréalistes à l’aide d’un pipeline structuré d’IA conçu spécifiquement pour les marques de mode.",
+    "footer": "Pas de photoshoot. Pas de délais de production. Juste une génération visuelle évolutive.",
+    "stat": {
+      "traditional": {
+        "value": "14 jours",
+        "label": "Tir traditionnel"
+      },
+      "anaqio": {
+        "value": "2 heures",
+        "label": "Avec ANAQIO"
+      }
+    },
+    "pipeline": [
+      {
+        "stage": "Input",
+        "label": "Lay plat",
+        "body": "Téléchargez vos images de vêtements bruts et vos produits de marque pour commencer."
+      },
+      {
+        "stage": "Processus",
+        "label": "AI Pipeline",
+        "body": "Nous orchestrons votre génération d'actifs à l'aide de pipelines à débordement."
+      },
+      {
+        "stage": "Sortie",
+        "label": "Visualisation de la campagne",
+        "body": "Recevez des visuels photoréalistes de campagne prêts pour le commerce."
+      }
+    ]
+  },
+  "howItWorks": {
+    "eyebrow": "Comment ça marche",
+    "headline": {
+      "pre": "Quatre étapes pour",
+      "gradient": "Campagne-Prêt",
+      "post": "Visuels"
+    },
+    "steps": [
+      {
+        "num": "01",
+        "title": "Téléchargez votre vêtement",
+        "body": "Téléchargez une image de mannequin à plat ou fantôme."
+      },
+      {
+        "num": "02",
+        "title": "Définir le style visuel",
+        "body": "Choisissez des pièces, des éclairages et des environnements conçus pour les campagnes de mode."
+      },
+      {
+        "num": "03",
+        "title": "Générer une sortie photoréaliste",
+        "body": "Notre gazoduc IA transforme le vêtement en visuels de haute qualité prêts pour le commerce électronique, les campagnes et les médias sociaux."
+      },
+      {
+        "num": "04",
+        "title": "Échelle instantanée",
+        "body": "Générer de multiples variations pour différents marchés, campagnes ou lancements de produits. Minutes — pas des semaines."
+      }
+    ]
+  },
+  "whyAnaqio": {
+    "eyebrow": "Avantages du produit",
+    "headline": {
+      "pre": "Pourquoi",
+      "gradient": "Anaqio",
+      "post": "est meilleur?"
+    },
+    "footer": "Anaqio est construit pour fiabilité, cohérence et échelle.",
+    "points": [
+      {
+        "title": "Précision du vêtement",
+        "body": "Reproduit fidèlement des textures, coupures, couleurs et détails de marque."
+      },
+      {
+        "title": "Poses contrôlées",
+        "body": "Positionnement cohérent entre les collections de produits."
+      },
+      {
+        "title": "Cohérence de l'éclairage",
+        "body": "Éclairage uniforme qui préserve la représentation des couleurs précise."
+      },
+      {
+        "title": "Production Échelleuse",
+        "body": "Générer des centaines de visuels sans augmenter les coûts de production."
+      },
+      {
+        "title": "Brand-Safe Outputs",
+        "body": "Structured AI pipelines conçus pour les marques de mode — pas pour la génération expérimentale d’images."
+      }
+    ]
+  },
+  "whoItsFor": {
+    "eyebrow": "Pour qui c'est pour",
+    "headline": {
+      "pre": "Construit pour la mode",
+      "gradient": "Écosystème"
+    },
+    "footer": "Quiconque produit des visuels de mode à grande échelle.",
+    "audiences": [
+      {
+        "title": "Marques de mode",
+        "body": "Mise à l'échelle des visuels des produits pour les campagnes de commerce électronique et de marketing."
+      },
+      {
+        "title": "Designers émergents",
+        "body": "Créez des visuels professionnels sans photoshoots coûteux."
+      },
+      {
+        "title": "Studios créatifs",
+        "body": "Accélérer la production pour les campagnes clients."
+      },
+      {
+        "title": "Places de marché",
+        "body": "Normaliser la qualité visuelle à travers les grands inventaires de produits."
+      }
+    ],
+    "features": [
+      "Espace de travail dédié au studio",
+      "Lightning-fast asset rendering",
+      "Paramètres de marque sur mesure"
+    ]
+  },
+  "vision": {
+    "eyebrow": "Notre vision",
+    "headline": {
+      "pre": "L'avenir de",
+      "gradient": "Production de mode"
+    },
+    "intro": "L'industrie de la mode entre dans une nouvelle ère où la production visuelle doit suivre le rythme du commerce numérique.",
+    "quote": "La vision d'Anaqio est de devenir la couche d'infrastructure visuelle de l'industrie mondiale de la mode, transformant la production visuelle d'un goulot d'étranglement en un moteur de croissance.",
+    "points": [
+      {
+        "text": "Les collections se lancent plus rapidement."
+      },
+      {
+        "text": "Les cycles de contenu se déplacent plus rapidement."
+      },
+      {
+        "text": "Les marques atteignent instantanément le public mondial."
+      }
+    ]
+  },
+  "philosophy": {
+    "eyebrow": "Notre philosophie",
+    "body": "La mode a toujours été une forme d'expression artistique. La technologie ne doit pas se substituer à la créativité, elle doit l'autonomiser. Anaqio a été construit avec une croyance simple : AI devrait optimiser l'aspect opérationnel de la production de mode afin que les designers et les marques puissent se concentrer sur la créativité et la narration. Nous ne remplaçons pas l’art de la mode, nous construisons les infrastructures qui lui permettent de s’échelonner."
+  },
+  "features": {
+    "eyebrow": "Fonctionnalités Clés",
+    "heading": {
+      "pre": "Tout ce dont vous avez besoin pour",
+      "highlight": "transformer",
+      "post": "votre production"
+    },
+    "items": [
+      {
+        "icon": "🎨",
+        "title": "Essayage Virtuel IA",
+        "description": "Permettez aux clients de visualiser les produits avant l'achat grâce à notre technologie avancée d'essayage virtuel."
+      },
+      {
+        "icon": "📸",
+        "title": "Photographie Studio Automatisée",
+        "description": "Générez des photos de produits professionnelles avec un éclairage, des arrière-plans et des angles ajustables instantanément."
+      },
+      {
+        "icon": "⚡",
+        "title": "Production à Grande Échelle",
+        "description": "Créez des lookbooks, des variations et des campagnes illimités sans les coûts des séances photo traditionnelles."
+      }
+    ]
+  },
+  "results": {
+    "eyebrow": "Résultats Prouvés",
+    "items": [
+      {
+        "metric": "Coût par Séance",
+        "traditional": "5 000 MAD",
+        "anaqio": "500 MAD",
+        "improvement": "Réduction de 90%"
+      },
+      {
+        "metric": "Temps de Production",
+        "traditional": "2–3 semaines",
+        "anaqio": "2–3 heures",
+        "improvement": "99% plus rapide"
+      },
+      {
+        "metric": "Variations Photo",
+        "traditional": "20–50 par session",
+        "anaqio": "Illimité",
+        "improvement": "10x+ plus"
+      }
+    ]
+  },
+  "segments": {
+    "heading": {
+      "pre": "Conçu pour",
+      "highlight": "les créateurs de mode",
+      "post": "à toute échelle"
+    },
+    "subheading": "Des marques émergentes aux agences établies",
+    "labels": {
+      "segment": "Segment",
+      "problem": "Problème",
+      "solution": "Solution"
+    },
+    "items": [
+      {
+        "icon": "👨‍💼",
+        "name": "Propriétaire de Marque Émergente",
+        "role": "Fondateur / PDG",
+        "problem": "Les contraintes budgétaires limitent la fréquence des séances photo",
+        "solution": "Générez du contenu illimité à une fraction du coût"
+      },
+      {
+        "icon": "👩‍🎨",
+        "name": "Directrice de Mode Établie",
+        "role": "Directrice Créative",
+        "problem": "Les longs cycles de production retardent les collections",
+        "solution": "Créez des lookbooks et des variations en quelques heures"
+      },
+      {
+        "icon": "📦",
+        "name": "Responsable E-commerce",
+        "role": "Responsable Opérations",
+        "problem": "Maintenir la cohérence du catalogue sur toutes les plateformes",
+        "solution": "Garantissez un style uniforme grâce aux standards IA"
+      },
+      {
+        "icon": "🎬",
+        "name": "Créatif Freelance",
+        "role": "Styliste/Photographe Freelance",
+        "problem": "Coûts élevés d'équipement et de location par projet",
+        "solution": "Offrez à vos clients une production premium sans surcoûts"
+      }
+    ]
+  },
+  "team": {
+    "eyebrow": "Découvrez nos",
+    "heading": "Fondateurs",
+    "linkedin": "LinkedIn",
+    "members": [
+      {
+        "role": "Co-Fondatrice & Visionnaire",
+        "bio": "Façonne la vision et l'identité de marque d'Anaqio. Dirige la stratégie, les partenariats et le go-to-market dans l'écosystème de la mode marocaine."
+      },
+      {
+        "role": "Co-Fondateur & CTO",
+        "bio": "Conçoit les systèmes techniques derrière chaque génération IA. Ingénierie full-stack, conception produit et infrastructure à grande échelle."
+      }
+    ]
+  },
+  "finalCta": {
+    "srHeading": "Obtenir un accès anticipé",
+    "headline": {
+      "pre": "Rejoignez l'évolution de",
+      "gradient": "Production de mode"
+    },
+    "cta": {
+      "primary": "Rejoignez la liste d'attente",
+      "secondary": "Voir comment ça marche",
+      "tertiary": "ou faites défiler pour en savoir plus"
+    }
+  }
+}

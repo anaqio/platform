@@ -1,0 +1,40 @@
+{
+  "mcpServers": {
+    "supabase": {
+      "type": "http",
+      "url": "https://mcp.supabase.com/mcp?project_ref=fslmfiqbhziayxxfsrpz&features=docs%2Caccount%2Cdatabase%2Cdebugging%2Cdevelopment%2Cfunctions%2Cbranching%2Cstorage"
+    },
+    "github": {
+      "command": "bunx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      }
+    },
+    "filesystem": {
+      "command": "bunx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/home/user/projects/studio"]
+    },
+    "vercel": {
+      "command": "bunx",
+      "args": ["-y", "@vercel/mcp-adapter"],
+      "env": {
+        "VERCEL_TOKEN": "${VERCEL_TOKEN}",
+        "VERCEL_TEAM_ID": "${VERCEL_TEAM_ID}"
+      }
+    },
+    "atlassian": {
+      "command": "bunx",
+      "args": ["-y", "@anthropic-labs/mcp-server-atlassian"],
+      "env": {
+        "ATLASSIAN_SITE": "omnizya.atlassian.net",
+        "ATLASSIAN_EMAIL": "${ATLASSIAN_EMAIL}",
+        "ATLASSIAN_API_TOKEN": "${ATLASSIAN_API_TOKEN}"
+      }
+    },
+    "sequential-thinking": {
+      "command": "bunx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    }
+  }
+}

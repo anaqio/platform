@@ -1,0 +1,52 @@
+{
+  "home": {
+    "title": "ANAQIO — AI Fashion Studio | Coming Soon",
+    "desc": "ANAQIO is an AI-powered fashion studio for the Moroccan luxury market. Generate lookbooks, swap backgrounds, adjust lighting, and produce cinematic fashion videos. Launching 2026."
+  },
+  "about": {
+    "title": "About Anaqio",
+    "desc": "Anaqio is an AI-powered visual studio for fashion commerce, built in Casablanca by designers and engineers passionate about elevating the Moroccan fashion industry."
+  },
+  "contact": {
+    "title": "Contact Anaqio",
+    "desc": "Get in touch with Anaqio — AI Visual Studio for Fashion Commerce. Partnerships, support, and general inquiries."
+  },
+  "login": {
+    "title": "Login — Anaqio"
+  },
+  "signup": {
+    "title": "Sign Up — Anaqio"
+  },
+  "forgot": {
+    "title": "Forgot Password — Anaqio"
+  },
+  "update": {
+    "title": "Update Password — Anaqio"
+  },
+  "protected": {
+    "title": "Studio Overview — Anaqio"
+  },
+  "brand": {
+    "title": "Brand Identity Guidelines — Anaqio"
+  },
+  "early": {
+    "title": "Early Access — Anaqio",
+    "desc": "Join the waitlist for early access to Anaqio's AI Visual Studio. Be the first to experience the future of fashion commerce."
+  },
+  "terms": {
+    "title": "Terms of Service — Anaqio",
+    "desc": "Terms of Service for Anaqio, a virtual studio for fashion commerce."
+  },
+  "privacy": {
+    "title": "Privacy Policy — Anaqio",
+    "desc": "Privacy Policy for Anaqio, a virtual studio for fashion commerce."
+  },
+  "cookies": {
+    "title": "Cookie Policy — Anaqio",
+    "desc": "Anaqio's Cookie Policy. Learn how we use cookies to improve your experience in our AI virtual studio."
+  },
+  "legal": {
+    "title": "Legal Mentions — Anaqio",
+    "desc": "Legal Mentions for Anaqio, a virtual studio for fashion commerce."
+  }
+}

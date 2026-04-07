@@ -1,0 +1,10 @@
+{
+  "tagline": "Atelier Digital",
+  "stages": {
+    "initializing": "Initialisation",
+    "assets": "Chargement des ressources",
+    "rendering": "Rendu",
+    "studio": "Préparation du studio",
+    "ready": "Prêt"
+  }
+}

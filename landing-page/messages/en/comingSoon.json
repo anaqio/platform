@@ -1,0 +1,29 @@
+{
+  "hero": {
+    "tagline": "Coming Soon",
+    "main": "ANAQIO is an AI-Driven Virtual built for Fashion Commerce.",
+    "sub1": "Generate lookbooks, swap backgrounds, adjust lighting, and produce cinematic collections.",
+    "sub2": "— all from a single shot."
+  },
+  "form": {
+    "email": {
+      "placeholder": "Enter your email",
+      "aria": "Email address"
+    },
+    "button": {
+      "submit": "Notify me",
+      "pending": "Sending..."
+    },
+    "terms": "By joining, you agree to our Terms and Privacy Policy."
+  },
+  "footer": {
+    "launch": "Launching Q3 2026 · Casablanca",
+    "copyright": "Anaqio © 2026",
+    "links": {
+      "about": "About",
+      "terms": "Terms",
+      "policy": "Policy",
+      "legal": "Legal"
+    }
+  }
+}

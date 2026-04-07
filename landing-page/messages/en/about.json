@@ -1,0 +1,104 @@
+{
+  "hero": {
+    "label": "ANAQIO · AI Visual Studio",
+    "title": "Fashion, Reimagined.",
+    "desc": "The AI-powered visual studio giving Moroccan fashion brands the infrastructure to produce studio-quality imagery — without a studio.",
+    "founded": "Est. 2026",
+    "location": "Casablanca, Morocco",
+    "launch": "Launching Q3 2026",
+    "imageAlt": "Fashion model showcasing Anaqio studio-quality imagery",
+    "titleLine1": "Fashion,",
+    "titleLine2": "Reimagined.",
+    "back": "Back to Home"
+  },
+  "problem": {
+    "overline": "The Problem",
+    "title": "The broken studio pipeline.",
+    "desc": "Every fashion shoot in Morocco means renting a space, booking models, coordinating lighting, post-processing hundreds of RAW files — and then doing it all again next season. The result: brands that move slowly, spend heavily, and still end up with imagery that looks like everyone else's."
+  },
+  "pain": {
+    "cost": {
+      "number": "MAD 50K+",
+      "label": "average cost per studio shoot"
+    },
+    "time": {
+      "number": "3-6 wks",
+      "label": "production cycle per collection"
+    },
+    "skus": {
+      "number": "100s",
+      "label": "of SKUs, one shoot can't cover them all"
+    }
+  },
+  "solution": {
+    "overline": "The Solution",
+    "title": "One workspace. Infinite looks.",
+    "desc": "Upload your garments — models or brand assets. Anaqio generates studio-quality imagery in minutes — not weeks.",
+    "titleLine1": "One workspace.",
+    "titleLine2": "Infinite looks."
+  },
+  "lookbook": {
+    "1alt": "Lookbook image — editorial fashion composition",
+    "2alt": "Lookbook image — landscape fashion scene",
+    "3alt": "Lookbook image — styled product photography"
+  },
+  "workflow": {
+    "upload": {
+      "step": "01 — Upload",
+      "title": "Upload",
+      "desc": "Drop in your garments, models, or raw assets."
+    },
+    "generate": {
+      "step": "02 — Generate",
+      "title": "Generate",
+      "desc": "AI composes studio-quality scenes in minutes."
+    },
+    "export": {
+      "step": "03 — Export",
+      "title": "Export",
+      "desc": "Download lookbooks, videos, or individual shots."
+    }
+  },
+  "morocco": {
+    "quote": "Morocco has one of the richest fashion cultures in the world. It deserves",
+    "quoteAccent": "world-class tools.",
+    "attr": "— Anaqio, Casablanca 2026",
+    "imageAlt": "Moroccan fashion — studio-quality AI-generated imagery",
+    "srLabel": "Built for Morocco"
+  },
+  "team": {
+    "overline": "The Founders",
+    "title": "Diverse expertise, one mission.",
+    "desc": "Built by people who believe Moroccan fashion deserves the same creative infrastructure as the global luxury market.",
+    "titleLine1": "Diverse expertise,",
+    "titleLine2": "one mission."
+  },
+  "founder": {
+    "amal": {
+      "name": "Amal AIT OUKHARAZ",
+      "role": "Founder & CEO",
+      "bio": "Amal brings a deep understanding of fashion commerce and brand identity to Anaqio. Her vision for what AI can unlock for Moroccan fashion brands is at the heart of the product."
+    },
+    "mo": {
+      "name": "Mohamed MOUGHAMIR",
+      "role": "Co-Founder & CIO",
+      "bio": "Mohamed is a full-stack developer and experience designer with 9+ years building intuitive digital products. He shapes the engineering and design direction of Anaqio's AI pipeline."
+    },
+    "chaimae": {
+      "role": "Marketing Director",
+      "name": "Chaimae ZAHIR",
+      "bio": "Chaimae leads marketing strategy and community building. She bridges the gap between AI technology and creative storytelling to elevate Moroccan fashion heritage."
+    },
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "twitter": "X / Twitter",
+    "website": "Portfolio"
+  },
+  "cta": {
+    "overline": "Early Access",
+    "title": "Join the first wave.",
+    "desc": "We're onboarding select fashion brands ahead of our Q3 2026 launch. Get in early.",
+    "primary": "Join the waitlist",
+    "secondary": "Contact us"
+  }
+}

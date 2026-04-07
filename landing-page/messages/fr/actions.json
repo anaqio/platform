@@ -1,0 +1,17 @@
+{
+  "submit": "Envoyer",
+  "cancel": "Annuler",
+  "back": "Retour",
+  "continue": "Continuer",
+  "download": "Télécharger",
+  "generate": "Générer",
+  "upload": "Uploader",
+  "joinWaitlist": "Rejoindre la liste d'attente",
+  "earlyAccess": "Accès anticipé",
+  "send": "Envoyer",
+  "saving": "Enregistrement...",
+  "next": "Suivant",
+  "previous": "Précédent",
+  "skip": "Passer",
+  "confirm": "Confirmer"
+}

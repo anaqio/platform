@@ -1,0 +1,25 @@
+{
+  "footer": {
+    "workspace": "Espace de travail virtuel",
+    "terms": "Conditions générales de vente",
+    "privacy": "Confidentialité"
+  },
+  "workspace": {
+    "badge": "Tableau de bord de l'espace de travail",
+    "title": "Aperçu du Studio",
+    "claims": {
+      "title": "Revendications système",
+      "loading": "Décryptage des réclamations..."
+    },
+    "access": {
+      "title": "Niveau d'accès",
+      "descPre": "Vous êtes en train de voir le",
+      "studio": "Alpha Anaqio Studio",
+      "descPost": ". - Des fonctionnalités comme Lookbook Gen et Virtual Try-On sont activées progressivement."
+    },
+    "status": {
+      "title": "Statut du compte",
+      "verified": "Membre vérifié"
+    }
+  }
+}

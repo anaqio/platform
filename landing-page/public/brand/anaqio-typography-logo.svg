@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1123 794">
+  <defs>
+    <linearGradient id="a" x1="0" x2="1" y1="0" y2="0" gradientTransform="matrix(114 0 0 -114 461 298)" gradientUnits="userSpaceOnUse" spreadMethod="pad">
+      <stop offset="0" stop-color="#3f57af"/>
+      <stop offset=".1" stop-color="#3f57af"/>
+      <stop offset=".3" stop-color="#484da9"/>
+      <stop offset=".4" stop-color="#484da9"/>
+      <stop offset=".7" stop-color="#6049a8"/>
+      <stop offset=".7" stop-color="#6049a8"/>
+      <stop offset="1" stop-color="#6f47a7"/>
+    </linearGradient>
+    <linearGradient id="b" x1="0" x2="1" y1="0" y2="0" gradientTransform="matrix(83 0 0 -83 213 308)" gradientUnits="userSpaceOnUse" spreadMethod="pad">
+      <stop offset="0" stop-color="#3f57af"/>
+      <stop offset=".1" stop-color="#3f57af"/>
+      <stop offset=".3" stop-color="#484da9"/>
+      <stop offset=".4" stop-color="#484da9"/>
+      <stop offset=".7" stop-color="#6049a8"/>
+      <stop offset=".7" stop-color="#6049a8"/>
+      <stop offset="1" stop-color="#6f47a7"/>
+    </linearGradient>
+    <linearGradient id="c" x1="0" x2="1" y1="0" y2="0" gradientTransform="matrix(101 0 0 -101 664 308)" gradientUnits="userSpaceOnUse" spreadMethod="pad">
+      <stop offset="0" stop-color="#3f57af"/>
+      <stop offset=".1" stop-color="#3f57af"/>
+      <stop offset=".3" stop-color="#484da9"/>
+      <stop offset=".4" stop-color="#484da9"/>
+      <stop offset=".7" stop-color="#6049a8"/>
+      <stop offset=".7" stop-color="#6049a8"/>
+      <stop offset="1" stop-color="#6f47a7"/>
+    </linearGradient>
+    <linearGradient id="d" x1="0" x2="1" y1="0" y2="0" gradientTransform="matrix(96 0 0 -96 335 308)" gradientUnits="userSpaceOnUse" spreadMethod="pad">
+      <stop offset="0" stop-color="#3f57af"/>
+      <stop offset=".1" stop-color="#3f57af"/>
+      <stop offset=".3" stop-color="#484da9"/>
+      <stop offset=".4" stop-color="#484da9"/>
+      <stop offset=".7" stop-color="#6049a8"/>
+      <stop offset=".7" stop-color="#6049a8"/>
+      <stop offset="1" stop-color="#6f47a7"/>
+    </linearGradient>
+    <linearGradient id="e" x1="0" x2="1" y1="0" y2="0" gradientTransform="matrix(97 0 0 -97 77 308)" gradientUnits="userSpaceOnUse" spreadMethod="pad">
+      <stop offset="0" stop-color="#3f57af"/>
+      <stop offset=".1" stop-color="#3f57af"/>
+      <stop offset=".3" stop-color="#484da9"/>
+      <stop offset=".4" stop-color="#484da9"/>
+      <stop offset=".7" stop-color="#6049a8"/>
+      <stop offset=".7" stop-color="#6049a8"/>
+      <stop offset="1" stop-color="#6f47a7"/>
+    </linearGradient>
+    <linearGradient id="f" x1="0" x2="1" y1="0" y2="0" gradientTransform="matrix(13 0 0 -13 606 308)" gradientUnits="userSpaceOnUse" spreadMethod="pad">
+      <stop offset="0" stop-color="#3f57af"/>
+      <stop offset=".1" stop-color="#3f57af"/>
+      <stop offset=".3" stop-color="#484da9"/>
+      <stop offset=".4" stop-color="#484da9"/>
+      <stop offset=".7" stop-color="#6049a8"/>
+      <stop offset=".7" stop-color="#6049a8"/>
+      <stop offset="1" stop-color="#6f47a7"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#a)" d="M507 358c-56-3-62-86-9-99l-13-9 1-5 4 3q16 4 34-5c13-5 27-10 41-3l10 10q0 3-2 3l-8-6c-15-5-33 7-48 9h-14l4 1h7c68 7 60 101-2 101zm1-89c-42 4-42 72-2 77 28 3 41-17 41-38 0-20-12-39-35-39z" transform="matrix(1 0 0 -1 0 794)"/>
+  <path fill="url(#b)" d="M282 358v-76l-56 76h-13V258h15v76l56-76h13v99l-1 1z" transform="matrix(1 0 0 -1 0 794)"/>
+  <path fill="url(#c)" d="M667 288c12-33 59-42 83-17 26 26 16 76-22 86l-14 2c-35 0-60-35-47-71m44-19c-43 3-43 72-2 77 27 3 41-18 41-38s-12-39-36-39z" transform="matrix(1 0 0 -1 0 794)"/>
+  <path fill="url(#d)" d="M382 358h-6l-41-100h14l10 26h46l11-26h15l-40 98-6 2zm1-15 18-47h-37z" transform="matrix(1 0 0 -1 0 794)"/>
+  <path fill="url(#e)" d="m118 357-41-99h16l10 26h46l12-26h14l-41 100h-6l-4 1zm8-14 19-47h-37z" transform="matrix(1 0 0 -1 0 794)"/>
+  <path fill="url(#f)" d="M606 358V258h13v100z" transform="matrix(1 0 0 -1 0 794)"/>
+</svg>

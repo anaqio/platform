@@ -1,0 +1,49 @@
+{
+  "newsletter": {
+    "title": "اشترك في نشرتنا الإخبارية",
+    "desc": "احصل على آخر التحديثات حول تكنولوجيا أزياء الذكاء الاصطناعي والعروض الحصرية.",
+    "placeholder": "أدخل بريدك الإلكتروني",
+    "submit": "اشترك"
+  },
+  "pagination": {
+    "previous": "السابق",
+    "next": "التالي",
+    "page": "صفحة",
+    "of": "من"
+  },
+  "search": {
+    "placeholder": "بحث...",
+    "noResults": "لم يتم العثور على نتائج",
+    "submit": "بحث"
+  },
+  "filters": {
+    "title": "تصفية",
+    "clear": "مسح الكل",
+    "apply": "تطبيق التصفية"
+  },
+  "sort": {
+    "label": "ترتيب حسب",
+    "newest": "الأحدث",
+    "oldest": "الأقدم",
+    "popular": "الأكثر شعبية"
+  },
+  "status": {
+    "loading": "جاري التحميل...",
+    "success": "نجاح",
+    "error": "خطأ",
+    "empty": "لا شيء للعرض"
+  },
+  "validation": {
+    "required": "هذا الحقل مطلوب",
+    "email": "يرجى إدخال بريد إلكتروني صالح",
+    "minLength": "يجب أن يكون {min} أحرف على الأقل",
+    "maxLength": "يجب ألا يتجاوز {max} حرف"
+  },
+  "dates": {
+    "today": "اليوم",
+    "yesterday": "أمس",
+    "daysAgo": "منذ {count} أيام",
+    "weeksAgo": "منذ {count} أسابيع",
+    "monthsAgo": "منذ {count} أشهر"
+  }
+}

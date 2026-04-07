@@ -1,0 +1,29 @@
+{
+  "title": "Contact Anaqio",
+  "desc": "For partnerships and general inquiries use this contact page.",
+  "section": {
+    "heading": "Contact"
+  },
+  "form": {
+    "name": {
+      "label": "Name",
+      "placeholder": "Your name"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "you@example.com"
+    },
+    "message": {
+      "label": "Message",
+      "placeholder": "How can we help?"
+    },
+    "submit": "Send (coming soon)",
+    "note": "While we finalize contact handling reach us via social links above."
+  },
+  "waitlistNote": "For product access updates, consider joining the",
+  "waitlistLink": "early access waitlist",
+  "labels": {
+    "website": "Website",
+    "social": "Social"
+  }
+}

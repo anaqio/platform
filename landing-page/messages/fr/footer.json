@@ -1,0 +1,28 @@
+{
+  "desc": "Votre Atelier Digital. Créez des lookbooks époustouflants, échangez des arrière-plans et générez des visuels éditoriaux — propulsés par l'IA, conçus pour les marques de mode marocaines.",
+  "copyright": "© 2026 Anaqio",
+  "rights": "Tous droits réservés.",
+  "platform": {
+    "title": "Plateforme",
+    "studio": "Studio IA",
+    "lookbook": "Générateur de Lookbook",
+    "tryon": "Essayage Virtuel",
+    "pricing": "Tarifs"
+  },
+  "resources": {
+    "title": "Ressources",
+    "brand": "Marque",
+    "blog": "Blog",
+    "help": "Centre d'aide"
+  },
+  "company": {
+    "title": "Entreprise",
+    "about": "À propos",
+    "early": "Accès anticipé",
+    "badge": "REJOINDRE",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "legal": "Mentions légales",
+    "cookies": "Cookies"
+  }
+}

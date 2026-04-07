@@ -1,0 +1,10 @@
+{
+  "tagline": "Digital Atelier",
+  "stages": {
+    "initializing": "Initializing",
+    "assets": "Loading assets",
+    "rendering": "Rendering",
+    "studio": "Preparing studio",
+    "ready": "Ready"
+  }
+}

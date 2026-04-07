@@ -1,0 +1,29 @@
+{
+  "title": "Contacter Anaqio",
+  "desc": "Pour les partenariats et les demandes de renseignements généraux, utilisez cette page de contact.",
+  "section": {
+    "heading": "Contacter"
+  },
+  "form": {
+    "name": {
+      "label": "Nom",
+      "placeholder": "Votre nom"
+    },
+    "email": {
+      "label": "Courriel",
+      "placeholder": "vous@exemple.com"
+    },
+    "message": {
+      "label": "Message",
+      "placeholder": "Comment pouvons-nous nous aider?"
+    },
+    "submit": "Envoyer (bientôt disponible)",
+    "note": "Pendant que nous finalisons la gestion des contacts nous joindre via les liens sociaux ci-dessus."
+  },
+  "waitlistNote": "Pour les mises à jour d'accès au produit, pensez à rejoindre le",
+  "waitlistLink": "liste d'attente d'accès anticipé",
+  "labels": {
+    "website": "Site Web",
+    "social": "Réseaux sociaux"
+  }
+}

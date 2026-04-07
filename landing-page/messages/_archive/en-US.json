@@ -1,0 +1,744 @@
+{
+  "meta": {
+    "home": {
+      "title": "ANAQIO — AI Fashion Studio | Coming Soon",
+      "desc": "ANAQIO is an AI-powered fashion studio for the Moroccan luxury market. Generate lookbooks, swap backgrounds, adjust lighting, and produce cinematic fashion videos. Launching 2026."
+    },
+    "about": {
+      "title": "About Anaqio",
+      "desc": "Anaqio is an AI-powered visual studio for fashion commerce, built in Casablanca by designers and engineers passionate about elevating the Moroccan fashion industry."
+    },
+    "contact": {
+      "title": "Contact Anaqio",
+      "desc": "Get in touch with Anaqio — AI Visual Studio for Fashion Commerce. Partnerships, support, and general inquiries."
+    },
+    "login": {
+      "title": "Login — Anaqio"
+    },
+    "signup": {
+      "title": "Sign Up — Anaqio"
+    },
+    "forgot": {
+      "title": "Forgot Password — Anaqio"
+    },
+    "update": {
+      "title": "Update Password — Anaqio"
+    },
+    "protected": {
+      "title": "Studio Overview — Anaqio"
+    },
+    "brand": {
+      "title": "Brand Identity Guidelines — Anaqio"
+    },
+    "early": {
+      "title": "Early Access — Anaqio",
+      "desc": "Join the waitlist for early access to Anaqio's AI Visual Studio. Be the first to experience the future of fashion commerce."
+    },
+    "terms": {
+      "title": "Terms of Service — Anaqio",
+      "desc": "Terms of Service for Anaqio, a virtual studio for fashion commerce."
+    },
+    "privacy": {
+      "title": "Privacy Policy — Anaqio",
+      "desc": "Privacy Policy for Anaqio, a virtual studio for fashion commerce."
+    },
+    "cookies": {
+      "title": "Cookie Policy — Anaqio",
+      "desc": "Anaqio's Cookie Policy. Learn how we use cookies to improve your experience in our AI virtual studio."
+    },
+    "legal": {
+      "title": "Legal Mentions — Anaqio",
+      "desc": "Legal Mentions for Anaqio, a virtual studio for fashion commerce."
+    }
+  },
+  "header": {
+    "nav": {
+      "about": "About",
+      "brand": "Brand",
+      "contact": "Contact",
+      "legal": "Legal",
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "cookies": "Cookie Policy",
+      "legalMentions": "Legal Mentions",
+      "solution": "Solution",
+      "howItWorks": "How It Works",
+      "whyAnaqio": "Why Us",
+      "vision": "Vision",
+      "more": "More"
+    },
+    "button": {
+      "waitlist": "Join Waitlist"
+    },
+    "logo": {
+      "aria": "Anaqio Home"
+    },
+    "menu": {
+      "aria": "Toggle menu"
+    }
+  },
+  "footer": {
+    "desc": "Your Digital Atelier. Create stunning lookbooks, swap backgrounds, and generate editorial visuals — powered by AI, designed for Moroccan fashion brands.",
+    "copyright": "© 2026 Anaqio",
+    "rights": "All rights reserved.",
+    "platform": {
+      "title": "Platform",
+      "studio": "AI Studio",
+      "lookbook": "Lookbook Generator",
+      "tryon": "Virtual Try-On",
+      "pricing": "Pricing"
+    },
+    "resources": {
+      "title": "Resources",
+      "brand": "Brand",
+      "blog": "Blog",
+      "help": "Help Center"
+    },
+    "company": {
+      "title": "Company",
+      "about": "About",
+      "early": "Early Access",
+      "badge": "JOIN",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "legal": "Legal Mentions",
+      "cookies": "Cookies"
+    }
+  },
+  "social": {
+    "twitter": "X (Twitter)",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "linkedin": "LinkedIn",
+    "youtube": "YouTube",
+    "pinterest": "Pinterest"
+  },
+  "comingSoon": {
+    "hero": {
+      "tagline": "Coming Soon",
+      "main": "ANAQIO is an AI-Driven Virtual built for Fashion Commerce.",
+      "sub1": "Generate lookbooks, swap backgrounds, adjust lighting, and produce cinematic collections.",
+      "sub2": "— all from a single shot."
+    },
+    "form": {
+      "email": {
+        "placeholder": "Enter your email",
+        "aria": "Email address"
+      },
+      "button": {
+        "submit": "Notify me",
+        "pending": "Sending..."
+      },
+      "terms": "By joining, you agree to our Terms and Privacy Policy."
+    },
+    "footer": {
+      "launch": "Launching Q3 2026 · Casablanca",
+      "copyright": "Anaqio © 2026",
+      "links": {
+        "about": "About",
+        "terms": "Terms",
+        "policy": "Policy",
+        "legal": "Legal"
+      }
+    }
+  },
+  "loading": {
+    "tagline": "Digital Atelier",
+    "stages": {
+      "initializing": "Initializing",
+      "assets": "Loading assets",
+      "rendering": "Rendering",
+      "studio": "Preparing studio",
+      "ready": "Ready"
+    }
+  },
+  "about": {
+    "hero": {
+      "label": "ANAQIO · AI Visual Studio",
+      "title": "Fashion, Reimagined.",
+      "desc": "The AI-powered visual studio giving Moroccan fashion brands the infrastructure to produce studio-quality imagery — without a studio.",
+      "founded": "Est. 2026",
+      "location": "Casablanca, Morocco",
+      "launch": "Launching Q3 2026",
+      "imageAlt": "Fashion model showcasing Anaqio studio-quality imagery",
+      "titleLine1": "Fashion,",
+      "titleLine2": "Reimagined.",
+      "back": "Back to Home"
+    },
+    "problem": {
+      "overline": "The Problem",
+      "title": "The broken studio pipeline.",
+      "desc": "Every fashion shoot in Morocco means renting a space, booking models, coordinating lighting, post-processing hundreds of RAW files — and then doing it all again next season. The result: brands that move slowly, spend heavily, and still end up with imagery that looks like everyone else's."
+    },
+    "pain": {
+      "cost": {
+        "number": "MAD 50K+",
+        "label": "average cost per studio shoot"
+      },
+      "time": {
+        "number": "3-6 wks",
+        "label": "production cycle per collection"
+      },
+      "skus": {
+        "number": "100s",
+        "label": "of SKUs, one shoot can't cover them all"
+      }
+    },
+    "solution": {
+      "overline": "The Solution",
+      "title": "One workspace. Infinite looks.",
+      "desc": "Upload your garments — models or brand assets. Anaqio generates studio-quality imagery in minutes — not weeks.",
+      "titleLine1": "One workspace.",
+      "titleLine2": "Infinite looks."
+    },
+    "lookbook": {
+      "1alt": "Lookbook image — editorial fashion composition",
+      "2alt": "Lookbook image — landscape fashion scene",
+      "3alt": "Lookbook image — styled product photography"
+    },
+    "workflow": {
+      "upload": {
+        "step": "01 — Upload",
+        "title": "Upload",
+        "desc": "Drop in your garments, models, or raw assets."
+      },
+      "generate": {
+        "step": "02 — Generate",
+        "title": "Generate",
+        "desc": "AI composes studio-quality scenes in minutes."
+      },
+      "export": {
+        "step": "03 — Export",
+        "title": "Export",
+        "desc": "Download lookbooks, videos, or individual shots."
+      }
+    },
+    "morocco": {
+      "quote": "Morocco has one of the richest fashion cultures in the world. It deserves",
+      "quoteAccent": "world-class tools.",
+      "attr": "— Anaqio, Casablanca 2026",
+      "imageAlt": "Moroccan fashion — studio-quality AI-generated imagery",
+      "srLabel": "Built for Morocco"
+    },
+    "team": {
+      "overline": "The Founders",
+      "title": "Diverse expertise, one mission.",
+      "desc": "Built by people who believe Moroccan fashion deserves the same creative infrastructure as the global luxury market.",
+      "titleLine1": "Diverse expertise,",
+      "titleLine2": "one mission."
+    },
+    "founder": {
+      "amal": {
+        "name": "Amal AIT OUKHARAZ",
+        "role": "Founder & CEO",
+        "bio": "Amal brings a deep understanding of fashion commerce and brand identity to Anaqio. Her vision for what AI can unlock for Moroccan fashion brands is at the heart of the product."
+      },
+      "mo": {
+        "name": "Mohamed MOUGHAMIR",
+        "role": "Co-Founder & CIO",
+        "bio": "Mohamed is a full-stack developer and experience designer with 9+ years building intuitive digital products. He shapes the engineering and design direction of Anaqio's AI pipeline."
+      },
+      "chaimae": {
+        "role": "Marketing Director",
+        "name": "Chaimae ZAHIR",
+        "bio": "Chaimae leads marketing strategy and community building. She bridges the gap between AI technology and creative storytelling to elevate Moroccan fashion heritage."
+      },
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "twitter": "X / Twitter",
+      "website": "Portfolio"
+    },
+    "cta": {
+      "overline": "Early Access",
+      "title": "Join the first wave.",
+      "desc": "We're onboarding select fashion brands ahead of our Q3 2026 launch. Get in early.",
+      "primary": "Join the waitlist",
+      "secondary": "Contact us"
+    }
+  },
+  "scrollNav": {
+    "intro": "Intro",
+    "problem": "Problem",
+    "solution": "Solution",
+    "morocco": "Morocco",
+    "team": "Team",
+    "join": "Join"
+  },
+  "contact": {
+    "title": "Contact Anaqio",
+    "desc": "For partnerships and general inquiries use this contact page.",
+    "section": {
+      "heading": "Contact"
+    },
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "you@example.com"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "How can we help?"
+      },
+      "submit": "Send (coming soon)",
+      "note": "While we finalize contact handling reach us via social links above."
+    },
+    "waitlistNote": "For product access updates, consider joining the",
+    "waitlistLink": "early access waitlist",
+    "labels": {
+      "website": "Website",
+      "social": "Social"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "desc": "Sign in to your Anaqio studio account",
+      "email": {
+        "label": "Email",
+        "placeholder": "name@company.com"
+      },
+      "password": {
+        "label": "Password"
+      },
+      "forgot": "Forgot password?",
+      "submit": "Sign In",
+      "submitPending": "Authenticating...",
+      "signupIntro": "New to Anaqio?",
+      "signupLink": "Create an account"
+    },
+    "signup": {
+      "title": "Join Anaqio",
+      "desc": "Create your studio account to get started",
+      "passwordRepeat": "Repeat Password",
+      "submit": "Create Account",
+      "submitPending": "Provisioning Account...",
+      "loginIntro": "Already have an account?",
+      "loginLink": "Sign in"
+    },
+    "forgot": {
+      "title": "Recover Access",
+      "desc": "Enter your email to receive recovery instructions",
+      "submit": "Recover Password",
+      "submitPending": "Sending Link...",
+      "success": {
+        "title": "Check Your Inbox",
+        "desc": "Password reset instructions sent",
+        "msg": "If you have an account registered with that email, you will receive a link to securely reset your credentials shortly."
+      },
+      "back": "Back to Sign In"
+    },
+    "update": {
+      "title": "Security Update",
+      "desc": "Configure your new studio access credentials",
+      "password": {
+        "label": "New Password"
+      },
+      "submit": "Confirm New Password",
+      "submitPending": "Updating Security..."
+    },
+    "button": {
+      "signIn": "Sign in",
+      "signUp": "Sign up",
+      "greeting": "Hey, {email}!",
+      "logout": "Logout"
+    }
+  },
+  "notFound": {
+    "title": "System Anomaly",
+    "desc": "This space does not exist in our current simulation. It may have been moved, renamed, or is still rendering in the void.",
+    "back": "Return to Reality",
+    "waitlist": "Access Waitlist"
+  },
+  "protected": {
+    "footer": {
+      "workspace": "Virtual Workspace",
+      "terms": "Terms",
+      "privacy": "Privacy"
+    },
+    "workspace": {
+      "badge": "Workspace Dashboard",
+      "title": "Studio Overview",
+      "claims": {
+        "title": "System Claims",
+        "loading": "Decrypting claims..."
+      },
+      "access": {
+        "title": "Access Level",
+        "descPre": "You are currently viewing the",
+        "studio": "Anaqio Studio Alpha",
+        "descPost": ". Features like Lookbook Gen and Virtual Try-On are being enabled progressively."
+      },
+      "status": {
+        "title": "Account Status",
+        "verified": "Verified Member"
+      }
+    }
+  },
+  "waitlist": {
+    "disclaimer": {
+      "prefix": "By joining you agree to our",
+      "terms": "Terms",
+      "and": "and",
+      "privacy": "Privacy"
+    },
+    "headline": {
+      "pre": "Why Join",
+      "gradient": "Early?"
+    },
+    "socialProof": "Join 200+ Moroccan brands upgrading their visual commerce.",
+    "formHeadline": "Request an invitation to the atelier.",
+    "formSubline": "Only 200 early-access spots available. Takes 30 seconds."
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "Where garments become campaigns",
+      "headline": {
+        "pre": "Visual Infrastructure",
+        "pro": "for Fashion Commerce"
+      },
+      "subheadline": {
+        "a": "Transform garments into photorealistic campaign visuals in minutes.",
+        "b": "Anaqio optimizes fashion art for scalable commerce."
+      },
+      "supportLine": {
+        "pre": "Built for ",
+        "words": ["designers", "brands", "agencies"],
+        "post": " who need consistent, brand-safe visuals at scale."
+      },
+      "cta": {
+        "act": "Join the Waitlist",
+        "learn": "See How It Works"
+      }
+    },
+    "styleShowcase": {
+      "eyebrow": "The Aesthetic",
+      "title": {
+        "pre": "Endless styles for",
+        "accent": "High-End Brands"
+      },
+      "description": "From Marrakech Riads to Minimalist Studios. Generate any aesthetic your brand demands without renting a single light."
+    },
+    "problem": {
+      "eyebrow": "The Challenge",
+      "headline": { "pre": "Fashion Content Demand.", "gradient": "Exploding" },
+      "visualHeadline": {
+        "line1": "Fashion moves fast.",
+        "line2": "Production doesn't."
+      },
+      "intro": {
+        "a": "Fashion brands today need an enormous volume of visuals.",
+        "b": "But traditional production wasn't built for this speed.",
+        "detail": "Photoshoots require studios, models, logistics, and post-production — making them expensive, slow, and difficult to scale. For emerging designers and growing brands, this creates a bottleneck between creative vision and commercial growth.",
+        "quote": "Fashion is art. Commerce requires optimization."
+      },
+      "painPoints": [
+        {
+          "text": "Product launches."
+        },
+        {
+          "text": "Social media campaigns."
+        },
+        {
+          "text": "E-commerce catalogs."
+        },
+        {
+          "text": "Marketplace listings."
+        }
+      ]
+    },
+    "solution": {
+      "eyebrow": "The Solution",
+      "headline": {
+        "pre": "Meet the AI-Native",
+        "gradient": "Production Layer",
+        "post": "for Fashion"
+      },
+      "description": "Anaqio transforms simple garment images into photorealistic visuals using a structured AI pipeline built specifically for fashion brands.",
+      "footer": "No photoshoot. No production delays. Just scalable visual generation.",
+      "stat": {
+        "traditional": {
+          "value": "14 days",
+          "label": "Traditional shoot"
+        },
+        "anaqio": {
+          "value": "2 hours",
+          "label": "With ANAQIO"
+        }
+      },
+      "pipeline": [
+        {
+          "stage": "Input",
+          "label": "Flat Lay",
+          "body": "Upload your raw garment imagery and brand assets to begin."
+        },
+        {
+          "stage": "Process",
+          "label": "AI Pipeline",
+          "body": "We orchestrate your asset generation using bleeding-edge pipelines."
+        },
+        {
+          "stage": "Output",
+          "label": "Campaign Visual",
+          "body": "Receive photorealistic campaign visuals ready for commerce."
+        }
+      ]
+    },
+    "howItWorks": {
+      "eyebrow": "How It Works",
+      "headline": {
+        "pre": "Four Steps to",
+        "gradient": "Campaign-Ready",
+        "post": "Visuals"
+      },
+      "steps": [
+        {
+          "num": "01",
+          "title": "Upload Your Garment",
+          "body": "Upload a flat lay or ghost mannequin image."
+        },
+        {
+          "num": "02",
+          "title": "Define the Visual Style",
+          "body": "Choose poses, lighting, and environments designed for fashion campaigns."
+        },
+        {
+          "num": "03",
+          "title": "Generate Photorealistic Output",
+          "body": "Our AI pipeline transforms the garment into high-quality visuals ready for e-commerce, campaigns, and social media."
+        },
+        {
+          "num": "04",
+          "title": "Scale Instantly",
+          "body": "Generate multiple variations for different markets, campaigns, or product launches. Minutes — not weeks."
+        }
+      ]
+    },
+    "whyAnaqio": {
+      "eyebrow": "Product Benefits",
+      "headline": {
+        "pre": "Why",
+        "gradient": "Anaqio",
+        "post": "is Better?"
+      },
+      "footer": "Anaqio is built for reliability, consistency, and scale.",
+      "points": [
+        {
+          "title": "Garment Precision",
+          "body": "Faithful reproduction of textures, cuts, colors, and brand details."
+        },
+        {
+          "title": "Controlled Poses",
+          "body": "Consistent positioning across product collections."
+        },
+        {
+          "title": "Lighting Consistency",
+          "body": "Uniform lighting that preserves accurate color representation."
+        },
+        {
+          "title": "Scalable Production",
+          "body": "Generate hundreds of visuals without increasing production costs."
+        },
+        {
+          "title": "Brand-Safe Outputs",
+          "body": "Structured AI pipelines designed for fashion brands — not experimental image generation."
+        }
+      ]
+    },
+    "whoItsFor": {
+      "eyebrow": "Who It's For",
+      "headline": {
+        "pre": "Built for the Fashion",
+        "gradient": "Ecosystem"
+      },
+      "footer": "Anyone producing fashion visuals at scale.",
+      "audiences": [
+        {
+          "title": "Fashion Brands",
+          "body": "Scale product visuals for e-commerce and marketing campaigns."
+        },
+        {
+          "title": "Emerging Designers",
+          "body": "Create professional visuals without expensive photoshoots."
+        },
+        {
+          "title": "Creative Studios",
+          "body": "Accelerate production for client campaigns."
+        },
+        {
+          "title": "Marketplaces",
+          "body": "Standardize visual quality across large product inventories."
+        }
+      ],
+      "features": [
+        "Dedicated studio workspace",
+        "Lightning-fast asset rendering",
+        "Tailored brand parameters"
+      ]
+    },
+    "vision": {
+      "eyebrow": "Our Vision",
+      "headline": {
+        "pre": "The Future of",
+        "gradient": "Fashion Production"
+      },
+      "intro": "The fashion industry is entering a new era where visual production must keep pace with digital commerce.",
+      "quote": "Anaqio's vision is to become the visual infrastructure layer of the global fashion industry, transforming visual production from a bottleneck into a growth engine.",
+      "points": [
+        {
+          "text": "Collections launch faster."
+        },
+        {
+          "text": "Content cycles move quicker."
+        },
+        {
+          "text": "Brands reach global audiences instantly."
+        }
+      ]
+    },
+    "philosophy": {
+      "eyebrow": "Our Philosophy",
+      "body": "Fashion has always been a form of artistic expression. Technology should not replace creativity — it should empower it. Anaqio was built with a simple belief: AI should optimize the operational side of fashion production so designers and brands can focus on creativity and storytelling. We are not replacing fashion art. We are building the infrastructure that allows it to scale."
+    },
+    "finalCta": {
+      "srHeading": "Get Early Access",
+      "headline": {
+        "pre": "Join the Evolution of",
+        "gradient": "Fashion Production"
+      },
+      "cta": {
+        "primary": "Join the Waitlist",
+        "secondary": "See How It Works",
+        "tertiary": "or scroll to learn more"
+      }
+    }
+  },
+  "earlyAccess": {
+    "meta": {
+      "title": "Early Access — Anaqio",
+      "desc": "Join the waitlist for early access to Anaqio's AI Visual Studio. Be the first to experience the future of fashion commerce."
+    },
+    "badge": "Early Access · Q3 2026",
+    "hero": {
+      "titleLine1": "Fashion's",
+      "titleGradient": "Virtual Studio",
+      "titleLine3": "powered by AI.",
+      "desc": "Anaqio provides a professional AI-driven workspace to create, stage, and sell fashion — without traditional production overhead."
+    },
+    "disclaimer": {
+      "prefix": "By joining you agree to our",
+      "privacy": "Privacy",
+      "and": "&",
+      "terms": "Terms"
+    },
+    "stats": {
+      "speed": {
+        "num": "10×",
+        "label": "Faster Content Creation"
+      },
+      "cost": {
+        "num": "90%",
+        "label": "Lower Production Cost"
+      },
+      "creative": {
+        "num": "∞",
+        "label": "Creative Freedom"
+      },
+      "platform": {
+        "num": "01",
+        "label": "Unified Studio Platform"
+      }
+    },
+    "cta": {
+      "titlePre": "Be first to enter the",
+      "titleGradient": "future of fashion",
+      "subtext": "Limited slots available for v1.0"
+    }
+  },
+  "atelierInvitation": {
+    "card": {
+      "eyebrow": "Application",
+      "title": "Request an invitation to the atelier",
+      "footnote": "Each application is reviewed personally"
+    },
+    "ui": {
+      "skip": "Skip →",
+      "selectPlaceholder": "Select an option…",
+      "enterHint": "Press Enter ↵ to continue",
+      "prevAriaLabel": "Previous question",
+      "continue": "Continue",
+      "requestInvitation": "Request Invitation",
+      "sending": "Sending…",
+      "fieldRequired": "This field is required."
+    },
+    "success": {
+      "title": "Your request is received",
+      "desc": "We review each application personally. You will hear from us soon."
+    },
+    "steps": {
+      "email": {
+        "question": "What is your email address?",
+        "hint": "We will send your invitation here.",
+        "placeholder": "you@brand.com",
+        "errors": {
+          "required": "Please enter your email address.",
+          "invalid": "Please enter a valid email address."
+        }
+      },
+      "entity_name": {
+        "question": "What is the name of your brand or studio?",
+        "hint": "Your label, atelier, or creative entity.",
+        "placeholder": "Maison Leila, Studio Nour…",
+        "errors": {
+          "required": "Please enter your brand or studio name.",
+          "tooShort": "Name must be at least 2 characters."
+        }
+      },
+      "whatsapp": {
+        "question": "Your WhatsApp number?",
+        "hint": "(Optional) for a faster personal welcome.",
+        "placeholder": "+212 6XX XXX XXX"
+      },
+      "role": {
+        "question": "How would you describe yourself?",
+        "errors": {
+          "required": "Please select your role."
+        },
+        "options": {
+          "Brand": "Fashion Brand / Retailer",
+          "Designer": "Independent Designer",
+          "Stylist": "Stylist / Creative Director",
+          "Ecommerce": "E-Commerce Seller",
+          "Photographer": "Fashion Photographer",
+          "Other": "Other"
+        }
+      },
+      "revenue_range": {
+        "question": "What is your monthly revenue range?",
+        "hint": "Optional — helps us tailor your onboarding.",
+        "options": {
+          "pre-revenue": "Pre-revenue / Starting out",
+          "0-10k": "Under 10 000 DH",
+          "10k-50k": "10 000 - 50 000 DH",
+          "50k-250k": "50 000 - 250 000 DH",
+          "250k+": "250 000 DH +"
+        }
+      },
+      "referral_source": {
+        "question": "How did you hear about ANAQIO?",
+        "hint": "Optional.",
+        "options": {
+          "Instagram": "Instagram",
+          "LinkedIn": "LinkedIn",
+          "Word of mouth": "Word of mouth",
+          "Press / Media": "Press / Media",
+          "Search": "Google / Search",
+          "Other": "Other"
+        }
+      }
+    }
+  }
+}

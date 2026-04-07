@@ -1,0 +1,52 @@
+{
+  "home": {
+    "title": "ANAQIO — AI Fashion Studio | Prochainement",
+    "desc": "ANAQIO est un studio de mode propulsé par IA pour le marché marocain de luxe. Générer des livres d'apparences, échanger des arrière-plans, ajuster l'éclairage et produire des vidéos de mode cinématographique. Lancement de 2026."
+  },
+  "about": {
+    "title": "À propos d'Anaqio",
+    "desc": "Anaqio est un studio de design pour le commerce de la mode, construit à Casablanca par des designers et des ingénieurs passionnés par le développement de l’industrie de la mode marocaine."
+  },
+  "contact": {
+    "title": "Contacter Anaqio",
+    "desc": "Communiquez avec Anaqio — AI Visual Studio pour le commerce de la mode."
+  },
+  "login": {
+    "title": "Connexion – Anaqio"
+  },
+  "signup": {
+    "title": "S'inscrire — Anaqio"
+  },
+  "forgot": {
+    "title": "Mot de passe oublié — Anaqio"
+  },
+  "update": {
+    "title": "Mise à jour du mot de passe — Anaqio"
+  },
+  "protected": {
+    "title": "Aperçu du Studio — Anaqio"
+  },
+  "brand": {
+    "title": "Lignes directrices sur l'identité de marque — Anaqio"
+  },
+  "early": {
+    "title": "Accès anticipé — Anaqio",
+    "desc": "Rejoignez la liste d'attente pour un accès rapide à AI Visual Studio d'Anaqio. Soyez le premier à découvrir l'avenir du commerce de la mode."
+  },
+  "terms": {
+    "title": "Conditions d'utilisation — Anaqio",
+    "desc": "Conditions d'utilisation pour Anaqio, un studio virtuel pour le commerce de la mode."
+  },
+  "privacy": {
+    "title": "Politique de confidentialité – Anaqio",
+    "desc": "Politique de confidentialité pour Anaqio, un studio virtuel pour le commerce de la mode."
+  },
+  "cookies": {
+    "title": "Politique relative aux cookies – Anaqio",
+    "desc": "La politique de cookies d'Anaqio. Découvrez comment nous utilisons les cookies pour améliorer votre expérience dans notre studio virtuel IA."
+  },
+  "legal": {
+    "title": "Mentions légales — Anaqio",
+    "desc": "Mentions légales pour Anaqio, un studio virtuel pour le commerce de la mode."
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "workspace": {
+    "badge": "Tableau de bord de l'espace de travail",
+    "title": "Aperçu du Studio",
+    "claims": {
+      "title": "Revendications système",
+      "loading": "Décryptage des réclamations..."
+    },
+    "access": {
+      "title": "Niveau d'accès",
+      "descPre": "Vous êtes en train de voir le",
+      "studio": "Alpha Anaqio Studio",
+      "descPost": ". - Des fonctionnalités comme Lookbook Gen et Virtual Try-On sont activées progressivement."
+    },
+    "status": {
+      "title": "Statut du compte",
+      "verified": "Membre vérifié"
+    }
+  },
+  "footer": {
+    "workspace": "Espace de travail virtuel",
+    "terms": "Conditions générales de vente",
+    "privacy": "Confidentialité"
+  },
+  "upload": {
+    "title": "Charger un vêtement",
+    "dropzone": "Déposez votre image de vêtement ici",
+    "or": "ou",
+    "browse": "Parcourir les fichiers",
+    "acceptedFormats": "PNG, JPG jusqu'à 10 Mo",
+    "preview": "Aperçu"
+  },
+  "modelSelection": {
+    "title": "Sélectionner un modèle",
+    "placeholder": "Choisir un modèle prédéfini",
+    "custom": "Modèle personnalisé (à venir)"
+  },
+  "generate": {
+    "title": "Générer",
+    "button": "Générer un LookBook",
+    "processing": "Génération en cours...",
+    "estimatedTime": "Est. 2-5 minutes"
+  },
+  "results": {
+    "title": "Votre LookBook",
+    "download": "Télécharger tout",
+    "regenerate": "Régénérer",
+    "share": "Partager",
+    "empty": "Aucun résultat pour l'instant. Téléchargez un vêtement pour commencer."
+  },
+  "errors": {
+    "uploadFailed": "Échec du téléchargement de l'image",
+    "generationFailed": "La génération a échoué. Veuillez réessayer.",
+    "timeout": "La requête a expiré. Veuillez réessayer.",
+    "invalidFormat": "Format de fichier invalide. Veuillez télécharger des PNG ou JPG."
+  }
+}

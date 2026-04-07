@@ -1,0 +1,49 @@
+{
+  "newsletter": {
+    "title": "Abonnez-vous à notre newsletter",
+    "desc": "Recevez les dernières mises à jour sur la technologie de la mode IA et les offres exclusives.",
+    "placeholder": "Entrez votre email",
+    "submit": "S'abonner"
+  },
+  "pagination": {
+    "previous": "Précédent",
+    "next": "Suivant",
+    "page": "Page",
+    "of": "sur"
+  },
+  "search": {
+    "placeholder": "Rechercher...",
+    "noResults": "Aucun résultat trouvé",
+    "submit": "Rechercher"
+  },
+  "filters": {
+    "title": "Filtres",
+    "clear": "Tout effacer",
+    "apply": "Appliquer les filtres"
+  },
+  "sort": {
+    "label": "Trier par",
+    "newest": "Plus récents",
+    "oldest": "Plus anciens",
+    "popular": "Plus populaires"
+  },
+  "status": {
+    "loading": "Chargement...",
+    "success": "Succès",
+    "error": "Erreur",
+    "empty": "Rien à afficher"
+  },
+  "validation": {
+    "required": "Ce champ est requis",
+    "email": "Veuillez entrer un email valide",
+    "minLength": "Doit contenir au moins {min} caractères",
+    "maxLength": "Doit contenir au plus {max} caractères"
+  },
+  "dates": {
+    "today": "Aujourd'hui",
+    "yesterday": "Hier",
+    "daysAgo": "Il y a {count} jours",
+    "weeksAgo": "Il y a {count} semaines",
+    "monthsAgo": "Il y a {count} mois"
+  }
+}

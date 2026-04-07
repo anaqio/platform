@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "title": "Early Access — Anaqio",
+    "desc": "Join the waitlist for early access to Anaqio's AI Visual Studio. Be the first to experience the future of fashion commerce."
+  },
+  "badge": "Early Access · Q3 2026",
+  "hero": {
+    "titleLine1": "Fashion's",
+    "titleGradient": "Virtual Studio",
+    "titleLine3": "powered by AI.",
+    "desc": "Anaqio provides a professional AI-driven workspace to create, stage, and sell fashion — without traditional production overhead."
+  },
+  "disclaimer": {
+    "prefix": "By joining you agree to our",
+    "privacy": "Privacy",
+    "and": "&",
+    "terms": "Terms"
+  },
+  "stats": {
+    "speed": {
+      "num": "10×",
+      "label": "Faster Content Creation"
+    },
+    "cost": {
+      "num": "90%",
+      "label": "Lower Production Cost"
+    },
+    "creative": {
+      "num": "∞",
+      "label": "Creative Freedom"
+    },
+    "platform": {
+      "num": "01",
+      "label": "Unified Studio Platform"
+    }
+  },
+  "cta": {
+    "titlePre": "Be first to enter the",
+    "titleGradient": "future of fashion",
+    "subtext": "Limited slots available for v1.0"
+  }
+}

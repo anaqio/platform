@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "about": "About",
+    "brand": "Brand",
+    "contact": "Contact",
+    "legal": "Legal",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookie Policy",
+    "legalMentions": "Legal Mentions",
+    "solution": "Solution",
+    "howItWorks": "How It Works",
+    "whyAnaqio": "Why Us",
+    "vision": "Vision",
+    "more": "More"
+  },
+  "button": {
+    "waitlist": "Join Waitlist"
+  },
+  "logo": {
+    "aria": "Anaqio Home"
+  },
+  "menu": {
+    "aria": "Toggle menu"
+  }
+}

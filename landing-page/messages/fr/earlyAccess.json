@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "title": "Accès anticipé — Anaqio",
+    "desc": "Rejoignez la liste d'attente pour un accès rapide à AI Visual Studio d'Anaqio. Soyez le premier à découvrir l'avenir du commerce de la mode."
+  },
+  "badge": "Accès anticipé · T3 2026",
+  "hero": {
+    "titleLine1": "Mode",
+    "titleGradient": "Studio Virtuel",
+    "titleLine3": "propulsé par AI.",
+    "desc": "Anaqio met à votre disposition un espace de travail professionnel pour créer, mettre en scène et vendre la mode sans avoir à passer par la production traditionnelle."
+  },
+  "disclaimer": {
+    "prefix": "En vous inscrivant, vous acceptez nos",
+    "privacy": "Confidentialité",
+    "and": "&",
+    "terms": "Conditions générales de vente"
+  },
+  "stats": {
+    "speed": {
+      "num": "10×",
+      "label": "Création de contenu plus rapide"
+    },
+    "cost": {
+      "num": "90%",
+      "label": "Réduit le coût de production"
+    },
+    "creative": {
+      "num": "∞",
+      "label": "Liberté créative"
+    },
+    "platform": {
+      "num": "01",
+      "label": "Plateforme Studio unifiée"
+    }
+  },
+  "cta": {
+    "titlePre": "Soyez le premier à entrer dans le",
+    "titleGradient": "avenir de la mode",
+    "subtext": "Emplacements limités disponibles pour la v1.0"
+  }
+}

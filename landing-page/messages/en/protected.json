@@ -1,0 +1,25 @@
+{
+  "footer": {
+    "workspace": "Virtual Workspace",
+    "terms": "Terms",
+    "privacy": "Privacy"
+  },
+  "workspace": {
+    "badge": "Workspace Dashboard",
+    "title": "Studio Overview",
+    "claims": {
+      "title": "System Claims",
+      "loading": "Decrypting claims..."
+    },
+    "access": {
+      "title": "Access Level",
+      "descPre": "You are currently viewing the",
+      "studio": "Anaqio Studio Alpha",
+      "descPost": ". Features like Lookbook Gen and Virtual Try-On are being enabled progressively."
+    },
+    "status": {
+      "title": "Account Status",
+      "verified": "Verified Member"
+    }
+  }
+}

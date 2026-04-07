@@ -1,0 +1,83 @@
+{
+  "card": {
+    "eyebrow": "Application",
+    "title": "Demander une invitation à l'atelier",
+    "footnote": "Chaque demande est examinée personnellement"
+  },
+  "ui": {
+    "skip": "Ignorer →",
+    "selectPlaceholder": "Sélectionnez une option…",
+    "enterHint": "Appuyez sur Entrée pour continuer",
+    "prevAriaLabel": "Question précédente",
+    "continue": "Continuer",
+    "requestInvitation": "Demander une invitation",
+    "sending": "Envoi de…",
+    "fieldRequired": "Ce champ est obligatoire."
+  },
+  "success": {
+    "title": "Votre demande est reçue",
+    "desc": "Nous examinons chaque candidature personnellement; vous recevrez bientôt de notre part."
+  },
+  "steps": {
+    "email": {
+      "question": "Quelle est votre adresse e-mail?",
+      "hint": "Nous vous enverrons votre invitation ici.",
+      "placeholder": "vous@brand.com",
+      "errors": {
+        "required": "Veuillez entrer votre adresse e-mail.",
+        "invalid": "Veuillez entrer une adresse e-mail valide."
+      }
+    },
+    "entity_name": {
+      "question": "Quel est le nom de votre marque ou studio?",
+      "hint": "Votre étiquette, atelier, ou entité créative.",
+      "placeholder": "Maison Leila, Studio Nour…",
+      "errors": {
+        "required": "Veuillez entrer votre marque ou votre nom de studio.",
+        "tooShort": "Le nom doit comporter au moins 2 caractères."
+      }
+    },
+    "whatsapp": {
+      "question": "Ton numéro WhatsApp ?",
+      "hint": "(Facultatif) pour un accueil personnel plus rapide.",
+      "placeholder": "+212 6XX XXX XXX"
+    },
+    "role": {
+      "question": "Comment vous décririez-vous ?",
+      "errors": {
+        "required": "Veuillez sélectionner votre rôle."
+      },
+      "options": {
+        "Brand": "Marque de mode / Concessionnaire",
+        "Designer": "Designer Indépendant",
+        "Stylist": "Styliste / Directeur Créatif",
+        "Ecommerce": "Vendeur E-Commerce",
+        "Photographer": "Photographe de mode",
+        "Other": "Autres"
+      }
+    },
+    "revenue_range": {
+      "question": "Quelle est votre fourchette de revenus mensuelle?",
+      "hint": "Optionnel — nous aide à adapter votre embarquement.",
+      "options": {
+        "pre-revenue": "Pré-revenus / Début",
+        "0-10k": "Moins de 10 000 DH",
+        "10k-50k": "10 000 - 50 000 DH",
+        "50k-250k": "50 000 - 250 000 DH",
+        "250k+": "250 000 DH +"
+      }
+    },
+    "referral_source": {
+      "question": "Comment avez-vous entendu parler de l'ANAQIO?",
+      "hint": "Optionnel.",
+      "options": {
+        "Instagram": "Instagram",
+        "LinkedIn": "LinkedIn",
+        "Word of mouth": "bouche à oreille",
+        "Press / Media": "Presse / Médias",
+        "Search": "Google / Recherche",
+        "Other": "Autres"
+      }
+    }
+  }
+}
