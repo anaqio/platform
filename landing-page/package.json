@@ -16,27 +16,8 @@
     "video:dev": "remotion studio remotion/index.ts",
     "video:render:16x9": "remotion render remotion/index.ts AnaqioDemo16x9 out/anaqio-demo-16x9.mp4",
     "video:render:9x16": "remotion render remotion/index.ts AnaqioDemo9x16 out/anaqio-demo-9x16.mp4",
-    "prepare": "husky",
     "export:i18n": "bun run scripts/export-i18n.ts",
     "clean": "rm -rf .next"
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --write --ignore-unknown"
-    ],
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "prettier --write --ignore-unknown"
-    ],
-    "*.{json,md,css}": [
-      "prettier --write"
-    ],
-    "ignore": [
-      ".agents/**",
-      ".agent/**",
-      "test-results/**"
-    ]
   },
   "dependencies": {
     "@next/third-parties": "^16.1.6",
@@ -99,9 +80,7 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-tailwindcss": "^3.18.2",
-    "husky": "^9.1.7",
     "jsdom": "^28.1.0",
-    "lint-staged": "^16.3.2",
     "postcss": "^8",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",

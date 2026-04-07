@@ -16,17 +16,7 @@
     "db:reset": "bunx supabase db reset",
     "format": "bunx prettier --write .",
     "format:check": "bunx prettier --check .",
-    "prepare": "husky",
     "clean": "rm -rf .next"
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.{css,json,md}": [
-      "prettier --write"
-    ]
   },
   "dependencies": {
     "@fal-ai/client": "^1.9.4",
@@ -76,8 +66,6 @@
     "eslint": "^9",
     "eslint-config-next": "^16.2.0",
     "eslint-config-prettier": "^10.1.8",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.4.0",
     "postcss": "^8",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
