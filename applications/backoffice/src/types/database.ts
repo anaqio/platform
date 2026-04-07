@@ -101,6 +101,53 @@ export interface CampaignCreate {
   is_active?: boolean
 }
 
+// ── Events ─────────────────────────────────────────────
+
+export type EventType =
+  | 'fashion_show'
+  | 'expo'
+  | 'launch'
+  | 'workshop'
+  | 'webinar'
+  | 'pop_up'
+  | 'other'
+
+export interface Event {
+  id: string
+  name: string
+  slug: string
+  description: string | null
+  type: EventType
+  venue: string | null
+  city: string | null
+  country: string
+  start_at: string | null
+  end_at: string | null
+  capacity: number | null
+  registration_url: string | null
+  campaign_id: string | null
+  is_active: boolean
+  meta: Record<string, unknown>
+  created_at: string
+  updated_at: string
+}
+
+export interface EventCreate {
+  name: string
+  slug: string
+  type: EventType
+  description?: string | null
+  venue?: string | null
+  city?: string | null
+  country?: string
+  start_at?: string | null
+  end_at?: string | null
+  capacity?: number | null
+  registration_url?: string | null
+  campaign_id?: string | null
+  is_active?: boolean
+}
+
 // ── Dashboard ──────────────────────────────────────────
 
 export interface DashboardStats {
