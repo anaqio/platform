@@ -1,0 +1,18 @@
+# CODEOWNERS — auto-assigns reviewers on PRs.
+# Last match wins. Keep specific rules below the catch-all.
+# Docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default: Moughamir reviews everything
+* @moughamir
+
+# Shared packages — both founders review
+/packages/ @moughamir
+
+# Database migrations — both founders review (schema changes are high-impact)
+/supabase/migrations/ @moughamir
+
+# CI/CD — Moughamir owns infra
+/.github/workflows/ @moughamir
+
+# Brand/design assets — Amal reviews
+/applications/landing-page/public/ @moughamir

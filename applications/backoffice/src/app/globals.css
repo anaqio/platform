@@ -1,0 +1,50 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: oklch(0.145 0 0);
+  --color-foreground: oklch(0.985 0 0);
+  --color-card: oklch(0.17 0 0);
+  --color-card-foreground: oklch(0.985 0 0);
+  --color-popover: oklch(0.17 0 0);
+  --color-popover-foreground: oklch(0.985 0 0);
+  --color-primary: oklch(0.65 0.15 250);
+  --color-primary-foreground: oklch(0.985 0 0);
+  --color-secondary: oklch(0.25 0 0);
+  --color-secondary-foreground: oklch(0.985 0 0);
+  --color-muted: oklch(0.22 0 0);
+  --color-muted-foreground: oklch(0.65 0 0);
+  --color-accent: oklch(0.25 0 0);
+  --color-accent-foreground: oklch(0.985 0 0);
+  --color-destructive: oklch(0.55 0.2 27);
+  --color-destructive-foreground: oklch(0.985 0 0);
+  --color-border: oklch(0.3 0 0);
+  --color-input: oklch(0.3 0 0);
+  --color-ring: oklch(0.65 0.15 250);
+
+  /* Anaqio brand */
+  --color-navy: oklch(0.28 0.05 260);
+  --color-blue: oklch(0.45 0.1 250);
+  --color-gold: oklch(0.75 0.12 85);
+
+  /* Waitlist status colors */
+  --color-status-pending: oklch(0.75 0.12 85);
+  --color-status-invited: oklch(0.65 0.15 250);
+  --color-status-active: oklch(0.65 0.17 150);
+  --color-status-unsubscribed: oklch(0.55 0.2 27);
+
+  --radius-lg: 0.5rem;
+  --radius-md: calc(var(--radius-lg) - 2px);
+  --radius-sm: calc(var(--radius-lg) - 4px);
+
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}

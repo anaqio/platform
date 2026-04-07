@@ -4,7 +4,15 @@ import { createClient } from '@supabase/supabase-js'
 export function createAdminSupabaseClient<Database = any>(
   url: string,
   serviceRoleKey: string,
-  options?: { auth?: { autoRefreshToken?: boolean; persistSession?: boolean } },
+  options?: {
+    schema?: string
+    auth?: { autoRefreshToken?: boolean; persistSession?: boolean }
+  },
 ) {
-  return createClient<Database>(url, serviceRoleKey, options)
+  const { schema, ...clientOptions } = options ?? {}
+  return createClient<Database>(url, serviceRoleKey, {
+    ...clientOptions,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ...(schema ? { db: { schema: schema as any } } : {}),
+  })
 }

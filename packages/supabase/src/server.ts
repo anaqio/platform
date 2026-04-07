@@ -10,8 +10,11 @@ export function createServerSupabaseClient<Database = any>(
   url: string,
   key: string,
   cookieStore: CookieStore,
+  options?: { schema?: string },
 ) {
   return createServerClient<Database>(url, key, {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ...(options?.schema ? { db: { schema: options.schema as any } } : {}),
     cookies: {
       getAll() {
         return cookieStore.getAll()

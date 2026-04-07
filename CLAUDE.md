@@ -10,13 +10,13 @@ This directory is a **Bun workspaces monorepo** orchestrated by Turborepo. Each 
 
 **Team:** 2 founders — Amal (Visionary: strategy, brand, partnerships) and Moughamir (Integrator: technical execution, architecture, shipping).
 
-### Apps (Bun workspace members)
+### Apps (Bun workspace members — under `applications/`)
 
-| Directory | What | Stack | Deploys to | Git |
-|-----------|------|-------|------------|-----|
-| `studio/` | AI Virtual Fashion Studio (virtual try-on MVP) | Next.js 16, Supabase, Zustand, Vitest, Playwright | studio.anaqio.com | own repo |
-| `landing-page/` | Corporate waitlist + brand site | Next.js 16, Framer Motion, next-intl, Remotion, Supabase | anaqio.com | own repo |
-| `backoffice/` | Internal backoffice (CRM, campaigns, dashboard) | Next.js 16, Supabase, Tailwind v4 | backoffice.anaqio.com (TBD) | own repo |
+| Directory | What | Stack | Deploys to |
+|-----------|------|-------|------------|
+| `applications/studio/` | AI Virtual Fashion Studio (virtual try-on MVP) | Next.js 16, Supabase, Zustand, Vitest, Playwright | studio.anaqio.com |
+| `applications/landing-page/` | Corporate waitlist + brand site | Next.js 16, Framer Motion, next-intl, Remotion, Supabase | anaqio.com |
+| `applications/backoffice/` | Internal backoffice (CRM, campaigns, dashboard) | Next.js 16, Supabase, Tailwind v4 | backoffice.anaqio.com (TBD) |
 
 ### Shared Packages (`packages/`)
 
@@ -31,6 +31,7 @@ This directory is a **Bun workspaces monorepo** orchestrated by Turborepo. Each 
 
 | Directory | What |
 |-----------|------|
+| `supabase/` | Consolidated DB migrations + config for unified Supabase project |
 | `ai-studio-base/` | Google AI Studio prototype (Vite + React, untracked) |
 | `tsx-playground/` | Component playground (Bun + React, untracked) |
 | `design/` | Design assets (placeholder) |
@@ -43,9 +44,9 @@ This directory is a **Bun workspaces monorepo** orchestrated by Turborepo. Each 
 
 | Project | Default port |
 |---------|-------------|
-| `studio/` | 3000 |
-| `backoffice/` | 3001 |
-| `landing-page/` | 3002 (set via `PORT=3002` in `.env.local`) |
+| `applications/studio/` | 3000 |
+| `applications/backoffice/` | 3001 |
+| `applications/landing-page/` | 3002 (set via `PORT=3002` in `.env.local`) |
 
 ## Common Stack Across Active Projects
 
@@ -80,10 +81,10 @@ bun install
 
 ## Per-App Commands
 
-### studio/
+### applications/studio/
 
 ```bash
-cd studio
+cd applications/studio
 bun run dev           # next dev (Turbopack)
 bun run build         # next build
 bun run lint          # eslint
@@ -94,10 +95,10 @@ bun run clean         # rm -rf .next
 bun run db:types      # regenerate Supabase types
 ```
 
-### landing-page/
+### applications/landing-page/
 
 ```bash
-cd landing-page
+cd applications/landing-page
 bun run dev           # next dev
 bun run build         # next build
 bun run lint          # eslint
@@ -108,10 +109,10 @@ bun run video:dev     # remotion studio (video compositions)
 bun run audit         # full brand/performance/supabase audit
 ```
 
-### backoffice/
+### applications/backoffice/
 
 ```bash
-cd backoffice
+cd applications/backoffice
 bun run dev           # next dev --turbopack on port 3001
 bun run build
 bun run lint          # eslint (shared @anaqio/eslint-config/nextjs)
@@ -147,14 +148,19 @@ Requires `GEMINI_API_KEY` in `.env.local`.
 - **Env vars never hardcoded** — copy `.env.example` → `.env.local`, never commit `.env*.local`.
 - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY` (landing-page, backoffice) vs `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` (studio) — each app uses its own key name.
 
+### Database
+- **Single Supabase project**, multi-schema: `studio` (virtual try-on), `landing` (marketing), `public` (shared views).
+- App clients declare their schema: `studio` uses `schema: 'studio'`, landing-page uses `schema: 'landing'`.
+- Backoffice admin client queries `public.*` cross-schema views (`user_overview`, `generation_stats`, `campaign_signup_stats`).
+- All migrations live in root `supabase/migrations/` — never edit the dashboard directly.
+
 ### Git
-- **Root git** (`com.anaqio/.git`) tracks workspace-layer files only: `package.json`, `turbo.json`, `packages/`, `.prettierrc`, `.gitignore`, `CHANGELOG.md`, `bun.lock`.
-- **App gits** (`studio/.git`, `landing-page/.git`, `backoffice/.git`) are independent — commit app changes there.
-- **Conventional Commits:** `feat:`, `fix:`, `refactor:`, `test:`, `chore:`, `docs:` with optional scope (e.g., `feat(studio): ...`).
+- **Root git** (`com.anaqio/.git`) is the single source of truth — all apps and packages tracked here.
+- **Conventional Commits:** `feat:`, `fix:`, `refactor:`, `test:`, `chore:`, `docs:`, `db:` with optional scope (e.g., `feat(studio): ...`).
 
 ## Key Architectural Differences
 
-| Concern | studio/ | landing-page/ | backoffice/ |
+| Concern | applications/studio/ | applications/landing-page/ | applications/backoffice/ |
 |---------|---------|---------------|-------------|
 | State management | Zustand stores | Framer Motion + React state | React state + server components |
 | Auth | Supabase email + Google OAuth, kiosk mode bypass | Supabase SSR session refresh | Supabase SSR (read-only, no public auth) |
@@ -170,7 +176,7 @@ Requires `GEMINI_API_KEY` in `.env.local`.
 
 ## AI Agent Context
 
-Both `studio/` and `landing-page/` have `.agents/` directories consumed by AI agents (Claude, Gemini, Qwen):
+Both `applications/studio/` and `applications/landing-page/` have `.agents/` directories consumed by AI agents (Claude, Gemini, Qwen):
 
 - `skills/` — domain context files (supabase.md, inference.md, brand.md, testing.md, etc.)
 - `steering/` — architecture and schema context loaded at session start
