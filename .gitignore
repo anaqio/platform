@@ -50,3 +50,9 @@ tsx-playground/
 # Session context files (not source code)
 resume.claude
 review.prompt.md
+
+# Kodo session tracker (contains API key)
+.kodo/
+
+# Turborepo
+.turbo
