@@ -185,6 +185,28 @@ Both `applications/studio/` and `applications/landing-page/` have `.agents/` dir
 
 Root-level session context files: `review.prompt.md` (code review prompt), `resume.claude.md` (session resume context).
 
+## Pending Setup (manual dashboard steps)
+
+These two actions are required before the multi-schema Supabase setup and `applications/` structure are fully live in production.
+
+### 1. Supabase → expose schemas to PostgREST
+> Settings → API → Exposed schemas → add `studio` and `landing`
+
+The default list only includes `public` and `graphql_public`. Without this, app queries to non-`public` schemas return 404 from the REST API.
+
+### 2. Vercel → update Root Directory per project
+Each project's build root must be updated:
+
+| Vercel project | Old root | New root |
+|----------------|----------|----------|
+| studio | `studio` | `applications/studio` |
+| landing-page | `landing-page` | `applications/landing-page` |
+| backoffice | `backoffice` | `applications/backoffice` |
+
+> Project → Settings → General → Root Directory
+
+---
+
 ## Company Operations
 
 See `docs/COMPANY-OS.md` for the full operating system (V/TO, Rocks, Scorecard, L10, ADRs, Build vs Buy).
