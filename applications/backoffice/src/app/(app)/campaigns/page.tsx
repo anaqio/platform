@@ -4,6 +4,8 @@ import { getCampaignStats } from '@/lib/data/campaigns'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { CampaignsClient } from '@/components/campaigns/campaigns-client'
 
+export const dynamic = 'force-dynamic'
+
 export default async function CampaignsPage() {
   const campaigns = await getCampaignStats()
 

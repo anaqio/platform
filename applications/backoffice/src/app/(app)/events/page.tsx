@@ -4,6 +4,8 @@ import { computeEventStats, getEvents } from '@/lib/data/events'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { EventsClient } from '@/components/events/events-client'
 
+export const dynamic = 'force-dynamic'
+
 export default async function EventsPage() {
   const events = await getEvents()
   const stats = computeEventStats(events)

@@ -3,6 +3,8 @@ import { Calendar, Clock, TrendingUp, UserCheck, Users, UserX } from 'lucide-rea
 import { getWaitlistStats, getWaitlistUsers } from '@/lib/data/waitlist'
 import { WaitlistStatusBadge } from '@/components/ui/status-badge'
 
+export const dynamic = 'force-dynamic'
+
 export default async function DashboardPage() {
   const [stats, recentUsers] = await Promise.all([
     getWaitlistStats(),

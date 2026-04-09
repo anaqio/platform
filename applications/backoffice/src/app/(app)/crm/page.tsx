@@ -2,6 +2,8 @@ import type { WaitlistStatus } from '@/types/database'
 import { getWaitlistUsers } from '@/lib/data/waitlist'
 import { CRMClient } from '@/components/crm/crm-client'
 
+export const dynamic = 'force-dynamic'
+
 const statusFilters: WaitlistStatus[] = ['pending', 'invited', 'active', 'unsubscribed']
 
 export default async function CRMPage({

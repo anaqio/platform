@@ -20,6 +20,17 @@ bun run type-check    # tsc --noEmit
 - **Icons:** lucide-react
 - **Utility:** `cn()` at `src/lib/utils/cn.ts` (clsx + tailwind-merge)
 
+### Auth Flow
+
+```
+User visits /dashboard → middleware.ts checks session
+  → no session → redirect /auth/login
+  → logged in → allow access
+
+Login: email + password sign-in → /dashboard
+Session persists via SSR httpOnly cookie managed by @supabase/ssr middleware.
+```
+
 ### Route Structure
 
 ```
@@ -95,12 +106,13 @@ pending → invited → active
 
 ## Scope
 
-This is the internal backoffice — not user-facing. Current scope (all implemented):
+This is the internal backoffice — user-facing (requires login). Current scope (all implemented):
 
+- **Auth:** Email/password login via Supabase Auth, session managed by middleware
 - **Dashboard:** funnel KPIs, recent signups
 - **CRM:** waitlist table, row → UserSheet (Profile / Attribution / Actions tabs), status transitions, Export CSV
 - **Campaigns:** stats view + detail sheet + QR generator + toggle active/inactive
 - **Events:** table + CreateEventDialog + KPI cards (`public.events`)
 - **Settings:** connection config, schema overview
 
-**Out of scope:** billing, Shopify integration, public API, multi-tenant, i18n, auth (internal tool — no login gate currently).
+**Out of scope:** billing, Shopify integration, public API, multi-tenant, i18n.
