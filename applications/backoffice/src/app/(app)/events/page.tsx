@@ -3,6 +3,7 @@ import { Calendar, CheckCircle, Clock, Zap } from 'lucide-react'
 import { computeEventStats, getEvents } from '@/lib/data/events'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { EventsClient } from '@/components/events/events-client'
+import { RealtimeEventsSync } from '@/components/events/realtime-events-sync'
 
 export const dynamic = 'force-dynamic'
 
@@ -11,23 +12,26 @@ export default async function EventsPage() {
   const stats = computeEventStats(events)
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight">Events</h1>
-        <p className="text-muted-foreground text-sm">
-          Fashion shows, expos, launches, and other marketing events
-        </p>
-      </div>
+    <>
+      <RealtimeEventsSync />
+      <div className="space-y-6">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight">Events</h1>
+          <p className="text-muted-foreground text-sm">
+            Fashion shows, expos, launches, and other marketing events
+          </p>
+        </div>
 
-      <div className="grid grid-cols-4 gap-4">
-        <KpiCard label="Total Events" value={stats.total} icon={Calendar} />
-        <KpiCard label="Active" value={stats.active} icon={Zap} highlight />
-        <KpiCard label="Upcoming" value={stats.upcoming} icon={Clock} />
-        <KpiCard label="Past" value={stats.past} icon={CheckCircle} />
-      </div>
+        <div className="grid grid-cols-4 gap-4">
+          <KpiCard label="Total Events" value={stats.total} icon={Calendar} />
+          <KpiCard label="Active" value={stats.active} icon={Zap} highlight />
+          <KpiCard label="Upcoming" value={stats.upcoming} icon={Clock} />
+          <KpiCard label="Past" value={stats.past} icon={CheckCircle} />
+        </div>
 
-      <EventsClient events={events} />
-    </div>
+        <EventsClient events={events} />
+      </div>
+    </>
   )
 }
 

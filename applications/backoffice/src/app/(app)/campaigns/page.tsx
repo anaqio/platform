@@ -3,6 +3,7 @@ import { Megaphone, TrendingUp, Users, Zap } from 'lucide-react'
 import { getCampaignStats } from '@/lib/data/campaigns'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { CampaignsClient } from '@/components/campaigns/campaigns-client'
+import { RealtimeCampaignsSync } from '@/components/campaigns/realtime-campaigns-sync'
 
 export const dynamic = 'force-dynamic'
 
@@ -23,25 +24,30 @@ export default async function CampaignsPage() {
       : null
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight">Campaigns</h1>
-        <p className="text-muted-foreground text-sm">Track and manage your acquisition campaigns</p>
-      </div>
+    <>
+      <RealtimeCampaignsSync />
+      <div className="space-y-6">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight">Campaigns</h1>
+          <p className="text-muted-foreground text-sm">
+            Track and manage your acquisition campaigns
+          </p>
+        </div>
 
-      <div className="grid grid-cols-4 gap-4">
-        <KpiCard label="Total Campaigns" value={total} icon={Megaphone} />
-        <KpiCard label="Active" value={active} icon={Zap} highlight />
-        <KpiCard label="Total Signups" value={totalSignups} icon={Users} />
-        <KpiCard
-          label="Avg Lead Score"
-          value={avgScore != null ? `${avgScore}` : '—'}
-          icon={TrendingUp}
-        />
-      </div>
+        <div className="grid grid-cols-4 gap-4">
+          <KpiCard label="Total Campaigns" value={total} icon={Megaphone} />
+          <KpiCard label="Active" value={active} icon={Zap} highlight />
+          <KpiCard label="Total Signups" value={totalSignups} icon={Users} />
+          <KpiCard
+            label="Avg Lead Score"
+            value={avgScore != null ? `${avgScore}` : '—'}
+            icon={TrendingUp}
+          />
+        </div>
 
-      <CampaignsClient campaigns={campaigns} />
-    </div>
+        <CampaignsClient campaigns={campaigns} />
+      </div>
+    </>
   )
 }
 
