@@ -9,7 +9,9 @@
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
     "test": "echo 'no tests yet'",
-    "clean": "rm -rf .next"
+    "clean": "rm -rf .next",
+    "db:push": "supabase db push",
+    "db:reset": "supabase db reset"
   },
   "devDependencies": {
     "@anaqio/eslint-config": "workspace:*",
