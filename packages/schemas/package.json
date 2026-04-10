@@ -1,0 +1,21 @@
+{
+  "name": "@anaqio/schemas",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@anaqio/tsconfig": "workspace:*",
+    "typescript": "^5"
+  }
+}
