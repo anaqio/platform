@@ -1,22 +1,16 @@
 /* TEAM */
 Site: Anaqio — AI Visual Studio for Fashion Commerce
-Company: Anaqio
-Founder: Amal AIT OUKHARAZ https://www.linkedin.com/in/aitoukhraz/
-Co-founder: Mohamed MOUGHAMIR https://www.linkedin.com/in/moughamir/
-Marketing: Zahir CHAIMAE https://shazo.anaqio.com
-Team: Anaqio Team
+Company: Anaqio SAS (est 2026)
+- Amal AIT OUKHARAZ (Founder/CEO) https://www.linkedin.com/in/aitoukhraz/
+- Mohamed MOUGHAMIR (Co-founder/CTO) https://www.linkedin.com/in/moughamir/
+
+/* SOCIAL */
 Twitter: https://twitter.com/anaqio
 LinkedIn: https://www.linkedin.com/company/anaqio
+Instagram: https://www.Instagram.com/anaqio_official
 
 /* TECHNOLOGIES */
 Standards: HTML5, CSS3, TypeScript, JSON-LD
-Framework: Next.js 16 (App Router), React 19
-Styling: Tailwind CSS, shadcn/ui, Prettier (Tailwind plugin)
-Auth/DB: Supabase (SSR)
-Testing: Playwright (@playwright/test)
-Tooling: ESLint, Husky, lint-staged
-Runtime/Package: Bun, Node 20+
-Hosting: Vercel
 
 /* THANKS */
-Thanks: Next.js, Supabase, Tailwind, Playwright, Vercel
+Thanks: Next.js, Supabase, Tailwind, Playwright, Vercel & Open Source Community
