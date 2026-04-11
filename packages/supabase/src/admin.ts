@@ -1,18 +1,18 @@
 import { createClient } from '@supabase/supabase-js'
+import type { SupabaseClient } from '@supabase/supabase-js'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function createAdminSupabaseClient<Database = any>(
+export function createAdminSupabaseClient<
+  Database,
+  SchemaName extends string & keyof Omit<Database, '__InternalSupabase'> =
+    'public' extends keyof Omit<Database, '__InternalSupabase'>
+      ? 'public'
+      : string & keyof Omit<Database, '__InternalSupabase'>,
+>(
   url: string,
   serviceRoleKey: string,
-  options?: {
-    schema?: string
-    auth?: { autoRefreshToken?: boolean; persistSession?: boolean }
-  },
-) {
-  const { schema, ...clientOptions } = options ?? {}
-  return createClient<Database>(url, serviceRoleKey, {
-    ...clientOptions,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ...(schema ? { db: { schema: schema as any } } : {}),
-  })
+  options?: { schema?: string },
+): SupabaseClient<Database, SchemaName> {
+  return createClient<Database, SchemaName>(url, serviceRoleKey, {
+    ...(options?.schema ? { db: { schema: options.schema as any } } : {}),
+  } as any)
 }

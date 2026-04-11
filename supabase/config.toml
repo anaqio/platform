@@ -40,8 +40,6 @@ port = 54324
 enabled = true
 file_size_limit = "50MiB"
 
-[storage.s3_protocol]
-enabled = true
 
 [auth]
 enabled = true

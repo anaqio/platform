@@ -1,3 +1,5 @@
 export { createBrowserSupabaseClient } from './client'
 export { createServerSupabaseClient } from './server'
 export { createAdminSupabaseClient } from './admin'
+export type { SupabaseClient } from '@supabase/supabase-js'
+export type { PostgrestResponse, PostgrestError } from '@supabase/supabase-js'

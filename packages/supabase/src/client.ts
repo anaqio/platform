@@ -1,13 +1,14 @@
 import { createBrowserClient } from '@supabase/ssr'
+import type { SupabaseClient } from '@supabase/supabase-js'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function createBrowserSupabaseClient<Database = any>(
-  url: string,
-  key: string,
-  options?: { schema?: string },
-) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return createBrowserClient<Database>(url, key, {
+export function createBrowserSupabaseClient<
+  Database,
+  SchemaName extends string & keyof Omit<Database, '__InternalSupabase'> =
+    'public' extends keyof Omit<Database, '__InternalSupabase'>
+      ? 'public'
+      : string & keyof Omit<Database, '__InternalSupabase'>,
+>(url: string, key: string, options?: { schema?: string }): SupabaseClient<Database, SchemaName> {
+  return createBrowserClient<Database, SchemaName>(url, key, {
     ...(options?.schema ? { db: { schema: options.schema as any } } : {}),
-  })
+  } as any)
 }
