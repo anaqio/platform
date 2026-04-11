@@ -6,7 +6,12 @@
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", "package.json", "packages/*/package.json", ".env*"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**"],
-      "env": ["SUPABASE_SERVICE_ROLE_KEY", "GOOGLE_AI_API_KEY"]
+      "env": [
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "GOOGLE_AI_API_KEY"
+      ]
     },
     "dev": {
       "cache": false,
