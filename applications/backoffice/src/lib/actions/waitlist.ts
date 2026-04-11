@@ -66,7 +66,7 @@ export async function exportWaitlistCSV(filters?: {
     return s.includes(',') || s.includes('"') || s.includes('\n') ? `"${s.replace(/"/g, '""')}"` : s
   }
 
-  const rows = data.map((u) =>
+  const rows = data.map((u: WaitlistUser) =>
     [
       u.email,
       u.full_name,

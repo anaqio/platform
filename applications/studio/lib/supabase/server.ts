@@ -5,7 +5,7 @@ import type { Database } from '@/types/supabase'
 
 export async function createClient() {
   const cookieStore = await cookies()
-  return createServerSupabaseClient<Database, 'studio'>(
+  return createServerSupabaseClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
     cookieStore,
