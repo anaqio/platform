@@ -13,27 +13,28 @@ import { useAnimationReady } from '@/hooks/use-animation-ready';
 
 export function VoobanHeroSection() {
   const t = useTranslations('landing.hero');
-  const { animated, tier } = useAnimationReady();
+  const { animated, tier, mounted } = useAnimationReady();
   const sectionRef = useRef<HTMLElement>(null);
 
   // Viewport pixel dimensions for Framer Motion (pure numbers — no CSS functions in useTransform)
   // Lazy initializers read from window on client; SSR gets safe defaults.
-  const [vw, setVw] = useState(() =>
-    typeof window !== 'undefined' ? window.innerWidth : 1920
-  );
-  const [vh, setVh] = useState(() =>
-    typeof window !== 'undefined' ? window.innerHeight : 1080
-  );
+  const [vw, setVw] = useState(1920);
+  const [vh, setVh] = useState(1080);
+
   useLayoutEffect(() => {
+    if (!mounted) return;
+    setVw(window.innerWidth);
+    setVh(window.innerHeight);
+
     const onResize = () => {
       setVw(window.innerWidth);
       setVh(window.innerHeight);
     };
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
-  }, []);
+  }, [mounted]);
 
-  const startW = Math.min(480, vw * 0.85);
+  const startW = Math.min(336, vw * 0.85);
   const startH = Math.min(640, vh * 0.7);
 
   const { scrollYProgress } = useScroll({
@@ -41,18 +42,15 @@ export function VoobanHeroSection() {
     offset: ['start start', 'end start'],
   });
 
-  // Video expansion — card → full viewport over first 50% of scroll
   const videoWidth = useTransform(scrollYProgress, [0, 0.5], [startW, vw]);
   const videoHeight = useTransform(scrollYProgress, [0, 0.5], [startH, vh]);
   const videoRadius = useTransform(scrollYProgress, [0, 0.5], [16, 0]);
   const videoY = useTransform(scrollYProgress, [0, 0.5], [0, -40]);
 
-  // Text fade out as video expands
   const eyebrowOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
   const ctaOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
   const wordmarkOpacity = useTransform(scrollYProgress, [0.3, 0.5], [1, 0]);
 
-  // Card inner elements fade during expansion
   const cardHeaderOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
   const cardTickerOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
 
@@ -78,7 +76,6 @@ export function VoobanHeroSection() {
           </span>
         </motion.div>
 
-        {/* ── Center: scroll-expand video container ── */}
         <div className="relative z-10 flex flex-1 items-center justify-center">
           <motion.div
             style={
@@ -97,16 +94,13 @@ export function VoobanHeroSection() {
             }
             className="relative overflow-hidden bg-[#0d0d0d] shadow-[0_32px_80px_rgba(0,0,0,0.4)]"
           >
-            {/* Card header — visible only before expansion */}
             <motion.div
               style={animated ? { opacity: cardHeaderOpacity } : {}}
               className="absolute left-0 right-0 top-0 z-20 flex items-center justify-between px-4 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40"
             >
-              <span>STUDIO</span>
+              <span>Atelier</span>
               <span>ANAQIO</span>
             </motion.div>
-
-            {/* Video fills the card */}
             <div className="absolute inset-0">
               <video
                 className="h-full w-full object-cover"
@@ -115,19 +109,19 @@ export function VoobanHeroSection() {
                 muted
                 playsInline
                 preload="metadata"
+                poster="/media/images/hero-poster.jpg"
               >
-                <source src="/videos/output-blurred.mp4" type="video/mp4" />
+                <source src="/media/videos/hero.mp4" type="video/mp4" />
               </video>
             </div>
 
-            {/* Scrolling label — visible only before expansion */}
             <motion.div
               style={animated ? { opacity: cardTickerOpacity } : {}}
-              className="absolute bottom-0 left-0 right-0 z-20 overflow-hidden bg-[#0d0d0d]/80 py-3 backdrop-blur-sm"
+              className="absolute bottom-0 left-0 right-0 z-20 overflow-hidden bg-[#fdfdfd]/80 py-3 text-neutral-900 backdrop-blur-sm"
             >
               <motion.div
-                className="flex whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.15em] text-white/40"
-                animate={{ x: [0, -400] }}
+                className="flex whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.15em] text-neutral-900"
+                animate={animated ? { x: [0, -400] } : {}}
                 transition={{
                   duration: 12,
                   repeat: Infinity,
@@ -136,7 +130,8 @@ export function VoobanHeroSection() {
               >
                 {Array.from({ length: 6 }, (_, i) => (
                   <span key={i} className="mr-8">
-                    Mode Anaqio &nbsp;·&nbsp; Mode Anaqio &nbsp;·&nbsp;
+                    Mode Anaqio &nbsp;·&nbsp; Atelier VestIa By ANAQIO
+                    &nbsp;·&nbsp;
                   </span>
                 ))}
               </motion.div>

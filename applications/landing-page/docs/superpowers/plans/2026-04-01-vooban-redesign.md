@@ -578,28 +578,23 @@ export function VoobanHeroSection() {
         </span>
       </motion.div>
 
-      {/* ── Center: floating video card ── */}
       <div className="relative z-20 flex flex-1 items-center justify-center px-6 py-8">
-        {/* Floating dark card containing video */}
         <motion.div
           initial={animated ? { opacity: 0, scale: 0.92, y: 20 } : false}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="relative overflow-hidden rounded-2xl bg-[#0d0d0d] shadow-[0_32px_80px_rgba(0,0,0,0.4)]"
-          style={{ width: 'min(480px, 90vw)', aspectRatio: '9/13' }}
+          style={{ width: 'min(246px, 80vw)', aspectRatio: '9/16' }}
         >
-          {/* Card header */}
           <div className="flex items-center justify-between px-4 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
-            <span>STUDIO</span>
+            <span>Atelier</span>
             <span>ANAQIO</span>
           </div>
 
-          {/* Video */}
           <div className="relative h-full overflow-hidden">
             <HeroVideoPlayer />
           </div>
 
-          {/* Card bottom: scrolling label */}
           <div className="absolute bottom-0 left-0 right-0 overflow-hidden bg-[#0d0d0d] py-3">
             <motion.div
               className="flex whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.15em] text-white/40"

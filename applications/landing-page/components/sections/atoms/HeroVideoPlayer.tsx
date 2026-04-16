@@ -7,12 +7,10 @@ import { useLazyVideo } from '@/hooks/use-lazy-video';
 import { cn } from '@/lib/utils';
 
 export function HeroVideoPlayer() {
-  // Video state
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
   const [showControls, setShowControls] = useState(false);
 
-  // Lazy video hook - loads when 10% visible with 200px margin
   const { containerRef, videoRef, shouldLoad, hasLoaded } = useLazyVideo({
     threshold: 0.1,
     rootMargin: '200px',
@@ -48,7 +46,6 @@ export function HeroVideoPlayer() {
         onMouseEnter={() => setShowControls(true)}
         onMouseLeave={() => setShowControls(false)}
       >
-        {/* Loading placeholder */}
         {!shouldLoad && (
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="flex flex-col items-center gap-3 text-muted-foreground/40">
@@ -60,7 +57,6 @@ export function HeroVideoPlayer() {
           </div>
         )}
 
-        {/* Video element with lazy loading */}
         {shouldLoad && (
           <>
             <video
@@ -72,14 +68,11 @@ export function HeroVideoPlayer() {
               playsInline
               preload="auto"
               onLoadedData={() => {}}
-              poster="/videos/hero-poster.jpg"
+              poster="/media/images/hero-poster.jpg"
             >
-              {/* Multiple sources for browser compatibility */}
-              <source src="/videos/output-blurred.mp4" type="video/mp4" />
+              <source src="/media/videos/hero.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-
-            {/* Video overlay controls */}
             <div
               className={cn(
                 'absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20',
@@ -87,7 +80,6 @@ export function HeroVideoPlayer() {
                 showControls || !isPlaying ? 'opacity-100' : 'opacity-0'
               )}
             >
-              {/* Top right controls */}
               <div className="absolute right-4 top-4 flex gap-2">
                 <button
                   onClick={toggleMute}
@@ -149,8 +141,6 @@ export function HeroVideoPlayer() {
                 </button>
               </div>
             </div>
-
-            {/* Play button overlay (center, when paused) */}
             {!isPlaying && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <button
@@ -164,8 +154,6 @@ export function HeroVideoPlayer() {
             )}
           </>
         )}
-
-        {/* Decorative border glow */}
         <div
           className={cn(
             'pointer-events-none absolute inset-0 rounded-2xl',

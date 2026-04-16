@@ -144,14 +144,13 @@ export default function AboutContent() {
             {...fadeIn(reduced, 0.2)}
           >
             <Image
-              src="/images/hero-model.png"
+              src="/media/images/hero-model.png"
               alt={t('hero.imageAlt')}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
               className="object-cover object-top"
               priority
             />
-            {/* Bottom gradient fade */}
             <div
               aria-hidden="true"
               className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent"
@@ -201,7 +200,7 @@ export default function AboutContent() {
               {...clipReveal(reduced, 0)}
             >
               <Image
-                src="/images/lookbook-1.png"
+                src="/media/images/lookbook-1.png"
                 alt={t('lookbook.1alt')}
                 fill
                 sizes="(max-width: 640px) 100vw, 42vw"
@@ -215,7 +214,7 @@ export default function AboutContent() {
               {...clipReveal(reduced, 0.15)}
             >
               <Image
-                src="/images/lookbook-2.png"
+                src="/media/images/lookbook-2.png"
                 alt={t('lookbook.2alt')}
                 fill
                 sizes="(max-width: 640px) 100vw, 58vw"
@@ -229,7 +228,7 @@ export default function AboutContent() {
               {...clipReveal(reduced, 0.3)}
             >
               <Image
-                src="/images/lookbook-3.png"
+                src="/media/images/lookbook-3.png"
                 alt={t('lookbook.3alt')}
                 fill
                 sizes="(max-width: 640px) 100vw, 58vw"

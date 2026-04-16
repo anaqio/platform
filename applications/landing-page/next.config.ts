@@ -33,6 +33,31 @@ const nextConfig = {
 
   // Security headers
   async headers() {
+    const isDev = process.env.NODE_ENV === 'development';
+    const scriptSrc = [
+      "'self'",
+      "'unsafe-inline'",
+      isDev ? "'unsafe-eval'" : '',
+      'https://www.googletagmanager.com',
+      'https://www.google-analytics.com',
+    ]
+      .filter(Boolean)
+      .join(' ');
+
+    const csp = [
+      "default-src 'self'",
+      "base-uri 'self'",
+      "object-src 'none'",
+      `script-src ${scriptSrc}`,
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "font-src 'self' https://fonts.gstatic.com",
+      "img-src 'self' data: blob: https://images.unsplash.com https://amal.anaqio.com https://avatars.githubusercontent.com",
+      "connect-src 'self' https://*.supabase.co https://www.google-analytics.com",
+      "frame-src 'self'",
+      "frame-ancestors 'none'",
+      'upgrade-insecure-requests',
+    ].join('; ');
+
     return [
       // Defense-in-depth: prevent indexing of legal mentions
       {
@@ -49,8 +74,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value:
-              "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://images.unsplash.com https://amal.anaqio.com https://avatars.githubusercontent.com; connect-src 'self' https://*.supabase.co https://www.google-analytics.com; frame-src 'self'; frame-ancestors 'none'; upgrade-insecure-requests;",
+            value: csp,
           },
           {
             key: 'Strict-Transport-Security',

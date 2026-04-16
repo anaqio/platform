@@ -2,7 +2,7 @@
   "name": "studio",
   "private": true,
   "scripts": {
-    "dev": "bunx next dev",
+    "dev": "next dev -p 3002",
     "build": "bunx next build",
     "start": "bunx next start",
     "lint": "bunx eslint .",

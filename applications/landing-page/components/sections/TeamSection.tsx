@@ -11,7 +11,7 @@ const TEAM_STATIC = [
   {
     name: 'Amal AIT OUKHARAZ',
     linkedin: 'https://www.linkedin.com/in/aitoukhraz/',
-    photo: '/images/amal-founder.png',
+    photo: '/media/images/people/amal-founder.png',
     initials: 'AA',
   },
   {

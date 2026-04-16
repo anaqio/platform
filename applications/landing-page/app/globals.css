@@ -1050,17 +1050,6 @@ body.has-sidebar {
   overflow: hidden;
 }
 
-.scroll-grid-scaler img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: inherit;
-}
-
 /* Mobile: hide outer edges, use 3 cols */
 @media (max-width: 600px) {
   .scroll-grid {
