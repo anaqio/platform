@@ -18,5 +18,5 @@ labels: enhancement
 
 <!-- Check COMPANY-OS.md for current Rocks before opening -->
 
-- [ ] Yes — relates to Rock: ******\_******
+- [ ] Yes — relates to Rock: **\*\***\_**\*\***
 - [ ] No — flagging for future planning

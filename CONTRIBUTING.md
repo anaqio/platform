@@ -80,6 +80,7 @@ supabase db push
 Migration filename format: `YYYYMMDDHHMMSS_<description>.sql`
 
 Schema ownership:
+
 - `studio.*` tables → only touch if working on studio features
 - `landing.*` tables → only touch if working on landing-page/backoffice features
 - `public.*` views → update when cross-schema queries change
@@ -105,8 +106,8 @@ TURBO_TELEMETRY_DISABLED=1 bunx turbo run build type-check
 
 Each app has its own `CLAUDE.md` with architecture details, absolute rules, and scope constraints. Read it before making changes to that app.
 
-| App | Guide |
-|-----|-------|
-| studio | `applications/studio/CLAUDE.md` |
+| App          | Guide                                 |
+| ------------ | ------------------------------------- |
+| studio       | `applications/studio/CLAUDE.md`       |
 | landing-page | `applications/landing-page/CLAUDE.md` |
-| backoffice | `applications/backoffice/CLAUDE.md` |
+| backoffice   | `applications/backoffice/CLAUDE.md`   |

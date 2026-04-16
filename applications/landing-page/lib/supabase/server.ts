@@ -1,8 +1,9 @@
 import { createServerSupabaseClient } from '@anaqio/supabase/server';
 import { cookies } from 'next/headers';
 
-import { env } from '@/lib/env';
 import type { Database } from '@/lib/types/database';
+
+import { env } from '@/lib/env';
 
 /**
  * Don't put this client in a global variable — create a new client within

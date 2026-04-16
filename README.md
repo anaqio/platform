@@ -41,6 +41,7 @@ Default ports: `studio` → 3000 · `backoffice` → 3001 · `landing-page` → 
 Each app has a `.env.example` — copy to `.env.local` and fill in secrets.
 
 Shared env vars across apps:
+
 ```
 NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY   # studio
@@ -73,11 +74,11 @@ bun run clean
 
 Single Supabase project with isolated schemas:
 
-| Schema    | Owned by      | Key tables                                      |
-|-----------|---------------|-------------------------------------------------|
-| `studio`  | studio app    | `profiles`, `preset_models`, `generations`      |
-| `landing` | landing-page  | `waitlist`, `campaigns`, `contact_submissions`  |
-| `public`  | shared        | Cross-schema views for backoffice               |
+| Schema    | Owned by     | Key tables                                     |
+| --------- | ------------ | ---------------------------------------------- |
+| `studio`  | studio app   | `profiles`, `preset_models`, `generations`     |
+| `landing` | landing-page | `waitlist`, `campaigns`, `contact_submissions` |
+| `public`  | shared       | Cross-schema views for backoffice              |
 
 Migrations live in `supabase/migrations/`. Run locally with `supabase start` from the `supabase/` directory.
 

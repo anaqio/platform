@@ -2,8 +2,8 @@
  * Base ESLint config for @anaqio packages (non-Next.js).
  * For Next.js apps, use `@anaqio/eslint-config/nextjs`.
  */
-import tseslint from 'typescript-eslint'
 import importPlugin from 'eslint-plugin-import'
+import tseslint from 'typescript-eslint'
 
 export default [
   ...tseslint.configs.recommended,

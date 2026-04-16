@@ -1,7 +1,8 @@
 import { createBrowserSupabaseClient } from '@anaqio/supabase/client';
 
-import { env } from '@/lib/env';
 import type { Database } from '@/lib/types/database';
+
+import { env } from '@/lib/env';
 
 export function createClient() {
   return createBrowserSupabaseClient<Database>(

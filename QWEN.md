@@ -50,10 +50,10 @@ TURBO_TELEMETRY_DISABLED=1 bunx turbo run dev --filter=studio
 
 ### Default Ports
 
-| App | Port |
-|-----|------|
-| studio | 3000 |
-| backoffice | 3001 |
+| App          | Port |
+| ------------ | ---- |
+| studio       | 3000 |
+| backoffice   | 3001 |
 | landing-page | 3002 |
 
 ### Workspace Commands
@@ -78,6 +78,7 @@ bun run clean
 ### Per-App Commands
 
 **studio:**
+
 ```bash
 cd applications/studio
 bun run dev           # next dev (Turbopack)
@@ -91,6 +92,7 @@ bun run clean         # rm -rf .next
 ```
 
 **landing-page:**
+
 ```bash
 cd applications/landing-page
 bun run dev           # next dev
@@ -103,6 +105,7 @@ bun run audit         # full brand/performance/supabase audit
 ```
 
 **backoffice:**
+
 ```bash
 cd applications/backoffice
 bun run dev           # next dev --turbopack -p 3001
@@ -119,6 +122,7 @@ bun run clean
 Each app has a `.env.example` — copy to `.env.local` and fill in secrets.
 
 ### studio
+
 ```
 NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
@@ -130,6 +134,7 @@ FAL_KEY
 ```
 
 ### landing-page
+
 ```
 NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY
@@ -140,6 +145,7 @@ BREVO_LIST_ID
 ```
 
 ### backoffice
+
 ```
 NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY
@@ -153,17 +159,17 @@ NEXT_PUBLIC_APP_URL=https://backoffice.anaqio.com
 
 ## Tech Stack
 
-| Concern | Tool | Notes |
-|---------|------|-------|
-| Runtime | Bun v1.3.10+ | Use `bun run` / `bunx` — never `npm`/`npx` |
-| Framework | Next.js 16 | App Router, React 19, React Compiler, Turbopack |
-| Styling | Tailwind CSS v4 | CSS-first via `@theme` in `globals.css` — no `tailwind.config.js` |
-| Components | shadcn/ui (new-york) | `tw-animate-css` not `tailwindcss-animate` |
-| DB/Auth | Supabase + `@supabase/ssr` | SSR cookie auth; 3-client pattern |
-| Formatting | Prettier | Runs on commit via lint-staged |
-| Commits | Conventional Commits | Enforced by commitlint + Husky |
-| CI | GitHub Actions | `ci.yml` on PRs, `main.yml` on merge |
-| Testing | Vitest (unit) + Playwright (e2e) | Per-app test directories |
+| Concern    | Tool                             | Notes                                                             |
+| ---------- | -------------------------------- | ----------------------------------------------------------------- |
+| Runtime    | Bun v1.3.10+                     | Use `bun run` / `bunx` — never `npm`/`npx`                        |
+| Framework  | Next.js 16                       | App Router, React 19, React Compiler, Turbopack                   |
+| Styling    | Tailwind CSS v4                  | CSS-first via `@theme` in `globals.css` — no `tailwind.config.js` |
+| Components | shadcn/ui (new-york)             | `tw-animate-css` not `tailwindcss-animate`                        |
+| DB/Auth    | Supabase + `@supabase/ssr`       | SSR cookie auth; 3-client pattern                                 |
+| Formatting | Prettier                         | Runs on commit via lint-staged                                    |
+| Commits    | Conventional Commits             | Enforced by commitlint + Husky                                    |
+| CI         | GitHub Actions                   | `ci.yml` on PRs, `main.yml` on merge                              |
+| Testing    | Vitest (unit) + Playwright (e2e) | Per-app test directories                                          |
 
 ---
 
@@ -171,21 +177,21 @@ NEXT_PUBLIC_APP_URL=https://backoffice.anaqio.com
 
 Single Supabase project with isolated schemas:
 
-| Schema | Owned by | Key tables |
-|--------|----------|------------|
-| `studio` | studio app | `profiles`, `preset_models`, `generations` |
+| Schema    | Owned by     | Key tables                                     |
+| --------- | ------------ | ---------------------------------------------- |
+| `studio`  | studio app   | `profiles`, `preset_models`, `generations`     |
 | `landing` | landing-page | `waitlist`, `campaigns`, `contact_submissions` |
-| `public` | shared | Cross-schema views for backoffice |
+| `public`  | shared       | Cross-schema views for backoffice              |
 
 ### Supabase Client Pattern
 
 Three factory functions in `@anaqio/supabase`:
 
-| Export | Factory | Use when |
-|--------|---------|----------|
+| Export                    | Factory                         | Use when                           |
+| ------------------------- | ------------------------------- | ---------------------------------- |
 | `@anaqio/supabase/client` | `createBrowserSupabaseClient()` | Client components, real-time, auth |
-| `@anaqio/supabase/server` | `createServerSupabaseClient()` | SSR cookie auth, Server Components |
-| `@anaqio/supabase/admin` | `createAdminSupabaseClient()` | Service role — bypasses RLS |
+| `@anaqio/supabase/server` | `createServerSupabaseClient()`  | SSR cookie auth, Server Components |
+| `@anaqio/supabase/admin`  | `createAdminSupabaseClient()`   | Service role — bypasses RLS        |
 
 Each app wraps these in thin `lib/supabase/` files that inject correct env vars and schema.
 
@@ -203,28 +209,30 @@ supabase db push                       # push to remote (after review)
 
 ## Hard Constraints (Absolute Rules)
 
-| Rule | Description |
-|------|-------------|
+| Rule | Description                                                         |
+| ---- | ------------------------------------------------------------------- |
 | R-01 | Never `createClient()` inline — use factory from `@anaqio/supabase` |
-| R-02 | Never expose `SUPABASE_SERVICE_ROLE_KEY` to client |
-| R-03 | Never `select('*')` in Supabase queries — name columns explicitly |
-| R-04 | Never disable RLS |
-| R-05 | Never use `tailwindcss-animate` — use `tw-animate-css` |
-| R-06 | Never use `forwardRef` — React 19 ref-as-prop |
-| R-07 | Never hardcode env vars — use `.env.local` |
-| R-08 | Never commit secrets |
+| R-02 | Never expose `SUPABASE_SERVICE_ROLE_KEY` to client                  |
+| R-03 | Never `select('*')` in Supabase queries — name columns explicitly   |
+| R-04 | Never disable RLS                                                   |
+| R-05 | Never use `tailwindcss-animate` — use `tw-animate-css`              |
+| R-06 | Never use `forwardRef` — React 19 ref-as-prop                       |
+| R-07 | Never hardcode env vars — use `.env.local`                          |
+| R-08 | Never commit secrets                                                |
 
 ---
 
 ## Code Style
 
 ### Files & Naming
+
 - **kebab-case:** `login-form.tsx`, `use-auth.ts`
 - **PascalCase:** component exports, type exports
 - **Hooks:** `use-*` prefix in `hooks/` directory
 - **Server Actions:** `*-action.ts` in `lib/actions/`
 
 ### Imports (ESLint enforced order)
+
 1. Built-in (`path`, `fs`, `crypto`)
 2. External (`@/*`, `next/*`, `react`, `supabase`)
 3. Internal packages (`@anaqio/*`)
@@ -233,6 +241,7 @@ supabase db push                       # push to remote (after review)
 6. Types (`import type`)
 
 ### TypeScript
+
 - Strict mode enabled
 - Prefer `const`, never `var`
 - Unused vars: prefix with `_`
@@ -242,11 +251,13 @@ supabase db push                       # push to remote (after review)
 - Use `eqeqeq` (strict equality)
 
 ### Formatting (Prettier)
+
 - No semicolons, single quotes, 2-space indent
 - Trailing commas (es5), 100 char width, LF endings
 - Tailwind classes auto-sorted by `prettier-plugin-tailwindcss`
 
 ### React / Next.js
+
 - Server Components by default; add `'use client'` only when needed
 - No `forwardRef` (React 19 uses ref-as-prop)
 - Lazy-import heavy components: `dynamic(() => ..., { ssr: false })`
@@ -254,6 +265,7 @@ supabase db push                       # push to remote (after review)
 - Async request APIs: `await cookies()`, `await headers()`, `await params`, `await searchParams`
 
 ### Console & Error Handling
+
 - `console.warn` and `console.error` only (no `console.log`)
 - Supabase errors: `throw new Error(\`[table.operation] ${error.message}\`)`
 - Server Actions: use Zod validation, return typed results
@@ -264,6 +276,7 @@ supabase db push                       # push to remote (after review)
 ## Git Workflow
 
 ### Branching
+
 ```
 main              Production-ready. Protected. Merges deploy automatically.
 feat/<ticket>     New features
@@ -273,6 +286,7 @@ refactor/<scope>  Code restructuring without behavior change
 ```
 
 ### Commit Messages (Conventional Commits)
+
 ```
 feat(studio): add batch generation support
 fix(auth): handle expired refresh token
@@ -282,6 +296,7 @@ docs: update CONTRIBUTING with new dev port
 ```
 
 ### PR Checklist
+
 - [ ] `bun run type-check` passes in all affected apps
 - [ ] `bun run lint` passes
 - [ ] No `.env` files committed
@@ -305,6 +320,7 @@ docs: update CONTRIBUTING with new dev port
 ## Out of Scope (Current Quarter)
 
 Refuse these features in code review:
+
 - Batch generation · lookbook editor · billing/paywall
 - Shopify integration · admin dashboard (studio)
 - Social sharing · A/B testing
@@ -315,23 +331,24 @@ Refuse these features in code review:
 
 ## Key Architectural Differences
 
-| Concern | studio | landing-page | backoffice |
-|---------|--------|--------------|------------|
-| State management | Zustand stores | Framer Motion + React state | React state + server components |
-| Auth | Supabase email + Google OAuth | SSR session refresh | None (internal tool) |
-| i18n | None | next-intl + Crowdin (FR primary) | None |
-| Email | None | Brevo (waitlist automation) | None |
-| Video | None | Remotion compositions | None |
-| Inference | 3 providers (HF Spaces, fal.ai, Gemini) | None | None |
-| Realtime | Supabase Realtime (generation status) | None | None |
-| Design system | shadcn/ui defaults | Omnizya free-atom composition | shadcn/ui defaults |
-| Brand colors | Standard shadcn theming | Navy/Blue/Gold (strict) | Standard shadcn theming |
+| Concern          | studio                                  | landing-page                     | backoffice                      |
+| ---------------- | --------------------------------------- | -------------------------------- | ------------------------------- |
+| State management | Zustand stores                          | Framer Motion + React state      | React state + server components |
+| Auth             | Supabase email + Google OAuth           | SSR session refresh              | None (internal tool)            |
+| i18n             | None                                    | next-intl + Crowdin (FR primary) | None                            |
+| Email            | None                                    | Brevo (waitlist automation)      | None                            |
+| Video            | None                                    | Remotion compositions            | None                            |
+| Inference        | 3 providers (HF Spaces, fal.ai, Gemini) | None                             | None                            |
+| Realtime         | Supabase Realtime (generation status)   | None                             | None                            |
+| Design system    | shadcn/ui defaults                      | Omnizya free-atom composition    | shadcn/ui defaults              |
+| Brand colors     | Standard shadcn theming                 | Navy/Blue/Gold (strict)          | Standard shadcn theming         |
 
 ---
 
 ## AI Agent Context
 
 Both `studio` and `landing-page` have `.agents/` directories with:
+
 - `skills/` — domain context files (supabase, inference, brand, testing)
 - `steering/` — architecture and schema context
 - `hooks/` — pre-task and post-task instructions
@@ -354,13 +371,14 @@ Load skill files on demand for domain context:
 
 Each app deploys independently to Vercel. Merges to `main` trigger automatic deployments.
 
-| App | Vercel project | Root Directory |
-|-----|----------------|----------------|
-| studio | studio | `applications/studio` |
-| landing-page | landing-page | `applications/landing-page` |
-| backoffice | backoffice | `applications/backoffice` |
+| App          | Vercel project | Root Directory              |
+| ------------ | -------------- | --------------------------- |
+| studio       | studio         | `applications/studio`       |
+| landing-page | landing-page   | `applications/landing-page` |
+| backoffice   | backoffice     | `applications/backoffice`   |
 
 ### Studio Function Timeout
+
 The AI generation endpoint requires 300s maxDuration. `applications/studio/vercel.json` sets this — verify it remains committed after any restructuring.
 
 ---
@@ -370,6 +388,7 @@ The AI generation endpoint requires 300s maxDuration. `applications/studio/verce
 See `docs/COMPANY-OS.md` for the full operating system (V/TO, Rocks, Scorecard, L10, ADRs, Build vs Buy).
 
 ### Key Decisions (ADRs)
+
 - HF Spaces over fal.ai (no payment method yet)
 - Supabase over Firebase (SSR cookie auth, Postgres, Realtime)
 - Zustand over Redux for studio state (minimal boilerplate)

@@ -6,7 +6,10 @@
     ".": "./index.mjs",
     "./nextjs": "./nextjs.mjs"
   },
-  "files": ["index.mjs", "nextjs.mjs"],
+  "files": [
+    "index.mjs",
+    "nextjs.mjs"
+  ],
   "peerDependencies": {
     "@next/eslint-plugin-next": ">=14",
     "eslint": ">=9",
