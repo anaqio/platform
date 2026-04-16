@@ -11,13 +11,13 @@ const TEAM_STATIC = [
   {
     name: 'Amal AIT OUKHARAZ',
     linkedin: 'https://www.linkedin.com/in/aitoukhraz/',
-    photo: '/media/images/people/amal-founder.png',
+    photo: '/media/images/people/amal-ait-oukharaz-founder.png',
     initials: 'AA',
   },
   {
     name: 'Mohamed MOUGHAMIR',
     linkedin: 'https://www.linkedin.com/in/moughamir/',
-    photo: 'https://avatars.githubusercontent.com/u/8163598?v=4',
+    photo: '/media/images/people/mohamed-moughamir-cofounder.jpg',
     initials: 'MM',
   },
 ];
@@ -34,7 +34,6 @@ export function TeamSection() {
       aria-labelledby="team-heading"
       className="vb-blue relative flex min-h-[100dvh] flex-col overflow-hidden"
     >
-      {/* Header */}
       <div className="relative z-10 px-8 pb-10 pt-16 text-center md:px-16">
         <motion.span
           initial={animated ? { opacity: 0, y: 10 } : false}
@@ -58,7 +57,6 @@ export function TeamSection() {
         </motion.h2>
       </div>
 
-      {/* Cards — fill remaining height */}
       <div className="grid flex-1 grid-cols-1 sm:grid-cols-2">
         {TEAM_STATIC.map((member, i) => (
           <motion.div
@@ -69,13 +67,12 @@ export function TeamSection() {
             transition={{ duration: 0.8, delay: i * 0.15 }}
             className="group relative min-h-[50dvh] overflow-hidden sm:min-h-0"
           >
-            {/* Photo */}
             {member.photo ? (
               <Image
                 src={member.photo}
                 alt={member.name}
                 fill
-                className="object-cover grayscale transition-[filter] duration-700 group-hover:grayscale-0"
+                className="grayscale-50 object-cover transition-all duration-1000 ease-in-out hover:scale-110 group-hover:grayscale-0"
                 sizes="(max-width: 640px) 100vw, 50vw"
               />
             ) : (
@@ -84,16 +81,13 @@ export function TeamSection() {
               </div>
             )}
 
-            {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 
-            {/* Gold accent bar */}
             <div
               className="absolute left-0 top-0 h-1 w-16 bg-[#D4AF37] transition-all duration-500 group-hover:w-32"
               aria-hidden="true"
             />
 
-            {/* Content */}
             <div className="absolute inset-x-0 bottom-0 z-10 p-8">
               <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.25em] text-[#D4AF37]">
                 {members[i]?.role}

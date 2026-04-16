@@ -31,7 +31,7 @@ export const getAboutTeam = (t: (key: string) => string): TeamI[] => [
       role: t('founder.amal.role'),
       bio: t('founder.amal.bio'),
       linkedin: 'https://www.linkedin.com/in/aitoukhraz/',
-      photo: '/images/amal-founder.png',
+      photo: '/media/images/people/amal-ait-oukharaz-founder.png',
       initials: 'AA',
     },
     TEAM_FORMAT
@@ -44,7 +44,7 @@ export const getAboutTeam = (t: (key: string) => string): TeamI[] => [
       linkedin: 'https://www.linkedin.com/in/moughamir/',
       github: 'https://github.com/moughamir',
       twitter: 'https://x.com/omnizya',
-      photo: 'https://avatars.githubusercontent.com/u/8163598?v=4',
+      photo: '/media/images/people/mohamed-moughamir-cofounder.png',
       initials: 'MM',
     },
     TEAM_FORMAT

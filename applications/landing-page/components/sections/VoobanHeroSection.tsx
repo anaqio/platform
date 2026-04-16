@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { ScrollLink } from '@/components/ui/scroll-link';
 import { useAnimationReady } from '@/hooks/use-animation-ready';
+import { AnaqioTypographyLogo } from '../ui/anaqio-typography-logo';
 
 export function VoobanHeroSection() {
   const t = useTranslations('landing.hero');
@@ -58,7 +59,7 @@ export function VoobanHeroSection() {
     <section
       ref={sectionRef}
       aria-labelledby="hero-heading"
-      className="relative h-[250vh] bg-[#2B3AE7]"
+      className="relative h-[250vh] bg-gradient-to-b from-[#2b548e] from-25% via-10% to-[#b9c1c7] to-30%"
     >
       <div className="sticky top-0 flex h-screen w-full flex-col items-center overflow-hidden">
         <h1 id="hero-heading" className="sr-only">
@@ -164,12 +165,11 @@ export function VoobanHeroSection() {
           </Button>
         </motion.div>
 
-        {/* ── ANAQIO logo — absolute bottom, fades with scroll ── */}
         <motion.div
           style={animated ? { opacity: wordmarkOpacity } : {}}
-          className="pointer-events-none absolute bottom-8 left-0 right-0 z-20 flex justify-center"
+          className="pointer-events-none absolute -bottom-5 left-0 right-0 -z-20 flex justify-center"
         >
-          <AnaqioLogo theme="dark" size={64} />
+          <AnaqioTypographyLogo variant="outline" />
         </motion.div>
       </div>
     </section>
