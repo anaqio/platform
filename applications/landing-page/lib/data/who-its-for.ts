@@ -1,6 +1,6 @@
-import { Briefcase, LayoutGrid, Palette, Store } from 'lucide-react';
+import { Briefcase, LayoutGrid, Palette, Store } from 'lucide-react'
 
-import type { FeatureItem } from '@/lib/data/types';
+import type { FeatureItem } from '@/lib/data/types'
 
 export const WhoItsForSectionText = {
   eyebrow: "Who It's For",
@@ -33,4 +33,4 @@ export const WhoItsForSectionText = {
     'Lightning-fast asset rendering',
     'Tailored brand parameters',
   ],
-} as const;
+} as const

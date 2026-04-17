@@ -1,26 +1,21 @@
-import {
-  AbsoluteFill,
-  interpolate,
-  useCurrentFrame,
-  useVideoConfig,
-} from 'remotion';
+import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from 'remotion'
 
-import { COLORS, FONTS } from '../lib/brand';
-import { fadeIn, fadeOut, slideUp } from '../lib/helpers';
-import { SCENES } from '../lib/timing';
-import { UploadUI } from '../ui/UploadUI';
+import { COLORS, FONTS } from '../lib/brand'
+import { fadeIn, fadeOut, slideUp } from '../lib/helpers'
+import { SCENES } from '../lib/timing'
+import { UploadUI } from '../ui/UploadUI'
 
 export function SceneUpload() {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const local = Math.max(0, frame - SCENES.upload.start);
-  const sceneDur = SCENES.upload.end - SCENES.upload.start;
+  const frame = useCurrentFrame()
+  const { fps } = useVideoConfig()
+  const local = Math.max(0, frame - SCENES.upload.start)
+  const sceneDur = SCENES.upload.end - SCENES.upload.start
 
-  const opacity = fadeIn(local, 0, 20) * fadeOut(local, sceneDur - 20, 15);
+  const opacity = fadeIn(local, 0, 20) * fadeOut(local, sceneDur - 20, 15)
   const uploadProgress = interpolate(local, [30, 220], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
-  });
+  })
 
   return (
     <AbsoluteFill
@@ -66,5 +61,5 @@ export function SceneUpload() {
         <UploadUI progress={uploadProgress} scale={1} />
       </div>
     </AbsoluteFill>
-  );
+  )
 }

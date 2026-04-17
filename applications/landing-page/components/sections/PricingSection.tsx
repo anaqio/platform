@@ -1,14 +1,14 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { motion } from 'framer-motion'
+import { Check } from 'lucide-react'
 
-import { useAnimationReady } from '@/hooks/use-animation-ready';
-import { ease } from '@/lib/data/motion';
-import { PRICING_TIERS } from '@/lib/data/pricing-section';
+import { useAnimationReady } from '@/hooks/use-animation-ready'
+import { ease } from '@/lib/data/motion'
+import { PRICING_TIERS } from '@/lib/data/pricing-section'
 
 export function PricingSection() {
-  const { animated, reduced } = useAnimationReady();
+  const { animated, reduced } = useAnimationReady()
 
   return (
     <section
@@ -35,11 +35,7 @@ export function PricingSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: animated ? i * 0.1 : 0 }}
-            whileHover={
-              animated
-                ? { scale: 1.02, y: -8, transition: { duration: 0.3, ease } }
-                : {}
-            }
+            whileHover={animated ? { scale: 1.02, y: -8, transition: { duration: 0.3, ease } } : {}}
             className={`group relative flex flex-col rounded-xl border transition-all ${
               tier.highlighted
                 ? 'border-white/20 bg-white text-[#2B3AE7]'
@@ -57,34 +53,20 @@ export function PricingSection() {
             <div
               className="flex flex-col gap-4 border-b p-6"
               style={{
-                borderColor: tier.highlighted
-                  ? 'rgba(0,0,0,0.1)'
-                  : 'rgba(255,255,255,0.1)',
+                borderColor: tier.highlighted ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)',
               }}
             >
-              <h3
-                className={`text-xl font-bold ${
-                  tier.highlighted ? '' : 'text-white'
-                }`}
-              >
+              <h3 className={`text-xl font-bold ${tier.highlighted ? '' : 'text-white'}`}>
                 {tier.name}
               </h3>
-              <p
-                className={`text-sm ${
-                  tier.highlighted ? 'text-[#2B3AE7]/60' : 'text-white/60'
-                }`}
-              >
+              <p className={`text-sm ${tier.highlighted ? 'text-[#2B3AE7]/60' : 'text-white/60'}`}>
                 {tier.description}
               </p>
 
               <div className="flex items-baseline gap-1">
                 {typeof tier.price === 'number' ? (
                   <>
-                    <span
-                      className={`text-4xl font-bold ${
-                        tier.highlighted ? '' : 'text-white'
-                      }`}
-                    >
+                    <span className={`text-4xl font-bold ${tier.highlighted ? '' : 'text-white'}`}>
                       {tier.price.toLocaleString()}
                     </span>
                     <span
@@ -96,11 +78,7 @@ export function PricingSection() {
                     </span>
                   </>
                 ) : (
-                  <span
-                    className={`text-3xl font-bold ${
-                      tier.highlighted ? '' : 'text-white'
-                    }`}
-                  >
+                  <span className={`text-3xl font-bold ${tier.highlighted ? '' : 'text-white'}`}>
                     {tier.price}
                   </span>
                 )}
@@ -144,5 +122,5 @@ export function PricingSection() {
         ))}
       </div>
     </section>
-  );
+  )
 }

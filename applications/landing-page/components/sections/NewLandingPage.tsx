@@ -1,98 +1,66 @@
-'use client';
+'use client'
 
-import dynamic from 'next/dynamic';
-import { useTranslations } from 'next-intl';
+import dynamic from 'next/dynamic'
+import { useTranslations } from 'next-intl'
 
-import { VoobanHeroSection } from './VoobanHeroSection';
+import { VoobanHeroSection } from './VoobanHeroSection'
 
-import { MenuSidebar } from '@/components/layout/MenuSidebar';
-import { AtelierForm } from '@/components/sections/waitlist/atelier-form';
-import { BackButton } from '@/components/ui/back-button';
+import { MenuSidebar } from '@/components/layout/MenuSidebar'
+import { AtelierForm } from '@/components/sections/waitlist/atelier-form'
+import { BackButton } from '@/components/ui/back-button'
 // Below-fold sections: dynamic imports for code-splitting (ssr: true for SEO)
 const MarqueeSection = dynamic(
-  () =>
-    import('@/components/sections/MarqueeSection').then(
-      (mod) => mod.MarqueeSection
-    ),
+  () => import('@/components/sections/MarqueeSection').then((mod) => mod.MarqueeSection),
   { ssr: true }
-);
+)
 const ProblemSection = dynamic(
-  () =>
-    import('@/components/sections/ProblemSection').then(
-      (mod) => mod.ProblemSection
-    ),
+  () => import('@/components/sections/ProblemSection').then((mod) => mod.ProblemSection),
   { ssr: true }
-);
+)
 const SolutionSection = dynamic(
-  () =>
-    import('@/components/sections/SolutionSection').then(
-      (mod) => mod.SolutionSection
-    ),
+  () => import('@/components/sections/SolutionSection').then((mod) => mod.SolutionSection),
   { ssr: true }
-);
+)
 const FeaturesSection = dynamic(
-  () =>
-    import('@/components/sections/FeaturesSection').then(
-      (mod) => mod.FeaturesSection
-    ),
+  () => import('@/components/sections/FeaturesSection').then((mod) => mod.FeaturesSection),
   { ssr: true }
-);
+)
 const ResultsSection = dynamic(
-  () =>
-    import('@/components/sections/ResultsSection').then(
-      (mod) => mod.ResultsSection
-    ),
+  () => import('@/components/sections/ResultsSection').then((mod) => mod.ResultsSection),
   { ssr: true }
-);
+)
 const SegmentsSection = dynamic(
-  () =>
-    import('@/components/sections/SegmentsSection').then(
-      (mod) => mod.SegmentsSection
-    ),
+  () => import('@/components/sections/SegmentsSection').then((mod) => mod.SegmentsSection),
   { ssr: true }
-);
+)
 const HowItWorksSection = dynamic(
-  () =>
-    import('@/components/sections/HowItWorksSection').then(
-      (mod) => mod.HowItWorksSection
-    ),
+  () => import('@/components/sections/HowItWorksSection').then((mod) => mod.HowItWorksSection),
   { ssr: true }
-);
+)
 const WhyAnaqioSection = dynamic(
-  () =>
-    import('@/components/sections/WhyAnaqioSection').then(
-      (mod) => mod.WhyAnaqioSection
-    ),
+  () => import('@/components/sections/WhyAnaqioSection').then((mod) => mod.WhyAnaqioSection),
   { ssr: true }
-);
+)
 const VisionSection = dynamic(
-  () =>
-    import('@/components/sections/VisionSection').then(
-      (mod) => mod.VisionSection
-    ),
+  () => import('@/components/sections/VisionSection').then((mod) => mod.VisionSection),
   { ssr: true }
-);
+)
 const TeamSection = dynamic(
-  () =>
-    import('@/components/sections/TeamSection').then((mod) => mod.TeamSection),
+  () => import('@/components/sections/TeamSection').then((mod) => mod.TeamSection),
   { ssr: true }
-);
+)
 const ScrollGridSection = dynamic(
-  () =>
-    import('@/components/sections/ScrollGridSection').then(
-      (mod) => mod.ScrollGridSection
-    ),
+  () => import('@/components/sections/ScrollGridSection').then((mod) => mod.ScrollGridSection),
   { ssr: true }
-);
+)
 
-const Footer = dynamic(
-  () => import('@/components/layout/Footer').then((mod) => mod.Footer),
-  { ssr: true }
-);
+const Footer = dynamic(() => import('@/components/layout/Footer').then((mod) => mod.Footer), {
+  ssr: true,
+})
 
 export function NewLandingPage() {
-  const t = useTranslations('earlyAccess');
-  const tAtelier = useTranslations('atelierInvitation');
+  const t = useTranslations('earlyAccess')
+  const tAtelier = useTranslations('atelierInvitation')
   return (
     <div className="flex w-full flex-col">
       <MenuSidebar />
@@ -111,10 +79,7 @@ export function NewLandingPage() {
       <VisionSection />
       <TeamSection />
       <>
-        <section
-          id="final-cta"
-          className="vb-white relative overflow-hidden px-8 py-24 md:px-16"
-        >
+        <section id="final-cta" className="vb-white relative overflow-hidden px-8 py-24 md:px-16">
           <div className="mx-auto w-full max-w-7xl">
             <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-[1fr_520px]">
               {/* Left — copy */}
@@ -130,13 +95,8 @@ export function NewLandingPage() {
 
                 <h1 className="font-display text-5xl font-bold leading-[0.92] tracking-tight text-black sm:text-6xl lg:text-7xl">
                   {t('hero.titleLine1')} <br />
-                  <span className="text-[#2B3AE7]">
-                    {t('hero.titleGradient')}
-                  </span>{' '}
-                  <br />
-                  <span className="font-normal italic">
-                    {t('hero.titleLine3')}
-                  </span>
+                  <span className="text-[#2B3AE7]">{t('hero.titleGradient')}</span> <br />
+                  <span className="font-normal italic">{t('hero.titleLine3')}</span>
                 </h1>
 
                 <p className="max-w-md text-base leading-relaxed text-black/60 sm:text-lg">
@@ -145,18 +105,16 @@ export function NewLandingPage() {
 
                 {/* Stats — compact horizontal row */}
                 <div className="grid grid-cols-2 gap-6 border-t border-black/10 pt-8 sm:grid-cols-4">
-                  {(['speed', 'cost', 'creative', 'platform'] as const).map(
-                    (key) => (
-                      <div key={key} className="space-y-1">
-                        <div className="font-display text-3xl font-bold tracking-tighter text-black">
-                          {t(`stats.${key}.num`)}
-                        </div>
-                        <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#2B3AE7]/80">
-                          {t(`stats.${key}.label`)}
-                        </div>
+                  {(['speed', 'cost', 'creative', 'platform'] as const).map((key) => (
+                    <div key={key} className="space-y-1">
+                      <div className="font-display text-3xl font-bold tracking-tighter text-black">
+                        {t(`stats.${key}.num`)}
                       </div>
-                    )
-                  )}
+                      <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#2B3AE7]/80">
+                        {t(`stats.${key}.label`)}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -197,5 +155,5 @@ export function NewLandingPage() {
 
       <Footer />
     </div>
-  );
+  )
 }

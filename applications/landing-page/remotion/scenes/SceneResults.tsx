@@ -1,26 +1,21 @@
-import {
-  AbsoluteFill,
-  interpolate,
-  useCurrentFrame,
-  useVideoConfig,
-} from 'remotion';
+import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from 'remotion'
 
-import { COLORS, FONTS } from '../lib/brand';
-import { fadeIn, fadeOut, slideUp } from '../lib/helpers';
-import { SCENES } from '../lib/timing';
-import { ResultsUI } from '../ui/ResultsUI';
+import { COLORS, FONTS } from '../lib/brand'
+import { fadeIn, fadeOut, slideUp } from '../lib/helpers'
+import { SCENES } from '../lib/timing'
+import { ResultsUI } from '../ui/ResultsUI'
 
 export function SceneResults() {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const local = Math.max(0, frame - SCENES.results.start);
-  const sceneDur = SCENES.results.end - SCENES.results.start;
+  const frame = useCurrentFrame()
+  const { fps } = useVideoConfig()
+  const local = Math.max(0, frame - SCENES.results.start)
+  const sceneDur = SCENES.results.end - SCENES.results.start
 
-  const opacity = fadeIn(local, 0, 20) * fadeOut(local, sceneDur - 20, 15);
+  const opacity = fadeIn(local, 0, 20) * fadeOut(local, sceneDur - 20, 15)
   const revealProgress = interpolate(local, [20, 280], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
-  });
+  })
 
   return (
     <AbsoluteFill
@@ -64,5 +59,5 @@ export function SceneResults() {
         <ResultsUI revealProgress={revealProgress} scale={1} />
       </div>
     </AbsoluteFill>
-  );
+  )
 }

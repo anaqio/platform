@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import {
   AnimatePresence,
@@ -7,10 +7,10 @@ import {
   useTransform,
   animate,
   useMotionValueEvent,
-} from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+} from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 
-import { usePathname } from '@/i18n/routing';
+import { usePathname } from '@/i18n/routing'
 
 /**
  * Dispatched on the window BEFORE router.push() is called so the bar can
@@ -20,7 +20,7 @@ import { usePathname } from '@/i18n/routing';
  * Import and dispatch this from usePageTransition or any imperative
  * navigation call site.
  */
-export const NAV_START_EVENT = 'anaqio:nav:start' as const;
+export const NAV_START_EVENT = 'anaqio:nav:start' as const
 
 /**
  * Thin gradient progress bar at the top of the viewport.
@@ -35,99 +35,96 @@ export const NAV_START_EVENT = 'anaqio:nav:start' as const;
  * post-render flash.
  */
 export function NavigationProgress() {
-  const pathname = usePathname();
-  const progress = useMotionValue(0);
-  const progressPercent = useTransform(progress, (v) => `${Math.round(v)}%`);
+  const pathname = usePathname()
+  const progress = useMotionValue(0)
+  const progressPercent = useTransform(progress, (v) => `${Math.round(v)}%`)
 
-  const [visible, setVisible] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const animControls = useRef<{ stop: () => void } | null>(null);
-  const prevPathname = useRef(pathname);
-  const hideTimer = useRef<NodeJS.Timeout | undefined>(undefined);
-  const isNavigating = useRef(false);
+  const [visible, setVisible] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const animControls = useRef<{ stop: () => void } | null>(null)
+  const prevPathname = useRef(pathname)
+  const hideTimer = useRef<NodeJS.Timeout | undefined>(undefined)
+  const isNavigating = useRef(false)
 
   // Synchronize aria-valuenow directly to DOM to avoid React re-renders on tick
   useMotionValueEvent(progress, 'change', (latest) => {
     if (containerRef.current) {
-      containerRef.current.setAttribute(
-        'aria-valuenow',
-        Math.round(latest).toString()
-      );
+      containerRef.current.setAttribute('aria-valuenow', Math.round(latest).toString())
     }
-  });
+  })
 
   // ── Helpers ──────────────────────────────────────────────────────────
   const animateTo = (target: number, onDone?: () => void) => {
-    animControls.current?.stop();
+    animControls.current?.stop()
     animControls.current = animate(progress, target, {
       duration: 0.4,
       ease: 'easeOut',
       onComplete: onDone,
-    });
-  };
+    })
+  }
 
   const complete = () => {
-    isNavigating.current = false;
+    isNavigating.current = false
     animateTo(100, () => {
       hideTimer.current = setTimeout(() => {
-        setVisible(false);
-        progress.set(0);
-      }, 380);
-    });
-  };
+        setVisible(false)
+        progress.set(0)
+      }, 380)
+    })
+  }
 
   // ── Phase 1: listen for navigation intent (before route commit) ───────
   useEffect(() => {
     const onNavStart = () => {
-      if (isNavigating.current) return; // already in progress
-      isNavigating.current = true;
+      if (isNavigating.current) return // already in progress
+      isNavigating.current = true
 
-      animControls.current?.stop();
-      clearTimeout(hideTimer.current);
+      animControls.current?.stop()
+      clearTimeout(hideTimer.current)
 
-      progress.set(0);
+      progress.set(0)
 
-      setVisible(true);
+      setVisible(true)
 
       // Immediate jump + ease to 80 % (leaves room for completion)
       requestAnimationFrame(() => {
-        progress.set(25);
-        animateTo(80);
-      });
-    };
+        progress.set(25)
+        animateTo(80)
+      })
+    }
 
-    window.addEventListener(NAV_START_EVENT, onNavStart);
-    return () => window.removeEventListener(NAV_START_EVENT, onNavStart);
+    window.addEventListener(NAV_START_EVENT, onNavStart)
+    return () => window.removeEventListener(NAV_START_EVENT, onNavStart)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   // ── Phase 2: complete when the new route renders ───────────────────────
   useEffect(() => {
-    if (pathname === prevPathname.current) return;
-    prevPathname.current = pathname;
+    if (pathname === prevPathname.current) return
+    prevPathname.current = pathname
 
     if (isNavigating.current) {
       // Navigation was properly initiated — complete
-      complete();
+      complete()
     } else {
       // Browser back/forward or programmatic push without event dispatch
       // (e.g. direct router.push call) — show a quick flash instead
-      isNavigating.current = true;
+      isNavigating.current = true
 
-      setVisible(true);
-      progress.set(60);
-      complete();
+      setVisible(true)
+      progress.set(60)
+      complete()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+  }, [pathname])
 
   // ── Safety: clean up on unmount ───────────────────────────────────────
   useEffect(() => {
     return () => {
-      animControls.current?.stop();
-      clearTimeout(hideTimer.current);
-    };
-  }, []);
+      animControls.current?.stop()
+      clearTimeout(hideTimer.current)
+    }
+  }, [])
 
   return (
     <AnimatePresence>
@@ -162,5 +159,5 @@ export function NavigationProgress() {
         </motion.div>
       )}
     </AnimatePresence>
-  );
+  )
 }

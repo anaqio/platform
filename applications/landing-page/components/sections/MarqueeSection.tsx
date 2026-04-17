@@ -1,8 +1,8 @@
-import { MarqueeTickerAtom } from '@/components/atoms/MarqueeTickerAtom';
-import { MARQUEE_ITEMS } from '@/lib/data/marquee-content';
+import { MarqueeTickerAtom } from '@/components/atoms/MarqueeTickerAtom'
+import { MARQUEE_ITEMS } from '@/lib/data/marquee-content'
 
 interface MarqueeSectionProps {
-  variant?: 'blue' | 'white';
+  variant?: 'blue' | 'white'
 }
 
 export function MarqueeSection({ variant = 'white' }: MarqueeSectionProps) {
@@ -21,5 +21,5 @@ export function MarqueeSection({ variant = 'white' }: MarqueeSectionProps) {
         textColor={variant === 'blue' ? 'text-white/50' : 'text-black/40'}
       />
     </section>
-  );
+  )
 }

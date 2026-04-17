@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils'
 
 const SECTION_IDS = [
   'about-hero',
@@ -12,9 +12,9 @@ const SECTION_IDS = [
   'about-morocco',
   'about-team',
   'about-cta',
-] as const;
+] as const
 
-type SectionId = (typeof SECTION_IDS)[number];
+type SectionId = (typeof SECTION_IDS)[number]
 
 const SECTION_LABEL_KEYS: Record<SectionId, string> = {
   'about-hero': 'intro',
@@ -23,36 +23,36 @@ const SECTION_LABEL_KEYS: Record<SectionId, string> = {
   'about-morocco': 'morocco',
   'about-team': 'team',
   'about-cta': 'join',
-};
+}
 
 export function AboutScrollNav() {
-  const t = useTranslations('scrollNav');
-  const [active, setActive] = useState<string>('about-hero');
+  const t = useTranslations('scrollNav')
+  const [active, setActive] = useState<string>('about-hero')
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.isIntersecting) setActive(entry.target.id);
+          if (entry.isIntersecting) setActive(entry.target.id)
         }
       },
       { threshold: 0.35, rootMargin: '0px 0px 0px 0px' }
-    );
+    )
 
     for (const id of SECTION_IDS) {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
     }
 
-    return () => observer.disconnect();
-  }, []);
+    return () => observer.disconnect()
+  }, [])
 
   const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
+    const el = document.getElementById(id)
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      el.scrollIntoView({ behavior: 'smooth' })
     }
-  };
+  }
 
   return (
     <nav
@@ -60,7 +60,7 @@ export function AboutScrollNav() {
       className="fixed right-6 top-1/2 z-50 hidden -translate-y-1/2 flex-col items-end gap-5 rounded-[2rem] border border-white/5 bg-gradient-to-b from-white/[0.04] to-transparent p-4 py-8 shadow-2xl backdrop-blur-md xl:flex"
     >
       {SECTION_IDS.map((id) => {
-        const label = t(SECTION_LABEL_KEYS[id] as never);
+        const label = t(SECTION_LABEL_KEYS[id] as never)
         return (
           <button
             key={id}
@@ -91,8 +91,8 @@ export function AboutScrollNav() {
               )}
             />
           </button>
-        );
+        )
       })}
     </nav>
-  );
+  )
 }

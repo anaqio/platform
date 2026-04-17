@@ -20,29 +20,29 @@
 
 ```typescript
 // __spec__/lib/data/marquee-content.test.ts
-import { describe, it, expect } from 'vitest';
-import { MARQUEE_ITEMS } from '@/lib/data/marquee-content';
+import { describe, it, expect } from 'vitest'
+import { MARQUEE_ITEMS } from '@/lib/data/marquee-content'
 
 describe('marquee-content', () => {
   it('should export MARQUEE_ITEMS array with 5 items', () => {
-    expect(MARQUEE_ITEMS).toHaveLength(5);
-  });
+    expect(MARQUEE_ITEMS).toHaveLength(5)
+  })
 
   it('should have required properties on each item', () => {
     MARQUEE_ITEMS.forEach((item) => {
-      expect(item).toHaveProperty('text');
-      expect(item).toHaveProperty('emoji');
-      expect(typeof item.text).toBe('string');
-      expect(typeof item.emoji).toBe('string');
-    });
-  });
+      expect(item).toHaveProperty('text')
+      expect(item).toHaveProperty('emoji')
+      expect(typeof item.text).toBe('string')
+      expect(typeof item.emoji).toBe('string')
+    })
+  })
 
   it('should not have empty text values', () => {
     MARQUEE_ITEMS.forEach((item) => {
-      expect(item.text.trim()).not.toBe('');
-    });
-  });
-});
+      expect(item.text.trim()).not.toBe('')
+    })
+  })
+})
 ```
 
 - [ ] **Step 2: Run test to verify it fails**
@@ -64,8 +64,8 @@ Expected output:
 ```typescript
 // lib/data/marquee-content.ts
 export interface MarqueeItem {
-  text: string;
-  emoji: string;
+  text: string
+  emoji: string
 }
 
 export const MARQUEE_ITEMS: MarqueeItem[] = [
@@ -74,7 +74,7 @@ export const MARQUEE_ITEMS: MarqueeItem[] = [
   { text: 'AI-powered virtual try-on', emoji: '👗' },
   { text: 'Perfect for Moroccan brands', emoji: '🇲🇦' },
   { text: 'Scale your fashion business', emoji: '📈' },
-];
+]
 ```
 
 - [ ] **Step 4: Run test to verify it passes**
@@ -109,25 +109,25 @@ git commit -m "feat(data): add marquee content data structure"
 
 ```typescript
 // __spec__/lib/data/features-section.test.ts
-import { describe, it, expect } from 'vitest';
-import { FEATURES } from '@/lib/data/features-section';
+import { describe, it, expect } from 'vitest'
+import { FEATURES } from '@/lib/data/features-section'
 
 describe('features-section', () => {
   it('should export FEATURES array with 3 items', () => {
-    expect(FEATURES).toHaveLength(3);
-  });
+    expect(FEATURES).toHaveLength(3)
+  })
 
   it('should have required properties on each feature', () => {
     FEATURES.forEach((feature) => {
-      expect(feature).toHaveProperty('icon');
-      expect(feature).toHaveProperty('title');
-      expect(feature).toHaveProperty('description');
-      expect(typeof feature.icon).toBe('string');
-      expect(typeof feature.title).toBe('string');
-      expect(typeof feature.description).toBe('string');
-    });
-  });
-});
+      expect(feature).toHaveProperty('icon')
+      expect(feature).toHaveProperty('title')
+      expect(feature).toHaveProperty('description')
+      expect(typeof feature.icon).toBe('string')
+      expect(typeof feature.title).toBe('string')
+      expect(typeof feature.description).toBe('string')
+    })
+  })
+})
 ```
 
 - [ ] **Step 2: Run test to verify it fails**
@@ -148,9 +148,9 @@ Expected output:
 ```typescript
 // lib/data/features-section.ts
 export interface Feature {
-  icon: string;
-  title: string;
-  description: string;
+  icon: string
+  title: string
+  description: string
 }
 
 export const FEATURES: Feature[] = [
@@ -172,7 +172,7 @@ export const FEATURES: Feature[] = [
     description:
       'Create unlimited lookbooks, variations, and campaigns without the cost of traditional photoshoots.',
   },
-];
+]
 ```
 
 - [ ] **Step 4: Run test to verify it passes**
@@ -207,27 +207,27 @@ git commit -m "feat(data): add features section data structure"
 
 ```typescript
 // __spec__/lib/data/results-section.test.ts
-import { describe, it, expect } from 'vitest';
-import { RESULTS } from '@/lib/data/results-section';
+import { describe, it, expect } from 'vitest'
+import { RESULTS } from '@/lib/data/results-section'
 
 describe('results-section', () => {
   it('should export RESULTS array with 3 items', () => {
-    expect(RESULTS).toHaveLength(3);
-  });
+    expect(RESULTS).toHaveLength(3)
+  })
 
   it('should have required properties on each result card', () => {
     RESULTS.forEach((result) => {
-      expect(result).toHaveProperty('metric');
-      expect(result).toHaveProperty('traditional');
-      expect(result).toHaveProperty('anaqio');
-      expect(result).toHaveProperty('improvement');
-      expect(typeof result.metric).toBe('string');
-      expect(typeof result.traditional).toBe('string');
-      expect(typeof result.anaqio).toBe('string');
-      expect(typeof result.improvement).toBe('string');
-    });
-  });
-});
+      expect(result).toHaveProperty('metric')
+      expect(result).toHaveProperty('traditional')
+      expect(result).toHaveProperty('anaqio')
+      expect(result).toHaveProperty('improvement')
+      expect(typeof result.metric).toBe('string')
+      expect(typeof result.traditional).toBe('string')
+      expect(typeof result.anaqio).toBe('string')
+      expect(typeof result.improvement).toBe('string')
+    })
+  })
+})
 ```
 
 - [ ] **Step 2: Run test to verify it fails**
@@ -248,10 +248,10 @@ Expected output:
 ```typescript
 // lib/data/results-section.ts
 export interface ResultCard {
-  metric: string;
-  traditional: string;
-  anaqio: string;
-  improvement: string;
+  metric: string
+  traditional: string
+  anaqio: string
+  improvement: string
 }
 
 export const RESULTS: ResultCard[] = [
@@ -273,7 +273,7 @@ export const RESULTS: ResultCard[] = [
     anaqio: 'Unlimited',
     improvement: '10x+ more',
   },
-];
+]
 ```
 
 - [ ] **Step 4: Run test to verify it passes**
@@ -308,24 +308,24 @@ git commit -m "feat(data): add results section data structure"
 
 ```typescript
 // __spec__/lib/data/segments-section.test.ts
-import { describe, it, expect } from 'vitest';
-import { SEGMENTS } from '@/lib/data/segments-section';
+import { describe, it, expect } from 'vitest'
+import { SEGMENTS } from '@/lib/data/segments-section'
 
 describe('segments-section', () => {
   it('should export SEGMENTS array with 4 items', () => {
-    expect(SEGMENTS).toHaveLength(4);
-  });
+    expect(SEGMENTS).toHaveLength(4)
+  })
 
   it('should have required properties on each segment', () => {
     SEGMENTS.forEach((segment) => {
-      expect(segment).toHaveProperty('icon');
-      expect(segment).toHaveProperty('name');
-      expect(segment).toHaveProperty('role');
-      expect(segment).toHaveProperty('problem');
-      expect(segment).toHaveProperty('solution');
-    });
-  });
-});
+      expect(segment).toHaveProperty('icon')
+      expect(segment).toHaveProperty('name')
+      expect(segment).toHaveProperty('role')
+      expect(segment).toHaveProperty('problem')
+      expect(segment).toHaveProperty('solution')
+    })
+  })
+})
 ```
 
 - [ ] **Step 2: Run test to verify it fails**
@@ -346,11 +346,11 @@ Expected output:
 ```typescript
 // lib/data/segments-section.ts
 export interface Segment {
-  icon: string;
-  name: string;
-  role: string;
-  problem: string;
-  solution: string;
+  icon: string
+  name: string
+  role: string
+  problem: string
+  solution: string
 }
 
 export const SEGMENTS: Segment[] = [
@@ -382,7 +382,7 @@ export const SEGMENTS: Segment[] = [
     problem: 'High equipment and location costs per project',
     solution: 'Offer clients premium output without overhead',
   },
-];
+]
 ```
 
 - [ ] **Step 4: Run test to verify it passes**
@@ -417,32 +417,32 @@ git commit -m "feat(data): add segments section data structure"
 
 ```typescript
 // __spec__/lib/data/pricing-section.test.ts
-import { describe, it, expect } from 'vitest';
-import { PRICING_TIERS } from '@/lib/data/pricing-section';
+import { describe, it, expect } from 'vitest'
+import { PRICING_TIERS } from '@/lib/data/pricing-section'
 
 describe('pricing-section', () => {
   it('should export PRICING_TIERS array with 3 items', () => {
-    expect(PRICING_TIERS).toHaveLength(3);
-  });
+    expect(PRICING_TIERS).toHaveLength(3)
+  })
 
   it('should have required properties on each tier', () => {
     PRICING_TIERS.forEach((tier) => {
-      expect(tier).toHaveProperty('name');
-      expect(tier).toHaveProperty('price');
-      expect(tier).toHaveProperty('currency');
-      expect(tier).toHaveProperty('period');
-      expect(tier).toHaveProperty('description');
-      expect(tier).toHaveProperty('features');
-      expect(Array.isArray(tier.features)).toBe(true);
-      expect(tier.features.length).toBeGreaterThan(0);
-    });
-  });
+      expect(tier).toHaveProperty('name')
+      expect(tier).toHaveProperty('price')
+      expect(tier).toHaveProperty('currency')
+      expect(tier).toHaveProperty('period')
+      expect(tier).toHaveProperty('description')
+      expect(tier).toHaveProperty('features')
+      expect(Array.isArray(tier.features)).toBe(true)
+      expect(tier.features.length).toBeGreaterThan(0)
+    })
+  })
 
   it('should have a highlighted tier', () => {
-    const highlighted = PRICING_TIERS.filter((t) => t.highlighted);
-    expect(highlighted).toHaveLength(1);
-  });
-});
+    const highlighted = PRICING_TIERS.filter((t) => t.highlighted)
+    expect(highlighted).toHaveLength(1)
+  })
+})
 ```
 
 - [ ] **Step 2: Run test to verify it fails**
@@ -463,13 +463,13 @@ Expected output:
 ```typescript
 // lib/data/pricing-section.ts
 export interface PricingTier {
-  name: string;
-  price: number | string;
-  currency: string;
-  period: string;
-  description: string;
-  features: string[];
-  highlighted?: boolean;
+  name: string
+  price: number | string
+  currency: string
+  period: string
+  description: string
+  features: string[]
+  highlighted?: boolean
 }
 
 export const PRICING_TIERS: PricingTier[] = [
@@ -517,7 +517,7 @@ export const PRICING_TIERS: PricingTier[] = [
       'White-label options',
     ],
   },
-];
+]
 ```
 
 - [ ] **Step 4: Run test to verify it passes**
@@ -564,7 +564,7 @@ Insert before the closing export statement:
  */
 export function marqueeScroll(reduced: boolean | null) {
   if (reduced) {
-    return {}; // no animation on reduced motion
+    return {} // no animation on reduced motion
   }
   return {
     x: [0, -1000],
@@ -573,7 +573,7 @@ export function marqueeScroll(reduced: boolean | null) {
       ease: 'linear',
       repeat: Infinity,
     },
-  };
+  }
 }
 
 /**
@@ -584,7 +584,7 @@ export function marqueeOnHover() {
   return {
     x: 0,
     transition: { duration: 0.3 },
-  };
+  }
 }
 
 /**
@@ -595,7 +595,7 @@ export function marqueeOnHover() {
  */
 export function segmentReveal(reduced: boolean | null, index: number) {
   if (reduced) {
-    return { opacity: 1, y: 0 };
+    return { opacity: 1, y: 0 }
   }
   return {
     initial: { opacity: 0, y: 20 },
@@ -606,7 +606,7 @@ export function segmentReveal(reduced: boolean | null, index: number) {
       ease,
     },
     viewport: { once: true, margin: '0px 0px -100px 0px' },
-  };
+  }
 }
 
 /**
@@ -618,7 +618,7 @@ export function pricingCardHover() {
     scale: 1.02,
     y: -8,
     transition: { duration: 0.3, ease },
-  };
+  }
 }
 ```
 
@@ -1489,44 +1489,29 @@ After the existing imports, add:
 
 ```typescript
 const MarqueeSection = dynamic(
-  () =>
-    import('@/components/sections/MarqueeSection').then(
-      (mod) => mod.MarqueeSection
-    ),
+  () => import('@/components/sections/MarqueeSection').then((mod) => mod.MarqueeSection),
   { ssr: true }
-);
+)
 
 const FeaturesSection = dynamic(
-  () =>
-    import('@/components/sections/FeaturesSection').then(
-      (mod) => mod.FeaturesSection
-    ),
+  () => import('@/components/sections/FeaturesSection').then((mod) => mod.FeaturesSection),
   { ssr: true }
-);
+)
 
 const ResultsSection = dynamic(
-  () =>
-    import('@/components/sections/ResultsSection').then(
-      (mod) => mod.ResultsSection
-    ),
+  () => import('@/components/sections/ResultsSection').then((mod) => mod.ResultsSection),
   { ssr: true }
-);
+)
 
 const SegmentsSection = dynamic(
-  () =>
-    import('@/components/sections/SegmentsSection').then(
-      (mod) => mod.SegmentsSection
-    ),
+  () => import('@/components/sections/SegmentsSection').then((mod) => mod.SegmentsSection),
   { ssr: true }
-);
+)
 
 const PricingSection = dynamic(
-  () =>
-    import('@/components/sections/PricingSection').then(
-      (mod) => mod.PricingSection
-    ),
+  () => import('@/components/sections/PricingSection').then((mod) => mod.PricingSection),
   { ssr: true }
-);
+)
 ```
 
 - [ ] **Step 2: Update section order in the return JSX**

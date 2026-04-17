@@ -22,6 +22,6 @@ const TiktokIcon = (props: React.SVGProps<SVGSVGElement>) => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
-export default TiktokIcon;
+export default TiktokIcon

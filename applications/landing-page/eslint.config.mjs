@@ -1,4 +1,4 @@
-import anaqioNext from '@anaqio/eslint-config/nextjs';
+import anaqioNext from '@anaqio/eslint-config/nextjs'
 
 export default [
   {
@@ -36,4 +36,4 @@ export default [
       '@typescript-eslint/prefer-optional-chain': 'warn',
     },
   },
-];
+]

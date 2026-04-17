@@ -206,22 +206,22 @@ Grouped and alphabetized (enforced by `eslint-plugin-import`):
 
 ```ts
 // 1. Built-in modules
-import fs from 'fs';
+import fs from 'fs'
 
 // 2. External packages
-import { useState } from 'react';
-import { clsx } from 'clsx';
+import { useState } from 'react'
+import { clsx } from 'clsx'
 
 // 3. Internal modules
-import { cn } from '@/lib/utils';
-import { Section } from '@/components/ui/section';
+import { cn } from '@/lib/utils'
+import { Section } from '@/components/ui/section'
 
 // 4. Relative imports (parent, sibling)
-import { Button } from './button';
+import { Button } from './button'
 
 // 5. Type imports (inline)
-import type { FC } from 'react';
-import type { SectionProps } from '@/types';
+import type { FC } from 'react'
+import type { SectionProps } from '@/types'
 ```
 
 ### Console Usage
@@ -386,7 +386,7 @@ headers: [
     key: 'Referrer-Policy',
     value: 'strict-origin-when-cross-origin',
   },
-];
+]
 ```
 
 ### Legal Pages Protection

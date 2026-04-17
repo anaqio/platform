@@ -1,4 +1,4 @@
-import { Link } from '@/i18n/routing';
+import { Link } from '@/i18n/routing'
 
 export function BrandIdentityContent() {
   return (
@@ -598,11 +598,7 @@ export function BrandIdentityContent() {
           </div>
           <div className="cover-right">
             <div className="logo-hero-wrap">
-              <svg
-                viewBox="0 0 800 300"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg viewBox="0 0 800 300" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <linearGradient id="cg" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="#3F57AF" />
@@ -730,9 +726,9 @@ export function BrandIdentityContent() {
             <div className="section-label">01 · Logo System</div>
             <h2 className="section-title">The Anaqio Mark</h2>
             <p className="section-desc">
-              The Anaqio logo is a mixed mark composed of a fashion icon and a
-              geometric wordmark, unified by a blue-to-violet gradient. The icon
-              references a clothing hanger — a direct nod to fashion commerce.
+              The Anaqio logo is a mixed mark composed of a fashion icon and a geometric wordmark,
+              unified by a blue-to-violet gradient. The icon references a clothing hanger — a direct
+              nod to fashion commerce.
             </p>
 
             <div className="logo-grid" style={{ marginBottom: '24px' }}>
@@ -1074,8 +1070,8 @@ export function BrandIdentityContent() {
                 marginBottom: '24px',
               }}
             >
-              Always maintain a minimum clear space equal to the height of the
-              letter "A" in the wordmark (value:{' '}
+              Always maintain a minimum clear space equal to the height of the letter "A" in the
+              wordmark (value:{' '}
               <code
                 style={{
                   fontFamily: 'var(--font-mono)',
@@ -1091,10 +1087,7 @@ export function BrandIdentityContent() {
             <div className="logo-clearspace">
               <div className="clearspace-diagram">
                 <div style={{ width: '60px', height: '60px' }} />
-                <div
-                  className="logo-box"
-                  style={{ borderColor: 'var(--aq-blue)' }}
-                >
+                <div className="logo-box" style={{ borderColor: 'var(--aq-blue)' }}>
                   <svg
                     viewBox="0 0 200 60"
                     fill="none"
@@ -1102,13 +1095,7 @@ export function BrandIdentityContent() {
                     style={{ width: '160px' }}
                   >
                     <defs>
-                      <linearGradient
-                        id="cls"
-                        x1="0%"
-                        y1="0%"
-                        x2="100%"
-                        y2="0%"
-                      >
+                      <linearGradient id="cls" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" stopColor="#3F57AF" />
                         <stop offset="100%" stopColor="#6F47A7" />
                       </linearGradient>
@@ -1141,12 +1128,9 @@ export function BrandIdentityContent() {
                     lineHeight: 1.7,
                   }}
                 >
-                  <strong style={{ color: 'var(--aq-ink)' }}>
-                    Minimum clear space
-                  </strong>{' '}
-                  is the height of the capital "A" in the wordmark. This zone
-                  must remain free of all other graphic elements, text, or
-                  imagery. Never compromise the logo's breathing room.
+                  <strong style={{ color: 'var(--aq-ink)' }}>Minimum clear space</strong> is the
+                  height of the capital "A" in the wordmark. This zone must remain free of all other
+                  graphic elements, text, or imagery. Never compromise the logo's breathing room.
                 </p>
                 <p
                   style={{
@@ -1156,10 +1140,8 @@ export function BrandIdentityContent() {
                     marginTop: '12px',
                   }}
                 >
-                  <strong style={{ color: 'var(--aq-ink)' }}>
-                    Minimum size:
-                  </strong>{' '}
-                  120px wide on digital, 30mm wide in print.
+                  <strong style={{ color: 'var(--aq-ink)' }}>Minimum size:</strong> 120px wide on
+                  digital, 30mm wide in print.
                 </p>
               </div>
             </div>
@@ -1201,8 +1183,8 @@ export function BrandIdentityContent() {
                 </div>
                 <div className="dont-label">✕ Wrong Color</div>
                 <div className="dont-desc">
-                  Never apply solid non-brand colors. The wordmark must always
-                  use the gradient or approved mono versions.
+                  Never apply solid non-brand colors. The wordmark must always use the gradient or
+                  approved mono versions.
                 </div>
               </div>
               <div className="dont-card">
@@ -1224,8 +1206,7 @@ export function BrandIdentityContent() {
                 </div>
                 <div className="dont-label">✕ Skew / Distort</div>
                 <div className="dont-desc">
-                  Never stretch, skew, rotate, or otherwise distort the
-                  proportions of the logo.
+                  Never stretch, skew, rotate, or otherwise distort the proportions of the logo.
                 </div>
               </div>
               <div className="dont-card">
@@ -1252,8 +1233,8 @@ export function BrandIdentityContent() {
                 </div>
                 <div className="dont-label">✕ Gradient on Gradient</div>
                 <div className="dont-desc">
-                  Never place the gradient wordmark on a gradient background.
-                  Use the white version instead.
+                  Never place the gradient wordmark on a gradient background. Use the white version
+                  instead.
                 </div>
               </div>
             </div>
@@ -1263,17 +1244,13 @@ export function BrandIdentityContent() {
             <div className="section-label">02 · Color System</div>
             <h2 className="section-title">Brand Palette</h2>
             <p className="section-desc">
-              Three primary colors registered with OMPIC as part of the
-              trademark filing, extended into a full spectrum including
-              gradients, surface tones, and semantic states.
+              Three primary colors registered with OMPIC as part of the trademark filing, extended
+              into a full spectrum including gradients, surface tones, and semantic states.
             </p>
 
             <div className="color-palette-main">
               <div className="color-swatch">
-                <div
-                  className="color-swatch-block tall"
-                  style={{ background: '#2563EB' }}
-                >
+                <div className="color-swatch-block tall" style={{ background: '#2563EB' }}>
                   <span className="ompic-badge">
                     <svg viewBox="0 0 12 12" fill="currentColor">
                       <circle cx={6} cy={6} r={5} fill="white" opacity="0.3" />
@@ -1310,10 +1287,7 @@ export function BrandIdentityContent() {
                 </div>
               </div>
               <div className="color-swatch">
-                <div
-                  className="color-swatch-block tall"
-                  style={{ background: '#7C3AED' }}
-                >
+                <div className="color-swatch-block tall" style={{ background: '#7C3AED' }}>
                   <span className="ompic-badge">
                     <svg viewBox="0 0 12 12" fill="currentColor">
                       <circle cx={6} cy={6} r={5} fill="white" opacity="0.3" />
@@ -1541,42 +1515,29 @@ export function BrandIdentityContent() {
             <div className="section-label">03 · Gradient System</div>
             <h2 className="section-title">The Brand Gradient</h2>
             <p className="section-desc">
-              The signature gradient flows from Anaqio Blue through a rich
-              mid-spectrum to Anaqio Violet. It is the most distinctive visual
-              element of the brand.
+              The signature gradient flows from Anaqio Blue through a rich mid-spectrum to Anaqio
+              Violet. It is the most distinctive visual element of the brand.
             </p>
 
             <div className="gradient-strip" />
             <div className="gradient-stops">
               <div className="gradient-stop">
-                <div
-                  className="gradient-stop-color"
-                  style={{ background: '#3F57AF' }}
-                />
+                <div className="gradient-stop-color" style={{ background: '#3F57AF' }} />
                 <div className="gradient-stop-hex">#3F57AF</div>
                 <div className="gradient-stop-pos">0%</div>
               </div>
               <div className="gradient-stop">
-                <div
-                  className="gradient-stop-color"
-                  style={{ background: '#484DA9' }}
-                />
+                <div className="gradient-stop-color" style={{ background: '#484DA9' }} />
                 <div className="gradient-stop-hex">#484DA9</div>
                 <div className="gradient-stop-pos">32%</div>
               </div>
               <div className="gradient-stop">
-                <div
-                  className="gradient-stop-color"
-                  style={{ background: '#6049A8' }}
-                />
+                <div className="gradient-stop-color" style={{ background: '#6049A8' }} />
                 <div className="gradient-stop-hex">#6049A8</div>
                 <div className="gradient-stop-pos">67%</div>
               </div>
               <div className="gradient-stop">
-                <div
-                  className="gradient-stop-color"
-                  style={{ background: '#6F47A7' }}
-                />
+                <div className="gradient-stop-color" style={{ background: '#6F47A7' }} />
                 <div className="gradient-stop-hex">#6F47A7</div>
                 <div className="gradient-stop-pos">100%</div>
               </div>
@@ -1587,8 +1548,7 @@ export function BrandIdentityContent() {
                 <div
                   className="gradient-card-vis"
                   style={{
-                    background:
-                      'linear-gradient(90deg,#3F57AF,#484DA9,#6049A8,#6F47A7)',
+                    background: 'linear-gradient(90deg,#3F57AF,#484DA9,#6049A8,#6F47A7)',
                   }}
                 />
                 <div className="gradient-card-info">
@@ -1624,8 +1584,7 @@ export function BrandIdentityContent() {
                 <div
                   className="gradient-card-vis"
                   style={{
-                    background:
-                      'radial-gradient(ellipse at 30% 50%,#2563EB,#7C3AED)',
+                    background: 'radial-gradient(ellipse at 30% 50%,#2563EB,#7C3AED)',
                   }}
                 />
                 <div className="gradient-card-info">
@@ -1646,14 +1605,12 @@ export function BrandIdentityContent() {
             <div className="section-label">04 · Typography</div>
             <h2 className="section-title">Type System</h2>
             <p className="section-desc">
-              Two fonts, one purpose: to feel both technically precise and
-              creatively expressive — like Anaqio itself.
+              Two fonts, one purpose: to feel both technically precise and creatively expressive —
+              like Anaqio itself.
             </p>
 
             <div className="type-specimen">
-              <div className="type-family-name">
-                Display — Syne · Google Fonts (Free)
-              </div>
+              <div className="type-family-name">Display — Syne · Google Fonts (Free)</div>
               <div className="type-display-sample">
                 Fashion meets
                 <br />
@@ -1669,10 +1626,9 @@ export function BrandIdentityContent() {
                   marginTop: '16px',
                 }}
               >
-                Syne is a geometric sans-serif with distinctive character —
-                designed for editorial contexts. Its strong weight contrast and
-                optical precision make it ideal for Anaqio's headings, wordmark
-                weight, and display contexts.
+                Syne is a geometric sans-serif with distinctive character — designed for editorial
+                contexts. Its strong weight contrast and optical precision make it ideal for
+                Anaqio's headings, wordmark weight, and display contexts.
               </div>
               <div
                 className="type-weights"
@@ -1742,9 +1698,7 @@ export function BrandIdentityContent() {
             </div>
 
             <div className="type-specimen">
-              <div className="type-family-name">
-                Body — Plus Jakarta Sans · Google Fonts (Free)
-              </div>
+              <div className="type-family-name">Body — Plus Jakarta Sans · Google Fonts (Free)</div>
               <div
                 style={{
                   fontFamily: 'var(--font-body)',
@@ -1760,10 +1714,9 @@ export function BrandIdentityContent() {
                 fashion is made.
               </div>
               <div className="type-body-sample">
-                Plus Jakarta Sans is a contemporary grotesk typeface optimized
-                for screens and UI. Its wide optical range — from 300 to 800
-                weight — makes it versatile for body copy, labels, captions,
-                interface text, and subheadings. It pairs with Syne's editorial
+                Plus Jakarta Sans is a contemporary grotesk typeface optimized for screens and UI.
+                Its wide optical range — from 300 to 800 weight — makes it versatile for body copy,
+                labels, captions, interface text, and subheadings. It pairs with Syne's editorial
                 weight without competing.
               </div>
               <div className="type-weights" style={{ marginTop: '32px' }}>
@@ -1834,30 +1787,21 @@ export function BrandIdentityContent() {
               </div>
               <div className="type-scale-row">
                 <div className="type-scale-token">--text-4xl</div>
-                <div
-                  className="type-scale-sample"
-                  style={{ fontSize: '36px', fontWeight: 700 }}
-                >
+                <div className="type-scale-sample" style={{ fontSize: '36px', fontWeight: 700 }}>
                   Heading 1
                 </div>
                 <div className="type-scale-meta">36px / 700 / −0.01em</div>
               </div>
               <div className="type-scale-row">
                 <div className="type-scale-token">--text-3xl</div>
-                <div
-                  className="type-scale-sample"
-                  style={{ fontSize: '28px', fontWeight: 700 }}
-                >
+                <div className="type-scale-sample" style={{ fontSize: '28px', fontWeight: 700 }}>
                   Heading 2
                 </div>
                 <div className="type-scale-meta">28px / 700</div>
               </div>
               <div className="type-scale-row">
                 <div className="type-scale-token">--text-2xl</div>
-                <div
-                  className="type-scale-sample"
-                  style={{ fontSize: '22px', fontWeight: 600 }}
-                >
+                <div className="type-scale-sample" style={{ fontSize: '22px', fontWeight: 600 }}>
                   Heading 3
                 </div>
                 <div className="type-scale-meta">22px / 600</div>
@@ -1964,9 +1908,8 @@ export function BrandIdentityContent() {
             <div className="section-label">05 · Spacing &amp; Grid</div>
             <h2 className="section-title">Spatial System</h2>
             <p className="section-desc">
-              An 8-point base grid. All spacing values are multiples of 4px. The
-              base unit is 8px — use it consistently to create rhythm and visual
-              coherence.
+              An 8-point base grid. All spacing values are multiples of 4px. The base unit is 8px —
+              use it consistently to create rhythm and visual coherence.
             </p>
 
             <div className="spacing-row">
@@ -1983,9 +1926,7 @@ export function BrandIdentityContent() {
                 <div className="spacing-bar" style={{ width: '8px' }} />
                 <div className="spacing-value">8px</div>
               </div>
-              <div className="spacing-usage">
-                Between label and input, badge padding
-              </div>
+              <div className="spacing-usage">Between label and input, badge padding</div>
             </div>
             <div className="spacing-row">
               <div className="spacing-token">--sp-md</div>
@@ -1993,9 +1934,7 @@ export function BrandIdentityContent() {
                 <div className="spacing-bar" style={{ width: '16px' }} />
                 <div className="spacing-value">16px</div>
               </div>
-              <div className="spacing-usage">
-                Card padding (sm), element gap
-              </div>
+              <div className="spacing-usage">Card padding (sm), element gap</div>
             </div>
             <div className="spacing-row">
               <div className="spacing-token">--sp-lg</div>
@@ -2003,9 +1942,7 @@ export function BrandIdentityContent() {
                 <div className="spacing-bar" style={{ width: '24px' }} />
                 <div className="spacing-value">24px</div>
               </div>
-              <div className="spacing-usage">
-                Card padding, section inner gap
-              </div>
+              <div className="spacing-usage">Card padding, section inner gap</div>
             </div>
             <div className="spacing-row">
               <div className="spacing-token">--sp-xl</div>
@@ -2013,9 +1950,7 @@ export function BrandIdentityContent() {
                 <div className="spacing-bar" style={{ width: '32px' }} />
                 <div className="spacing-value">32px</div>
               </div>
-              <div className="spacing-usage">
-                Section header gap, grid column gap
-              </div>
+              <div className="spacing-usage">Section header gap, grid column gap</div>
             </div>
             <div className="spacing-row">
               <div className="spacing-token">--sp-2xl</div>
@@ -2023,9 +1958,7 @@ export function BrandIdentityContent() {
                 <div className="spacing-bar" style={{ width: '48px' }} />
                 <div className="spacing-value">48px</div>
               </div>
-              <div className="spacing-usage">
-                Intra-section spacing, card groups
-              </div>
+              <div className="spacing-usage">Intra-section spacing, card groups</div>
             </div>
             <div className="spacing-row">
               <div className="spacing-token">--sp-3xl</div>
@@ -2041,9 +1974,7 @@ export function BrandIdentityContent() {
                 <div className="spacing-bar" style={{ width: '96px' }} />
                 <div className="spacing-value">96px</div>
               </div>
-              <div className="spacing-usage">
-                Hero and section vertical padding
-              </div>
+              <div className="spacing-usage">Hero and section vertical padding</div>
             </div>
 
             <h3
@@ -2182,8 +2113,8 @@ export function BrandIdentityContent() {
             <div className="section-label">06 · Components</div>
             <h2 className="section-title">UI Building Blocks</h2>
             <p className="section-desc">
-              Core interface components showing how the Anaqio brand system
-              translates into product UI elements.
+              Core interface components showing how the Anaqio brand system translates into product
+              UI elements.
             </p>
 
             <h3
@@ -2221,16 +2152,10 @@ export function BrandIdentityContent() {
               <span className="badge badge-purple">Fashion Tech</span>
               <span className="badge badge-gradient">Early Access</span>
               <span className="badge badge-blue">SaaS · Classe 42</span>
-              <span
-                className="badge"
-                style={{ background: '#ECFDF5', color: '#065F46' }}
-              >
+              <span className="badge" style={{ background: '#ECFDF5', color: '#065F46' }}>
                 Active
               </span>
-              <span
-                className="badge"
-                style={{ background: '#FEF2F2', color: '#991B1B' }}
-              >
+              <span className="badge" style={{ background: '#FEF2F2', color: '#991B1B' }}>
                 Beta
               </span>
             </div>
@@ -2256,21 +2181,10 @@ export function BrandIdentityContent() {
             >
               <div className="input-demo">
                 <div className="input-label">Email Address</div>
-                <input
-                  className="input-field"
-                  type="email"
-                  placeholder="your@email.com"
-                />
+                <input className="input-field" type="email" placeholder="your@email.com" />
                 <div className="input-label">Brand Name</div>
-                <input
-                  className="input-field"
-                  type="text"
-                  placeholder="Your Fashion Brand"
-                />
-                <a
-                  className="btn btn-primary"
-                  style={{ justifyContent: 'center' }}
-                >
+                <input className="input-field" type="text" placeholder="Your Fashion Brand" />
+                <a className="btn btn-primary" style={{ justifyContent: 'center' }}>
                   Request Access
                 </a>
               </div>
@@ -2280,8 +2194,8 @@ export function BrandIdentityContent() {
                 </div>
                 <div className="card-body">
                   <p>
-                    Generate editorial-quality lookbooks in minutes using
-                    Anaqio's AI virtual studio.
+                    Generate editorial-quality lookbooks in minutes using Anaqio's AI virtual
+                    studio.
                   </p>
                   <a className="btn btn-primary btn-sm">Generate Now</a>
                 </div>
@@ -2344,9 +2258,8 @@ export function BrandIdentityContent() {
             <div className="section-label">07 · Design Tokens</div>
             <h2 className="section-title">CSS Token Reference</h2>
             <p className="section-desc">
-              Copy these CSS variables into your project's root stylesheet. All
-              components and styles in Anaqio's system are built from these
-              tokens.
+              Copy these CSS variables into your project's root stylesheet. All components and
+              styles in Anaqio's system are built from these tokens.
             </p>
 
             <table className="token-table">
@@ -2371,10 +2284,7 @@ export function BrandIdentityContent() {
                   </td>
                   <td>
                     <div className="token-chip">
-                      <div
-                        className="token-dot"
-                        style={{ background: '#2563EB' }}
-                      />
+                      <div className="token-dot" style={{ background: '#2563EB' }} />
                       <code
                         style={{
                           fontFamily: 'var(--font-mono)',
@@ -2402,10 +2312,7 @@ export function BrandIdentityContent() {
                   </td>
                   <td>
                     <div className="token-chip">
-                      <div
-                        className="token-dot"
-                        style={{ background: '#7C3AED' }}
-                      />
+                      <div className="token-dot" style={{ background: '#7C3AED' }} />
                       <code
                         style={{
                           fontFamily: 'var(--font-mono)',
@@ -2467,10 +2374,7 @@ export function BrandIdentityContent() {
                   </td>
                   <td>
                     <div className="token-chip">
-                      <div
-                        className="token-dot"
-                        style={{ background: '#0F172A' }}
-                      />
+                      <div className="token-dot" style={{ background: '#0F172A' }} />
                       <code
                         style={{
                           fontFamily: 'var(--font-mono)',
@@ -2498,10 +2402,7 @@ export function BrandIdentityContent() {
                   </td>
                   <td>
                     <div className="token-chip">
-                      <div
-                        className="token-dot"
-                        style={{ background: '#334155' }}
-                      />
+                      <div className="token-dot" style={{ background: '#334155' }} />
                       <code
                         style={{
                           fontFamily: 'var(--font-mono)',
@@ -2529,10 +2430,7 @@ export function BrandIdentityContent() {
                   </td>
                   <td>
                     <div className="token-chip">
-                      <div
-                        className="token-dot"
-                        style={{ background: '#94A3B8' }}
-                      />
+                      <div className="token-dot" style={{ background: '#94A3B8' }} />
                       <code
                         style={{
                           fontFamily: 'var(--font-mono)',
@@ -2560,10 +2458,7 @@ export function BrandIdentityContent() {
                   </td>
                   <td>
                     <div className="token-chip">
-                      <div
-                        className="token-dot"
-                        style={{ background: '#E2E8F0' }}
-                      />
+                      <div className="token-dot" style={{ background: '#E2E8F0' }} />
                       <code
                         style={{
                           fontFamily: 'var(--font-mono)',
@@ -2620,9 +2515,8 @@ export function BrandIdentityContent() {
             <div className="section-label">08 · Trademark &amp; Legal</div>
             <h2 className="section-title">Trademark Status</h2>
             <p className="section-desc">
-              The Anaqio name and mark are filed with OMPIC under Moroccan
-              trademark law. The following details must appear in all legal
-              documents referencing the brand.
+              The Anaqio name and mark are filed with OMPIC under Moroccan trademark law. The
+              following details must appear in all legal documents referencing the brand.
             </p>
 
             <div className="trademark-notice">
@@ -2656,9 +2550,7 @@ export function BrandIdentityContent() {
                   </div>
                   <div className="tm-row">
                     <span className="tm-key">Owner</span>
-                    <span className="tm-val">
-                      Amal Ait Oukharaz (physique, CIN KB152795)
-                    </span>
+                    <span className="tm-val">Amal Ait Oukharaz (physique, CIN KB152795)</span>
                   </div>
                   <div className="tm-row">
                     <span className="tm-key">Country</span>
@@ -2703,11 +2595,11 @@ export function BrandIdentityContent() {
                 }}
               >
                 While the trademark application is pending with OMPIC, use{' '}
-                <strong style={{ color: 'var(--aq-ink)' }}>™</strong> after the
-                wordmark. Once registration is confirmed, upgrade to{' '}
-                <strong style={{ color: 'var(--aq-ink)' }}>®</strong>. The ™
-                symbol should appear in superscript at 60% opacity in brand
-                contexts, at full size in legal and footer contexts.
+                <strong style={{ color: 'var(--aq-ink)' }}>™</strong> after the wordmark. Once
+                registration is confirmed, upgrade to{' '}
+                <strong style={{ color: 'var(--aq-ink)' }}>®</strong>. The ™ symbol should appear in
+                superscript at 60% opacity in brand contexts, at full size in legal and footer
+                contexts.
               </p>
               <div
                 style={{
@@ -2799,11 +2691,10 @@ export function BrandIdentityContent() {
           <div className="brand-footer-copy">
             Visual Brand Identity Guidelines v1.0 · 2026 · Confidential
             <br />
-            Trademark filed with OMPIC — PR-237456 · Class 42 SaaS · Casablanca,
-            Morocco
+            Trademark filed with OMPIC — PR-237456 · Class 42 SaaS · Casablanca, Morocco
           </div>
         </div>
       </div>
     </>
-  );
+  )
 }

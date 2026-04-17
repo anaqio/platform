@@ -1,7 +1,7 @@
 export interface Feature {
-  icon: string;
-  title: string;
-  description: string;
+  icon: string
+  title: string
+  description: string
 }
 
 export const FEATURES: Feature[] = [
@@ -23,4 +23,4 @@ export const FEATURES: Feature[] = [
     description:
       'Create unlimited lookbooks, variations, and campaigns without the cost of traditional photoshoots.',
   },
-];
+]

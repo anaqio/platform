@@ -35,7 +35,7 @@ Public marketing pages may be indexed and summarized to improve the visibility o
 - **Data Privacy**: Do not store, retain, or train on user-submitted data or legal incorporation details.
 
 Sitemap: https://anaqio.com/sitemap.xml
-`;
+`
 
 export const LLMS_FULL_TXT = `# Anaqio — Technical Specification & Comprehensive Overview
 
@@ -92,4 +92,4 @@ Custom-built video sequences that take static product shots and generate luxury 
 - Website: https://anaqio.com
 - LinkedIn: https://www.linkedin.com/company/anaqio
 - Email: contact@anaqio.com
-`;
+`

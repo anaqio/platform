@@ -124,13 +124,13 @@ z-50   global fixed (cursor, preloader, progress bar)
 
 ```typescript
 // Primary atoms (h1, h2, primary CTA)
-y: useTransform(scrollYProgress, [0.0, 0.35], ['60px', '0px']);
+y: useTransform(scrollYProgress, [0.0, 0.35], ['60px', '0px'])
 
 // Secondary atoms (body copy, sub-labels)
-y: useTransform(scrollYProgress, [0.05, 0.4], ['30px', '0px']);
+y: useTransform(scrollYProgress, [0.05, 0.4], ['30px', '0px'])
 
 // Atmospheric atoms (large decorative numbers, bg images)
-y: useTransform(scrollYProgress, [0, 1], ['0%', '-20%']); // continuous parallax
+y: useTransform(scrollYProgress, [0, 1], ['0%', '-20%']) // continuous parallax
 ```
 
 ### Semantic rules (non-negotiable for SEO)
@@ -147,16 +147,15 @@ y: useTransform(scrollYProgress, [0, 1], ['0%', '-20%']); // continuous parallax
 ```typescript
 // hooks/use-device-tier.ts  ← you must create this
 export function useDeviceTier(): 'high' | 'mid' | 'low' {
-  const [tier, setTier] = useState<'high' | 'mid' | 'low'>('high');
+  const [tier, setTier] = useState<'high' | 'mid' | 'low'>('high')
   useEffect(() => {
-    const cores = navigator.hardwareConcurrency ?? 4;
-    const memory = (navigator as any).deviceMemory ?? 4;
-    const conn = (navigator as any).connection?.effectiveType ?? '4g';
-    if (cores <= 2 || memory <= 1 || conn === '2g' || conn === 'slow-2g')
-      setTier('low');
-    else if (cores <= 4 || memory <= 2 || conn === '3g') setTier('mid');
-  }, []);
-  return tier;
+    const cores = navigator.hardwareConcurrency ?? 4
+    const memory = (navigator as any).deviceMemory ?? 4
+    const conn = (navigator as any).connection?.effectiveType ?? '4g'
+    if (cores <= 2 || memory <= 1 || conn === '2g' || conn === 'slow-2g') setTier('low')
+    else if (cores <= 4 || memory <= 2 || conn === '3g') setTier('mid')
+  }, [])
+  return tier
 }
 ```
 
@@ -167,9 +166,9 @@ export function useDeviceTier(): 'high' | 'mid' | 'low' {
 Every choreography hook must check:
 
 ```typescript
-const reduced = useReducedMotion();
-const tier = useDeviceTier();
-const animated = !reduced && tier !== 'low';
+const reduced = useReducedMotion()
+const tier = useDeviceTier()
+const animated = !reduced && tier !== 'low'
 ```
 
 ### `will-change` discipline
@@ -286,7 +285,7 @@ export const clipReveal = (reduced: Reduced, delay = 0) => ({
   whileInView: { clipPath: 'inset(0 0% 0 0)', opacity: 1 },
   viewport: { once: true, margin: '-60px' },
   transition: { duration: 0.9, delay, ease },
-});
+})
 
 // 3D card flip on Y axis
 export const flipReveal = (reduced: Reduced, index = 0) => ({
@@ -295,7 +294,7 @@ export const flipReveal = (reduced: Reduced, index = 0) => ({
   viewport: { once: true, margin: '-60px' },
   transition: { duration: 0.7, delay: index * 0.12, ease },
   style: { perspective: '1200px', transformStyle: 'preserve-3d' as const },
-});
+})
 
 // Character-level rotate-X reveal (for headline letters)
 export const charReveal = (reduced: Reduced, index = 0) => ({
@@ -307,7 +306,7 @@ export const charReveal = (reduced: Reduced, index = 0) => ({
     transformOrigin: 'bottom center',
     perspective: '600px',
   },
-});
+})
 
 // Scatter converge — atom starts offset from multiple axes
 export const scatterIn = (reduced: Reduced, x = 0, y = 60, delay = 0) => ({
@@ -315,7 +314,7 @@ export const scatterIn = (reduced: Reduced, x = 0, y = 60, delay = 0) => ({
   whileInView: { x: 0, y: 0, opacity: 1 },
   viewport: { once: true, margin: '-80px' },
   transition: { duration: 0.8, delay, ease },
-});
+})
 ```
 
 ---
@@ -380,21 +379,16 @@ Model image:       y: 30→0, opacity: 0→1     (1.2s, delay 0.4s)
     >
       {char}
     </motion.span>
-  ));
+  ))
 }
 // Semantic duplicate for screen readers / SEO:
-<h1 className="sr-only">
-  ANAQIO — Visual Infrastructure for Fashion Commerce
-</h1>;
+;<h1 className="sr-only">ANAQIO — Visual Infrastructure for Fashion Commerce</h1>
 ```
 
 **Subheadline word-by-word:**
 
 ```tsx
-const words =
-  'Transform garments into photorealistic campaign visuals in minutes.'.split(
-    ' '
-  );
+const words = 'Transform garments into photorealistic campaign visuals in minutes.'.split(' ')
 {
   words.map((word, i) => (
     <motion.span
@@ -407,7 +401,7 @@ const words =
     >
       {word}
     </motion.span>
-  ));
+  ))
 }
 ```
 
@@ -461,15 +455,12 @@ const words =
         maxWidth: '38ch',
       }}
     >
-      <point.icon
-        className="text-aq-blue mt-0.5 h-3.5 w-3.5 shrink-0"
-        aria-hidden="true"
-      />
+      <point.icon className="text-aq-blue mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
       <span className="font-label tracking-label text-muted-foreground text-xs uppercase">
         {point.label}
       </span>
     </motion.div>
-  ));
+  ))
 }
 ```
 
@@ -542,20 +533,13 @@ const words =
       {...(animated ? flipReveal(reduced, i) : {})}
       className="flex flex-col gap-3" // ← no card background, no border, just atoms
     >
-      <span
-        aria-hidden="true"
-        className="font-display text-aq-blue/20 text-5xl font-light"
-      >
+      <span aria-hidden="true" className="font-display text-aq-blue/20 text-5xl font-light">
         {String(i + 1).padStart(2, '0')}
       </span>
-      <h3 className="font-display text-[clamp(1.4rem,2.5vw,2.2rem)] font-light">
-        {stage.title}
-      </h3>
-      <p className="font-body text-muted-foreground text-sm leading-relaxed">
-        {stage.body}
-      </p>
+      <h3 className="font-display text-[clamp(1.4rem,2.5vw,2.2rem)] font-light">{stage.title}</h3>
+      <p className="font-body text-muted-foreground text-sm leading-relaxed">{stage.body}</p>
     </motion.article>
-  ));
+  ))
 }
 ```
 
@@ -575,13 +559,13 @@ Each step card has two visual states:
 Implement with individual `useInView` refs per card, each with progressively larger `margin` (earlier triggering):
 
 ```tsx
-const stepRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
+const stepRefs = [useRef(null), useRef(null), useRef(null), useRef(null)]
 const stepsInView = stepRefs.map((ref, i) =>
   useInView(ref, { once: true, margin: `-${20 + i * 15}%` })
-);
+)
 
 // Each step:
-<motion.div
+;<motion.div
   ref={stepRefs[i]}
   data-atom
   animate={
@@ -600,7 +584,7 @@ const stepsInView = stepRefs.map((ref, i) =>
     {step.num}
   </motion.span>
   ...
-</motion.div>;
+</motion.div>
 ```
 
 ---
@@ -628,18 +612,14 @@ Each cluster:
 ```tsx
 <motion.div
   data-atom
-  style={
-    animated ? { position: 'absolute', left: pos.x, top: pos.y, y: atomY } : {}
-  }
+  style={animated ? { position: 'absolute', left: pos.x, top: pos.y, y: atomY } : {}}
   className="max-w-[22ch]"
 >
   <point.icon className="text-aq-blue mb-3 h-5 w-5" aria-hidden="true" />
   <h3 className="font-display text-[clamp(1.1rem,1.8vw,1.6rem)] font-light leading-tight">
     {point.title}
   </h3>
-  <p className="font-body text-muted-foreground mt-1.5 text-xs leading-relaxed">
-    {point.body}
-  </p>
+  <p className="font-body text-muted-foreground mt-1.5 text-xs leading-relaxed">{point.body}</p>
 </motion.div>
 ```
 
@@ -702,10 +682,7 @@ Panel atom canvas:
     </motion.div>
 
     {/* Title atom */}
-    <h3
-      data-atom
-      className="font-display text-[clamp(2rem,4vw,4rem)] font-light"
-    >
+    <h3 data-atom className="font-display text-[clamp(2rem,4vw,4rem)] font-light">
       {audience.title}
     </h3>
 
@@ -726,9 +703,7 @@ Panel atom canvas:
         className="mt-3 flex items-center gap-3"
       >
         <div className="bg-aq-blue h-1 w-1 rounded-full" aria-hidden="true" />
-        <span className="font-label tracking-label text-foreground/70 text-xs">
-          {f}
-        </span>
+        <span className="font-label tracking-label text-foreground/70 text-xs">{f}</span>
       </motion.div>
     ))}
   </motion.div>
@@ -750,15 +725,15 @@ Auto-cycle: `useInterval(() => setActive(a => (a + 1) % audiences.length), 4000)
 const { scrollYProgress } = useScroll({
   target: sectionRef,
   offset: ['start center', 'end center'],
-});
+})
 
-const words = philosophyText.split(' ');
-const wordCount = words.length;
+const words = philosophyText.split(' ')
+const wordCount = words.length
 
 return words.map((word, i) => {
-  const start = i / wordCount;
-  const end = (i + 3) / wordCount; // each word fully lit over a 3-word window
-  const wordOpacity = useTransform(scrollYProgress, [start, end], [0.18, 1]);
+  const start = i / wordCount
+  const end = (i + 3) / wordCount // each word fully lit over a 3-word window
+  const wordOpacity = useTransform(scrollYProgress, [start, end], [0.18, 1])
 
   return (
     <motion.span
@@ -769,8 +744,8 @@ return words.map((word, i) => {
     >
       {word}
     </motion.span>
-  );
-});
+  )
+})
 ```
 
 Atmospheric atom: Single large period `.` at `15rem`, `opacity-[0.04]`, far right, `aria-hidden`.
@@ -801,11 +776,7 @@ Vision points: Replace `slideInLeft` delay-based stagger with scroll-range stagg
 ```tsx
 // Each point starts rising at a different scroll threshold
 const pointY = (i: number) =>
-  useTransform(
-    scrollYProgress,
-    [0.1 + i * 0.08, 0.45 + i * 0.08],
-    ['30px', '0px']
-  );
+  useTransform(scrollYProgress, [0.1 + i * 0.08, 0.45 + i * 0.08], ['30px', '0px'])
 ```
 
 ---
@@ -820,31 +791,26 @@ const pointY = (i: number) =>
 
 ```tsx
 // components/ui/MagneticButton.tsx  ← new file
-'use client';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
-import { useRef } from 'react';
+'use client'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
+import { useRef } from 'react'
 
-export function MagneticButton({
-  children,
-  className,
-  strength = 0.35,
-  ...props
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const rawX = useMotionValue(0);
-  const rawY = useMotionValue(0);
-  const x = useSpring(rawX, { stiffness: 400, damping: 30 });
-  const y = useSpring(rawY, { stiffness: 400, damping: 30 });
+export function MagneticButton({ children, className, strength = 0.35, ...props }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const rawX = useMotionValue(0)
+  const rawY = useMotionValue(0)
+  const x = useSpring(rawX, { stiffness: 400, damping: 30 })
+  const y = useSpring(rawY, { stiffness: 400, damping: 30 })
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = ref.current!.getBoundingClientRect();
-    rawX.set((e.clientX - rect.left - rect.width / 2) * strength);
-    rawY.set((e.clientY - rect.top - rect.height / 2) * strength);
-  };
+    const rect = ref.current!.getBoundingClientRect()
+    rawX.set((e.clientX - rect.left - rect.width / 2) * strength)
+    rawY.set((e.clientY - rect.top - rect.height / 2) * strength)
+  }
   const handleMouseLeave = () => {
-    rawX.set(0);
-    rawY.set(0);
-  };
+    rawX.set(0)
+    rawY.set(0)
+  }
 
   return (
     <motion.div
@@ -857,7 +823,7 @@ export function MagneticButton({
     >
       {children}
     </motion.div>
-  );
+  )
 }
 ```
 
@@ -907,17 +873,11 @@ CTA layout as atom canvas:
     }
     className="font-display absolute text-center font-light leading-[0.95]"
   >
-    <span className="text-brand-gradient">
-      {FinalCTAText.headline.gradient}
-    </span>
+    <span className="text-brand-gradient">{FinalCTAText.headline.gradient}</span>
   </motion.h2>
 
   {/* Magnetic CTA atom */}
-  <motion.div
-    data-atom
-    {...fadeUp(reduced, 0.2)}
-    className="absolute bottom-[22%]"
-  >
+  <motion.div data-atom {...fadeUp(reduced, 0.2)} className="absolute bottom-[22%]">
     <MagneticButton strength={tier === 'high' ? 0.35 : 0}>
       <Button
         variant="brand"
@@ -981,8 +941,8 @@ The outer section remains largely structural (it needs to render the form server
       data-atom
       {...(animated ? flipReveal(reduced, i) : {})}
       onClick={() => {
-        setRole(role.id);
-        nextStep();
+        setRole(role.id)
+        nextStep()
       }}
       className={cn(
         'border-border hover:border-aq-blue/50 hover:bg-card rounded-xl border p-5 text-left transition-all hover:-translate-y-0.5',
@@ -992,7 +952,7 @@ The outer section remains largely structural (it needs to render the form server
       <role.icon className="text-aq-blue mb-3 h-4 w-4" aria-hidden="true" />
       <h4 className="font-ui text-sm font-medium">{role.label}</h4>
     </motion.button>
-  ));
+  ))
 }
 ```
 
@@ -1019,12 +979,7 @@ The outer section remains largely structural (it needs to render the form server
 **Progress dots:**
 
 ```tsx
-<div
-  className="flex items-center gap-2"
-  role="progressbar"
-  aria-valuenow={step}
-  aria-valuemax={3}
->
+<div className="flex items-center gap-2" role="progressbar" aria-valuenow={step} aria-valuemax={3}>
   {[1, 2, 3].map((s) => (
     <motion.div
       key={s}
@@ -1063,7 +1018,7 @@ export function GrainOverlay() {
         backgroundSize: '256px 256px',
       }}
     />
-  );
+  )
 }
 ```
 
@@ -1075,15 +1030,15 @@ Wire `<GrainOverlay />` into `app/layout.tsx` after `{children}`.
 
 ```typescript
 // Standard scroll hook setup — use this pattern in every section:
-const sectionRef = useRef<HTMLElement>(null);
-const reduced = useReducedMotion();
-const tier = useDeviceTier();
-const animated = !reduced && tier !== 'low';
+const sectionRef = useRef<HTMLElement>(null)
+const reduced = useReducedMotion()
+const tier = useDeviceTier()
+const animated = !reduced && tier !== 'low'
 
 const { scrollYProgress } = useScroll({
   target: sectionRef,
   offset: ['start end', 'end start'],
-});
+})
 ```
 
 **Scroll range cheatsheet (for `offset: ['start end', 'end start']`):**

@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test'
 
 export default defineConfig({
   testDir: './__tests__',
@@ -26,4 +26,4 @@ export default defineConfig({
     stdout: 'pipe',
     stderr: 'pipe',
   },
-});
+})

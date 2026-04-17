@@ -226,7 +226,7 @@ import type { Database } from '@/types/supabase'
 export function createClient() {
   return createBrowserClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!
   )
 }
 ```
@@ -251,12 +251,12 @@ export async function createClient() {
         setAll(cookiesToSet) {
           try {
             cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options),
+              cookieStore.set(name, value, options)
             )
           } catch {} // Server Component — can't write cookies, middleware handles it
         },
       },
-    },
+    }
   )
 }
 ```
@@ -281,11 +281,11 @@ export async function middleware(request: NextRequest) {
           cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
           supabaseResponse = NextResponse.next({ request })
           cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options),
+            supabaseResponse.cookies.set(name, value, options)
           )
         },
       },
-    },
+    }
   )
 
   // IMPORTANT: Do not run logic between createServerClient and getClaims
@@ -335,11 +335,11 @@ export async function GET(request: NextRequest) {
           },
           setAll(cookiesToSet) {
             cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options),
+              cookieStore.set(name, value, options)
             )
           },
         },
-      },
+      }
     )
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     if (!error) return NextResponse.redirect(`${origin}${next}`)
@@ -735,7 +735,7 @@ export function useRealtimeGeneration(generationId: string | null) {
           if (row.status === 'failed') {
             setError(row.error_message ?? 'Generation failed')
           }
-        },
+        }
       )
       .subscribe()
 

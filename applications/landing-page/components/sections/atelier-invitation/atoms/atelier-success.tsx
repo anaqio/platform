@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion'
+import { CheckCircle2 } from 'lucide-react'
 
 interface AtelierSuccessProps {
-  title: string;
-  description: string;
+  title: string
+  description: string
 }
 
 export function AtelierSuccess({ title, description }: AtelierSuccessProps) {
@@ -20,13 +20,9 @@ export function AtelierSuccess({ title, description }: AtelierSuccessProps) {
         <CheckCircle2 className="h-10 w-10 text-aq-blue" />
       </div>
       <div className="max-w-sm space-y-3">
-        <h2 className="font-cormorant text-3xl font-semibold text-foreground">
-          {title}
-        </h2>
-        <p className="text-sm leading-relaxed text-muted-foreground">
-          {description}
-        </p>
+        <h2 className="font-cormorant text-3xl font-semibold text-foreground">{title}</h2>
+        <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
       </div>
     </motion.div>
-  );
+  )
 }

@@ -1,7 +1,7 @@
-import createNextIntlPlugin from 'next-intl/plugin';
-import type { NextConfig } from 'next';
+import createNextIntlPlugin from 'next-intl/plugin'
+import type { NextConfig } from 'next'
 
-const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
 
 const nextConfig = {
   poweredByHeader: false,
@@ -33,7 +33,7 @@ const nextConfig = {
 
   // Security headers
   async headers() {
-    const isDev = process.env.NODE_ENV === 'development';
+    const isDev = process.env.NODE_ENV === 'development'
     const scriptSrc = [
       "'self'",
       "'unsafe-inline'",
@@ -42,7 +42,7 @@ const nextConfig = {
       'https://www.google-analytics.com',
     ]
       .filter(Boolean)
-      .join(' ');
+      .join(' ')
 
     const csp = [
       "default-src 'self'",
@@ -56,7 +56,7 @@ const nextConfig = {
       "frame-src 'self'",
       "frame-ancestors 'none'",
       'upgrade-insecure-requests',
-    ].join('; ');
+    ].join('; ')
 
     return [
       // Defense-in-depth: prevent indexing of legal mentions
@@ -98,7 +98,7 @@ const nextConfig = {
           },
         ],
       },
-    ];
+    ]
   },
 
   experimental: {
@@ -107,6 +107,6 @@ const nextConfig = {
     viewTransition: true,
   },
   turbopack: {},
-} satisfies NextConfig;
+} satisfies NextConfig
 
-export default withNextIntl(nextConfig);
+export default withNextIntl(nextConfig)

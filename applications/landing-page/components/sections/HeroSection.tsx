@@ -1,34 +1,34 @@
-'use client';
+'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDownRight, ChevronDown } from 'lucide-react';
-import { useLocale, useTranslations } from 'next-intl';
-import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { ArrowDownRight, ChevronDown } from 'lucide-react'
+import { useLocale, useTranslations } from 'next-intl'
+import { useRef } from 'react'
 
-import { Button } from '@/components/ui/button';
-import { MagneticButton } from '@/components/ui/MagneticButton';
-import { ScrollLink } from '@/components/ui/scroll-link';
-import { useAnimationReady } from '@/hooks/use-animation-ready';
-import { isRTL, type Locale } from '@/i18n/config';
-import { charReveal, ease, wordReveal } from '@/lib/data/motion';
+import { Button } from '@/components/ui/button'
+import { MagneticButton } from '@/components/ui/MagneticButton'
+import { ScrollLink } from '@/components/ui/scroll-link'
+import { useAnimationReady } from '@/hooks/use-animation-ready'
+import { isRTL, type Locale } from '@/i18n/config'
+import { charReveal, ease, wordReveal } from '@/lib/data/motion'
 
 export function HeroSection() {
-  const t = useTranslations('landing.hero');
-  const locale = useLocale();
-  const rtl = isRTL(locale as Locale);
-  const sectionRef = useRef<HTMLElement>(null);
-  const { reduced, tier, animated } = useAnimationReady();
+  const t = useTranslations('landing.hero')
+  const locale = useLocale()
+  const rtl = isRTL(locale as Locale)
+  const sectionRef = useRef<HTMLElement>(null)
+  const { reduced, tier, animated } = useAnimationReady()
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end start'],
-  });
+  })
 
-  const headlineY = useTransform(scrollYProgress, [0, 1], ['0px', '-40px']);
-  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const headlineY = useTransform(scrollYProgress, [0, 1], ['0px', '-40px'])
+  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.08])
 
-  const subheadlineWords = t('subheadline.a').split(' ');
-  const proWords = t('headline.pro').split(' ');
+  const subheadlineWords = t('subheadline.a').split(' ')
+  const proWords = t('headline.pro').split(' ')
 
   return (
     <section
@@ -181,5 +181,5 @@ export function HeroSection() {
         <ChevronDown className="h-5 w-5" />
       </motion.div>
     </section>
-  );
+  )
 }

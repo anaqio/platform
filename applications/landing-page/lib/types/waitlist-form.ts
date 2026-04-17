@@ -1,58 +1,58 @@
 // Core types for multi-step waitlist form
 
 export interface SelectOption {
-  value: string;
-  label: string;
+  value: string
+  label: string
 }
 
 export interface FormField {
-  name: string;
-  type: 'text' | 'email' | 'select';
-  label: string;
-  placeholder?: string;
-  required: boolean;
-  options?: SelectOption[];
+  name: string
+  type: 'text' | 'email' | 'select'
+  label: string
+  placeholder?: string
+  required: boolean
+  options?: SelectOption[]
 }
 
 export interface FormStep {
-  id: number;
-  title: string;
-  description: string;
-  fields: FormField[];
+  id: number
+  title: string
+  description: string
+  fields: FormField[]
 }
 
 export interface FormState {
-  currentStep: number;
-  totalSteps: number;
-  formData: Record<string, string>;
-  errors: Record<string, string>;
-  touched: Record<string, boolean>;
+  currentStep: number
+  totalSteps: number
+  formData: Record<string, string>
+  errors: Record<string, string>
+  touched: Record<string, boolean>
 }
 
 export interface ValidationResult {
-  isValid: boolean;
-  errors: Record<string, string>;
+  isValid: boolean
+  errors: Record<string, string>
 }
 
 export interface WaitlistFormProps {
-  source: string;
-  variant?: 'simple' | 'full';
-  className?: string;
+  source: string
+  variant?: 'simple' | 'full'
+  className?: string
 }
 
 export interface StepIndicatorProps {
-  currentStep: number;
-  totalSteps: number;
-  onStepClick?: (step: number) => void;
+  currentStep: number
+  totalSteps: number
+  onStepClick?: (step: number) => void
 }
 
 export interface FormStepProps {
-  step: FormStep;
-  formData: Record<string, string>;
-  errors: Record<string, string>;
-  onChange: (name: string, value: string) => void;
-  onBlur: (name: string) => void;
-  disabled: boolean;
+  step: FormStep
+  formData: Record<string, string>
+  errors: Record<string, string>
+  onChange: (name: string, value: string) => void
+  onBlur: (name: string) => void
+  disabled: boolean
 }
 
 // Step configurations for full variant (3 steps)
@@ -139,7 +139,7 @@ export const FULL_VARIANT_STEPS: FormStep[] = [
       },
     ],
   },
-];
+]
 
 // Step configuration for simple variant (1 step)
 export const SIMPLE_VARIANT_STEPS: FormStep[] = [
@@ -157,4 +157,4 @@ export const SIMPLE_VARIANT_STEPS: FormStep[] = [
       },
     ],
   },
-];
+]

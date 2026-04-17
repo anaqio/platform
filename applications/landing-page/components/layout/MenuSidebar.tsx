@@ -1,43 +1,43 @@
-'use client';
+'use client'
 
-import { AnimatePresence, motion } from 'framer-motion';
-import { X } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion'
+import { X } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
-import { LocaleSwitcher } from '@/components/locale-switcher';
-import { ScrollLink } from '@/components/ui/scroll-link';
-import { Link } from '@/i18n/routing';
-import { cn } from '@/lib/utils';
+import { LocaleSwitcher } from '@/components/locale-switcher'
+import { ScrollLink } from '@/components/ui/scroll-link'
+import { Link } from '@/i18n/routing'
+import { cn } from '@/lib/utils'
 
 const SECTION_LINKS = [
   { label: 'Solution', targetId: 'solution' },
   { label: 'Comment ça marche', targetId: 'how-it-works' },
   { label: 'Pourquoi Anaqio', targetId: 'why-anaqio' },
   { label: 'Vision', targetId: 'vision' },
-] as const;
+] as const
 
 const PAGE_LINKS = [
   { label: 'À propos', href: '/about' },
   { label: 'Marque', href: '/brand' },
   { label: 'Contact', href: '/contact' },
-] as const;
+] as const
 
 export function MenuSidebar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    document.body.classList.add('has-sidebar');
-    return () => document.body.classList.remove('has-sidebar');
-  }, []);
+    document.body.classList.add('has-sidebar')
+    return () => document.body.classList.remove('has-sidebar')
+  }, [])
 
   useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    document.body.style.overflow = isOpen ? 'hidden' : ''
     return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
 
-  const close = () => setIsOpen(false);
+  const close = () => setIsOpen(false)
 
   return (
     <>
@@ -52,9 +52,7 @@ export function MenuSidebar() {
         <div className="flex flex-col items-center gap-2">
           <Link href="/" aria-label="Anaqio home">
             <div className="flex h-8 w-8 items-center justify-center rounded-sm bg-white/90">
-              <span className="text-[10px] font-black tracking-tight text-[#2B3AE7]">
-                AQ
-              </span>
+              <span className="text-[10px] font-black tracking-tight text-[#2B3AE7]">AQ</span>
             </div>
           </Link>
         </div>
@@ -154,5 +152,5 @@ export function MenuSidebar() {
         )}
       </AnimatePresence>
     </>
-  );
+  )
 }

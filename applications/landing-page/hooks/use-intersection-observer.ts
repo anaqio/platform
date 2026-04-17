@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { useIntersectionObserver } from '@uidotdev/usehooks';
+import { useIntersectionObserver } from '@uidotdev/usehooks'
 
 /**
  * Hook to observe element intersection with the viewport.
@@ -10,4 +10,4 @@ import { useIntersectionObserver } from '@uidotdev/usehooks';
  * @example
  * const [ref, entry] = useIntersectionObserver({ threshold: 0.1 });
  */
-export { useIntersectionObserver };
+export { useIntersectionObserver }

@@ -22,5 +22,5 @@ const FacebookIcon = (props: React.SVGProps<SVGSVGElement>) => (
       strokeLinejoin="round"
     />
   </svg>
-);
-export default FacebookIcon;
+)
+export default FacebookIcon

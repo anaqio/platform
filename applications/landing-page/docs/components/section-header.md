@@ -54,11 +54,10 @@ text-brand-gradient font-bold italic
 ## Usage
 
 ```tsx
-import { GradientText, SectionHeader } from '@/components/ui/section-header';
-
-<SectionHeader eyebrow="Product Benefits">
+import { GradientText, SectionHeader } from '@/components/ui/section-header'
+;<SectionHeader eyebrow="Product Benefits">
   Why <GradientText>Anaqio</GradientText> is Better?
-</SectionHeader>;
+</SectionHeader>
 ```
 
 The heading re-animates each time it enters the viewport (controlled by `viewport: { once: true }` — it animates once and stays visible).

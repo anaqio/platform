@@ -1,15 +1,15 @@
-'use client';
+'use client'
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion'
 
-import type { MarqueeItem } from '@/lib/data/marquee-content';
+import type { MarqueeItem } from '@/lib/data/marquee-content'
 
-import { marqueeOnHover, marqueeScroll } from '@/lib/data/motion';
+import { marqueeOnHover, marqueeScroll } from '@/lib/data/motion'
 
 interface MarqueeTickerAtomProps {
-  items: MarqueeItem[];
-  background?: string;
-  textColor?: string;
+  items: MarqueeItem[]
+  background?: string
+  textColor?: string
 }
 
 export function MarqueeTickerAtom({
@@ -17,8 +17,8 @@ export function MarqueeTickerAtom({
   background = 'bg-foreground/5',
   textColor = 'text-foreground',
 }: MarqueeTickerAtomProps) {
-  const reduced = useReducedMotion();
-  const duplicatedItems = [...items, ...items];
+  const reduced = useReducedMotion()
+  const duplicatedItems = [...items, ...items]
 
   return (
     <div className={`overflow-hidden ${background}`}>
@@ -34,9 +34,7 @@ export function MarqueeTickerAtom({
             className="flex shrink-0 items-center gap-3 whitespace-nowrap"
           >
             <span className="text-xl">{item.emoji}</span>
-            <span
-              className={`text-sm font-semibold uppercase tracking-wide ${textColor}`}
-            >
+            <span className={`text-sm font-semibold uppercase tracking-wide ${textColor}`}>
               {item.text}
             </span>
             <span className="mx-4 text-foreground/20">·</span>
@@ -44,5 +42,5 @@ export function MarqueeTickerAtom({
         ))}
       </motion.div>
     </div>
-  );
+  )
 }

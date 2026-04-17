@@ -1,18 +1,18 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server'
 
-import type { Metadata } from 'next';
+import type { Metadata } from 'next'
 
-import { LegalPageLayout } from '@/components/layout/LegalPageLayout';
-import { Link } from '@/i18n/routing';
+import { LegalPageLayout } from '@/components/layout/LegalPageLayout'
+import { Link } from '@/i18n/routing'
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>
 }): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'meta.terms' });
-  return { title: t('title'), description: t('desc') };
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'meta.terms' })
+  return { title: t('title'), description: t('desc') }
 }
 
 export default function TermsOfServicePage() {
@@ -25,17 +25,12 @@ export default function TermsOfServicePage() {
     >
       <div className="mb-12 rounded-r-xl border-l-2 border-aq-blue bg-secondary/30 p-6">
         <p className="text-sm leading-relaxed text-muted-foreground">
-          <strong className="text-foreground">Moroccan Law Compliance.</strong>{' '}
-          These Terms of Service are governed by and construed in accordance
-          with Moroccan law, including{' '}
-          <strong className="text-aq-blue">Law No. 53-05</strong> on Electronic
-          Exchange of Legal Data,{' '}
-          <strong className="text-aq-blue">Law No. 31-08</strong> on Consumer
-          Protection Measures, and the{' '}
-          <strong className="text-foreground">
-            Dahir des Obligations et Contrats (DOC)
-          </strong>
-          .
+          <strong className="text-foreground">Moroccan Law Compliance.</strong> These Terms of
+          Service are governed by and construed in accordance with Moroccan law, including{' '}
+          <strong className="text-aq-blue">Law No. 53-05</strong> on Electronic Exchange of Legal
+          Data, <strong className="text-aq-blue">Law No. 31-08</strong> on Consumer Protection
+          Measures, and the{' '}
+          <strong className="text-foreground">Dahir des Obligations et Contrats (DOC)</strong>.
         </p>
       </div>
 
@@ -58,10 +53,7 @@ export default function TermsOfServicePage() {
             ['#contact', '15. Contact'],
           ].map(([href, label]) => (
             <li key={href}>
-              <a
-                href={href}
-                className="text-muted-foreground transition-colors hover:text-aq-blue"
-              >
+              <a href={href} className="text-muted-foreground transition-colors hover:text-aq-blue">
                 {label}
               </a>
             </li>
@@ -75,23 +67,19 @@ export default function TermsOfServicePage() {
             1. Acceptance of Terms
           </h2>
           <p className="mb-4 leading-relaxed text-muted-foreground">
-            By accessing or using Anaqio&apos;s website, platform, mobile
-            application, or any associated services (collectively, the{' '}
+            By accessing or using Anaqio&apos;s website, platform, mobile application, or any
+            associated services (collectively, the{' '}
             <strong className="text-foreground">&quot;Service&quot;</strong>
-            ), you confirm that you have read, understood, and agree to be bound
-            by these Terms of Service (
-            <strong className="text-foreground">&quot;Terms&quot;</strong>) and
-            our{' '}
+            ), you confirm that you have read, understood, and agree to be bound by these Terms of
+            Service (<strong className="text-foreground">&quot;Terms&quot;</strong>) and our{' '}
             <Link href="/privacy" className="text-aq-blue hover:underline">
               Privacy Policy
             </Link>
             .
           </p>
           <p className="leading-relaxed text-muted-foreground">
-            You must be at least{' '}
-            <strong className="text-foreground">18 years of age</strong> to use
-            Anaqio. By using the Service, you represent that you meet this
-            minimum age requirement.
+            You must be at least <strong className="text-foreground">18 years of age</strong> to use
+            Anaqio. By using the Service, you represent that you meet this minimum age requirement.
           </p>
         </section>
 
@@ -103,18 +91,15 @@ export default function TermsOfServicePage() {
             <li className="flex gap-4">
               <span className="font-bold text-aq-blue">01</span>
               <p className="text-muted-foreground">
-                <strong className="text-foreground">&quot;Anaqio&quot;</strong>{' '}
-                refers to Anaqio SARL, operator of the platform.
+                <strong className="text-foreground">&quot;Anaqio&quot;</strong> refers to Anaqio
+                SARL, operator of the platform.
               </p>
             </li>
             <li className="flex gap-4">
               <span className="font-bold text-aq-blue">02</span>
               <p className="text-muted-foreground">
-                <strong className="text-foreground">
-                  &quot;AI Outputs&quot;
-                </strong>{' '}
-                means images, lookbooks, or other content generated by our
-                models.
+                <strong className="text-foreground">&quot;AI Outputs&quot;</strong> means images,
+                lookbooks, or other content generated by our models.
               </p>
             </li>
           </ul>
@@ -124,22 +109,18 @@ export default function TermsOfServicePage() {
           <h2 className="mb-6 border-t border-border/30 pt-16 font-display text-3xl font-bold tracking-tight">
             7. Intellectual Property
           </h2>
-          <h3 className="mb-4 text-xl font-semibold italic text-aq-purple">
-            7.1 Anaqio&apos;s IP
-          </h3>
+          <h3 className="mb-4 text-xl font-semibold italic text-aq-purple">7.1 Anaqio&apos;s IP</h3>
           <p className="mb-6 leading-relaxed text-muted-foreground">
-            All rights, title, and interest in the Service — including but not
-            limited to the software, AI models, algorithms, and design — are
-            owned by or licensed to Anaqio.
+            All rights, title, and interest in the Service — including but not limited to the
+            software, AI models, algorithms, and design — are owned by or licensed to Anaqio.
           </p>
           <div className="rounded-xl border border-aq-blue/20 bg-aq-blue/5 p-6">
             <h3 className="mb-2 text-sm font-bold uppercase tracking-widest text-aq-blue">
               Commercial Rights
             </h3>
             <p className="text-sm text-muted-foreground">
-              You may use AI Outputs for commercial purposes consistent with
-              your subscription plan. Anaqio does not claim ownership over AI
-              Outputs generated from your unique inputs.
+              You may use AI Outputs for commercial purposes consistent with your subscription plan.
+              Anaqio does not claim ownership over AI Outputs generated from your unique inputs.
             </p>
           </div>
         </section>
@@ -149,21 +130,14 @@ export default function TermsOfServicePage() {
             15. Contact
           </h2>
           <div className="rounded-2xl border border-border/50 bg-secondary/50 p-8">
-            <h3 className="mb-4 font-display text-xl font-bold">
-              Anaqio — Legal Department
-            </h3>
+            <h3 className="mb-4 font-display text-xl font-bold">Anaqio — Legal Department</h3>
             <p className="mb-2 text-muted-foreground">
               Email:{' '}
-              <a
-                href="mailto:legal@anaqio.com"
-                className="text-aq-blue hover:underline"
-              >
+              <a href="mailto:legal@anaqio.com" className="text-aq-blue hover:underline">
                 legal@anaqio.com
               </a>
             </p>
-            <p className="mb-4 text-muted-foreground">
-              Address: Casablanca, Morocco
-            </p>
+            <p className="mb-4 text-muted-foreground">Address: Casablanca, Morocco</p>
             <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
               Response time: within 15 business days
             </p>
@@ -171,5 +145,5 @@ export default function TermsOfServicePage() {
         </section>
       </article>
     </LegalPageLayout>
-  );
+  )
 }

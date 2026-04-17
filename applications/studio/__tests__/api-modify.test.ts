@@ -65,8 +65,8 @@ describe('modifyRequestSchema — property tests', () => {
         (input) => {
           const result = modifyRequestSchema.safeParse(input)
           expect(result.success).toBe(true)
-        },
-      ),
+        }
+      )
     )
   })
 
@@ -81,7 +81,7 @@ describe('modifyRequestSchema — property tests', () => {
           modificationPrompt: longPrompt,
         })
         expect(result.success).toBe(false)
-      }),
+      })
     )
   })
 
@@ -106,8 +106,8 @@ describe('modifyRequestSchema — property tests', () => {
             const keys = Object.keys(result.data).sort()
             expect(keys).toEqual(['imageBase64', 'mimeType', 'modificationPrompt'])
           }
-        },
-      ),
+        }
+      )
     )
   })
 })

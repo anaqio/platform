@@ -36,7 +36,7 @@ export function useRealtimeGeneration(generationId: string | null) {
           if (row.status === 'failed') {
             setError(row.error_message ?? 'Generation failed')
           }
-        },
+        }
       )
       .subscribe()
 

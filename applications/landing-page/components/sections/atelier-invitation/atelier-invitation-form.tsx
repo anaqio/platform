@@ -1,52 +1,41 @@
-'use client';
+'use client'
 
-import { AnimatePresence, motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import {
-  useRef,
-  useState,
-  useTransition,
-  useCallback,
-  useEffect,
-  useMemo,
-} from 'react';
+import { AnimatePresence, motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
+import { useRef, useState, useTransition, useCallback, useEffect, useMemo } from 'react'
 
-import { AtelierNav } from './atoms/atelier-nav';
-import { AtelierProgressBar } from './atoms/atelier-progress-bar';
-import { AtelierQuestion } from './atoms/atelier-question';
-import { AtelierSelectInput } from './atoms/atelier-select-input';
-import { AtelierStepCounter } from './atoms/atelier-step-counter';
-import { AtelierSuccess } from './atoms/atelier-success';
-import { AtelierTextInput } from './atoms/atelier-text-input';
+import { AtelierNav } from './atoms/atelier-nav'
+import { AtelierProgressBar } from './atoms/atelier-progress-bar'
+import { AtelierQuestion } from './atoms/atelier-question'
+import { AtelierSelectInput } from './atoms/atelier-select-input'
+import { AtelierStepCounter } from './atoms/atelier-step-counter'
+import { AtelierSuccess } from './atoms/atelier-success'
+import { AtelierTextInput } from './atoms/atelier-text-input'
 
-import { requestAtelierInvitation } from '@/lib/actions/atelier-invitation';
-import {
-  ICONS,
-  SLIDE_TRANSITION,
-  SLIDE_VARIANTS,
-} from '@/lib/data/atelier-form-data';
-import { ATELIER_STEP_CONFIGS } from '@/lib/data/atelier-invitation';
-import { DataManager } from '@/lib/utils/data-manager';
-import { sanitizeEmail, validateEmail } from '@/lib/utils/form-validation';
+import { requestAtelierInvitation } from '@/lib/actions/atelier-invitation'
+import { ICONS, SLIDE_TRANSITION, SLIDE_VARIANTS } from '@/lib/data/atelier-form-data'
+import { ATELIER_STEP_CONFIGS } from '@/lib/data/atelier-invitation'
+import { DataManager } from '@/lib/utils/data-manager'
+import { sanitizeEmail, validateEmail } from '@/lib/utils/form-validation'
 
 interface RawStepTranslation {
-  question: string;
-  hint?: string;
-  placeholder?: string;
-  errors?: Record<string, string>;
-  options?: Record<string, string>;
+  question: string
+  hint?: string
+  placeholder?: string
+  errors?: Record<string, string>
+  options?: Record<string, string>
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function AtelierInvitationForm() {
-  const t = useTranslations('atelierInvitation');
+  const t = useTranslations('atelierInvitation')
 
   // Build per-step translated content from configs + raw translation data
   const stepContent = useMemo(
     () =>
       ATELIER_STEP_CONFIGS.map((cfg) => {
-        const raw = DataManager<RawStepTranslation>(t, `steps.${cfg.id}`);
+        const raw = DataManager<RawStepTranslation>(t, `steps.${cfg.id}`)
         return {
           question: raw.question,
           hint: raw.hint ?? '',
@@ -60,150 +49,137 @@ export function AtelierInvitationForm() {
                 label: raw.options?.[v] ?? v,
               }))
             : [],
-        };
+        }
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [] // t is stable; memoize once on mount
-  );
+  )
 
-  const [stepIndex, setStepIndex] = useState(0);
-  const [direction, setDirection] = useState(1);
-  const [values, setValues] = useState<Record<string, string>>({});
-  const [error, setError] = useState<string | null>(null);
-  const [submitted, setSubmitted] = useState(false);
-  const [isPending, startTransition] = useTransition();
+  const [stepIndex, setStepIndex] = useState(0)
+  const [direction, setDirection] = useState(1)
+  const [values, setValues] = useState<Record<string, string>>({})
+  const [error, setError] = useState<string | null>(null)
+  const [submitted, setSubmitted] = useState(false)
+  const [isPending, startTransition] = useTransition()
 
-  const inputRef = useRef<HTMLInputElement>(null);
-  const selectRef = useRef<HTMLSelectElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null)
+  const selectRef = useRef<HTMLSelectElement>(null)
 
-  const config = ATELIER_STEP_CONFIGS[stepIndex];
-  const content = stepContent[stepIndex];
-  const totalSteps = ATELIER_STEP_CONFIGS.length;
-  const progress = (stepIndex / totalSteps) * 100;
-  const isLastStep = stepIndex === totalSteps - 1;
-  const currentValue = values[config.id] ?? '';
+  const config = ATELIER_STEP_CONFIGS[stepIndex]
+  const content = stepContent[stepIndex]
+  const totalSteps = ATELIER_STEP_CONFIGS.length
+  const progress = (stepIndex / totalSteps) * 100
+  const isLastStep = stepIndex === totalSteps - 1
+  const currentValue = values[config.id] ?? ''
 
   // Auto-focus when step changes
   useEffect(() => {
     // Prevent auto-focus on initial mount to avoid stealing scroll from the top of the page
-    if (stepIndex === 0) return;
+    if (stepIndex === 0) return
 
     const timer = setTimeout(() => {
-      inputRef.current?.focus({ preventScroll: true });
-      selectRef.current?.focus({ preventScroll: true });
-    }, 380);
-    return () => clearTimeout(timer);
-  }, [stepIndex]);
+      inputRef.current?.focus({ preventScroll: true })
+      selectRef.current?.focus({ preventScroll: true })
+    }, 380)
+    return () => clearTimeout(timer)
+  }, [stepIndex])
 
   const validateCurrent = useCallback((): string | null => {
     if (config.required && !currentValue.trim()) {
-      return content.errorRequired || t('ui.fieldRequired');
+      return content.errorRequired || t('ui.fieldRequired')
     }
-    if (
-      config.type === 'email' &&
-      currentValue &&
-      !validateEmail(currentValue)
-    ) {
-      return content.errorInvalid ?? t('ui.fieldRequired');
+    if (config.type === 'email' && currentValue && !validateEmail(currentValue)) {
+      return content.errorInvalid ?? t('ui.fieldRequired')
     }
-    if (
-      config.type === 'text' &&
-      currentValue &&
-      currentValue.trim().length < 2
-    ) {
-      return content.errorTooShort ?? t('ui.fieldRequired');
+    if (config.type === 'text' && currentValue && currentValue.trim().length < 2) {
+      return content.errorTooShort ?? t('ui.fieldRequired')
     }
-    return null;
-  }, [config, content, currentValue, t]);
+    return null
+  }, [config, content, currentValue, t])
 
   const advance = useCallback(() => {
-    const err = validateCurrent();
+    const err = validateCurrent()
     if (err) {
-      setError(err);
-      return;
+      setError(err)
+      return
     }
-    setError(null);
+    setError(null)
     if (stepIndex < totalSteps - 1) {
-      setDirection(1);
-      setStepIndex((i) => i + 1);
+      setDirection(1)
+      setStepIndex((i) => i + 1)
     }
-  }, [validateCurrent, stepIndex, totalSteps]);
+  }, [validateCurrent, stepIndex, totalSteps])
 
   const goBack = useCallback(() => {
     if (stepIndex > 0) {
-      setError(null);
-      setDirection(-1);
-      setStepIndex((i) => i - 1);
+      setError(null)
+      setDirection(-1)
+      setStepIndex((i) => i - 1)
     }
-  }, [stepIndex]);
+  }, [stepIndex])
 
   const handleChange = useCallback(
     (value: string) => {
-      setValues((prev) => ({ ...prev, [config.id]: value }));
-      setError(null);
+      setValues((prev) => ({ ...prev, [config.id]: value }))
+      setError(null)
     },
     [config.id]
-  );
+  )
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && config.type !== 'select') {
-      e.preventDefault();
+      e.preventDefault()
       if (isLastStep) {
-        handleSubmit();
+        handleSubmit()
       } else {
-        advance();
+        advance()
       }
     }
-  };
+  }
 
   const handleSubmit = useCallback(() => {
-    const err = validateCurrent();
+    const err = validateCurrent()
     if (err) {
-      setError(err);
-      return;
+      setError(err)
+      return
     }
-    setError(null);
+    setError(null)
 
-    const formData = new FormData();
-    formData.append('source', 'early-access');
+    const formData = new FormData()
+    formData.append('source', 'early-access')
     Object.entries(values).forEach(([key, value]) => {
-      formData.append(key, key === 'email' ? sanitizeEmail(value) : value);
-    });
+      formData.append(key, key === 'email' ? sanitizeEmail(value) : value)
+    })
 
     startTransition(async () => {
-      const result = await requestAtelierInvitation(formData);
+      const result = await requestAtelierInvitation(formData)
       if (result.success) {
-        setSubmitted(true);
+        setSubmitted(true)
       } else {
-        setError(result.message);
+        setError(result.message)
       }
-    });
-  }, [validateCurrent, values, startTransition]);
+    })
+  }, [validateCurrent, values, startTransition])
 
   const handleSelectChange = useCallback(
     (value: string) => {
-      handleChange(value);
-      if (!value) return;
-      setError(null);
+      handleChange(value)
+      if (!value) return
+      setError(null)
       setTimeout(() => {
         if (isLastStep) {
-          handleSubmit();
+          handleSubmit()
         } else {
-          setDirection(1);
-          setStepIndex((i) => i + 1);
+          setDirection(1)
+          setStepIndex((i) => i + 1)
         }
-      }, 320);
+      }, 320)
     },
     [handleChange, handleSubmit, isLastStep]
-  );
+  )
 
   if (submitted) {
-    return (
-      <AtelierSuccess
-        title={t('success.title')}
-        description={t('success.desc')}
-      />
-    );
+    return <AtelierSuccess title={t('success.title')} description={t('success.desc')} />
   }
 
   return (
@@ -279,5 +255,5 @@ export function AtelierInvitationForm() {
         onContinue={isLastStep ? handleSubmit : advance}
       />
     </article>
-  );
+  )
 }

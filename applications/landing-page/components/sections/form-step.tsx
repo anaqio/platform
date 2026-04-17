@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
-import { memo } from 'react';
+import { memo } from 'react'
 
-import type { FormStepProps } from '@/lib/types/waitlist-form';
+import type { FormStepProps } from '@/lib/types/waitlist-form'
 
-import { Input } from '@/components/ui/input';
-import { cn } from '@/lib/utils';
+import { Input } from '@/components/ui/input'
+import { cn } from '@/lib/utils'
 
 export const FormStep = memo(function FormStep({
   step,
@@ -26,9 +26,9 @@ export const FormStep = memo(function FormStep({
       {/* Form fields */}
       <div className="space-y-5">
         {step.fields.map((field) => {
-          const fieldValue = formData[field.name] ?? '';
-          const fieldError = errors[field.name];
-          const fieldId = `${step.id}-${field.name}`;
+          const fieldValue = formData[field.name] ?? ''
+          const fieldError = errors[field.name]
+          const fieldId = `${step.id}-${field.name}`
 
           return (
             <div key={field.name} className="space-y-2">
@@ -105,9 +105,9 @@ export const FormStep = memo(function FormStep({
                 </p>
               )}
             </div>
-          );
+          )
         })}
       </div>
     </div>
-  );
-});
+  )
+})

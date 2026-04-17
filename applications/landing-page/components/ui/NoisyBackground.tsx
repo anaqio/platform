@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
-import React from 'react';
+import React from 'react'
 
 interface NoisyBackgroundProps {
-  opacity?: number;
-  baseFrequency?: string;
-  numOctaves?: number;
+  opacity?: number
+  baseFrequency?: string
+  numOctaves?: number
 }
 
 /**
@@ -35,5 +35,5 @@ export const NoisyBackground: React.FC<NoisyBackgroundProps> = ({
         <rect width="100%" height="100%" filter="url(#abstract-noise)" />
       </svg>
     </div>
-  );
-};
+  )
+}

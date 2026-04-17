@@ -1,26 +1,26 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react'
 
-import { useLocalStorage } from './use-local-storage';
+import { useLocalStorage } from './use-local-storage'
 
-import type { FormStep } from '@/lib/types/waitlist-form';
+import type { FormStep } from '@/lib/types/waitlist-form'
 
-import { validateStep } from '@/lib/utils/form-validation';
+import { validateStep } from '@/lib/utils/form-validation'
 
 export interface MultiStepFormReturn {
-  currentStep: number;
-  totalSteps: number;
-  formData: Record<string, string>;
-  errors: Record<string, string>;
-  touched: Record<string, boolean>;
-  isAnimating: boolean;
-  next: () => void;
-  previous: () => void;
-  goToStep: (step: number) => void;
-  updateField: (name: string, value: string) => void;
-  markFieldTouched: (name: string) => void;
-  validateCurrentStep: () => boolean;
-  setIsAnimating: (animating: boolean) => void;
-  resetForm: () => void;
+  currentStep: number
+  totalSteps: number
+  formData: Record<string, string>
+  errors: Record<string, string>
+  touched: Record<string, boolean>
+  isAnimating: boolean
+  next: () => void
+  previous: () => void
+  goToStep: (step: number) => void
+  updateField: (name: string, value: string) => void
+  markFieldTouched: (name: string) => void
+  validateCurrentStep: () => boolean
+  setIsAnimating: (animating: boolean) => void
+  resetForm: () => void
 }
 
 /**
@@ -37,87 +37,87 @@ export function useMultiStepForm(
   storageKey = 'anaqio-form-data',
   initialData?: Record<string, string>
 ): MultiStepFormReturn {
-  const [persistedData, setPersistedData] = useLocalStorage<
-    Record<string, string>
-  >(storageKey, initialData ?? {});
+  const [persistedData, setPersistedData] = useLocalStorage<Record<string, string>>(
+    storageKey,
+    initialData ?? {}
+  )
 
-  const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] =
-    useState<Record<string, string>>(persistedData);
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [touched, setTouched] = useState<Record<string, boolean>>({});
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [currentStep, setCurrentStep] = useState(1)
+  const [formData, setFormData] = useState<Record<string, string>>(persistedData)
+  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [touched, setTouched] = useState<Record<string, boolean>>({})
+  const [isAnimating, setIsAnimating] = useState(false)
 
   // Sync state to localStorage
   useEffect(() => {
-    setPersistedData(formData);
-  }, [formData, setPersistedData]);
+    setPersistedData(formData)
+  }, [formData, setPersistedData])
 
-  const totalSteps = steps.length;
+  const totalSteps = steps.length
 
   /**
    * Updates a form field value and clears its error
    */
   const updateField = useCallback((name: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }))
     // Clear error for this field when user types
     setErrors((prev) => {
-      const newErrors = { ...prev };
-      delete newErrors[name];
-      return newErrors;
-    });
-  }, []);
+      const newErrors = { ...prev }
+      delete newErrors[name]
+      return newErrors
+    })
+  }, [])
 
   /**
    * Marks a field as touched (user has interacted with it)
    */
   const markFieldTouched = useCallback((name: string) => {
-    setTouched((prev) => ({ ...prev, [name]: true }));
-  }, []);
+    setTouched((prev) => ({ ...prev, [name]: true }))
+  }, [])
 
   /**
    * Validates the current step
    * @returns true if validation passes, false otherwise
    */
   const validateCurrentStep = useCallback((): boolean => {
-    const currentStepConfig = steps[currentStep - 1];
-    const validationResult = validateStep(currentStepConfig, formData);
+    const currentStepConfig = steps[currentStep - 1]
+    const validationResult = validateStep(currentStepConfig, formData)
 
     if (!validationResult.isValid) {
-      setErrors(validationResult.errors);
+      setErrors(validationResult.errors)
       // Mark all fields in current step as touched to show errors
-      const stepFieldNames = currentStepConfig.fields.map((f) => f.name);
+      const stepFieldNames = currentStepConfig.fields.map((f) => f.name)
       setTouched((prev) => {
-        const newTouched = { ...prev };
+        const newTouched = { ...prev }
         stepFieldNames.forEach((name) => {
-          newTouched[name] = true;
-        });
-        return newTouched;
-      });
-      return false;
+          newTouched[name] = true
+        })
+        return newTouched
+      })
+      return false
     }
 
-    setErrors({});
-    return true;
-  }, [currentStep, formData, steps]);
+    setErrors({})
+    return true
+  }, [currentStep, formData, steps])
 
   /**
    * Advances to the next step if validation passes
    */
   const next = useCallback(() => {
     if (currentStep < totalSteps && validateCurrentStep()) {
-      setCurrentStep((prev) => prev + 1);
+      setCurrentStep((prev) => prev + 1)
     }
-  }, [currentStep, totalSteps, validateCurrentStep]);
+  }, [currentStep, totalSteps, validateCurrentStep])
 
   /**
    * Goes back to the previous step
    */
   const previous = useCallback(() => {
     if (currentStep > 1) {
-      setCurrentStep((prev) => prev - 1);
+      setCurrentStep((prev) => prev - 1)
     }
-  }, [currentStep]);
+  }, [currentStep])
 
   /**
    * Jumps to a specific step (within valid bounds)
@@ -125,22 +125,22 @@ export function useMultiStepForm(
   const goToStep = useCallback(
     (step: number) => {
       if (step >= 1 && step <= totalSteps) {
-        setCurrentStep(step);
+        setCurrentStep(step)
       }
     },
     [totalSteps]
-  );
+  )
 
   /**
    * Resets form data and clears localStorage
    */
   const resetForm = useCallback(() => {
-    setFormData(initialData ?? {});
-    setPersistedData(initialData ?? {});
-    setErrors({});
-    setTouched({});
-    setCurrentStep(1);
-  }, [initialData, setPersistedData]);
+    setFormData(initialData ?? {})
+    setPersistedData(initialData ?? {})
+    setErrors({})
+    setTouched({})
+    setCurrentStep(1)
+  }, [initialData, setPersistedData])
 
   return {
     currentStep,
@@ -157,5 +157,5 @@ export function useMultiStepForm(
     validateCurrentStep,
     setIsAnimating,
     resetForm,
-  };
+  }
 }

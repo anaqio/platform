@@ -2,24 +2,18 @@
 // Text content (questions, hints, labels) lives in messages/*.json under
 // the `atelierInvitation` namespace.
 
-export type AtelierIconName =
-  | 'Mail'
-  | 'Building2'
-  | 'Phone'
-  | 'User'
-  | 'TrendingUp'
-  | 'Compass';
+export type AtelierIconName = 'Mail' | 'Building2' | 'Phone' | 'User' | 'TrendingUp' | 'Compass'
 
-export type AtelierFieldType = 'email' | 'tel' | 'text' | 'select';
+export type AtelierFieldType = 'email' | 'tel' | 'text' | 'select'
 
 export interface AtelierStepConfig {
   /** Matches both the form field name and the translation key under `steps.*` */
-  id: string;
-  iconName: AtelierIconName;
-  type: AtelierFieldType;
-  required: boolean;
+  id: string
+  iconName: AtelierIconName
+  type: AtelierFieldType
+  required: boolean
   /** Stable option values sent to the server — labels come from translations */
-  optionValues?: string[];
+  optionValues?: string[]
 }
 
 export const ATELIER_STEP_CONFIGS: AtelierStepConfig[] = [
@@ -31,14 +25,7 @@ export const ATELIER_STEP_CONFIGS: AtelierStepConfig[] = [
     iconName: 'User',
     type: 'select',
     required: true,
-    optionValues: [
-      'Brand',
-      'Designer',
-      'Stylist',
-      'Ecommerce',
-      'Photographer',
-      'Other',
-    ],
+    optionValues: ['Brand', 'Designer', 'Stylist', 'Ecommerce', 'Photographer', 'Other'],
   },
   {
     id: 'revenue_range',
@@ -52,13 +39,6 @@ export const ATELIER_STEP_CONFIGS: AtelierStepConfig[] = [
     iconName: 'Compass',
     type: 'select',
     required: false,
-    optionValues: [
-      'Instagram',
-      'LinkedIn',
-      'Word of mouth',
-      'Press / Media',
-      'Search',
-      'Other',
-    ],
+    optionValues: ['Instagram', 'LinkedIn', 'Word of mouth', 'Press / Media', 'Search', 'Other'],
   },
-];
+]

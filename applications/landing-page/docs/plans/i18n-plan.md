@@ -58,66 +58,65 @@ justwaitit/
 ### `i18n/config.ts`
 
 ```ts
-export const locales = ['en-US', 'fr-FR', 'ar-MA'] as const;
-export const defaultLocale = 'en-US' as const;
-export type Locale = (typeof locales)[number];
+export const locales = ['en-US', 'fr-FR', 'ar-MA'] as const
+export const defaultLocale = 'en-US' as const
+export type Locale = (typeof locales)[number]
 
-export const rtlLocales: Locale[] = ['ar-MA'];
-export const isRTL = (locale: Locale) => rtlLocales.includes(locale);
+export const rtlLocales: Locale[] = ['ar-MA']
+export const isRTL = (locale: Locale) => rtlLocales.includes(locale)
 
 export const localeLabels: Record<Locale, string> = {
   'en-US': 'English',
   'fr-FR': 'Français',
   'ar-MA': 'العربية',
-};
+}
 ```
 
 ### `i18n/routing.ts`
 
 ```ts
-import { createNavigation } from 'next-intl/navigation';
-import { defineRouting } from 'next-intl/routing';
-import { locales, defaultLocale } from './config';
+import { createNavigation } from 'next-intl/navigation'
+import { defineRouting } from 'next-intl/routing'
+import { locales, defaultLocale } from './config'
 
 export const routing = defineRouting({
   locales,
   defaultLocale,
   localePrefix: 'always', // /en/... /fr/... /ar/...
-});
+})
 
-export const { Link, redirect, usePathname, useRouter } =
-  createNavigation(routing);
+export const { Link, redirect, usePathname, useRouter } = createNavigation(routing)
 ```
 
 ### `i18n/request.ts`
 
 ```ts
-import { getRequestConfig } from 'next-intl/server';
-import { routing } from './routing';
+import { getRequestConfig } from 'next-intl/server'
+import { routing } from './routing'
 
 export default getRequestConfig(async ({ requestLocale }) => {
-  let locale = await requestLocale;
+  let locale = await requestLocale
   if (!locale || !routing.locales.includes(locale as any)) {
-    locale = routing.defaultLocale;
+    locale = routing.defaultLocale
   }
   return {
     locale,
     messages: (await import(`../messages/${locale}.json`)).default,
-  };
-});
+  }
+})
 ```
 
 ### `middleware.ts`
 
 ```ts
-import createMiddleware from 'next-intl/middleware';
-import { routing } from './i18n/routing';
+import createMiddleware from 'next-intl/middleware'
+import { routing } from './i18n/routing'
 
-export default createMiddleware(routing);
+export default createMiddleware(routing)
 
 export const config = {
   matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
-};
+}
 ```
 
 ---
@@ -298,31 +297,29 @@ Derived from `i18n/strings.csv`. Grouped by feature domain:
 **Root layout** (`app/[locale]/layout.tsx`):
 
 ```tsx
-import { notFound } from 'next/navigation';
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import { locales, isRTL, type Locale } from '@/i18n/config';
+import { notFound } from 'next/navigation'
+import { NextIntlClientProvider } from 'next-intl'
+import { getMessages } from 'next-intl/server'
+import { locales, isRTL, type Locale } from '@/i18n/config'
 
 export async function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  return locales.map((locale) => ({ locale }))
 }
 
 export default async function LocaleLayout({ children, params }) {
-  const { locale } = await params;
-  if (!locales.includes(locale as Locale)) notFound();
+  const { locale } = await params
+  if (!locales.includes(locale as Locale)) notFound()
 
-  const messages = await getMessages();
-  const dir = isRTL(locale as Locale) ? 'rtl' : 'ltr';
+  const messages = await getMessages()
+  const dir = isRTL(locale as Locale) ? 'rtl' : 'ltr'
 
   return (
     <html lang={locale} dir={dir}>
       <body>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>
     </html>
-  );
+  )
 }
 ```
 
@@ -363,7 +360,7 @@ export default async function LocaleLayout({ children, params }) {
 // tailwind.config.ts
 export default {
   // Already supported in Tailwind v3+ via dir="rtl" on <html>
-};
+}
 ```
 
 ---
@@ -379,14 +376,14 @@ export default {
 **Add for `ar-MA`** in `app/[locale]/layout.tsx`:
 
 ```ts
-import { Noto_Sans_Arabic } from 'next/font/google';
+import { Noto_Sans_Arabic } from 'next/font/google'
 
 const notoArabic = Noto_Sans_Arabic({
   subsets: ['arabic'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-arabic',
   display: 'swap',
-});
+})
 ```
 
 **Apply via CSS:**
@@ -416,28 +413,28 @@ const notoArabic = Noto_Sans_Arabic({
 **After (server component):**
 
 ```tsx
-import { getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server'
 
 export default async function AboutHero() {
-  const t = await getTranslations('about.hero');
+  const t = await getTranslations('about.hero')
   return (
     <>
       <h2>{t('title')}</h2>
       <p>{t('desc')}</p>
     </>
-  );
+  )
 }
 ```
 
 **After (client component):**
 
 ```tsx
-'use client';
-import { useTranslations } from 'next-intl';
+'use client'
+import { useTranslations } from 'next-intl'
 
 export function Header() {
-  const t = useTranslations('header');
-  return <nav aria-label={t('nav.aria')}>...</nav>;
+  const t = useTranslations('header')
+  return <nav aria-label={t('nav.aria')}>...</nav>
 }
 ```
 
@@ -449,7 +446,7 @@ Add to every page's `generateMetadata()`:
 
 ```ts
 export async function generateMetadata({ params }) {
-  const { locale } = await params;
+  const { locale } = await params
   return {
     alternates: {
       languages: {
@@ -459,7 +456,7 @@ export async function generateMetadata({ params }) {
         'ar-MA': 'https://anaqio.com/ar',
       },
     },
-  };
+  }
 }
 ```
 
@@ -469,15 +466,15 @@ export async function generateMetadata({ params }) {
 
 ```tsx
 // components/locale-switcher.tsx
-'use client';
-import { useLocale } from 'next-intl';
-import { useRouter, usePathname } from '@/i18n/routing';
-import { locales, localeLabels, isRTL, type Locale } from '@/i18n/config';
+'use client'
+import { useLocale } from 'next-intl'
+import { useRouter, usePathname } from '@/i18n/routing'
+import { locales, localeLabels, isRTL, type Locale } from '@/i18n/config'
 
 export function LocaleSwitcher() {
-  const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
+  const locale = useLocale()
+  const router = useRouter()
+  const pathname = usePathname()
 
   return (
     <div className="flex items-center gap-2">
@@ -493,7 +490,7 @@ export function LocaleSwitcher() {
         </button>
       ))}
     </div>
-  );
+  )
 }
 ```
 

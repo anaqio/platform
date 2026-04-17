@@ -1,1 +1,1 @@
-export { AtelierForm } from './atelier-form';
+export { AtelierForm } from './atelier-form'

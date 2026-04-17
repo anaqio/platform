@@ -28,7 +28,7 @@ export const colors = {
     secondary: '#3F57AF', // 30%
     accent: '#D4AF37', // 10%
   },
-} as const;
+} as const
 
 export const typography = {
   family: {
@@ -45,7 +45,7 @@ export const typography = {
     label: '0.3em',
     wide: '0.4em',
   },
-} as const;
+} as const
 
 export const spacing = {
   xs: '4px',
@@ -56,7 +56,7 @@ export const spacing = {
   '2xl': '48px',
   '3xl': '64px',
   '4xl': '96px',
-} as const;
+} as const
 
 export const motion = {
   duration: {
@@ -70,7 +70,7 @@ export const motion = {
     inOut: [0.4, 0, 0.2, 1],
     smooth: [0.16, 1, 0.3, 1],
   },
-} as const;
+} as const
 
 export const radius = {
   sm: '4px',
@@ -78,4 +78,4 @@ export const radius = {
   lg: '12px',
   xl: '16px',
   full: '999px',
-} as const;
+} as const

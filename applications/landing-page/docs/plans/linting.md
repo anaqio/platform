@@ -122,7 +122,7 @@ Example:
 
 ```typescript
 // Allowed in Supabase client files
-process.env.NEXT_PUBLIC_SUPABASE_URL!;
+process.env.NEXT_PUBLIC_SUPABASE_URL!
 ```
 
 ## React 19 Compatibility

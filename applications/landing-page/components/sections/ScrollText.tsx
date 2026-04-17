@@ -1,19 +1,17 @@
-import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
-import { HeroSectionText } from '@/lib/data/hero';
+import { HeroSectionText } from '@/lib/data/hero'
 
 export function ScrollText() {
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0)
 
   useEffect(() => {
     const wordInterval = setInterval(() => {
-      setCurrentWordIndex(
-        (prev) => (prev + 1) % HeroSectionText.supportLine.words.length
-      );
-    }, 2500);
-    return () => clearInterval(wordInterval);
-  }, []);
+      setCurrentWordIndex((prev) => (prev + 1) % HeroSectionText.supportLine.words.length)
+    }, 2500)
+    return () => clearInterval(wordInterval)
+  }, [])
 
   return (
     <motion.p
@@ -42,5 +40,5 @@ export function ScrollText() {
       </span>{' '}
       who need consistent, brand-safe visuals at scale.
     </motion.p>
-  );
+  )
 }

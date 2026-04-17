@@ -1,14 +1,14 @@
-'use client';
+'use client'
 
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
 
-import { WaitlistForm } from './waitlist-form';
+import { WaitlistForm } from './waitlist-form'
 
-import { Section } from '@/components/ui/section';
-import { Link } from '@/i18n/routing';
+import { Section } from '@/components/ui/section'
+import { Link } from '@/i18n/routing'
 
 export function WaitlistSection() {
-  const t = useTranslations('waitlist');
+  const t = useTranslations('waitlist')
 
   return (
     <Section
@@ -32,9 +32,7 @@ export function WaitlistSection() {
           className="mb-16 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-light leading-tight text-foreground"
         >
           {t('headline.pre')}{' '}
-          <em className="text-brand-gradient not-italic">
-            {t('headline.gradient')}
-          </em>
+          <em className="text-brand-gradient not-italic">{t('headline.gradient')}</em>
         </h2>
 
         {/* The Stage */}
@@ -49,9 +47,7 @@ export function WaitlistSection() {
             >
               {t('formHeadline')}
             </h3>
-            <p className="font-body text-sm font-light text-muted-foreground">
-              {t('formSubline')}
-            </p>
+            <p className="font-body text-sm font-light text-muted-foreground">{t('formSubline')}</p>
           </div>
 
           <div className="relative text-left">
@@ -60,10 +56,7 @@ export function WaitlistSection() {
 
           <p className="mt-12 text-center font-label text-[0.65rem] uppercase tracking-wider text-muted-foreground/60">
             {t('disclaimer.prefix')}{' '}
-            <Link
-              href="/terms"
-              className="text-foreground/80 transition-colors hover:text-aq-blue"
-            >
+            <Link href="/terms" className="text-foreground/80 transition-colors hover:text-aq-blue">
               {t('disclaimer.terms')}
             </Link>{' '}
             {t('disclaimer.and')}{' '}
@@ -78,5 +71,5 @@ export function WaitlistSection() {
         </div>
       </div>
     </Section>
-  );
+  )
 }

@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { motion } from 'framer-motion'
+import Link from 'next/link'
 
-import { socialLinks } from '@/lib/data/navigation';
+import { socialLinks } from '@/lib/data/navigation'
 
 /**
  * SocialLinks component — intentionally NOT internationalized.
@@ -18,11 +18,7 @@ export function SocialLinks() {
   return (
     <div className="flex w-full flex-wrap justify-center gap-4 sm:justify-between sm:gap-5 md:gap-6">
       {socialLinks.map((s) => (
-        <motion.div
-          key={s.label}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 1.5 }}
-        >
+        <motion.div key={s.label} whileHover={{ scale: 1.1 }} whileTap={{ scale: 1.5 }}>
           <Link
             href={s.href}
             target="_blank"
@@ -38,5 +34,5 @@ export function SocialLinks() {
         </motion.div>
       ))}
     </div>
-  );
+  )
 }

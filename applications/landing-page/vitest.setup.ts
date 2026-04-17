@@ -1,11 +1,11 @@
-import '@testing-library/jest-dom';
-import { cleanup } from '@testing-library/react';
-import { afterEach, vi } from 'vitest';
+import '@testing-library/jest-dom'
+import { cleanup } from '@testing-library/react'
+import { afterEach, vi } from 'vitest'
 
 // Automatically cleanup after each test
 afterEach(() => {
-  cleanup();
-});
+  cleanup()
+})
 
 // Mock Next.js router
 vi.mock('next/navigation', () => ({
@@ -17,26 +17,25 @@ vi.mock('next/navigation', () => ({
       back: vi.fn(),
       forward: vi.fn(),
       refresh: vi.fn(),
-    };
+    }
   },
   usePathname() {
-    return '/';
+    return '/'
   },
   useSearchParams() {
-    return new URLSearchParams();
+    return new URLSearchParams()
   },
   useParams() {
-    return {};
+    return {}
   },
-}));
+}))
 
 // Mock next-intl
 vi.mock('next-intl', () => ({
   useTranslations: () => (key: string) => key,
   useLocale: () => 'en-US',
-  NextIntlClientProvider: ({ children }: { children: React.ReactNode }) =>
-    children,
-}));
+  NextIntlClientProvider: ({ children }: { children: React.ReactNode }) => children,
+}))
 
 vi.mock('@/i18n/routing', () => ({
   useRouter() {
@@ -47,19 +46,19 @@ vi.mock('@/i18n/routing', () => ({
       back: vi.fn(),
       forward: vi.fn(),
       refresh: vi.fn(),
-    };
+    }
   },
   usePathname() {
-    return '/';
+    return '/'
   },
-}));
+}))
 
 // Mock IntersectionObserver for Framer Motion whileInView
 class MockIntersectionObserver {
-  observe = vi.fn();
-  unobserve = vi.fn();
-  disconnect = vi.fn();
+  observe = vi.fn()
+  unobserve = vi.fn()
+  disconnect = vi.fn()
 }
 global.IntersectionObserver = vi.fn(function () {
-  return new MockIntersectionObserver();
-} as never);
+  return new MockIntersectionObserver()
+} as never)

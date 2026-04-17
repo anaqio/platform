@@ -1,8 +1,8 @@
-import { Composition } from 'remotion';
+import { Composition } from 'remotion'
 
-import { AnaqioDemo16x9 } from './compositions/AnaqioDemo16x9';
-import { AnaqioDemo9x16 } from './compositions/AnaqioDemo9x16';
-import { DURATION_FRAMES, FPS } from './lib/timing';
+import { AnaqioDemo16x9 } from './compositions/AnaqioDemo16x9'
+import { AnaqioDemo9x16 } from './compositions/AnaqioDemo9x16'
+import { DURATION_FRAMES, FPS } from './lib/timing'
 
 export function RemotionRoot() {
   return (
@@ -24,5 +24,5 @@ export function RemotionRoot() {
         height={1920}
       />
     </>
-  );
+  )
 }

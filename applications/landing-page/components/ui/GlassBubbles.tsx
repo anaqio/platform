@@ -1,18 +1,18 @@
-'use client';
+'use client'
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react'
 
 interface Bubble {
-  id: string;
-  x: number;
-  y: number;
-  size: number;
+  id: string
+  x: number
+  y: number
+  size: number
 }
 
 interface GlassBubblesProps {
-  count?: number;
-  minSize?: number;
-  maxSize?: number;
+  count?: number
+  minSize?: number
+  maxSize?: number
 }
 
 /**
@@ -24,49 +24,46 @@ export const GlassBubbles: React.FC<GlassBubblesProps> = ({
   minSize = 60,
   maxSize = 180,
 }) => {
-  const [bubbles, setBubbles] = useState<Bubble[]>([]);
-  const rafRef = useRef<number>(0);
+  const [bubbles, setBubbles] = useState<Bubble[]>([])
+  const rafRef = useRef<number>(0)
 
   useEffect(() => {
     const gen = () => {
-      const w = window.innerWidth;
-      const isSmall = w < 640;
-      const actualCount = count ?? (isSmall ? 6 : 12);
-      const min = isSmall ? 40 : minSize;
-      const max = isSmall ? 100 : maxSize;
+      const w = window.innerWidth
+      const isSmall = w < 640
+      const actualCount = count ?? (isSmall ? 6 : 12)
+      const min = isSmall ? 40 : minSize
+      const max = isSmall ? 100 : maxSize
 
-      const arr: Bubble[] = [];
+      const arr: Bubble[] = []
       for (let i = 0; i < actualCount; i++) {
-        const size = Math.round(min + Math.random() * (max - min));
+        const size = Math.round(min + Math.random() * (max - min))
         arr.push({
           id: `b-${i}`,
           x: Math.round(Math.random() * 100),
           y: Math.round(Math.random() * 100),
           size,
-        });
+        })
       }
-      setBubbles(arr);
-    };
+      setBubbles(arr)
+    }
 
-    gen();
+    gen()
 
     const onResize = () => {
-      if (rafRef.current) return;
+      if (rafRef.current) return
       rafRef.current = requestAnimationFrame(() => {
-        gen();
-        rafRef.current = 0;
-      });
-    };
+        gen()
+        rafRef.current = 0
+      })
+    }
 
-    window.addEventListener('resize', onResize, { passive: true });
-    return () => window.removeEventListener('resize', onResize);
-  }, [count, minSize, maxSize]);
+    window.addEventListener('resize', onResize, { passive: true })
+    return () => window.removeEventListener('resize', onResize)
+  }, [count, minSize, maxSize])
 
   return (
-    <div
-      className="pointer-events-none absolute inset-0 z-20"
-      aria-hidden="true"
-    >
+    <div className="pointer-events-none absolute inset-0 z-20" aria-hidden="true">
       {bubbles.map((b, i) => (
         <div
           key={b.id}
@@ -82,5 +79,5 @@ export const GlassBubbles: React.FC<GlassBubblesProps> = ({
         />
       ))}
     </div>
-  );
-};
+  )
+}

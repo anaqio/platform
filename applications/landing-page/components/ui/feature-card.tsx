@@ -1,28 +1,28 @@
-'use client';
+'use client'
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion'
 
-import type { ElementType } from 'react';
+import type { ElementType } from 'react'
 
-import { fadeUpCard } from '@/lib/data/motion';
-import { cn } from '@/lib/utils';
+import { fadeUpCard } from '@/lib/data/motion'
+import { cn } from '@/lib/utils'
 
 type FeatureCardProps = {
-  title: string;
-  body: string;
+  title: string
+  body: string
   /** Position index used for stagger delay. */
-  index?: number;
+  index?: number
   /** Lucide icon component to display in the icon box. */
-  icon?: ElementType;
+  icon?: ElementType
   /** Numbered label (e.g. "01") — shown instead of icon when provided. */
-  label?: string;
+  label?: string
   /**
    * `default` — light border + white/50 background (feature grids on light bg).
    * `glass`   — white/4 background (cards on dark or blurred surfaces).
    */
-  variant?: 'default' | 'glass';
-  className?: string;
-};
+  variant?: 'default' | 'glass'
+  className?: string
+}
 
 /**
  * Reusable animated card for feature grids, how-it-works steps, and audience cards.
@@ -37,7 +37,7 @@ export function FeatureCard({
   variant = 'default',
   className,
 }: FeatureCardProps) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotion()
 
   return (
     <motion.div
@@ -62,9 +62,7 @@ export function FeatureCard({
         </div>
       )}
       <h3 className="font-semibold text-foreground">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-        {body}
-      </p>
+      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
     </motion.div>
-  );
+  )
 }

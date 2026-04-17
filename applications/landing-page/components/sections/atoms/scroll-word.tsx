@@ -1,4 +1,4 @@
-import { type MotionValue, motion, useTransform } from 'framer-motion';
+import { type MotionValue, motion, useTransform } from 'framer-motion'
 
 export function ScrollWord({
   word,
@@ -7,13 +7,13 @@ export function ScrollWord({
   scrollYProgress,
   animated,
 }: {
-  word: string;
-  start: number;
-  end: number;
-  scrollYProgress: MotionValue<number>;
-  animated: boolean;
+  word: string
+  start: number
+  end: number
+  scrollYProgress: MotionValue<number>
+  animated: boolean
 }) {
-  const opacity = useTransform(scrollYProgress, [start, end], [0.18, 1]);
+  const opacity = useTransform(scrollYProgress, [start, end], [0.18, 1])
   return (
     <motion.span
       data-atom
@@ -22,5 +22,5 @@ export function ScrollWord({
     >
       {word}
     </motion.span>
-  );
+  )
 }

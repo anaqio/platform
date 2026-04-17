@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
 
 /**
  * Page transition template that pairs with the View Transition API.
@@ -23,5 +23,5 @@ export default function Template({ children }: { children: React.ReactNode }) {
     >
       {children}
     </motion.div>
-  );
+  )
 }

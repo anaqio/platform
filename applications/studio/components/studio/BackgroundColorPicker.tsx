@@ -40,7 +40,7 @@ export function BackgroundColorPicker({ value, onChange }: BackgroundColorPicker
                 isSelected
                   ? 'ring-brand-gold ring-offset-background scale-110 ring-2 ring-offset-2'
                   : 'hover:scale-105',
-                preset.border && !isSelected && 'border-border border',
+                preset.border && !isSelected && 'border-border border'
               )}
               style={{ backgroundColor: preset.hex }}
             >
@@ -50,7 +50,7 @@ export function BackgroundColorPicker({ value, onChange }: BackgroundColorPicker
                     'h-4 w-4',
                     ['White', 'Warm Beige', 'Soft Pink', 'Sky Blue'].includes(preset.value)
                       ? 'text-zinc-800'
-                      : 'text-white',
+                      : 'text-white'
                   )}
                   strokeWidth={3}
                 />
@@ -59,7 +59,7 @@ export function BackgroundColorPicker({ value, onChange }: BackgroundColorPicker
             <span
               className={cn(
                 'text-[10px] leading-tight',
-                isSelected ? 'text-brand-gold font-medium' : 'text-muted-foreground',
+                isSelected ? 'text-brand-gold font-medium' : 'text-muted-foreground'
               )}
             >
               {preset.value}

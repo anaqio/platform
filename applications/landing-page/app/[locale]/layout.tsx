@@ -1,14 +1,14 @@
-import { Noto_Sans_Arabic } from 'next/font/google';
-import { notFound } from 'next/navigation';
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations } from 'next-intl/server';
+import { Noto_Sans_Arabic } from 'next/font/google'
+import { notFound } from 'next/navigation'
+import { NextIntlClientProvider } from 'next-intl'
+import { getMessages, getTranslations } from 'next-intl/server'
 
-import type { Metadata, Viewport } from 'next';
+import type { Metadata, Viewport } from 'next'
 
-import { GrainOverlay } from '@/components/ui/GrainOverlay';
-import { HashScrollSuppressor } from '@/components/ui/HashScrollSuppressor';
-import { NavigationProgress } from '@/components/ui/NavigationProgress';
-import { isRTL, locales, type Locale } from '@/i18n/config';
+import { GrainOverlay } from '@/components/ui/GrainOverlay'
+import { HashScrollSuppressor } from '@/components/ui/HashScrollSuppressor'
+import { NavigationProgress } from '@/components/ui/NavigationProgress'
+import { isRTL, locales, type Locale } from '@/i18n/config'
 import {
   appConstants,
   appFonts,
@@ -19,8 +19,8 @@ import {
   softwareLd,
   webpageLd,
   websiteLd,
-} from '@/lib/app';
-import '../globals.css';
+} from '@/lib/app'
+import '../globals.css'
 
 const notoArabic = Noto_Sans_Arabic({
   variable: '--font-arabic',
@@ -28,17 +28,17 @@ const notoArabic = Noto_Sans_Arabic({
   weight: ['400', '500', '600', '700'],
   display: 'swap',
   preload: false,
-});
+})
 
-export const viewport: Viewport = appViewport;
+export const viewport: Viewport = appViewport
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>
 }): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'meta.home' });
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'meta.home' })
 
   return {
     metadataBase: new URL(defaultUrl),
@@ -68,11 +68,11 @@ export async function generateMetadata({
       description: t('desc'),
       images: ['/twitter-image.png'],
     },
-  };
+  }
 }
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  return locales.map((locale) => ({ locale }))
 }
 
 // Structured data is trusted static JSON from lib/app — not user input
@@ -81,33 +81,29 @@ const structuredData = [
   { id: 'software-jsonld', data: softwareLd },
   { id: 'website-jsonld', data: websiteLd },
   { id: 'webpage-jsonld', data: webpageLd },
-];
+]
 
 export default async function LocaleLayout({
   children,
   params,
 }: Readonly<{
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  children: React.ReactNode
+  params: Promise<{ locale: string }>
 }>) {
-  const { locale } = await params;
+  const { locale } = await params
 
   if (!locales.includes(locale as Locale)) {
-    notFound();
+    notFound()
   }
 
-  const messages = await getMessages();
-  const dir = isRTL(locale as Locale) ? 'rtl' : 'ltr';
+  const messages = await getMessages()
+  const dir = isRTL(locale as Locale) ? 'rtl' : 'ltr'
 
   return (
     <html lang={locale} dir={dir} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* PWA Meta Tags */}
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#0F172A" />
@@ -136,31 +132,17 @@ export default async function LocaleLayout({
           Skip to main content
         </a>
 
-        <div
-          className="sr-only"
-          aria-hidden
-          itemScope
-          itemType="https://schema.org/Organization"
-        >
+        <div className="sr-only" aria-hidden itemScope itemType="https://schema.org/Organization">
           <meta itemProp="name" content={appConstants.name} />
           <meta itemProp="url" content={defaultUrl} />
           <meta itemProp="foundingDate" content={appConstants.foundingDate} />
           {appFounders.map((founder, i) => (
-            <div
-              key={i}
-              itemProp="founder"
-              itemScope
-              itemType="https://schema.org/Person"
-            >
+            <div key={i} itemProp="founder" itemScope itemType="https://schema.org/Person">
               <meta itemProp="name" content={founder.name} />
               <meta itemProp="sameAs" content={founder.linkedin} />
             </div>
           ))}
-          <div
-            itemProp="contactPoint"
-            itemScope
-            itemType="https://schema.org/ContactPoint"
-          >
+          <div itemProp="contactPoint" itemScope itemType="https://schema.org/ContactPoint">
             <meta itemProp="contactType" content="customer support" />
             <link itemProp="url" href={`${defaultUrl}/contact`} />
           </div>
@@ -174,5 +156,5 @@ export default async function LocaleLayout({
         <GrainOverlay />
       </body>
     </html>
-  );
+  )
 }

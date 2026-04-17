@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server'
 
 const HUMANS_TXT = `/* TEAM */
   Founder & CEO: Amal Ait Oukharaz
@@ -25,12 +25,12 @@ const HUMANS_TXT = `/* TEAM */
   Components: React 19, TypeScript
   Hosting: Vercel
   Location: Casablanca, Morocco
-`;
+`
 
 export async function GET() {
   return new NextResponse(HUMANS_TXT, {
     headers: {
       'Content-Type': 'text/plain; charset=utf-8',
     },
-  });
+  })
 }

@@ -1,6 +1,6 @@
-import { defaultUrl, appConstants, appSocials } from './constants';
+import { defaultUrl, appConstants, appSocials } from './constants'
 
-import type { Metadata, Viewport } from 'next/types';
+import type { Metadata, Viewport } from 'next/types'
 
 export const appMeta: Metadata = {
   metadataBase: new URL(defaultUrl),
@@ -68,17 +68,15 @@ export const appMeta: Metadata = {
       { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
       { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
     ],
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
     shortcut: '/favicon.ico',
   },
   manifest: '/site.webmanifest',
-};
+}
 
 export const appViewport: Viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: dark)', color: '#0F172A' },
     { media: '(prefers-color-scheme: light)', color: '#3F57AF' },
   ],
-};
+}

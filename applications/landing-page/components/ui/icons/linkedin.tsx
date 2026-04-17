@@ -36,5 +36,5 @@ const LinkedinIcon = (props: React.SVGProps<SVGSVGElement>) => (
       strokeLinejoin="round"
     />
   </svg>
-);
-export default LinkedinIcon;
+)
+export default LinkedinIcon

@@ -1,24 +1,24 @@
 // dangerouslySetInnerHTML is safe here — jsonLd is built from static strings and trusted env vars only, never from user input.
-import { getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server'
 
-import AboutContent from './about-content';
+import AboutContent from './about-content'
 
-import type { Metadata } from 'next';
+import type { Metadata } from 'next'
 
 const getBaseUrl = () => {
-  if (process.env.NEXT_PUBLIC_APP_URL) return process.env.NEXT_PUBLIC_APP_URL;
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return 'https://anaqio.com';
-};
+  if (process.env.NEXT_PUBLIC_APP_URL) return process.env.NEXT_PUBLIC_APP_URL
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`
+  return 'https://anaqio.com'
+}
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>
 }): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'meta' });
-  const baseUrl = getBaseUrl();
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'meta' })
+  const baseUrl = getBaseUrl()
 
   return {
     metadataBase: new URL(baseUrl),
@@ -48,21 +48,20 @@ export async function generateMetadata({
       description: t('about.desc'),
       images: ['/twitter-image.png'],
     },
-  };
+  }
 }
 
-const founders = [{ name: 'Amal AIT OUKHARAZ' }, { name: 'Mohamed MOUGHAMIR' }];
+const founders = [{ name: 'Amal AIT OUKHARAZ' }, { name: 'Mohamed MOUGHAMIR' }]
 
 export default function AboutPage() {
-  const baseUrl = getBaseUrl();
+  const baseUrl = getBaseUrl()
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
     name: 'About Anaqio',
     url: `${baseUrl}/about`,
-    description:
-      'Anaqio is an AI-powered visual studio for fashion commerce, built in Casablanca.',
+    description: 'Anaqio is an AI-powered visual studio for fashion commerce, built in Casablanca.',
     mainEntity: {
       '@type': 'Organization',
       name: 'Anaqio',
@@ -71,7 +70,7 @@ export default function AboutPage() {
       foundingLocation: { '@type': 'Place', name: 'Casablanca, Morocco' },
       founders: founders.map((f) => ({ '@type': 'Person', name: f.name })),
     },
-  };
+  }
 
   return (
     <main id="main-content" className="relative text-foreground">
@@ -81,5 +80,5 @@ export default function AboutPage() {
       />
       <AboutContent />
     </main>
-  );
+  )
 }

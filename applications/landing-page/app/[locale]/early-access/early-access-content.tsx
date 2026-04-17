@@ -1,15 +1,15 @@
-'use client';
+'use client'
 
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
 
-import { Footer } from '@/components/layout/Footer';
-import { Header } from '@/components/layout/Header';
-import { AtelierInvitationForm } from '@/components/sections/atelier-invitation';
-import { BackButton } from '@/components/ui/back-button';
+import { Footer } from '@/components/layout/Footer'
+import { Header } from '@/components/layout/Header'
+import { AtelierInvitationForm } from '@/components/sections/atelier-invitation'
+import { BackButton } from '@/components/ui/back-button'
 
 export function EarlyAccessContent() {
-  const t = useTranslations('earlyAccess');
-  const tAtelier = useTranslations('atelierInvitation');
+  const t = useTranslations('earlyAccess')
+  const tAtelier = useTranslations('atelierInvitation')
 
   return (
     <div className="min-h-screen">
@@ -22,8 +22,7 @@ export function EarlyAccessContent() {
           <div
             className="pointer-events-none absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-10 blur-3xl"
             style={{
-              background:
-                'radial-gradient(circle, var(--color-aq-blue) 0%, transparent 70%)',
+              background: 'radial-gradient(circle, var(--color-aq-blue) 0%, transparent 70%)',
             }}
           />
 
@@ -42,13 +41,8 @@ export function EarlyAccessContent() {
 
                 <h1 className="font-display text-5xl font-bold leading-[0.92] tracking-tight sm:text-6xl lg:text-7xl">
                   {t('hero.titleLine1')} <br />
-                  <span className="text-brand-gradient">
-                    {t('hero.titleGradient')}
-                  </span>{' '}
-                  <br />
-                  <span className="font-normal italic">
-                    {t('hero.titleLine3')}
-                  </span>
+                  <span className="text-brand-gradient">{t('hero.titleGradient')}</span> <br />
+                  <span className="font-normal italic">{t('hero.titleLine3')}</span>
                 </h1>
 
                 <p className="max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -57,18 +51,16 @@ export function EarlyAccessContent() {
 
                 {/* Stats — compact horizontal row */}
                 <div className="grid grid-cols-2 gap-6 border-t border-border/30 pt-8 sm:grid-cols-4">
-                  {(['speed', 'cost', 'creative', 'platform'] as const).map(
-                    (key) => (
-                      <div key={key} className="space-y-1">
-                        <div className="font-display text-3xl font-bold tracking-tighter text-foreground">
-                          {t(`stats.${key}.num`)}
-                        </div>
-                        <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-aq-blue/80">
-                          {t(`stats.${key}.label`)}
-                        </div>
+                  {(['speed', 'cost', 'creative', 'platform'] as const).map((key) => (
+                    <div key={key} className="space-y-1">
+                      <div className="font-display text-3xl font-bold tracking-tighter text-foreground">
+                        {t(`stats.${key}.num`)}
                       </div>
-                    )
-                  )}
+                      <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-aq-blue/80">
+                        {t(`stats.${key}.label`)}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -103,5 +95,5 @@ export function EarlyAccessContent() {
 
       <Footer />
     </div>
-  );
+  )
 }

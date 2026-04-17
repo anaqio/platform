@@ -1,18 +1,18 @@
-import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
+import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion'
 
-import { COLORS, FONTS, GRADIENT } from '../lib/brand';
-import { fadeIn, fadeOut, slideUp } from '../lib/helpers';
-import { SCENES } from '../lib/timing';
+import { COLORS, FONTS, GRADIENT } from '../lib/brand'
+import { fadeIn, fadeOut, slideUp } from '../lib/helpers'
+import { SCENES } from '../lib/timing'
 
 export function SceneIntro() {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const local = Math.max(0, frame - SCENES.intro.start);
-  const sceneDur = SCENES.intro.end - SCENES.intro.start;
+  const frame = useCurrentFrame()
+  const { fps } = useVideoConfig()
+  const local = Math.max(0, frame - SCENES.intro.start)
+  const sceneDur = SCENES.intro.end - SCENES.intro.start
 
-  const opacity = fadeIn(local, 0, 20) * fadeOut(local, sceneDur - 20, 15);
-  const logoY = slideUp(local, 0, fps);
-  const taglineOpacity = fadeIn(local, 12, 18);
+  const opacity = fadeIn(local, 0, 20) * fadeOut(local, sceneDur - 20, 15)
+  const logoY = slideUp(local, 0, fps)
+  const taglineOpacity = fadeIn(local, 12, 18)
 
   return (
     <AbsoluteFill
@@ -79,5 +79,5 @@ export function SceneIntro() {
         }}
       />
     </AbsoluteFill>
-  );
+  )
 }

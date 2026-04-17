@@ -1,20 +1,20 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 
-import { useAnimationReady } from '@/hooks/use-animation-ready';
+import { useAnimationReady } from '@/hooks/use-animation-ready'
 
 export function SolutionSection() {
-  const t = useTranslations('landing.solution');
-  const pipeline = (
-    t.raw('pipeline') as Array<{ stage: string; label: string; body: string }>
-  ).map((p, i) => ({
-    ...p,
-    id: i,
-  }));
+  const t = useTranslations('landing.solution')
+  const pipeline = (t.raw('pipeline') as Array<{ stage: string; label: string; body: string }>).map(
+    (p, i) => ({
+      ...p,
+      id: i,
+    })
+  )
 
-  const { animated } = useAnimationReady();
+  const { animated } = useAnimationReady()
 
   return (
     <section
@@ -33,13 +33,10 @@ export function SolutionSection() {
             className="font-display font-black text-white"
             style={{ fontSize: 'clamp(2rem, 4vw, 4rem)' }}
           >
-            {t('headline.pre')}{' '}
-            <span className="vb-underline">{t('headline.gradient')}</span>{' '}
+            {t('headline.pre')} <span className="vb-underline">{t('headline.gradient')}</span>{' '}
             {t('headline.post')}
           </h2>
-          <p className="mt-4 max-w-md text-base text-white/60">
-            {t('stat.anaqio.label')}
-          </p>
+          <p className="mt-4 max-w-md text-base text-white/60">{t('stat.anaqio.label')}</p>
         </div>
       </div>
 
@@ -57,13 +54,11 @@ export function SolutionSection() {
             <p className="mb-3 text-[9px] font-bold uppercase tracking-[0.3em] text-white/40">
               {stage.stage}
             </p>
-            <h3 className="font-display text-xl font-bold text-white">
-              {stage.label}
-            </h3>
+            <h3 className="font-display text-xl font-bold text-white">{stage.label}</h3>
             <p className="mt-2 text-sm text-white/60">{stage.body}</p>
           </motion.div>
         ))}
       </div>
     </section>
-  );
+  )
 }

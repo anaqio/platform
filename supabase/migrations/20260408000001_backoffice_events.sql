@@ -18,7 +18,7 @@ create table public.events (
   end_at           timestamptz,
   capacity         integer     check (capacity > 0),
   registration_url text,
-  campaign_id      uuid        references public.campaigns(id) on delete set null,
+  campaign_id      uuid        references landing.campaigns(id) on delete set null,
   is_active        boolean     not null default true,
   meta             jsonb       not null default '{}',
   created_at       timestamptz not null default now(),

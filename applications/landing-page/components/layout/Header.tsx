@@ -1,68 +1,58 @@
-'use client';
+'use client'
 
-import { AnimatePresence, motion } from 'framer-motion';
-import { X } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion'
+import { X } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
 
-import { LocaleSwitcher } from '@/components/locale-switcher';
-import { AnaqioTypographyLogo } from '@/components/ui/anaqio-typography-logo';
-import { ScrollLink } from '@/components/ui/scroll-link';
-import { Link } from '@/i18n/routing';
-import { cn } from '@/lib/utils';
+import { LocaleSwitcher } from '@/components/locale-switcher'
+import { AnaqioTypographyLogo } from '@/components/ui/anaqio-typography-logo'
+import { ScrollLink } from '@/components/ui/scroll-link'
+import { Link } from '@/i18n/routing'
+import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
   { label: 'Solution', targetId: 'solution' },
   { label: 'Comment', targetId: 'how-it-works' },
   { label: 'Pourquoi', targetId: 'why-anaqio' },
   { label: 'Vision', targetId: 'vision' },
-] as const;
+] as const
 
 const PAGE_LINKS = [
   { label: 'À propos', href: '/about' },
   { label: 'Contact', href: '/contact' },
-] as const;
+] as const
 
 export function Header() {
-  const t = useTranslations('header');
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const t = useTranslations('header')
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileOpen, setIsMobileOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 60);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    const onScroll = () => setIsScrolled(window.scrollY > 60)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   useEffect(() => {
-    document.body.style.overflow = isMobileOpen ? 'hidden' : '';
+    document.body.style.overflow = isMobileOpen ? 'hidden' : ''
     return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isMobileOpen]);
+      document.body.style.overflow = ''
+    }
+  }, [isMobileOpen])
 
   return (
     <header
       className={cn(
         'fixed left-0 right-0 top-0 z-[9980] transition-all duration-500',
         'md:left-16',
-        isScrolled
-          ? 'bg-[#2B3AE7]/95 shadow-sm backdrop-blur-md'
-          : 'bg-transparent'
+        isScrolled ? 'bg-[#2B3AE7]/95 shadow-sm backdrop-blur-md' : 'bg-transparent'
       )}
     >
       <div className="flex h-14 items-center justify-between px-6 md:px-8">
         {/* Mobile: logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-2 md:hidden"
-          aria-label="Anaqio"
-        >
-          <AnaqioTypographyLogo
-            instanceId="header-logo-mobile"
-            className="w-20"
-            variant="none"
-          />
+        <Link href="/" className="flex items-center gap-2 md:hidden" aria-label="Anaqio">
+          <AnaqioTypographyLogo instanceId="header-logo-mobile" className="w-20" variant="none" />
         </Link>
 
         {/* Desktop nav — right-aligned */}
@@ -159,5 +149,5 @@ export function Header() {
         )}
       </AnimatePresence>
     </header>
-  );
+  )
 }

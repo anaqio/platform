@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import { useRouter } from 'next/navigation';
-import { useCallback, useTransition } from 'react';
+import { useRouter } from 'next/navigation'
+import { useCallback, useTransition } from 'react'
 
-import { NAV_START_EVENT } from '@/components/ui/NavigationProgress';
+import { NAV_START_EVENT } from '@/components/ui/NavigationProgress'
 
 /**
  * Wraps Next.js navigation with three enhancements:
@@ -20,43 +20,37 @@ import { NAV_START_EVENT } from '@/components/ui/NavigationProgress';
  *   </button>
  */
 export function usePageTransition() {
-  const router = useRouter();
-  const [isPending, startTransition] = useTransition();
+  const router = useRouter()
+  const [isPending, startTransition] = useTransition()
 
   const navigate = useCallback(
     (href: string) => {
       // Signal the progress bar BEFORE the route change begins
       if (typeof window !== 'undefined') {
-        window.dispatchEvent(new Event(NAV_START_EVENT));
+        window.dispatchEvent(new Event(NAV_START_EVENT))
       }
 
-      if (
-        typeof document !== 'undefined' &&
-        'startViewTransition' in document
-      ) {
-        (
+      if (typeof document !== 'undefined' && 'startViewTransition' in document) {
+        ;(
           document as Document & {
-            startViewTransition: (cb: () => void) => void;
+            startViewTransition: (cb: () => void) => void
           }
         ).startViewTransition(() => {
           startTransition(() => {
-            router.push(href);
-          });
-        });
+            router.push(href)
+          })
+        })
       } else {
         startTransition(() => {
-          router.push(href);
-        });
+          router.push(href)
+        })
       }
     },
 
     [router]
-  );
+  )
 
-  const prefetch = useCallback(
-    (href: string) => router.prefetch(href),
-    [router]
-  );
+  const prefetch = useCallback((href: string) => router.prefetch(href), [router])
 
-  return { navigate, isPending, prefetch };
+  return { navigate, isPending, prefetch }
 }

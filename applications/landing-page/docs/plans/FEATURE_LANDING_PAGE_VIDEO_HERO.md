@@ -20,7 +20,7 @@ The landing page automatically switches based on the configured date:
 Configuration file: `lib/landing-page-config.ts`
 
 ```typescript
-const LANDING_PAGE_SWITCH_DATE = '2026-03-20T00:00:00Z';
+const LANDING_PAGE_SWITCH_DATE = '2026-03-20T00:00:00Z'
 ```
 
 ### 2. Video Hero Section
@@ -142,7 +142,7 @@ To test the new landing page before March 20, 2026:
 Edit `lib/landing-page-config.ts`:
 
 ```typescript
-const LANDING_PAGE_SWITCH_DATE = 'YYYY-MM-DDTHH:MM:SSZ';
+const LANDING_PAGE_SWITCH_DATE = 'YYYY-MM-DDTHH:MM:SSZ'
 ```
 
 ### Adjust Lazy Loading Behavior
@@ -154,7 +154,7 @@ const { videoRef, shouldLoad, isInView, hasLoaded } = useLazyVideo({
   threshold: 0.1, // Load when 10% visible
   rootMargin: '200px', // Start loading 200px before visible
   eager: false, // Set to true to disable lazy loading
-});
+})
 ```
 
 ### Modify Video Settings

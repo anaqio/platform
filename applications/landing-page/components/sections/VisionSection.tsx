@@ -1,15 +1,15 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button';
-import { ScrollLink } from '@/components/ui/scroll-link';
-import { useAnimationReady } from '@/hooks/use-animation-ready';
+import { Button } from '@/components/ui/button'
+import { ScrollLink } from '@/components/ui/scroll-link'
+import { useAnimationReady } from '@/hooks/use-animation-ready'
 
 export function VisionSection() {
-  const t = useTranslations('landing.vision');
-  const { animated } = useAnimationReady();
+  const t = useTranslations('landing.vision')
+  const { animated } = useAnimationReady()
 
   return (
     <section
@@ -29,8 +29,7 @@ export function VisionSection() {
         className="mb-12 max-w-4xl font-display font-black text-black"
         style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', lineHeight: 1.1 }}
       >
-        {t('headline.pre')}{' '}
-        <span className="vb-underline">{t('headline.gradient')}</span>
+        {t('headline.pre')} <span className="vb-underline">{t('headline.gradient')}</span>
       </motion.h2>
 
       <Button
@@ -40,5 +39,5 @@ export function VisionSection() {
         <ScrollLink targetId="final-cta">{t('intro')}</ScrollLink>
       </Button>
     </section>
-  );
+  )
 }

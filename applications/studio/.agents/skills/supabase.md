@@ -20,7 +20,7 @@ import type { Database, Database, Database } from '@/types/supabase'
 export function createClient() {
   return createBrowserClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!
   )
 }
 
@@ -40,7 +40,7 @@ export async function createClient() {
           } catch {} // Server Component: ignore, middleware handles
         },
       },
-    },
+    }
   )
 }
 
@@ -48,7 +48,7 @@ export function createClient() {
   return createSupabaseClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
-    { auth: { autoRefreshToken: false, persistSession: false } },
+    { auth: { autoRefreshToken: false, persistSession: false } }
   )
 }
 ```
@@ -124,7 +124,7 @@ create policy "anon_read_own_session"
 export async function uploadGarment(
   file: File,
   userId: string | null,
-  sessionId: string,
+  sessionId: string
 ): Promise<string> {
   const supabase = createClient() // browser client
   const ext = file.name.split('.').pop()
@@ -141,7 +141,7 @@ export async function uploadGarment(
 export async function getSignedUrl(
   bucket: 'garments' | 'outputs',
   path: string,
-  expiresIn = 3600,
+  expiresIn = 3600
 ): Promise<string> {
   const admin = createAdmin() // admin client
   const { data, error } = await admin.storage.from(bucket).createSignedUrl(path, expiresIn)

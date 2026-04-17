@@ -1,15 +1,15 @@
-'use client';
+'use client'
 
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
 
-import { SocialLinks } from './SocialLinks';
+import { SocialLinks } from './SocialLinks'
 
-import { LocaleSwitcher } from '@/components/locale-switcher';
-import { AnaqioTypographyLogo } from '@/components/ui/anaqio-typography-logo';
-import { Link } from '@/i18n/routing';
+import { LocaleSwitcher } from '@/components/locale-switcher'
+import { AnaqioTypographyLogo } from '@/components/ui/anaqio-typography-logo'
+import { Link } from '@/i18n/routing'
 
 export function Footer() {
-  const t = useTranslations('footer');
+  const t = useTranslations('footer')
 
   return (
     <footer className="vb-white border-t border-black/10 px-8 py-16 md:px-16">
@@ -18,11 +18,7 @@ export function Footer() {
         {/* Brand */}
         <div>
           <Link href="/" aria-label="Anaqio Home">
-            <AnaqioTypographyLogo
-              instanceId="footer-logo"
-              className="mb-3 w-24"
-              variant="none"
-            />
+            <AnaqioTypographyLogo instanceId="footer-logo" className="mb-3 w-24" variant="none" />
           </Link>
           <p className="max-w-xs text-sm text-black/50">{t('desc')}</p>
           <div className="mt-4">
@@ -37,34 +33,22 @@ export function Footer() {
           </p>
           <ul className="space-y-2">
             <li>
-              <Link
-                href="/"
-                className="text-sm text-black/60 transition-colors hover:text-black"
-              >
+              <Link href="/" className="text-sm text-black/60 transition-colors hover:text-black">
                 {t('platform.studio')}
               </Link>
             </li>
             <li>
-              <Link
-                href="/"
-                className="text-sm text-black/60 transition-colors hover:text-black"
-              >
+              <Link href="/" className="text-sm text-black/60 transition-colors hover:text-black">
                 {t('platform.lookbook')}
               </Link>
             </li>
             <li>
-              <Link
-                href="/"
-                className="text-sm text-black/60 transition-colors hover:text-black"
-              >
+              <Link href="/" className="text-sm text-black/60 transition-colors hover:text-black">
                 {t('platform.tryon')}
               </Link>
             </li>
             <li>
-              <Link
-                href="/"
-                className="text-sm text-black/60 transition-colors hover:text-black"
-              >
+              <Link href="/" className="text-sm text-black/60 transition-colors hover:text-black">
                 {t('platform.pricing')}
               </Link>
             </li>
@@ -146,5 +130,5 @@ export function Footer() {
         <LocaleSwitcher />
       </div>
     </footer>
-  );
+  )
 }

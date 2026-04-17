@@ -1,6 +1,6 @@
-import { Move3D, Ruler, ShieldCheck, Sun, Zap } from 'lucide-react';
+import { Move3D, Ruler, ShieldCheck, Sun, Zap } from 'lucide-react'
 
-import type { FeatureItem } from '@/lib/data/types';
+import type { FeatureItem } from '@/lib/data/types'
 
 export const WhyAnaqioSectionText = {
   eyebrow: 'Product Benefits',
@@ -33,4 +33,4 @@ export const WhyAnaqioSectionText = {
       icon: ShieldCheck,
     },
   ] satisfies FeatureItem[],
-} as const;
+} as const

@@ -6,6 +6,6 @@ export function createClient() {
   return createAdminSupabaseClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
-    { schema: 'studio' },
+    { schema: 'studio' }
   )
 }

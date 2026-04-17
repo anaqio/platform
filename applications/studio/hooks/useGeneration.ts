@@ -15,7 +15,7 @@ export function useGeneration() {
   async function startGeneration(
     garmentFile: File,
     presetModelId: string,
-    options: GenerationOptions,
+    options: GenerationOptions
   ) {
     setState('uploading')
     setErrorMessage(null)

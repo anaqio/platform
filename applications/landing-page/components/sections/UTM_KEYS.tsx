@@ -1,4 +1,4 @@
-'use client';
+'use client'
 // ─── Notify Form ─────────────────────────────────────────────────────────────
 // UTM param keys collected from the landing URL
 export const UTM_KEYS = [
@@ -7,4 +7,4 @@ export const UTM_KEYS = [
   'utm_campaign',
   'utm_content',
   'utm_term',
-] as const;
+] as const

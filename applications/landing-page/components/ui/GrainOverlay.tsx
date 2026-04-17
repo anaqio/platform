@@ -8,5 +8,5 @@ export function GrainOverlay() {
         backgroundSize: '256px 256px',
       }}
     />
-  );
+  )
 }

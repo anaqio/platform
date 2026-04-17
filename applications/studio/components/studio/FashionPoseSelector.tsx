@@ -130,7 +130,7 @@ export function FashionPoseSelector({ value, onChange }: FashionPoseSelectorProp
               <ChevronDown
                 className={cn(
                   'text-muted-foreground h-4 w-4 shrink-0 transition-transform duration-200',
-                  isOpen && 'rotate-180',
+                  isOpen && 'rotate-180'
                 )}
               />
             </button>
@@ -139,7 +139,7 @@ export function FashionPoseSelector({ value, onChange }: FashionPoseSelectorProp
               id={categoryId}
               className={cn(
                 'grid overflow-hidden transition-all duration-300 ease-in-out',
-                isOpen ? 'mt-2 grid-rows-[1fr]' : 'grid-rows-[0fr]',
+                isOpen ? 'mt-2 grid-rows-[1fr]' : 'grid-rows-[0fr]'
               )}
             >
               <div className="min-h-0">
@@ -155,7 +155,7 @@ export function FashionPoseSelector({ value, onChange }: FashionPoseSelectorProp
                           'w-full rounded-md p-2 text-left text-xs font-medium transition-all',
                           isSelected
                             ? 'bg-brand-gold/10 text-foreground ring-2 ring-[#D4AF37]'
-                            : 'border-border text-muted-foreground hover:border-muted-foreground border',
+                            : 'border-border text-muted-foreground hover:border-muted-foreground border'
                         )}
                       >
                         {pose.label}

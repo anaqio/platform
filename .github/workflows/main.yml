@@ -25,7 +25,7 @@ jobs:
         run: bun install
 
       - name: Lint, type-check, build (all apps)
-        run: bunx turbo run lint type-check build
+        run: bunx turbo run lint type-check test build
         env:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}

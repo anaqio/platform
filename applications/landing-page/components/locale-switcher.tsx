@@ -1,49 +1,46 @@
-'use client';
+'use client'
 
-import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
-import { useLocale } from 'next-intl';
-import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
+import { useLocale } from 'next-intl'
+import { useEffect, useRef, useState } from 'react'
 
-import { isRTL, localeLabels, locales, type Locale } from '@/i18n/config';
-import { usePathname, useRouter } from '@/i18n/routing';
-import { trackUserBehavior } from '@/lib/analytics';
+import { isRTL, localeLabels, locales, type Locale } from '@/i18n/config'
+import { usePathname, useRouter } from '@/i18n/routing'
+import { trackUserBehavior } from '@/lib/analytics'
 
 const LOCALE_META: Record<Locale, { flag: string; short: string }> = {
   en: { flag: '🇺🇸', short: 'EN' },
   fr: { flag: '🇫🇷', short: 'FR' },
   ar: { flag: '🇲🇦', short: 'AR' },
-};
+}
 
 export function LocaleSwitcher() {
-  const locale = useLocale() as Locale;
-  const router = useRouter();
-  const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const locale = useLocale() as Locale
+  const router = useRouter()
+  const pathname = usePathname()
+  const [open, setOpen] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   // Close on outside click
   useEffect(() => {
-    if (!open) return;
+    if (!open) return
     function handleOutside(e: MouseEvent) {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(e.target as Node)
-      ) {
-        setOpen(false);
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setOpen(false)
       }
     }
-    document.addEventListener('mousedown', handleOutside);
-    return () => document.removeEventListener('mousedown', handleOutside);
-  }, [open]);
+    document.addEventListener('mousedown', handleOutside)
+    return () => document.removeEventListener('mousedown', handleOutside)
+  }, [open])
 
   function switchLocale(loc: Locale) {
-    setOpen(false);
-    trackUserBehavior.trackClick(`locale_change_${loc}`, 'settings');
-    router.replace(pathname, { locale: loc });
+    setOpen(false)
+    trackUserBehavior.trackClick(`locale_change_${loc}`, 'settings')
+    router.replace(pathname, { locale: loc })
   }
 
-  const { flag, short } = LOCALE_META[locale];
+  const { flag, short } = LOCALE_META[locale]
 
   return (
     <div ref={containerRef} className="relative" data-testid="locale-switcher">
@@ -79,8 +76,8 @@ export function LocaleSwitcher() {
             className="absolute end-0 top-full z-50 mt-1.5 min-w-[140px] overflow-hidden rounded-xl border border-border/20 bg-card/90 shadow-xl backdrop-blur-xl"
           >
             {locales.map((loc) => {
-              const meta = LOCALE_META[loc];
-              const active = loc === locale;
+              const meta = LOCALE_META[loc]
+              const active = loc === locale
               return (
                 <li key={loc} role="option" aria-selected={active}>
                   <button
@@ -104,11 +101,11 @@ export function LocaleSwitcher() {
                     )}
                   </button>
                 </li>
-              );
+              )
             })}
           </motion.ul>
         )}
       </AnimatePresence>
     </div>
-  );
+  )
 }

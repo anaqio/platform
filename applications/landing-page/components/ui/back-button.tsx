@@ -1,18 +1,18 @@
-'use client';
+'use client'
 
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react'
 
-import { Button } from '@/components/ui/button';
-import { useRouter } from '@/i18n/routing';
-import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button'
+import { useRouter } from '@/i18n/routing'
+import { cn } from '@/lib/utils'
 
 interface BackButtonProps {
-  className?: string;
-  label?: string;
+  className?: string
+  label?: string
 }
 
 export function BackButton({ className, label = 'Back' }: BackButtonProps) {
-  const router = useRouter();
+  const router = useRouter()
 
   return (
     <Button
@@ -27,5 +27,5 @@ export function BackButton({ className, label = 'Back' }: BackButtonProps) {
       <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
       <span>{label}</span>
     </Button>
-  );
+  )
 }

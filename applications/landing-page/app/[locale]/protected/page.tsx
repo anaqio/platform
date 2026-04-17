@@ -1,36 +1,36 @@
-import { InfoIcon, Terminal, User } from 'lucide-react';
-import { redirect } from 'next/navigation';
-import { getTranslations } from 'next-intl/server';
-import { Suspense } from 'react';
+import { InfoIcon, Terminal, User } from 'lucide-react'
+import { redirect } from 'next/navigation'
+import { getTranslations } from 'next-intl/server'
+import { Suspense } from 'react'
 
-import type { Metadata } from 'next';
+import type { Metadata } from 'next'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { createClient } from '@/lib/supabase/server';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { createClient } from '@/lib/supabase/server'
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>
 }): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'meta.protected' });
-  return { title: t('title'), robots: 'noindex, nofollow' };
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'meta.protected' })
+  return { title: t('title'), robots: 'noindex, nofollow' }
 }
 
 async function UserDetails() {
-  const supabase = await createClient();
-  const { data, error } = await supabase.auth.getClaims();
+  const supabase = await createClient()
+  const { data, error } = await supabase.auth.getClaims()
 
   if (error || !data?.claims) {
-    redirect('/auth/login');
+    redirect('/auth/login')
   }
 
-  return JSON.stringify(data.claims, null, 2);
+  return JSON.stringify(data.claims, null, 2)
 }
 
 export default async function ProtectedPage() {
-  const t = await getTranslations('protected.workspace');
+  const t = await getTranslations('protected.workspace')
 
   return (
     <div className="space-y-12">
@@ -41,9 +41,7 @@ export default async function ProtectedPage() {
             {t('badge')}
           </span>
         </div>
-        <h1 className="font-display text-4xl font-bold tracking-tight">
-          {t('title')}
-        </h1>
+        <h1 className="font-display text-4xl font-bold tracking-tight">{t('title')}</h1>
       </div>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -84,9 +82,7 @@ export default async function ProtectedPage() {
             <CardContent>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 {t('access.descPre')}{' '}
-                <span className="font-semibold text-foreground">
-                  {t('access.studio')}
-                </span>
+                <span className="font-semibold text-foreground">{t('access.studio')}</span>
                 {t('access.descPost')}
               </p>
             </CardContent>
@@ -113,5 +109,5 @@ export default async function ProtectedPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }

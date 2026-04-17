@@ -1,7 +1,7 @@
 /**
  * Mapping function type for transforming input data
  */
-type MappingFunction<TInput, TValue> = (input: TInput) => TValue;
+type MappingFunction<TInput, TValue> = (input: TInput) => TValue
 
 /**
  * Format definition for object transformation
@@ -10,11 +10,8 @@ type MappingFunction<TInput, TValue> = (input: TInput) => TValue;
  * - literal: static value (e.g., `type: 'premium'`)
  */
 type FormatDefinition<TInput, TOutput> = {
-  [K in keyof TOutput]:
-    | keyof TInput
-    | MappingFunction<TInput, TOutput[K]>
-    | TOutput[K];
-};
+  [K in keyof TOutput]: keyof TInput | MappingFunction<TInput, TOutput[K]> | TOutput[K]
+}
 
 /**
  * ObjectBuilder - Transform and map input objects to a desired format
@@ -47,27 +44,27 @@ export function ObjectBuilder<TOutput>(
   format?: FormatDefinition<Record<string, unknown>, TOutput>
 ): TOutput {
   if (!format) {
-    return input as unknown as TOutput;
+    return input as unknown as TOutput
   }
 
-  const result = {} as TOutput;
+  const result = {} as TOutput
 
   for (const key of Object.keys(format)) {
-    const mapping = format[key as keyof TOutput];
-    const outputKey = key as keyof TOutput;
+    const mapping = format[key as keyof TOutput]
+    const outputKey = key as keyof TOutput
 
     if (typeof mapping === 'function') {
-      result[outputKey] = (
-        mapping as MappingFunction<typeof input, TOutput[typeof outputKey]>
-      )(input);
+      result[outputKey] = (mapping as MappingFunction<typeof input, TOutput[typeof outputKey]>)(
+        input
+      )
     } else if (typeof mapping === 'string' && mapping in input) {
       // String mapping: only treat as key reference if it exists in input
-      result[outputKey] = input[mapping] as TOutput[typeof outputKey];
+      result[outputKey] = input[mapping] as TOutput[typeof outputKey]
     } else {
       // Literal value: use the value directly
-      result[outputKey] = mapping as TOutput[typeof outputKey];
+      result[outputKey] = mapping as TOutput[typeof outputKey]
     }
   }
 
-  return result;
+  return result
 }

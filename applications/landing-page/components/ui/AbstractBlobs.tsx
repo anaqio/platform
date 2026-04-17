@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import React from 'react';
+import React from 'react'
 
 // Blob configuration: position offset %, size, color, drift speed, parallax factor
 const BLOBS = [
@@ -58,24 +58,19 @@ const BLOBS = [
     driftDur: 24,
     parallax: 0.045,
   },
-] as const;
+] as const
 
 interface AbstractBlobsProps {
-  scrollMorph?: boolean;
+  scrollMorph?: boolean
 }
 
 /**
  * AbstractBlobs component — The large, blurred background drifts.
  * Supports scroll-triggered morphing and mouse/gyro parallax via CSS vars.
  */
-export const AbstractBlobs: React.FC<AbstractBlobsProps> = ({
-  scrollMorph = false,
-}) => {
+export const AbstractBlobs: React.FC<AbstractBlobsProps> = ({ scrollMorph = false }) => {
   return (
-    <div
-      className="gravitate pointer-events-none absolute inset-0 z-0"
-      aria-hidden="true"
-    >
+    <div className="gravitate pointer-events-none absolute inset-0 z-0" aria-hidden="true">
       <div
         className="absolute inset-0 opacity-80"
         style={{
@@ -103,5 +98,5 @@ export const AbstractBlobs: React.FC<AbstractBlobsProps> = ({
         ))}
       </div>
     </div>
-  );
-};
+  )
+}

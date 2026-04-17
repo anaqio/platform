@@ -1,7 +1,7 @@
-import { Header } from '@/components/layout/Header';
-import { NewLandingPage } from '@/components/sections/NewLandingPage';
-import { ScrollTriggered } from '@/components/sections/ScrollTriggered';
-import { isNewLandingPageActive } from '@/lib/landing-page-config';
+import { Header } from '@/components/layout/Header'
+import { NewLandingPage } from '@/components/sections/NewLandingPage'
+import { ScrollTriggered } from '@/components/sections/ScrollTriggered'
+import { isNewLandingPageActive } from '@/lib/landing-page-config'
 
 /**
  * Experiment Page with Date-Based Switching
@@ -14,12 +14,12 @@ import { isNewLandingPageActive } from '@/lib/landing-page-config';
  * - After: Shows the new landing page with 16:9 video hero
  */
 export default function ExperimentPage() {
-  const showNewLandingPage = isNewLandingPageActive();
+  const showNewLandingPage = isNewLandingPageActive()
 
   return (
     <main id="main-content" className="relative">
       <Header />
       {showNewLandingPage ? <NewLandingPage /> : <ScrollTriggered />}
     </main>
-  );
+  )
 }

@@ -7,8 +7,7 @@ export const SolutionSectionText = {
   },
   description:
     'Anaqio transforms simple garment images into photorealistic visuals using a structured AI pipeline built specifically for fashion brands.',
-  footer:
-    'No photoshoot. No production delays. Just scalable visual generation.',
+  footer: 'No photoshoot. No production delays. Just scalable visual generation.',
   pipeline: [
     {
       stage: 'Input',
@@ -29,4 +28,4 @@ export const SolutionSectionText = {
       color: 'amber' as const,
     },
   ],
-} as const;
+} as const

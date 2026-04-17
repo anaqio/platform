@@ -1,22 +1,20 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { Move3D, Ruler, ShieldCheck, Sun, Zap } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion'
+import { Move3D, Ruler, ShieldCheck, Sun, Zap } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
-import { useAnimationReady } from '@/hooks/use-animation-ready';
+import { useAnimationReady } from '@/hooks/use-animation-ready'
 
 export function WhyAnaqioSection() {
-  const t = useTranslations('landing.whyAnaqio');
-  const POINT_ICONS = [Ruler, Move3D, Sun, Zap, ShieldCheck];
-  const points = (
-    t.raw('points') as Array<{ title: string; body: string }>
-  ).map((p, i) => ({
+  const t = useTranslations('landing.whyAnaqio')
+  const POINT_ICONS = [Ruler, Move3D, Sun, Zap, ShieldCheck]
+  const points = (t.raw('points') as Array<{ title: string; body: string }>).map((p, i) => ({
     ...p,
     icon: POINT_ICONS[i],
-  }));
+  }))
 
-  const { animated } = useAnimationReady();
+  const { animated } = useAnimationReady()
 
   return (
     <section
@@ -32,8 +30,7 @@ export function WhyAnaqioSection() {
         className="mb-4 font-display font-black text-white"
         style={{ fontSize: 'clamp(2rem, 4vw, 4rem)' }}
       >
-        {t('headline.pre')}{' '}
-        <span className="vb-underline">{t('headline.gradient')}</span>{' '}
+        {t('headline.pre')} <span className="vb-underline">{t('headline.gradient')}</span>{' '}
         {t('headline.post')}
       </h2>
       <p className="mb-20 max-w-lg text-base text-white/60">{t('footer')}</p>
@@ -52,13 +49,11 @@ export function WhyAnaqioSection() {
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded bg-white/15 text-white">
               <point.icon className="h-5 w-5" aria-hidden="true" />
             </div>
-            <p className="font-display text-lg font-bold text-white">
-              {point.title}
-            </p>
+            <p className="font-display text-lg font-bold text-white">{point.title}</p>
             <p className="mt-2 text-sm text-white/60">{point.body}</p>
           </motion.div>
         ))}
       </div>
     </section>
-  );
+  )
 }

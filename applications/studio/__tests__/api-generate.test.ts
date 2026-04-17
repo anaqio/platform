@@ -58,8 +58,8 @@ describe('generateRequestSchema — property tests', () => {
             aiProvider: nonGeminiValue,
           })
           expect(result.success).toBe(false)
-        },
-      ),
+        }
+      )
     )
   })
 
@@ -90,8 +90,8 @@ describe('generateRequestSchema — property tests', () => {
             expect(withoutProvider.data.garmentPath).toBe(withGemini.data.garmentPath)
             expect(withoutProvider.data.presetModelId).toBe(withGemini.data.presetModelId)
           }
-        },
-      ),
+        }
+      )
     )
   })
 })

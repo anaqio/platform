@@ -57,13 +57,13 @@ export function ArtisticStyleSelector({ value, onChange }: ArtisticStyleSelector
               'flex flex-col items-center gap-1.5 rounded-lg border px-2 py-3 transition-all',
               isSelected
                 ? 'border-brand-gold bg-brand-gold/10 ring-brand-gold/30 ring-1'
-                : 'border-border hover:border-muted-foreground',
+                : 'border-border hover:border-muted-foreground'
             )}
           >
             <style.icon
               className={cn('h-4 w-4', isSelected ? 'text-brand-gold' : 'text-muted-foreground')}
             />
-            <span className="text-[11px] font-medium leading-tight">{style.label}</span>
+            <span className="text-[11px] leading-tight font-medium">{style.label}</span>
           </button>
         )
       })}

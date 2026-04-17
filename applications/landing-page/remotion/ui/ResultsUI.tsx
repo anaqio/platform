@@ -1,21 +1,21 @@
-import { interpolate } from 'remotion';
+import { interpolate } from 'remotion'
 
-import { FashionPlaceholder } from './FashionPlaceholder';
-import { COLORS, FONTS, GRADIENT } from '../lib/brand';
+import { FashionPlaceholder } from './FashionPlaceholder'
+import { COLORS, FONTS, GRADIENT } from '../lib/brand'
 
 export function ResultsUI({
   revealProgress = 1,
   scale = 1,
 }: {
-  revealProgress?: number;
-  scale?: number;
+  revealProgress?: number
+  scale?: number
 }) {
   const outputs = [
     { label: 'Studio White', style: 0 as const },
     { label: 'Moroccan Riad', style: 1 as const },
     { label: 'Golden Hour', style: 2 as const },
     { label: 'Dark Editorial', style: 3 as const },
-  ];
+  ]
 
   return (
     <div
@@ -43,12 +43,9 @@ export function ResultsUI({
         }}
       >
         <div>
-          <div style={{ fontSize: 20, fontWeight: 600, color: COLORS.text }}>
-            Generated Outputs
-          </div>
+          <div style={{ fontSize: 20, fontWeight: 600, color: COLORS.text }}>Generated Outputs</div>
           <div style={{ fontSize: 12, color: COLORS.muted, marginTop: 2 }}>
-            4 variations · Studio White, Moroccan Riad, Golden Hour, Dark
-            Editorial
+            4 variations · Studio White, Moroccan Riad, Golden Hour, Dark Editorial
           </div>
         </div>
         <div style={{ display: 'flex', gap: 10 }}>
@@ -83,15 +80,10 @@ export function ResultsUI({
       {/* Output grid */}
       <div style={{ display: 'flex', gap: 16 }}>
         {outputs.map(({ label, style }, i) => {
-          const cardReveal = interpolate(
-            revealProgress,
-            [i * 0.18, i * 0.18 + 0.4],
-            [0, 1],
-            {
-              extrapolateLeft: 'clamp',
-              extrapolateRight: 'clamp',
-            }
-          );
+          const cardReveal = interpolate(revealProgress, [i * 0.18, i * 0.18 + 0.4], [0, 1], {
+            extrapolateLeft: 'clamp',
+            extrapolateRight: 'clamp',
+          })
           return (
             <div
               key={label}
@@ -122,9 +114,9 @@ export function ResultsUI({
                 {label}
               </div>
             </div>
-          );
+          )
         })}
       </div>
     </div>
-  );
+  )
 }

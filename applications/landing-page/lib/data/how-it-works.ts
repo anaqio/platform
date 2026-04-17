@@ -27,4 +27,4 @@ export const HowItWorksSectionText = {
       body: 'Generate multiple variations for different markets, campaigns, or product launches. Minutes — not weeks.',
     },
   ],
-} as const;
+} as const

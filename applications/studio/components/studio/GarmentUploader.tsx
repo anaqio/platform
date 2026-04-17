@@ -30,7 +30,7 @@ export function GarmentUploader({ onFileSelect, selectedFile, onClear }: Garment
       setPreview(url)
       onFileSelect(file)
     },
-    [onFileSelect],
+    [onFileSelect]
   )
 
   const handleDrop = useCallback(
@@ -40,7 +40,7 @@ export function GarmentUploader({ onFileSelect, selectedFile, onClear }: Garment
       const file = e.dataTransfer.files[0]
       if (file) handleFile(file)
     },
-    [handleFile],
+    [handleFile]
   )
 
   const handleClear = useCallback(() => {
@@ -61,7 +61,7 @@ export function GarmentUploader({ onFileSelect, selectedFile, onClear }: Garment
         <Button
           variant="destructive"
           size="icon"
-          className="absolute right-2 top-2 h-8 w-8"
+          className="absolute top-2 right-2 h-8 w-8"
           onClick={handleClear}
         >
           <X className="h-4 w-4" />
@@ -82,7 +82,7 @@ export function GarmentUploader({ onFileSelect, selectedFile, onClear }: Garment
         onDrop={handleDrop}
         className={cn(
           'flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed p-8 transition-colors',
-          dragOver ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50',
+          dragOver ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'
         )}
       >
         <Upload className="text-muted-foreground h-8 w-8" />

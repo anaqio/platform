@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
 interface AtelierStepCounterProps {
-  current: number;
-  total: number;
-  isOptional: boolean;
-  skipLabel: string;
-  onSkip: () => void;
+  current: number
+  total: number
+  isOptional: boolean
+  skipLabel: string
+  onSkip: () => void
 }
 
 export function AtelierStepCounter({
@@ -30,5 +30,5 @@ export function AtelierStepCounter({
         </button>
       )}
     </div>
-  );
+  )
 }

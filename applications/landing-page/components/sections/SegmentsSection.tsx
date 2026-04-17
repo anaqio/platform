@@ -1,21 +1,21 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 
-import { useAnimationReady } from '@/hooks/use-animation-ready';
+import { useAnimationReady } from '@/hooks/use-animation-ready'
 
 export function SegmentsSection() {
-  const t = useTranslations('landing.segments');
-  const { animated } = useAnimationReady();
+  const t = useTranslations('landing.segments')
+  const { animated } = useAnimationReady()
 
   const items = t.raw('items') as Array<{
-    icon: string;
-    name: string;
-    role: string;
-    problem: string;
-    solution: string;
-  }>;
+    icon: string
+    name: string
+    role: string
+    problem: string
+    solution: string
+  }>
 
   return (
     <section
@@ -29,8 +29,7 @@ export function SegmentsSection() {
           className="font-display font-black text-black"
           style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}
         >
-          {t('heading.pre')}{' '}
-          <span className="vb-underline">{t('heading.highlight')}</span>{' '}
+          {t('heading.pre')} <span className="vb-underline">{t('heading.highlight')}</span>{' '}
           {t('heading.post')}
         </h2>
         <p className="max-w-md text-sm text-black/60">{t('subheading')}</p>
@@ -52,30 +51,24 @@ export function SegmentsSection() {
             <h3 className="font-display text-xl font-bold text-black group-hover:text-white">
               {seg.name}
             </h3>
-            <p className="mt-1 text-sm text-black/60 group-hover:text-white/70">
-              {seg.role}
-            </p>
+            <p className="mt-1 text-sm text-black/60 group-hover:text-white/70">{seg.role}</p>
             <div className="mt-4 space-y-2">
               <div>
                 <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-black/30 group-hover:text-white/40">
                   {t('labels.problem')}
                 </p>
-                <p className="text-sm text-black/60 group-hover:text-white/70">
-                  {seg.problem}
-                </p>
+                <p className="text-sm text-black/60 group-hover:text-white/70">{seg.problem}</p>
               </div>
               <div>
                 <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-black/30 group-hover:text-white/40">
                   {t('labels.solution')}
                 </p>
-                <p className="text-sm text-black/60 group-hover:text-white/70">
-                  {seg.solution}
-                </p>
+                <p className="text-sm text-black/60 group-hover:text-white/70">{seg.solution}</p>
               </div>
             </div>
           </motion.div>
         ))}
       </div>
     </section>
-  );
+  )
 }

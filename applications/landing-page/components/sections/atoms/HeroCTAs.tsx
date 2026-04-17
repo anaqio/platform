@@ -1,22 +1,22 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { ArrowDownRight } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion'
+import { ArrowDownRight } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button';
-import { MagneticButton } from '@/components/ui/MagneticButton';
-import { ScrollLink } from '@/components/ui/scroll-link';
-import { Link } from '@/i18n/routing';
-import { ease } from '@/lib/data/motion';
+import { Button } from '@/components/ui/button'
+import { MagneticButton } from '@/components/ui/MagneticButton'
+import { ScrollLink } from '@/components/ui/scroll-link'
+import { Link } from '@/i18n/routing'
+import { ease } from '@/lib/data/motion'
 
 interface HeroCTAsProps {
-  animated: boolean;
-  tier: string;
+  animated: boolean
+  tier: string
 }
 
 export function HeroCTAs({ animated, tier }: HeroCTAsProps) {
-  const t = useTranslations('landing.hero');
+  const t = useTranslations('landing.hero')
 
   return (
     <motion.div
@@ -46,5 +46,5 @@ export function HeroCTAs({ animated, tier }: HeroCTAsProps) {
         <ScrollLink targetId="how-it-works">{t('cta.learn')}</ScrollLink>
       </Button>
     </motion.div>
-  );
+  )
 }

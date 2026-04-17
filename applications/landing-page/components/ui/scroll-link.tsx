@@ -1,12 +1,12 @@
-'use client';
+'use client'
 
-import { type ComponentPropsWithoutRef } from 'react';
+import { type ComponentPropsWithoutRef } from 'react'
 
-import { trackUserBehavior } from '@/lib/analytics';
+import { trackUserBehavior } from '@/lib/analytics'
 
 type ScrollLinkProps = ComponentPropsWithoutRef<'a'> & {
-  targetId: string;
-};
+  targetId: string
+}
 
 /**
  * Semantic anchor for in-page scroll navigation.
@@ -26,23 +26,19 @@ export function ScrollLink({ targetId, children, ...props }: ScrollLinkProps) {
       href={`#${targetId}`}
       {...props}
       onClick={(e) => {
-        e.preventDefault();
-        trackUserBehavior.trackClick(`scroll_to_${targetId}`, 'navigation');
-        const element = document.getElementById(targetId);
-        element?.scrollIntoView({ behavior: 'smooth' });
+        e.preventDefault()
+        trackUserBehavior.trackClick(`scroll_to_${targetId}`, 'navigation')
+        const element = document.getElementById(targetId)
+        element?.scrollIntoView({ behavior: 'smooth' })
 
         // Clean up URL hash after scrolling to prevent auto-scroll on reload
         // Use replaceState to avoid breaking browser back button
-        window.history.replaceState(
-          null,
-          '',
-          window.location.pathname + window.location.search
-        );
+        window.history.replaceState(null, '', window.location.pathname + window.location.search)
 
-        props.onClick?.(e);
+        props.onClick?.(e)
       }}
     >
       {children}
     </a>
-  );
+  )
 }

@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import { useReducedMotion } from 'framer-motion';
+import { useReducedMotion } from 'framer-motion'
 
-import { useDeviceTier } from '@/hooks/use-device-tier';
-import { useMounted } from '@/hooks/use-mounted';
+import { useDeviceTier } from '@/hooks/use-device-tier'
+import { useMounted } from '@/hooks/use-mounted'
 
 /**
  * Combines `useReducedMotion()`, `useDeviceTier()`, and `useMounted()` into a single hook.
@@ -18,14 +18,14 @@ import { useMounted } from '@/hooks/use-mounted';
  * const { animated, reduced } = useAnimationReady();
  */
 export function useAnimationReady() {
-  const mounted = useMounted();
-  const reducedMotionPref = useReducedMotion();
-  const tier = useDeviceTier();
+  const mounted = useMounted()
+  const reducedMotionPref = useReducedMotion()
+  const tier = useDeviceTier()
 
   // Force defaults during SSR and initial client pass to ensure hydration match.
   // We assume a "standard" capable device with no reduced motion for the baseline render.
-  const reduced = mounted ? reducedMotionPref : false;
-  const animated = mounted && !reduced && tier !== 'low';
+  const reduced = mounted ? reducedMotionPref : false
+  const animated = mounted && !reduced && tier !== 'low'
 
-  return { reduced, tier, animated, mounted };
+  return { reduced, tier, animated, mounted }
 }

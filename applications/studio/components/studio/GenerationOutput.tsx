@@ -32,7 +32,7 @@ export function GenerationOutput({
   const [loading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
   const [imageHistory, setImageHistory] = useState<ImageSnapshot[]>(() =>
-    initialBase64 ? [{ base64: initialBase64, mimeType: initialMimeType }] : [],
+    initialBase64 ? [{ base64: initialBase64, mimeType: initialMimeType }] : []
   )
 
   useEffect(() => {

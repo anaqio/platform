@@ -1,21 +1,21 @@
-'use client';
+'use client'
 
-import { motion, useReducedMotion } from 'framer-motion';
-import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { motion, useReducedMotion } from 'framer-motion'
+import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button';
-import { MagneticButton } from '@/components/ui/MagneticButton';
-import { Link } from '@/i18n/routing';
-import { getAboutTeam } from '@/lib/data/about-page-content';
-import { clipReveal, fadeIn, fadeUp } from '@/lib/data/motion';
+import { Button } from '@/components/ui/button'
+import { MagneticButton } from '@/components/ui/MagneticButton'
+import { Link } from '@/i18n/routing'
+import { getAboutTeam } from '@/lib/data/about-page-content'
+import { clipReveal, fadeIn, fadeUp } from '@/lib/data/motion'
 
 export default function AboutContent() {
-  const t = useTranslations('about');
-  const tMeta = useTranslations('meta');
-  const reduced = useReducedMotion();
+  const t = useTranslations('about')
+  const tMeta = useTranslations('meta')
+  const reduced = useReducedMotion()
 
-  const team = getAboutTeam(t);
+  const team = getAboutTeam(t)
 
   return (
     <>
@@ -35,11 +35,7 @@ export default function AboutContent() {
         <motion.div
           aria-hidden="true"
           className="pointer-events-none absolute left-1/2 top-0 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-aq-blue/10 blur-[120px]"
-          animate={
-            reduced
-              ? { opacity: 0.5 }
-              : { opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }
-          }
+          animate={reduced ? { opacity: 0.5 } : { opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
 
@@ -170,10 +166,7 @@ export default function AboutContent() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-aq-blue/5 via-background to-background" />
 
         <div className="relative z-10 mx-auto max-w-6xl">
-          <motion.div
-            className="mx-auto max-w-3xl text-center"
-            {...fadeUp(reduced)}
-          >
+          <motion.div className="mx-auto max-w-3xl text-center" {...fadeUp(reduced)}>
             <p className="font-label text-xs font-semibold uppercase tracking-[0.2em] text-aq-blue">
               {t('solution.overline')}
             </p>
@@ -183,9 +176,7 @@ export default function AboutContent() {
             >
               {t('solution.titleLine1')}
               <br />
-              <span className="font-medium text-foreground">
-                {t('solution.titleLine2')}
-              </span>
+              <span className="font-medium text-foreground">{t('solution.titleLine2')}</span>
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
               {t('solution.desc')}
@@ -258,9 +249,7 @@ export default function AboutContent() {
           {...fadeUp(reduced)}
         >
           &ldquo;{t('morocco.quote')}{' '}
-          <span className="font-medium not-italic text-aq-blue">
-            {t('morocco.quoteAccent')}
-          </span>
+          <span className="font-medium not-italic text-aq-blue">{t('morocco.quoteAccent')}</span>
           &rdquo;
         </motion.blockquote>
 
@@ -297,10 +286,7 @@ export default function AboutContent() {
 
         <div className="relative z-10 mx-auto max-w-7xl">
           {/* Section header */}
-          <motion.div
-            className="mb-24 flex flex-col items-start"
-            {...fadeUp(reduced)}
-          >
+          <motion.div className="mb-24 flex flex-col items-start" {...fadeUp(reduced)}>
             <div className="flex items-center gap-4">
               <div className="h-px w-8 bg-aq-blue/40" />
               <p className="font-label text-xs font-semibold uppercase tracking-[0.3em] text-aq-blue">
@@ -313,9 +299,7 @@ export default function AboutContent() {
             >
               {t('team.titleLine1')}
               <br />
-              <em className="text-brand-gradient not-italic">
-                {t('team.titleLine2')}
-              </em>
+              <em className="text-brand-gradient not-italic">{t('team.titleLine2')}</em>
             </h2>
           </motion.div>
 
@@ -519,5 +503,5 @@ export default function AboutContent() {
         </motion.div>
       </section>
     </>
-  );
+  )
 }

@@ -1,18 +1,18 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 
-import { useAnimationReady } from '@/hooks/use-animation-ready';
+import { useAnimationReady } from '@/hooks/use-animation-ready'
 
 export function HowItWorksSection() {
-  const t = useTranslations('landing.howItWorks');
+  const t = useTranslations('landing.howItWorks')
   const steps = t.raw('steps') as Array<{
-    num: string;
-    title: string;
-    body: string;
-  }>;
-  const { animated } = useAnimationReady();
+    num: string
+    title: string
+    body: string
+  }>
+  const { animated } = useAnimationReady()
 
   return (
     <section
@@ -28,8 +28,7 @@ export function HowItWorksSection() {
         className="mb-20 max-w-xl font-display font-black text-black"
         style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}
       >
-        {t('headline.pre')}{' '}
-        <span className="vb-underline">{t('headline.gradient')}</span>
+        {t('headline.pre')} <span className="vb-underline">{t('headline.gradient')}</span>
       </h2>
 
       <div className="flex flex-col divide-y divide-black/10">
@@ -58,5 +57,5 @@ export function HowItWorksSection() {
         ))}
       </div>
     </section>
-  );
+  )
 }

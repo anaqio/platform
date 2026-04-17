@@ -1,30 +1,30 @@
-'use client';
+'use client'
 
-import { useState, useTransition } from 'react';
+import { useState, useTransition } from 'react'
 
-import { Link, useRouter } from '@/i18n/routing';
-import { verifyBrandAccess } from '@/lib/actions/brand';
+import { Link, useRouter } from '@/i18n/routing'
+import { verifyBrandAccess } from '@/lib/actions/brand'
 
 export function BrandGate() {
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState(false);
-  const [isPending, startTransition] = useTransition();
-  const router = useRouter();
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState(false)
+  const [isPending, startTransition] = useTransition()
+  const router = useRouter()
 
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(false);
+    e.preventDefault()
+    setError(false)
 
     startTransition(async () => {
-      const result = await verifyBrandAccess(password);
+      const result = await verifyBrandAccess(password)
       if (result.success) {
-        router.refresh();
+        router.refresh()
       } else {
-        setError(true);
-        setPassword('');
+        setError(true)
+        setPassword('')
       }
-    });
-  };
+    })
+  }
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#0a0a08] px-4 font-body text-[#f0ebe3] antialiased">
@@ -129,8 +129,8 @@ export function BrandGate() {
         <div className="gate-logo">Anaqio</div>
         <h1 className="gate-title">Brand Identity Guidelines</h1>
         <p className="gate-desc">
-          This document is confidential and contains proprietary brand assets.
-          Please enter the access key to continue.
+          This document is confidential and contains proprietary brand assets. Please enter the
+          access key to continue.
         </p>
         <form onSubmit={handleLogin}>
           <input
@@ -155,5 +155,5 @@ export function BrandGate() {
         </Link>
       </div>
     </div>
-  );
+  )
 }

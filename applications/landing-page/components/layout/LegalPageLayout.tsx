@@ -1,20 +1,20 @@
-import { Footer } from '@/components/layout/Footer';
-import { Header } from '@/components/layout/Header';
-import { BackButton } from '@/components/ui/back-button';
+import { Footer } from '@/components/layout/Footer'
+import { Header } from '@/components/layout/Header'
+import { BackButton } from '@/components/ui/back-button'
 
 interface LegalPageLayoutProps {
   /** Eyebrow label (e.g., "Data Protection", "Legal Framework") */
-  eyebrow: string;
+  eyebrow: string
   /** Page title */
-  title: string;
+  title: string
   /** Optional subtitle (e.g., French translation) */
-  subtitle?: string;
+  subtitle?: string
   /** Effective date (e.g., "Feb 21, 2026") */
-  effectiveDate?: string;
+  effectiveDate?: string
   /** Version string (e.g., "Version 1.0") */
-  version?: string;
+  version?: string
   /** Page content */
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 /**
@@ -48,9 +48,7 @@ export function LegalPageLayout({
               {title}
             </h1>
             {subtitle && (
-              <p className="mb-6 font-display text-xl italic text-muted-foreground">
-                {subtitle}
-              </p>
+              <p className="mb-6 font-display text-xl italic text-muted-foreground">{subtitle}</p>
             )}
             {(effectiveDate ?? version) && (
               <div className="flex flex-wrap gap-x-8 gap-y-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -66,5 +64,5 @@ export function LegalPageLayout({
 
       <Footer />
     </div>
-  );
+  )
 }

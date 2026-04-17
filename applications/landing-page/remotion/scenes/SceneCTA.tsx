@@ -1,15 +1,15 @@
-import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
+import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion'
 
-import { COLORS, FONTS, GRADIENT } from '../lib/brand';
-import { fadeIn, slideUp } from '../lib/helpers';
-import { SCENES } from '../lib/timing';
+import { COLORS, FONTS, GRADIENT } from '../lib/brand'
+import { fadeIn, slideUp } from '../lib/helpers'
+import { SCENES } from '../lib/timing'
 
 export function SceneCTA() {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const local = Math.max(0, frame - SCENES.cta.start);
+  const frame = useCurrentFrame()
+  const { fps } = useVideoConfig()
+  const local = Math.max(0, frame - SCENES.cta.start)
 
-  const opacity = fadeIn(local, 0, 20);
+  const opacity = fadeIn(local, 0, 20)
 
   return (
     <AbsoluteFill
@@ -110,5 +110,5 @@ export function SceneCTA() {
         Launching Q3 2026 · Casablanca
       </div>
     </AbsoluteFill>
-  );
+  )
 }

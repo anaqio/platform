@@ -1,6 +1,6 @@
-import { defineConfig } from 'vitest/config';
-import react from '@vitejs/plugin-react';
-import path from 'path';
+import { defineConfig } from 'vitest/config'
+import react from '@vitejs/plugin-react'
+import path from 'path'
 
 export default defineConfig({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,13 +11,7 @@ export default defineConfig({
     setupFiles: ['./vitest.setup.ts'],
     testTimeout: 10_000,
     include: ['__spec__/**/*.test.{ts,tsx}'],
-    exclude: [
-      'node_modules',
-      '.next',
-      '.claude',
-      'test-results',
-      'playwright-report',
-    ],
+    exclude: ['node_modules', '.next', '.claude', 'test-results', 'playwright-report'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
@@ -37,4 +31,4 @@ export default defineConfig({
       '@': path.resolve(__dirname, './'),
     },
   },
-});
+})

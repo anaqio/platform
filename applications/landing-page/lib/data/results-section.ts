@@ -1,9 +1,9 @@
 // lib/data/results-section.ts
 export interface ResultCard {
-  metric: string;
-  traditional: string;
-  anaqio: string;
-  improvement: string;
+  metric: string
+  traditional: string
+  anaqio: string
+  improvement: string
 }
 
 export const RESULTS: ResultCard[] = [
@@ -25,4 +25,4 @@ export const RESULTS: ResultCard[] = [
     anaqio: 'Unlimited',
     improvement: '10x+ more',
   },
-];
+]

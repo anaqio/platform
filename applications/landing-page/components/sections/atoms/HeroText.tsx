@@ -1,31 +1,31 @@
-'use client';
+'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useLocale, useTranslations } from 'next-intl';
-import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useLocale, useTranslations } from 'next-intl'
+import { useRef } from 'react'
 
-import { isRTL, type Locale } from '@/i18n/config';
-import { charReveal, ease, wordReveal } from '@/lib/data/motion';
+import { isRTL, type Locale } from '@/i18n/config'
+import { charReveal, ease, wordReveal } from '@/lib/data/motion'
 
 interface HeroTextProps {
-  animated: boolean;
-  reduced: boolean;
+  animated: boolean
+  reduced: boolean
 }
 
 export function HeroText({ animated, reduced }: HeroTextProps) {
-  const t = useTranslations('landing.hero');
-  const locale = useLocale();
-  const rtl = isRTL(locale as Locale);
-  const textRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations('landing.hero')
+  const locale = useLocale()
+  const rtl = isRTL(locale as Locale)
+  const textRef = useRef<HTMLDivElement>(null)
 
   const { scrollYProgress } = useScroll({
     target: textRef,
     offset: ['start start', 'end start'],
-  });
+  })
 
-  const headlineY = useTransform(scrollYProgress, [0, 1], ['0px', '-40px']);
-  const proWords = t('headline.pro').split(' ');
-  const subheadlineWords = t('subheadline.a').split(' ');
+  const headlineY = useTransform(scrollYProgress, [0, 1], ['0px', '-40px'])
+  const proWords = t('headline.pro').split(' ')
+  const subheadlineWords = t('subheadline.a').split(' ')
 
   return (
     <div
@@ -55,8 +55,8 @@ export function HeroText({ animated, reduced }: HeroTextProps) {
         className="mt-6 flex flex-wrap justify-center gap-x-[0.22em] font-display font-light text-foreground lg:justify-start"
       >
         {(() => {
-          const headline = t('headline.pre');
-          const words = headline.split(' ');
+          const headline = t('headline.pre')
+          const words = headline.split(' ')
 
           if (rtl) {
             return words.map((word, wi) => (
@@ -70,13 +70,13 @@ export function HeroText({ animated, reduced }: HeroTextProps) {
               >
                 {word}
               </motion.span>
-            ));
+            ))
           }
 
           // LTR: per-character animation
           const wordOffsets = words.map((_, wi) =>
             words.slice(0, wi).reduce((sum, w) => sum + w.length + 1, 0)
-          );
+          )
           return words.map((word, wi) => (
             <span key={`word-${wi}`} className="inline-flex whitespace-nowrap">
               {word.split('').map((char, ci) => (
@@ -84,9 +84,7 @@ export function HeroText({ animated, reduced }: HeroTextProps) {
                   key={`pre-${wi}-${ci}`}
                   data-atom
                   aria-hidden="true"
-                  {...(animated
-                    ? charReveal(reduced, wordOffsets[wi] + ci)
-                    : {})}
+                  {...(animated ? charReveal(reduced, wordOffsets[wi] + ci) : {})}
                   className="inline-block"
                   style={{
                     fontSize: 'clamp(2.5rem, 6vw, 6rem)',
@@ -97,7 +95,7 @@ export function HeroText({ animated, reduced }: HeroTextProps) {
                 </motion.span>
               ))}
             </span>
-          ));
+          ))
         })()}
       </motion.p>
 
@@ -145,5 +143,5 @@ export function HeroText({ animated, reduced }: HeroTextProps) {
         ))}
       </p>
     </div>
-  );
+  )
 }

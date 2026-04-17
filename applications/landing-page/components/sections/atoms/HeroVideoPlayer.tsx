@@ -1,39 +1,36 @@
-'use client';
+'use client'
 
-import { Play } from 'lucide-react';
-import { useState } from 'react';
+import { Play } from 'lucide-react'
+import { useState } from 'react'
 
-import { useLazyVideo } from '@/hooks/use-lazy-video';
-import { cn } from '@/lib/utils';
+import { useLazyVideo } from '@/hooks/use-lazy-video'
+import { cn } from '@/lib/utils'
 
 export function HeroVideoPlayer() {
-  const [isMuted, setIsMuted] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [showControls, setShowControls] = useState(false);
+  const [isMuted, setIsMuted] = useState(true)
+  const [isPlaying, setIsPlaying] = useState(true)
+  const [showControls, setShowControls] = useState(false)
 
   const { containerRef, videoRef, shouldLoad, hasLoaded } = useLazyVideo({
     threshold: 0.1,
     rootMargin: '200px',
     eager: false,
-  });
+  })
 
-  const toggleMute = () => setIsMuted(!isMuted);
+  const toggleMute = () => setIsMuted(!isMuted)
   const togglePlay = () => {
     if (videoRef.current) {
       if (isPlaying) {
-        videoRef.current.pause();
+        videoRef.current.pause()
       } else {
-        videoRef.current.play();
+        videoRef.current.play()
       }
-      setIsPlaying(!isPlaying);
+      setIsPlaying(!isPlaying)
     }
-  };
+  }
 
   return (
-    <div
-      ref={containerRef}
-      className="relative flex w-full justify-center lg:w-5/12"
-    >
+    <div ref={containerRef} className="relative flex w-full justify-center lg:w-5/12">
       <div
         className={cn(
           'relative aspect-[3/4] w-full max-w-sm overflow-hidden rounded-2xl lg:max-h-[70vh]',
@@ -50,9 +47,7 @@ export function HeroVideoPlayer() {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="flex flex-col items-center gap-3 text-muted-foreground/40">
               <Play className="h-12 w-12" />
-              <span className="text-xs uppercase tracking-widest">
-                Loading Video
-              </span>
+              <span className="text-xs uppercase tracking-widest">Loading Video</span>
             </div>
           </div>
         )}
@@ -87,12 +82,7 @@ export function HeroVideoPlayer() {
                   aria-label={isMuted ? 'Unmute video' : 'Mute video'}
                 >
                   {isMuted ? (
-                    <svg
-                      className="h-4 w-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -107,12 +97,7 @@ export function HeroVideoPlayer() {
                       />
                     </svg>
                   ) : (
-                    <svg
-                      className="h-4 w-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -128,11 +113,7 @@ export function HeroVideoPlayer() {
                   aria-label={isPlaying ? 'Pause video' : 'Play video'}
                 >
                   {isPlaying ? (
-                    <svg
-                      className="h-4 w-4"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
+                    <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
                     </svg>
                   ) : (
@@ -164,5 +145,5 @@ export function HeroVideoPlayer() {
         />
       </div>
     </div>
-  );
+  )
 }

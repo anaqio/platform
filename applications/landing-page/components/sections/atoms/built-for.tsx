@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import styles from './builtfor.module.css';
+import styles from './builtfor.module.css'
 
 export function BuiltFor() {
   return (
@@ -10,29 +10,15 @@ export function BuiltFor() {
           Built for
         </span>
         <div className={styles['dropping-texts']}>
-          <div className="font-body font-black uppercase tracking-widest text-black">
-            Brands
-          </div>
-          <div className="font-body font-black uppercase tracking-widest text-black">
-            Designers
-          </div>
-          <div className="font-body font-black uppercase tracking-widest text-black">
-            Fashion
-          </div>
-          <div className="font-body font-black uppercase tracking-widest text-black">
-            Commerce
-          </div>
-          <div className="font-body font-black uppercase tracking-widest text-black">
-            Models
-          </div>
-          <div className="font-body font-black uppercase tracking-widest text-black">
-            Studios
-          </div>
-          <div className="font-body font-black uppercase tracking-widest text-black">
-            EVERYONE!
-          </div>
+          <div className="font-body font-black uppercase tracking-widest text-black">Brands</div>
+          <div className="font-body font-black uppercase tracking-widest text-black">Designers</div>
+          <div className="font-body font-black uppercase tracking-widest text-black">Fashion</div>
+          <div className="font-body font-black uppercase tracking-widest text-black">Commerce</div>
+          <div className="font-body font-black uppercase tracking-widest text-black">Models</div>
+          <div className="font-body font-black uppercase tracking-widest text-black">Studios</div>
+          <div className="font-body font-black uppercase tracking-widest text-black">EVERYONE!</div>
         </div>
       </div>
     </div>
-  );
+  )
 }

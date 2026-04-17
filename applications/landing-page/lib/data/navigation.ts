@@ -3,12 +3,12 @@
  * Centralized for DRY principles and easy maintenance.
  */
 
-import InstagramIcon from '@/components/ui/icons/instagram';
-import LinkedinIcon from '@/components/ui/icons/linkedin';
-import _NewTwitterIcon from '@/components/ui/icons/NewTwitter';
-import PinterestIcon from '@/components/ui/icons/pinterest';
-import TiktokIcon from '@/components/ui/icons/tiktok';
-import YoutubeIcon from '@/components/ui/icons/youtube';
+import InstagramIcon from '@/components/ui/icons/instagram'
+import LinkedinIcon from '@/components/ui/icons/linkedin'
+import _NewTwitterIcon from '@/components/ui/icons/NewTwitter'
+import PinterestIcon from '@/components/ui/icons/pinterest'
+import TiktokIcon from '@/components/ui/icons/tiktok'
+import YoutubeIcon from '@/components/ui/icons/youtube'
 
 export const socialLinks = [
   {
@@ -36,7 +36,7 @@ export const socialLinks = [
     label: 'TikTok',
     Icon: TiktokIcon,
   },
-];
+]
 
 export const footerColumns = [
   {
@@ -68,11 +68,11 @@ export const footerColumns = [
       { label: 'Cookies', href: '/cookies' },
     ],
   },
-];
+]
 
 export const footerContent = {
   description:
     'Your Digital Atelier. Create stunning lookbooks, swap backgrounds, and generate editorial visuals — powered by AI, designed for Moroccan fashion brands.',
   copyright: `\u00A9 ${new Date().getFullYear()} Anaqio`,
   allRightsReserved: 'All rights reserved.',
-};
+}

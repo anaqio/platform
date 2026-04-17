@@ -24,6 +24,6 @@ const PinterestIcon = (props: React.SVGProps<SVGSVGElement>) => (
     />
     <circle cx="12" cy="12" r="10" stroke="#f2f2f2cc" strokeWidth="1.5" />
   </svg>
-);
+)
 
-export default PinterestIcon;
+export default PinterestIcon

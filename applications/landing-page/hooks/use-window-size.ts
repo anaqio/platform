@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { useWindowSize } from '@uidotdev/usehooks';
+import { useWindowSize } from '@uidotdev/usehooks'
 
 /**
  * Hook to track window dimensions.
@@ -10,4 +10,4 @@ import { useWindowSize } from '@uidotdev/usehooks';
  * @example
  * const { width, height } = useWindowSize();
  */
-export { useWindowSize };
+export { useWindowSize }

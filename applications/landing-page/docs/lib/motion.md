@@ -7,7 +7,7 @@ Shared Framer Motion animation helpers. Every export accepts a `reduced` argumen
 ## `ease`
 
 ```ts
-export const ease = [0.16, 1, 0.3, 1] as const;
+export const ease = [0.16, 1, 0.3, 1] as const
 ```
 
 A custom cubic-bezier curve shared across all transitions. Produces a fast-out, slow-in feel that reads as snappy and premium.
@@ -79,13 +79,13 @@ Use for vertically stacked list rows (e.g. vision points, timeline entries).
 ## Usage
 
 ```tsx
-'use client';
+'use client'
 
-import { motion, useReducedMotion } from 'framer-motion';
-import { fadeUp, fadeUpCard, slideInLeft } from '@/lib/motion';
+import { motion, useReducedMotion } from 'framer-motion'
+import { fadeUp, fadeUpCard, slideInLeft } from '@/lib/motion'
 
 export function MySection() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotion()
 
   return (
     <section>
@@ -99,7 +99,7 @@ export function MySection() {
         ))}
       </ul>
     </section>
-  );
+  )
 }
 ```
 

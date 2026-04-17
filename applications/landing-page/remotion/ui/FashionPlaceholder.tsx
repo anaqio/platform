@@ -1,4 +1,4 @@
-import { COLORS } from '../lib/brand';
+import { COLORS } from '../lib/brand'
 
 // Stylized fashion silhouette as SVG — avoids needing real images
 export function FashionPlaceholder({
@@ -7,18 +7,18 @@ export function FashionPlaceholder({
   style = 0,
   color: _color = COLORS.blue,
 }: {
-  width?: number;
-  height?: number;
-  style?: 0 | 1 | 2 | 3;
-  color?: string;
+  width?: number
+  height?: number
+  style?: 0 | 1 | 2 | 3
+  color?: string
 }) {
   const fills = [
     { bg: '#1e293b', accent: COLORS.blue },
     { bg: '#1e293b', accent: COLORS.purple },
     { bg: '#1e293b', accent: COLORS.blueLight },
     { bg: '#1e293b', accent: COLORS.purpleLight },
-  ];
-  const { bg, accent } = fills[style];
+  ]
+  const { bg, accent } = fills[style]
 
   return (
     <div
@@ -59,12 +59,7 @@ export function FashionPlaceholder({
           strokeWidth="1.5"
         />
         {/* Neckline */}
-        <path
-          d="M70 60 Q100 50 130 60"
-          fill="none"
-          stroke={`${accent}`}
-          strokeWidth="1.5"
-        />
+        <path d="M70 60 Q100 50 130 60" fill="none" stroke={`${accent}`} strokeWidth="1.5" />
         {/* Sleeve left */}
         <path
           d="M60 80 L35 110 L50 115 L55 100 L60 90Z"
@@ -119,17 +114,11 @@ export function FashionPlaceholder({
         AI Generated
       </div>
     </div>
-  );
+  )
 }
 
 // Before image (plain white bg studio product photo simulation)
-export function ProductOnWhite({
-  width = 200,
-  height = 280,
-}: {
-  width?: number;
-  height?: number;
-}) {
+export function ProductOnWhite({ width = 200, height = 280 }: { width?: number; height?: number }) {
   return (
     <div
       style={{
@@ -145,23 +134,14 @@ export function ProductOnWhite({
         justifyContent: 'center',
       }}
     >
-      <svg
-        viewBox="0 0 200 280"
-        style={{ width: '75%', height: '75%' }}
-        fill="none"
-      >
+      <svg viewBox="0 0 200 280" style={{ width: '75%', height: '75%' }} fill="none">
         <path
           d="M70 60 L60 80 L40 90 L50 100 L55 200 L145 200 L150 100 L160 90 L140 80 L130 60 Q100 75 70 60Z"
           fill="#94A3B8"
           stroke="#64748B"
           strokeWidth="1.5"
         />
-        <path
-          d="M70 60 Q100 50 130 60"
-          fill="none"
-          stroke="#475569"
-          strokeWidth="1.5"
-        />
+        <path d="M70 60 Q100 50 130 60" fill="none" stroke="#475569" strokeWidth="1.5" />
         <path
           d="M60 80 L35 110 L50 115 L55 100 L60 90Z"
           fill="#94A3B8"
@@ -188,5 +168,5 @@ export function ProductOnWhite({
         Original upload
       </div>
     </div>
-  );
+  )
 }

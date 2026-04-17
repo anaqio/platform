@@ -33,9 +33,7 @@ Pass the array index from your `map()` call as `index`. The [[motion#fadeUpCard|
 
 ```tsx
 {
-  features.map((feature, i) => (
-    <FeatureCard key={feature.title} {...feature} index={i} />
-  ));
+  features.map((feature, i) => <FeatureCard key={feature.title} {...feature} index={i} />)
 }
 ```
 
@@ -50,15 +48,14 @@ Pass the array index from your `map()` call as `index`. The [[motion#fadeUpCard|
 ## Usage — icon variant
 
 ```tsx
-import { Wand2 } from 'lucide-react';
-import { FeatureCard } from '@/components/ui/feature-card';
-
-<FeatureCard
+import { Wand2 } from 'lucide-react'
+import { FeatureCard } from '@/components/ui/feature-card'
+;<FeatureCard
   title="AI Retouching"
   body="One-click background removal and professional lighting adjustments."
   icon={Wand2}
   index={0}
-/>;
+/>
 ```
 
 ## Usage — label (step) variant

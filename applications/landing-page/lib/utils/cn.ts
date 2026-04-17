@@ -1,1 +1,1 @@
-export { cn } from '@anaqio/utils/cn';
+export { cn } from '@anaqio/utils/cn'

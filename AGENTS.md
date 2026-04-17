@@ -125,8 +125,8 @@ Alphabetized within groups. Use `import type` for type-only.
 
 ### Formatting (Prettier)
 
-- Semicolons, single quotes, 2-space indent
-- Trailing commas (es5), 80 char width, LF endings
+- No semicolons, single quotes, 2-space indent
+- Trailing commas (es5), 100 char width, LF endings
 - Tailwind classes auto-sorted by `prettier-plugin-tailwindcss`
 
 ### React / Next.js

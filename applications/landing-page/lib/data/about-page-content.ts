@@ -1,15 +1,15 @@
-import { ObjectBuilder } from '../utils/object-builder';
+import { ObjectBuilder } from '../utils/object-builder'
 
 export interface TeamI {
-  name: string;
-  role: string;
-  bio: string;
-  linkedin: string;
-  photo: string | null;
-  initials: string;
-  github?: string;
-  twitter?: string;
-  email?: string;
+  name: string
+  role: string
+  bio: string
+  linkedin: string
+  photo: string | null
+  initials: string
+  github?: string
+  twitter?: string
+  email?: string
 }
 
 const TEAM_FORMAT = {
@@ -22,7 +22,7 @@ const TEAM_FORMAT = {
   github: 'github',
   twitter: 'twitter',
   email: 'email',
-};
+}
 
 export const getAboutTeam = (t: (key: string) => string): TeamI[] => [
   ObjectBuilder<TeamI>(
@@ -61,4 +61,4 @@ export const getAboutTeam = (t: (key: string) => string): TeamI[] => [
     },
     TEAM_FORMAT
   ),
-];
+]

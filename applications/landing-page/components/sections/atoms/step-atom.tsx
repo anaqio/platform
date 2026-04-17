@@ -1,27 +1,27 @@
-import { motion, useInView } from 'framer-motion';
-import Image from 'next/image';
-import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion'
+import Image from 'next/image'
+import { useRef } from 'react'
 
-import { ease } from '@/lib/data/motion';
-import { NANOBANANA_VISUALS } from '@/lib/data/nanobanana-assets';
+import { ease } from '@/lib/data/motion'
+import { NANOBANANA_VISUALS } from '@/lib/data/nanobanana-assets'
 
 export function StepAtom({
   step,
   index,
   animated,
 }: {
-  step: { num: string; title: string; body: string };
-  index: number;
-  animated: boolean;
+  step: { num: string; title: string; body: string }
+  index: number
+  animated: boolean
 }) {
-  const ref = useRef(null);
+  const ref = useRef(null)
 
   const inView = useInView(ref, {
     once: true,
     margin: `0px 0px -${10 + (index % 4) * 5}% 0px` as NonNullable<
       Parameters<typeof useInView>[1]
     >['margin'],
-  });
+  })
 
   return (
     <motion.div
@@ -36,11 +36,7 @@ export function StepAtom({
       className="flex flex-col gap-5 sm:max-w-[280px]"
     >
       <motion.span
-        animate={
-          animated && inView
-            ? { boxShadow: '0 0 0 8px hsl(var(--primary) / 0)' }
-            : {}
-        }
+        animate={animated && inView ? { boxShadow: '0 0 0 8px hsl(var(--primary) / 0)' } : {}}
         transition={{ duration: 1, ease: 'easeOut' }}
         className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-aq-blue/10 font-display font-light text-aq-blue ring-1 ring-border"
         style={{ fontSize: 'clamp(1.5rem, 2.5vw, 1.8rem)' }}
@@ -98,5 +94,5 @@ export function StepAtom({
         </div>
       </div>
     </motion.div>
-  );
+  )
 }

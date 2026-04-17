@@ -10,11 +10,11 @@
  */
 
 export type TranslationFn = {
-  raw(key: string): unknown;
-};
+  raw(key: string): unknown
+}
 
 export function DataManager<T>(t: TranslationFn, key: string): T {
-  return t.raw(key) as T;
+  return t.raw(key) as T
 }
 
 /**
@@ -29,6 +29,6 @@ export function DataManagerWithExtras<TRaw extends object, TExtra, TResult>(
   extras: TExtra[],
   merge: (item: TRaw, extra: TExtra, index: number) => TResult
 ): TResult[] {
-  const raw = t.raw(key) as TRaw[];
-  return raw.map((item, i) => merge(item, extras[i], i));
+  const raw = t.raw(key) as TRaw[]
+  return raw.map((item, i) => merge(item, extras[i], i))
 }

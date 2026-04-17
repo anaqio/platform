@@ -1,28 +1,23 @@
-import {
-  AbsoluteFill,
-  interpolate,
-  useCurrentFrame,
-  useVideoConfig,
-} from 'remotion';
+import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from 'remotion'
 
-import { COLORS, FONTS } from '../lib/brand';
-import { fadeIn, fadeOut, slideUp } from '../lib/helpers';
-import { SCENES } from '../lib/timing';
-import { GenerationUI } from '../ui/GenerationUI';
+import { COLORS, FONTS } from '../lib/brand'
+import { fadeIn, fadeOut, slideUp } from '../lib/helpers'
+import { SCENES } from '../lib/timing'
+import { GenerationUI } from '../ui/GenerationUI'
 
 export function SceneGenerate() {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const local = Math.max(0, frame - SCENES.generate.start);
-  const sceneDur = SCENES.generate.end - SCENES.generate.start;
+  const frame = useCurrentFrame()
+  const { fps } = useVideoConfig()
+  const local = Math.max(0, frame - SCENES.generate.start)
+  const sceneDur = SCENES.generate.end - SCENES.generate.start
 
-  const opacity = fadeIn(local, 0, 20) * fadeOut(local, sceneDur - 20, 15);
+  const opacity = fadeIn(local, 0, 20) * fadeOut(local, sceneDur - 20, 15)
 
   // Phase 1: show config (0-100 frames), Phase 2: generation animates (100-400 frames)
   const generationProgress = interpolate(local, [100, 360], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
-  });
+  })
 
   return (
     <AbsoluteFill
@@ -66,5 +61,5 @@ export function SceneGenerate() {
         <GenerationUI generationProgress={generationProgress} scale={1} />
       </div>
     </AbsoluteFill>
-  );
+  )
 }

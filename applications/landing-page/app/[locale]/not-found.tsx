@@ -1,13 +1,13 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button';
-import { Link } from '@/i18n/routing';
+import { Button } from '@/components/ui/button'
+import { Link } from '@/i18n/routing'
 
 export default function NotFound() {
-  const t = useTranslations('notFound');
+  const t = useTranslations('notFound')
 
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background">
@@ -118,9 +118,7 @@ export default function NotFound() {
           <h1 className="font-display text-2xl font-medium italic tracking-tight text-foreground sm:text-3xl">
             {t('title')}
           </h1>
-          <p className="text-sm leading-relaxed text-muted-foreground/70">
-            {t('desc')}
-          </p>
+          <p className="text-sm leading-relaxed text-muted-foreground/70">{t('desc')}</p>
         </motion.div>
 
         {/* CTA buttons */}
@@ -161,5 +159,5 @@ export default function NotFound() {
         </motion.div>
       </div>
     </div>
-  );
+  )
 }

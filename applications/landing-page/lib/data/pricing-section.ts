@@ -1,12 +1,12 @@
 // lib/data/pricing-section.ts
 export interface PricingTier {
-  name: string;
-  price: number | string;
-  currency: string;
-  period: string;
-  description: string;
-  features: string[];
-  highlighted?: boolean;
+  name: string
+  price: number | string
+  currency: string
+  period: string
+  description: string
+  features: string[]
+  highlighted?: boolean
 }
 
 export const PRICING_TIERS: PricingTier[] = [
@@ -54,4 +54,4 @@ export const PRICING_TIERS: PricingTier[] = [
       'White-label options',
     ],
   },
-];
+]

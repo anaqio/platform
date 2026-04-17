@@ -1,24 +1,24 @@
-'use client';
+'use client'
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslations } from 'next-intl'
+import { useState, useEffect } from 'react'
 
-import { useAnimationReady } from '@/hooks/use-animation-ready';
+import { useAnimationReady } from '@/hooks/use-animation-ready'
 
 export default function SupportLine() {
-  const t = useTranslations('landing.hero');
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const { animated } = useAnimationReady();
+  const t = useTranslations('landing.hero')
+  const [currentWordIndex, setCurrentWordIndex] = useState(0)
+  const { animated } = useAnimationReady()
 
-  const supportWords = t.raw('supportLine.words') as string[];
+  const supportWords = t.raw('supportLine.words') as string[]
 
   useEffect(() => {
     const wordInterval = setInterval(() => {
-      setCurrentWordIndex((prev) => (prev + 1) % supportWords.length);
-    }, 2500);
-    return () => clearInterval(wordInterval);
-  }, [supportWords.length]);
+      setCurrentWordIndex((prev) => (prev + 1) % supportWords.length)
+    }, 2500)
+    return () => clearInterval(wordInterval)
+  }, [supportWords.length])
 
   return (
     <motion.p
@@ -48,5 +48,5 @@ export default function SupportLine() {
       </span>
       {t('supportLine.post')}
     </motion.p>
-  );
+  )
 }

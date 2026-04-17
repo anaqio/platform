@@ -1,60 +1,60 @@
-'use client';
+'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDownRight } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { ArrowDownRight } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { useLayoutEffect, useRef, useState } from 'react'
 
-import { AnaqioTypographyLogo } from '../ui/anaqio-typography-logo';
+import { AnaqioTypographyLogo } from '../ui/anaqio-typography-logo'
 
-import { AnaqioLogo } from '@/components/ui/AnaqioLogo';
-import { Button } from '@/components/ui/button';
-import { MagneticButton } from '@/components/ui/MagneticButton';
-import { ScrollLink } from '@/components/ui/scroll-link';
-import { useAnimationReady } from '@/hooks/use-animation-ready';
+import { AnaqioLogo } from '@/components/ui/AnaqioLogo'
+import { Button } from '@/components/ui/button'
+import { MagneticButton } from '@/components/ui/MagneticButton'
+import { ScrollLink } from '@/components/ui/scroll-link'
+import { useAnimationReady } from '@/hooks/use-animation-ready'
 
 export function VoobanHeroSection() {
-  const t = useTranslations('landing.hero');
-  const { animated, tier, mounted } = useAnimationReady();
-  const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('landing.hero')
+  const { animated, tier, mounted } = useAnimationReady()
+  const sectionRef = useRef<HTMLElement>(null)
 
   // Viewport pixel dimensions for Framer Motion (pure numbers — no CSS functions in useTransform)
   // Lazy initializers read from window on client; SSR gets safe defaults.
-  const [vw, setVw] = useState(1920);
-  const [vh, setVh] = useState(1080);
+  const [vw, setVw] = useState(1920)
+  const [vh, setVh] = useState(1080)
 
   useLayoutEffect(() => {
-    if (!mounted) return;
-    setVw(window.innerWidth);
-    setVh(window.innerHeight);
+    if (!mounted) return
+    setVw(window.innerWidth)
+    setVh(window.innerHeight)
 
     const onResize = () => {
-      setVw(window.innerWidth);
-      setVh(window.innerHeight);
-    };
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, [mounted]);
+      setVw(window.innerWidth)
+      setVh(window.innerHeight)
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [mounted])
 
-  const startW = Math.min(336, vw * 0.85);
-  const startH = Math.min(640, vh * 0.7);
+  const startW = Math.min(336, vw * 0.85)
+  const startH = Math.min(640, vh * 0.7)
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end start'],
-  });
+  })
 
-  const videoWidth = useTransform(scrollYProgress, [0, 0.5], [startW, vw]);
-  const videoHeight = useTransform(scrollYProgress, [0, 0.5], [startH, vh]);
-  const videoRadius = useTransform(scrollYProgress, [0, 0.5], [16, 0]);
-  const videoY = useTransform(scrollYProgress, [0, 0.5], [0, -40]);
+  const videoWidth = useTransform(scrollYProgress, [0, 0.5], [startW, vw])
+  const videoHeight = useTransform(scrollYProgress, [0, 0.5], [startH, vh])
+  const videoRadius = useTransform(scrollYProgress, [0, 0.5], [16, 0])
+  const videoY = useTransform(scrollYProgress, [0, 0.5], [0, -40])
 
-  const eyebrowOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
-  const ctaOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
-  const wordmarkOpacity = useTransform(scrollYProgress, [0.3, 0.5], [1, 0]);
+  const eyebrowOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0])
+  const ctaOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0])
+  const wordmarkOpacity = useTransform(scrollYProgress, [0.3, 0.5], [1, 0])
 
-  const cardHeaderOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
-  const cardTickerOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  const cardHeaderOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0])
+  const cardTickerOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
 
   return (
     <section
@@ -132,8 +132,7 @@ export function VoobanHeroSection() {
               >
                 {Array.from({ length: 6 }, (_, i) => (
                   <span key={i} className="mr-8">
-                    Mode Anaqio &nbsp;·&nbsp; Atelier VestIa By ANAQIO
-                    &nbsp;·&nbsp;
+                    Mode Anaqio &nbsp;·&nbsp; Atelier VestIa By ANAQIO &nbsp;·&nbsp;
                   </span>
                 ))}
               </motion.div>
@@ -174,5 +173,5 @@ export function VoobanHeroSection() {
         </motion.div>
       </div>
     </section>
-  );
+  )
 }

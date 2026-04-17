@@ -1,20 +1,20 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 
-import { useAnimationReady } from '@/hooks/use-animation-ready';
+import { useAnimationReady } from '@/hooks/use-animation-ready'
 
 export function ResultsSection() {
-  const t = useTranslations('landing.results');
-  const { animated } = useAnimationReady();
+  const t = useTranslations('landing.results')
+  const { animated } = useAnimationReady()
 
   const items = t.raw('items') as Array<{
-    metric: string;
-    traditional: string;
-    anaqio: string;
-    improvement: string;
-  }>;
+    metric: string
+    traditional: string
+    anaqio: string
+    improvement: string
+  }>
 
   return (
     <section
@@ -49,15 +49,11 @@ export function ResultsSection() {
             <p className="mt-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white/50">
               {s.metric}
             </p>
-            <p className="mt-2 text-sm text-white/40 line-through">
-              {s.traditional}
-            </p>
-            <p className="mt-1 text-sm font-semibold text-white/70">
-              {s.improvement}
-            </p>
+            <p className="mt-2 text-sm text-white/40 line-through">{s.traditional}</p>
+            <p className="mt-1 text-sm font-semibold text-white/70">{s.improvement}</p>
           </motion.div>
         ))}
       </div>
     </section>
-  );
+  )
 }

@@ -1,28 +1,26 @@
-'use client';
+'use client'
 
-import * as React from 'react';
+import * as React from 'react'
 
 import {
   AnaqioTypographyLogo,
   type LogoAnimationVariant,
-} from '@/components/ui/anaqio-typography-logo';
+} from '@/components/ui/anaqio-typography-logo'
 
 const demos: {
-  label: string;
-  variant: LogoAnimationVariant;
-  description: string;
+  label: string
+  variant: LogoAnimationVariant
+  description: string
 }[] = [
   {
     label: '01. Stagger Fade-Up',
     variant: 'stagger',
-    description:
-      'Letters fade in with a subtle upward slide, staggered sequentially.',
+    description: 'Letters fade in with a subtle upward slide, staggered sequentially.',
   },
   {
     label: '02. Outline → Fill',
     variant: 'outline-fill',
-    description:
-      'Outlines draw on, then a gradient mask wipes left-to-right to reveal the fill.',
+    description: 'Outlines draw on, then a gradient mask wipes left-to-right to reveal the fill.',
   },
   {
     label: '03. Slow Continuous Spin',
@@ -37,8 +35,7 @@ const demos: {
   {
     label: '05. Cinematic Reveal',
     variant: 'cinematic-reveal',
-    description:
-      'Letters slide in from the left with a blur-to-sharp transition.',
+    description: 'Letters slide in from the left with a blur-to-sharp transition.',
   },
   {
     label: '06. Breathing',
@@ -48,10 +45,9 @@ const demos: {
   {
     label: '07. Lock-In Snap',
     variant: 'lock-in',
-    description:
-      'Letters snap into place from an oversized state with stiff spring physics.',
+    description: 'Letters snap into place from an oversized state with stiff spring physics.',
   },
-];
+]
 
 export default function LogoPlayground() {
   return (
@@ -62,8 +58,7 @@ export default function LogoPlayground() {
             Logo Animation Playground
           </h1>
           <p className="text-muted-foreground">
-            Experimenting with different motion design patterns for the ANAQIO
-            typography logo.
+            Experimenting with different motion design patterns for the ANAQIO typography logo.
           </p>
         </div>
 
@@ -86,13 +81,11 @@ export default function LogoPlayground() {
                 {demo.label}
               </span>
               <AnaqioTypographyLogo className="w-full" variant={demo.variant} />
-              <p className="mt-2 text-center text-xs text-muted-foreground">
-                {demo.description}
-              </p>
+              <p className="mt-2 text-center text-xs text-muted-foreground">{demo.description}</p>
             </div>
           ))}
         </div>
       </div>
     </main>
-  );
+  )
 }

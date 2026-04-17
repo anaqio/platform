@@ -1,8 +1,8 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest'
 
-const mockPush = vi.fn();
-const mockSignInWithPassword = vi.fn();
+const mockPush = vi.fn()
+const mockSignInWithPassword = vi.fn()
 
 vi.mock('@/lib/supabase/client', () => ({
   createClient: vi.fn(() => ({
@@ -10,7 +10,7 @@ vi.mock('@/lib/supabase/client', () => ({
       signInWithPassword: mockSignInWithPassword,
     },
   })),
-}));
+}))
 
 vi.mock('@/i18n/routing', () => ({
   useRouter: () => ({ push: mockPush }),
@@ -20,176 +20,171 @@ vi.mock('@/i18n/routing', () => ({
       {children}
     </a>
   ),
-}));
+}))
 
-import { LoginForm } from '@/components/login-form';
-import { ERROR_MESSAGES } from '@/lib/constants/errors';
+import { LoginForm } from '@/components/login-form'
+import { ERROR_MESSAGES } from '@/lib/constants/errors'
 
 describe('LoginForm', () => {
   beforeEach(() => {
-    mockPush.mockClear();
-    mockSignInWithPassword.mockClear();
-  });
+    mockPush.mockClear()
+    mockSignInWithPassword.mockClear()
+  })
 
   afterEach(() => {
-    vi.clearAllMocks();
-  });
+    vi.clearAllMocks()
+  })
 
   it('renders the login form with title and description', () => {
-    render(<LoginForm />);
+    render(<LoginForm />)
 
-    expect(screen.getByText('title')).toBeInTheDocument();
-    expect(screen.getByText('desc')).toBeInTheDocument();
-  });
+    expect(screen.getByText('title')).toBeInTheDocument()
+    expect(screen.getByText('desc')).toBeInTheDocument()
+  })
 
   it('renders email and password fields', () => {
-    render(<LoginForm />);
+    render(<LoginForm />)
 
-    expect(screen.getByLabelText('email.label')).toBeInTheDocument();
-    expect(screen.getByLabelText('password.label')).toBeInTheDocument();
-  });
+    expect(screen.getByLabelText('email.label')).toBeInTheDocument()
+    expect(screen.getByLabelText('password.label')).toBeInTheDocument()
+  })
 
   it('renders the submit button', () => {
-    render(<LoginForm />);
+    render(<LoginForm />)
 
-    expect(screen.getByRole('button', { name: 'submit' })).toBeInTheDocument();
-  });
+    expect(screen.getByRole('button', { name: 'submit' })).toBeInTheDocument()
+  })
 
   it('renders forgot password link', () => {
-    render(<LoginForm />);
+    render(<LoginForm />)
 
-    const forgotLink = screen.getByText('forgot');
-    expect(forgotLink).toBeInTheDocument();
-    expect(forgotLink.closest('a')).toHaveAttribute(
-      'href',
-      '/auth/forgot-password'
-    );
-  });
+    const forgotLink = screen.getByText('forgot')
+    expect(forgotLink).toBeInTheDocument()
+    expect(forgotLink.closest('a')).toHaveAttribute('href', '/auth/forgot-password')
+  })
 
   it('renders sign up link', () => {
-    render(<LoginForm />);
+    render(<LoginForm />)
 
-    const signUpLink = screen.getByText('signupLink');
-    expect(signUpLink).toBeInTheDocument();
-    expect(signUpLink.closest('a')).toHaveAttribute('href', '/auth/sign-up');
-  });
+    const signUpLink = screen.getByText('signupLink')
+    expect(signUpLink).toBeInTheDocument()
+    expect(signUpLink.closest('a')).toHaveAttribute('href', '/auth/sign-up')
+  })
 
   it('calls signInWithPassword and redirects on success', async () => {
-    mockSignInWithPassword.mockResolvedValue({ error: null });
+    mockSignInWithPassword.mockResolvedValue({ error: null })
 
-    render(<LoginForm />);
+    render(<LoginForm />)
 
-    const emailInput = screen.getByLabelText('email.label');
-    const passwordInput = screen.getByLabelText('password.label');
-    const submitButton = screen.getByRole('button', { name: 'submit' });
+    const emailInput = screen.getByLabelText('email.label')
+    const passwordInput = screen.getByLabelText('password.label')
+    const submitButton = screen.getByRole('button', { name: 'submit' })
 
-    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-    fireEvent.change(passwordInput, { target: { value: 'password123' } });
-    fireEvent.click(submitButton);
+    fireEvent.change(emailInput, { target: { value: 'test@example.com' } })
+    fireEvent.change(passwordInput, { target: { value: 'password123' } })
+    fireEvent.click(submitButton)
 
     await waitFor(() => {
       expect(mockSignInWithPassword).toHaveBeenCalledWith({
         email: 'test@example.com',
         password: 'password123',
-      });
-    });
+      })
+    })
 
     await waitFor(() => {
-      expect(mockPush).toHaveBeenCalledWith('/protected');
-    });
-  });
+      expect(mockPush).toHaveBeenCalledWith('/protected')
+    })
+  })
 
   it('displays error message on auth failure', async () => {
     mockSignInWithPassword.mockResolvedValue({
       error: new Error('Invalid credentials'),
-    });
+    })
 
-    render(<LoginForm />);
+    render(<LoginForm />)
 
-    const emailInput = screen.getByLabelText('email.label');
-    const passwordInput = screen.getByLabelText('password.label');
-    const submitButton = screen.getByRole('button', { name: 'submit' });
+    const emailInput = screen.getByLabelText('email.label')
+    const passwordInput = screen.getByLabelText('password.label')
+    const submitButton = screen.getByRole('button', { name: 'submit' })
 
-    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-    fireEvent.change(passwordInput, { target: { value: 'wrong' } });
-    fireEvent.click(submitButton);
+    fireEvent.change(emailInput, { target: { value: 'test@example.com' } })
+    fireEvent.change(passwordInput, { target: { value: 'wrong' } })
+    fireEvent.click(submitButton)
 
     await waitFor(() => {
-      expect(screen.getByText('Invalid credentials')).toBeInTheDocument();
-    });
-  });
+      expect(screen.getByText('Invalid credentials')).toBeInTheDocument()
+    })
+  })
 
   it('displays generic error message on non-Error throw', async () => {
-    mockSignInWithPassword.mockRejectedValue('unexpected');
+    mockSignInWithPassword.mockRejectedValue('unexpected')
 
-    render(<LoginForm />);
+    render(<LoginForm />)
 
-    const emailInput = screen.getByLabelText('email.label');
-    const passwordInput = screen.getByLabelText('password.label');
-    const submitButton = screen.getByRole('button', { name: 'submit' });
+    const emailInput = screen.getByLabelText('email.label')
+    const passwordInput = screen.getByLabelText('password.label')
+    const submitButton = screen.getByRole('button', { name: 'submit' })
 
-    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-    fireEvent.change(passwordInput, { target: { value: 'password123' } });
-    fireEvent.click(submitButton);
+    fireEvent.change(emailInput, { target: { value: 'test@example.com' } })
+    fireEvent.change(passwordInput, { target: { value: 'password123' } })
+    fireEvent.click(submitButton)
 
     await waitFor(() => {
-      expect(screen.getByText(ERROR_MESSAGES.AUTH)).toBeInTheDocument();
-    });
-  });
+      expect(screen.getByText(ERROR_MESSAGES.AUTH)).toBeInTheDocument()
+    })
+  })
 
   it('shows loading state during submission', async () => {
-    let resolveSignIn: (value: any) => void;
+    let resolveSignIn: (value: any) => void
     mockSignInWithPassword.mockReturnValue(
       new Promise((resolve) => {
-        resolveSignIn = resolve;
+        resolveSignIn = resolve
       })
-    );
+    )
 
-    render(<LoginForm />);
+    render(<LoginForm />)
 
-    const emailInput = screen.getByLabelText('email.label');
-    const passwordInput = screen.getByLabelText('password.label');
-    const submitButton = screen.getByRole('button', { name: 'submit' });
+    const emailInput = screen.getByLabelText('email.label')
+    const passwordInput = screen.getByLabelText('password.label')
+    const submitButton = screen.getByRole('button', { name: 'submit' })
 
-    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-    fireEvent.change(passwordInput, { target: { value: 'password123' } });
-    fireEvent.click(submitButton);
+    fireEvent.change(emailInput, { target: { value: 'test@example.com' } })
+    fireEvent.change(passwordInput, { target: { value: 'password123' } })
+    fireEvent.click(submitButton)
 
     await waitFor(() => {
-      expect(
-        screen.getByRole('button', { name: 'submitPending' })
-      ).toBeInTheDocument();
-    });
+      expect(screen.getByRole('button', { name: 'submitPending' })).toBeInTheDocument()
+    })
 
-    resolveSignIn!({ error: null });
-  });
+    resolveSignIn!({ error: null })
+  })
 
   it('forwards className to AuthCard', () => {
-    const { container } = render(<LoginForm className="custom-class" />);
+    const { container } = render(<LoginForm className="custom-class" />)
 
-    const wrapper = container.firstChild as HTMLElement;
-    expect(wrapper).toHaveClass('custom-class');
-  });
+    const wrapper = container.firstChild as HTMLElement
+    expect(wrapper).toHaveClass('custom-class')
+  })
 
   it('does not redirect on auth failure', async () => {
     mockSignInWithPassword.mockResolvedValue({
       error: new Error('Invalid credentials'),
-    });
+    })
 
-    render(<LoginForm />);
+    render(<LoginForm />)
 
-    const emailInput = screen.getByLabelText('email.label');
-    const passwordInput = screen.getByLabelText('password.label');
-    const submitButton = screen.getByRole('button', { name: 'submit' });
+    const emailInput = screen.getByLabelText('email.label')
+    const passwordInput = screen.getByLabelText('password.label')
+    const submitButton = screen.getByRole('button', { name: 'submit' })
 
-    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-    fireEvent.change(passwordInput, { target: { value: 'wrong' } });
-    fireEvent.click(submitButton);
+    fireEvent.change(emailInput, { target: { value: 'test@example.com' } })
+    fireEvent.change(passwordInput, { target: { value: 'wrong' } })
+    fireEvent.click(submitButton)
 
     await waitFor(() => {
-      expect(screen.getByText('Invalid credentials')).toBeInTheDocument();
-    });
+      expect(screen.getByText('Invalid credentials')).toBeInTheDocument()
+    })
 
-    expect(mockPush).not.toHaveBeenCalled();
-  });
-});
+    expect(mockPush).not.toHaveBeenCalled()
+  })
+})

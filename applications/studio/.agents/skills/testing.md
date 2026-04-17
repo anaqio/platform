@@ -183,7 +183,7 @@ test.describe('Studio — Critical Path', () => {
     await page.locator('[data-testid="preset-model-f-01-moderne"]').click()
     await expect(page.locator('[data-testid="preset-model-f-01-moderne"]')).toHaveAttribute(
       'aria-selected',
-      'true',
+      'true'
     )
 
     // 3. Click generate — verify loading state

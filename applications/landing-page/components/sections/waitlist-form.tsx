@@ -1,38 +1,34 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { useState, useTransition, useMemo } from 'react';
+import { motion } from 'framer-motion'
+import { useState, useTransition, useMemo } from 'react'
 
-import { FormStep } from '@/components/sections/form-step';
-import { StepTransition } from '@/components/sections/step-transition';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { ProgressIndicator } from '@/components/ui/progress-indicator';
-import { useMultiStepForm } from '@/hooks/use-multi-step-form';
-import { joinWaitlist } from '@/lib/actions/waitlist';
-import { trackUserBehavior } from '@/lib/analytics';
-import { FULL_VARIANT_STEPS } from '@/lib/types/waitlist-form';
-import { cn } from '@/lib/utils';
-import { sanitizeEmail } from '@/lib/utils/form-validation';
+import { FormStep } from '@/components/sections/form-step'
+import { StepTransition } from '@/components/sections/step-transition'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { ProgressIndicator } from '@/components/ui/progress-indicator'
+import { useMultiStepForm } from '@/hooks/use-multi-step-form'
+import { joinWaitlist } from '@/lib/actions/waitlist'
+import { trackUserBehavior } from '@/lib/analytics'
+import { FULL_VARIANT_STEPS } from '@/lib/types/waitlist-form'
+import { cn } from '@/lib/utils'
+import { sanitizeEmail } from '@/lib/utils/form-validation'
 
 interface WaitlistFormProps {
-  source: string;
-  variant?: 'simple' | 'full';
-  className?: string;
+  source: string
+  variant?: 'simple' | 'full'
+  className?: string
 }
 
-export function WaitlistForm({
-  source,
-  variant = 'full',
-  className,
-}: WaitlistFormProps) {
-  const [isPending, startTransition] = useTransition();
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [message, setMessage] = useState('');
-  const [direction, setDirection] = useState<'forward' | 'backward'>('forward');
+export function WaitlistForm({ source, variant = 'full', className }: WaitlistFormProps) {
+  const [isPending, startTransition] = useTransition()
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [message, setMessage] = useState('')
+  const [direction, setDirection] = useState<'forward' | 'backward'>('forward')
 
   // Memoize step configurations for performance
-  const steps = useMemo(() => FULL_VARIANT_STEPS, []);
+  const steps = useMemo(() => FULL_VARIANT_STEPS, [])
 
   // Multi-step form state (only for full variant)
   const {
@@ -48,126 +44,118 @@ export function WaitlistForm({
     validateCurrentStep,
     setIsAnimating,
     resetForm,
-  } = useMultiStepForm(steps);
+  } = useMultiStepForm(steps)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const rawFormData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(rawFormData.entries()) as Record<
-      string,
-      string
-    >;
+    e.preventDefault()
+    const rawFormData = new FormData(e.currentTarget)
+    const data = Object.fromEntries(rawFormData.entries()) as Record<string, string>
 
     startTransition(async () => {
       try {
-        const result = await joinWaitlist(rawFormData);
+        const result = await joinWaitlist(rawFormData)
         if (result.success) {
-          trackUserBehavior.trackFormSubmit(`waitlist_simple_${source}`, data);
-          setStatus('success');
-          setMessage(result.message);
-          resetForm();
+          trackUserBehavior.trackFormSubmit(`waitlist_simple_${source}`, data)
+          setStatus('success')
+          setMessage(result.message)
+          resetForm()
         } else {
-          setStatus('error');
-          setMessage(result.message);
+          setStatus('error')
+          setMessage(result.message)
         }
       } catch {
-        setStatus('error');
-        setMessage('Something went wrong. Please try again.');
+        setStatus('error')
+        setMessage('Something went wrong. Please try again.')
       }
-    });
-  };
+    })
+  }
 
   // Clear server error when user modifies any field
   const handleFieldChange = (name: string, value: string) => {
     if (status === 'error') {
-      setStatus('idle');
-      setMessage('');
+      setStatus('idle')
+      setMessage('')
     }
-    updateField(name, value);
-  };
+    updateField(name, value)
+  }
 
   const handleMultiStepSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault()
 
     // Validate current step before proceeding
     if (!validateCurrentStep()) {
-      return;
+      return
     }
 
     // If not on final step, advance to next step
     if (currentStep < totalSteps) {
-      setDirection('forward');
-      setIsAnimating(true);
+      setDirection('forward')
+      setIsAnimating(true)
       setTimeout(() => {
-        trackUserBehavior.trackClick(
-          `waitlist_next_step_${currentStep}`,
-          'form_navigation'
-        );
-        next();
-        setIsAnimating(false);
-      }, 400);
-      return;
+        trackUserBehavior.trackClick(`waitlist_next_step_${currentStep}`, 'form_navigation')
+        next()
+        setIsAnimating(false)
+      }, 400)
+      return
     }
 
     // Final step - submit form
-    const submitFormData = new FormData();
-    submitFormData.append('source', source);
+    const submitFormData = new FormData()
+    submitFormData.append('source', source)
 
     // Add all form data with email sanitization
     // Optimization: Directly handle email and use a standard for loop for other fields
-    submitFormData.append('email', sanitizeEmail(formData.email || ''));
+    submitFormData.append('email', sanitizeEmail(formData.email || ''))
 
-    const formKeys = Object.keys(formData);
-    const formKeysLen = formKeys.length;
+    const formKeys = Object.keys(formData)
+    const formKeysLen = formKeys.length
     for (let i = 0; i < formKeysLen; i++) {
-      const key = formKeys[i];
+      const key = formKeys[i]
       if (key !== 'email') {
-        submitFormData.append(key, formData[key as keyof typeof formData]);
+        submitFormData.append(key, formData[key as keyof typeof formData])
       }
     }
 
     startTransition(async () => {
       try {
-        const result = await joinWaitlist(submitFormData);
+        const result = await joinWaitlist(submitFormData)
         if (result.success) {
           trackUserBehavior.trackFormSubmit(`waitlist_full_${source}`, {
             ...formData,
             source,
-          });
-          setStatus('success');
-          setMessage(result.message);
-          resetForm();
+          })
+          setStatus('success')
+          setMessage(result.message)
+          resetForm()
         } else {
-          setStatus('error');
-          setMessage(result.message);
+          setStatus('error')
+          setMessage(result.message)
         }
       } catch {
-        setStatus('error');
-        setMessage('Something went wrong. Please try again.');
+        setStatus('error')
+        setMessage('Something went wrong. Please try again.')
       }
-    });
-  };
+    })
+  }
 
   const handlePrevious = () => {
-    setDirection('backward');
-    setIsAnimating(true);
+    setDirection('backward')
+    setIsAnimating(true)
     setTimeout(() => {
-      previous();
-      setIsAnimating(false);
-    }, 400);
-  };
+      previous()
+      setIsAnimating(false)
+    }, 400)
+  }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLFormElement>) => {
     // Handle Enter key to submit/continue
     if (e.key === 'Enter' && e.target instanceof HTMLInputElement) {
-      e.preventDefault();
-      const form = e.currentTarget;
-      const submitButton = form.querySelector(
-        'button[type="submit"]'
-      ) as HTMLButtonElement;
-      submitButton?.click();
+      e.preventDefault()
+      const form = e.currentTarget
+      const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement
+      submitButton?.click()
     }
-  };
+  }
 
   if (status === 'success') {
     return (
@@ -184,21 +172,15 @@ export function WaitlistForm({
             stroke="currentColor"
             strokeWidth={2}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M5 13l4 4L19 7"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
         <div className="space-y-2">
-          <p className="text-xl font-bold text-foreground">
-            You&apos;re on the list!
-          </p>
+          <p className="text-xl font-bold text-foreground">You&apos;re on the list!</p>
           <p className="text-sm text-muted-foreground">{message}</p>
         </div>
       </motion.div>
-    );
+    )
   }
 
   if (variant === 'simple') {
@@ -218,20 +200,14 @@ export function WaitlistForm({
           disabled={isPending}
           className="h-14 rounded-xl border-border/40 bg-background/50 px-6"
         />
-        <Button
-          variant="brand"
-          className="h-14 shrink-0 rounded-xl px-8"
-          disabled={isPending}
-        >
+        <Button variant="brand" className="h-14 shrink-0 rounded-xl px-8" disabled={isPending}>
           {isPending ? 'Joining...' : 'Get Access'}
         </Button>
         {status === 'error' && (
-          <p className="absolute -bottom-6 left-0 text-xs text-destructive">
-            {message}
-          </p>
+          <p className="absolute -bottom-6 left-0 text-xs text-destructive">{message}</p>
         )}
       </form>
-    );
+    )
   }
 
   // Full variant with multi-step form
@@ -294,5 +270,5 @@ export function WaitlistForm({
         </Button>
       </div>
     </form>
-  );
+  )
 }

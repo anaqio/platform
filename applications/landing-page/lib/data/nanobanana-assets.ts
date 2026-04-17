@@ -29,4 +29,4 @@ export const NANOBANANA_VISUALS = {
   // Hero Section — full-bleed cinematic fashion editorial
   heroPoster:
     'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1920&q=85',
-} as const;
+} as const

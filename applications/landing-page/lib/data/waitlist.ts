@@ -17,4 +17,4 @@ export const WaitlistSectionText = {
       desc: 'Limited to 200 early-access brands locking in pioneer DH pricing before our public launch.',
     },
   ],
-} as const;
+} as const

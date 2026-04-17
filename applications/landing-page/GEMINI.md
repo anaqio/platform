@@ -121,8 +121,8 @@ Lighthouse targets: Performance >= 85 mobile / >= 92 desktop. CLS < 0.1.
 ### Playwright Headless QA
 
 ```typescript
-import { chromium } from 'playwright';
-const vps = [375, 768, 1024, 1440, 1920];
+import { chromium } from 'playwright'
+const vps = [375, 768, 1024, 1440, 1920]
 const br = await chromium.launch({
   args: [
     '--no-sandbox',
@@ -131,16 +131,16 @@ const br = await chromium.launch({
     '--disable-gpu',
     '--disable-dev-shm-usage',
   ],
-});
+})
 for (const w of vps) {
-  const pg = await br.newPage();
-  await pg.setViewportSize({ width: w, height: Math.round(w * 0.6) });
-  await pg.goto('http://localhost:3000');
-  await pg.waitForTimeout(1500); // Framer Motion settle
-  await pg.screenshot({ path: `anaqio_${w}.png`, fullPage: true });
-  await pg.close();
+  const pg = await br.newPage()
+  await pg.setViewportSize({ width: w, height: Math.round(w * 0.6) })
+  await pg.goto('http://localhost:3000')
+  await pg.waitForTimeout(1500) // Framer Motion settle
+  await pg.screenshot({ path: `anaqio_${w}.png`, fullPage: true })
+  await pg.close()
 }
-await br.close();
+await br.close()
 ```
 
 ## Next.js Configuration

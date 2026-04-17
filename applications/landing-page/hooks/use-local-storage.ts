@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { useLocalStorage } from '@uidotdev/usehooks';
+import { useLocalStorage } from '@uidotdev/usehooks'
 
 /**
  * Hook to persist state in localStorage.
@@ -10,4 +10,4 @@ import { useLocalStorage } from '@uidotdev/usehooks';
  * @example
  * const [value, setValue] = useLocalStorage('key', 'default');
  */
-export { useLocalStorage };
+export { useLocalStorage }

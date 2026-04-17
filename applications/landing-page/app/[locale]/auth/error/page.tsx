@@ -1,27 +1,17 @@
-import { AlertCircle } from 'lucide-react';
-import { Suspense } from 'react';
+import { AlertCircle } from 'lucide-react'
+import { Suspense } from 'react'
 
-import type { Metadata } from 'next';
+import type { Metadata } from 'next'
 
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 
 export const metadata: Metadata = {
   title: 'Authentication Error — Anaqio',
   robots: 'noindex, nofollow',
-};
+}
 
-async function ErrorContent({
-  searchParams,
-}: {
-  searchParams: Promise<{ error: string }>;
-}) {
-  const params = await searchParams;
+async function ErrorContent({ searchParams }: { searchParams: Promise<{ error: string }> }) {
+  const params = await searchParams
 
   return (
     <div className="flex items-start gap-3 rounded-xl border border-destructive/20 bg-destructive/10 p-4">
@@ -35,13 +25,13 @@ async function ErrorContent({
         </p>
       </div>
     </div>
-  );
+  )
 }
 
 export default function AuthErrorPage({
   searchParams,
 }: {
-  searchParams: Promise<{ error: string }>;
+  searchParams: Promise<{ error: string }>
 }) {
   return (
     <Card className="noise-overlay border-white/5">
@@ -54,18 +44,13 @@ export default function AuthErrorPage({
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
-        <Suspense
-          fallback={
-            <div className="h-20 animate-pulse rounded-xl bg-secondary/20" />
-          }
-        >
+        <Suspense fallback={<div className="h-20 animate-pulse rounded-xl bg-secondary/20" />}>
           <ErrorContent searchParams={searchParams} />
         </Suspense>
         <p className="font-body text-sm leading-relaxed text-muted-foreground">
-          Please try signing in again or contact our support team if the problem
-          persists.
+          Please try signing in again or contact our support team if the problem persists.
         </p>
       </CardContent>
     </Card>
-  );
+  )
 }

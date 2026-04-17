@@ -1,12 +1,8 @@
-import { AboutScrollNav } from '@/components/layout/AboutScrollNav';
-import { Footer } from '@/components/layout/Footer';
-import { Header } from '@/components/layout/Header';
+import { AboutScrollNav } from '@/components/layout/AboutScrollNav'
+import { Footer } from '@/components/layout/Footer'
+import { Header } from '@/components/layout/Header'
 
-export default function AboutLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AboutLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Header />
@@ -14,5 +10,5 @@ export default function AboutLayout({
       <Footer />
       <AboutScrollNav />
     </>
-  );
+  )
 }

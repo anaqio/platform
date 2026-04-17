@@ -15,131 +15,115 @@
  * Configure crowdin.yml to map these directly.
  */
 
-import {
-  readdirSync,
-  readFileSync,
-  writeFileSync,
-  existsSync,
-  mkdirSync,
-} from 'fs';
-import { join, basename } from 'path';
+import { readdirSync, readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs'
+import { join, basename } from 'path'
 
-const MESSAGES_DIR = join(process.cwd(), 'messages');
-const BASE_LOCALE = 'fr';
-const EXPORT_DIR = join(process.cwd(), '.i18n-export');
-const ARGS = process.argv.slice(2);
+const MESSAGES_DIR = join(process.cwd(), 'messages')
+const BASE_LOCALE = 'fr'
+const EXPORT_DIR = join(process.cwd(), '.i18n-export')
+const ARGS = process.argv.slice(2)
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
 function getLocales(): string[] {
   return readdirSync(MESSAGES_DIR).filter((f) => {
     try {
-      return readdirSync(join(MESSAGES_DIR, f)).length > 0;
+      return readdirSync(join(MESSAGES_DIR, f)).length > 0
     } catch {
-      return false;
+      return false
     }
-  });
+  })
 }
 
 function getNamespaces(locale: string): string[] {
   return readdirSync(join(MESSAGES_DIR, locale))
     .filter((f) => f.endsWith('.json'))
-    .map((f) => basename(f, '.json'));
+    .map((f) => basename(f, '.json'))
 }
 
 function loadMessages(locale: string, ns: string): Record<string, unknown> {
-  const path = join(MESSAGES_DIR, locale, `${ns}.json`);
-  if (!existsSync(path)) return {};
-  return JSON.parse(readFileSync(path, 'utf-8'));
+  const path = join(MESSAGES_DIR, locale, `${ns}.json`)
+  if (!existsSync(path)) return {}
+  return JSON.parse(readFileSync(path, 'utf-8'))
 }
 
 /** Flatten nested JSON to dot-notation keys for TMS compatibility */
-function flatten(
-  obj: Record<string, unknown>,
-  prefix = ''
-): Record<string, string> {
-  const result: Record<string, string> = {};
+function flatten(obj: Record<string, unknown>, prefix = ''): Record<string, string> {
+  const result: Record<string, string> = {}
   for (const [k, v] of Object.entries(obj)) {
-    const key = prefix ? `${prefix}.${k}` : k;
+    const key = prefix ? `${prefix}.${k}` : k
     if (Array.isArray(v)) {
       v.forEach((item, i) => {
-        if (typeof item === 'string') result[`${key}.${i}`] = item;
-      });
+        if (typeof item === 'string') result[`${key}.${i}`] = item
+      })
     } else if (typeof v === 'object' && v !== null) {
-      Object.assign(result, flatten(v as Record<string, unknown>, key));
+      Object.assign(result, flatten(v as Record<string, unknown>, key))
     } else {
-      result[key] = String(v);
+      result[key] = String(v)
     }
   }
-  return result;
+  return result
 }
 
 // ─── Commands ───────────────────────────────────────────────────────────────
 
 function exportAll(targetLocale?: string) {
-  const locales = targetLocale ? [targetLocale] : getLocales();
-  mkdirSync(EXPORT_DIR, { recursive: true });
+  const locales = targetLocale ? [targetLocale] : getLocales()
+  mkdirSync(EXPORT_DIR, { recursive: true })
 
   for (const locale of locales) {
-    const nsDir = join(EXPORT_DIR, locale);
-    mkdirSync(nsDir, { recursive: true });
+    const nsDir = join(EXPORT_DIR, locale)
+    mkdirSync(nsDir, { recursive: true })
 
-    const namespaces = getNamespaces(locale);
+    const namespaces = getNamespaces(locale)
     for (const ns of namespaces) {
-      const messages = loadMessages(locale, ns);
-      const outPath = join(nsDir, `${ns}.json`);
-      writeFileSync(outPath, JSON.stringify(messages, null, 2), 'utf-8');
-      console.log(`✓ exported ${locale}/${ns}.json`);
+      const messages = loadMessages(locale, ns)
+      const outPath = join(nsDir, `${ns}.json`)
+      writeFileSync(outPath, JSON.stringify(messages, null, 2), 'utf-8')
+      console.log(`✓ exported ${locale}/${ns}.json`)
     }
   }
 
-  console.log(`\n📁 Export complete → ${EXPORT_DIR}`);
-  console.log('Upload to Crowdin with: crowdin upload sources');
+  console.log(`\n📁 Export complete → ${EXPORT_DIR}`)
+  console.log('Upload to Crowdin with: crowdin upload sources')
 }
 
 function validate() {
-  const baseNs = getNamespaces(BASE_LOCALE);
+  const baseNs = getNamespaces(BASE_LOCALE)
   const baseKeys = Object.fromEntries(
-    baseNs.map((ns) => [
-      ns,
-      Object.keys(flatten(loadMessages(BASE_LOCALE, ns))),
-    ])
-  );
+    baseNs.map((ns) => [ns, Object.keys(flatten(loadMessages(BASE_LOCALE, ns)))])
+  )
 
-  const locales = getLocales().filter((l) => l !== BASE_LOCALE);
-  let errors = 0;
+  const locales = getLocales().filter((l) => l !== BASE_LOCALE)
+  let errors = 0
 
   for (const locale of locales) {
     for (const ns of baseNs) {
-      const localeKeys = new Set(
-        Object.keys(flatten(loadMessages(locale, ns)))
-      );
+      const localeKeys = new Set(Object.keys(flatten(loadMessages(locale, ns))))
       for (const key of baseKeys[ns]) {
         if (!localeKeys.has(key)) {
-          console.error(`✗ MISSING [${locale}/${ns}] "${key}"`);
-          errors++;
+          console.error(`✗ MISSING [${locale}/${ns}] "${key}"`)
+          errors++
         }
       }
     }
   }
 
   if (errors === 0) {
-    console.log('✓ All locales complete — no missing keys');
+    console.log('✓ All locales complete — no missing keys')
   } else {
-    console.error(`\n${errors} missing key(s). Run: crowdin download`);
-    process.exit(1);
+    console.error(`\n${errors} missing key(s). Run: crowdin download`)
+    process.exit(1)
   }
 }
 
 function generateTypes() {
-  const namespaces = getNamespaces(BASE_LOCALE);
+  const namespaces = getNamespaces(BASE_LOCALE)
   const imports = namespaces
-    .map(
-      (ns) => `import type ${ns} from '../messages/${BASE_LOCALE}/${ns}.json';`
-    )
-    .join('\n');
+    .map((ns) => `import type ${ns} from '../messages/${BASE_LOCALE}/${ns}.json';`)
+    .join('\n')
 
-  const typeBody = namespaces.map((ns) => `  ${ns}: typeof ${ns};`).join('\n');
+  const typeBody = namespaces.map((ns) => `  ${ns}: typeof ${ns};`).join('\n')
 
   const output = `// AUTO-GENERATED by scripts/export-i18n-v2.ts --generate-types
 // Do not edit manually. Run: bun run export:i18n -- --generate-types
@@ -155,20 +139,20 @@ declare global {
 }
 
 export type { Messages };
-`;
+`
 
-  const outPath = join(process.cwd(), 'i18n', 'types.ts');
-  writeFileSync(outPath, output, 'utf-8');
-  console.info(`✓ Generated ${outPath}`);
+  const outPath = join(process.cwd(), 'i18n', 'types.ts')
+  writeFileSync(outPath, output, 'utf-8')
+  console.info(`✓ Generated ${outPath}`)
 }
 
 // ─── Entry ───────────────────────────────────────────────────────────────────
 
 if (ARGS.includes('--validate')) {
-  validate();
+  validate()
 } else if (ARGS.includes('--generate-types')) {
-  generateTypes();
+  generateTypes()
 } else {
-  const localeFlag = ARGS.find((a) => a.startsWith('--locale='))?.split('=')[1];
-  exportAll(localeFlag);
+  const localeFlag = ARGS.find((a) => a.startsWith('--locale='))?.split('=')[1]
+  exportAll(localeFlag)
 }

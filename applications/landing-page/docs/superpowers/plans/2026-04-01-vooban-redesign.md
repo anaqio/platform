@@ -140,49 +140,49 @@ git commit -m "feat(design): add electric blue tokens and vb- section utilities"
 Create `components/layout/MenuSidebar.tsx`:
 
 ```tsx
-'use client';
+'use client'
 
-import { AnimatePresence, motion } from 'framer-motion';
-import { X } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion'
+import { X } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
 
-import { LocaleSwitcher } from '@/components/locale-switcher';
-import { ScrollLink } from '@/components/ui/scroll-link';
-import { Link } from '@/i18n/routing';
-import { cn } from '@/lib/utils';
+import { LocaleSwitcher } from '@/components/locale-switcher'
+import { ScrollLink } from '@/components/ui/scroll-link'
+import { Link } from '@/i18n/routing'
+import { cn } from '@/lib/utils'
 
 const SECTION_LINKS = [
   { label: 'Solution', targetId: 'solution' },
   { label: 'Comment ça marche', targetId: 'how-it-works' },
   { label: 'Pourquoi Anaqio', targetId: 'why-anaqio' },
   { label: 'Vision', targetId: 'vision' },
-] as const;
+] as const
 
 const PAGE_LINKS = [
   { label: 'À propos', href: '/about' },
   { label: 'Marque', href: '/brand' },
   { label: 'Contact', href: '/contact' },
-] as const;
+] as const
 
 export function MenuSidebar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   // Offset body when sidebar mounted
   useEffect(() => {
-    document.body.classList.add('has-sidebar');
-    return () => document.body.classList.remove('has-sidebar');
-  }, []);
+    document.body.classList.add('has-sidebar')
+    return () => document.body.classList.remove('has-sidebar')
+  }, [])
 
   // Lock scroll when overlay open
   useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    document.body.style.overflow = isOpen ? 'hidden' : ''
     return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
 
-  const close = () => setIsOpen(false);
+  const close = () => setIsOpen(false)
 
   return (
     <>
@@ -197,9 +197,7 @@ export function MenuSidebar() {
         <div className="flex flex-col items-center gap-2">
           <Link href="/" aria-label="Anaqio home">
             <div className="flex h-8 w-8 items-center justify-center rounded-sm bg-white/90">
-              <span className="text-[10px] font-black tracking-tight text-[#2B3AE7]">
-                AQ
-              </span>
+              <span className="text-[10px] font-black tracking-tight text-[#2B3AE7]">AQ</span>
             </div>
           </Link>
         </div>
@@ -297,7 +295,7 @@ export function MenuSidebar() {
         )}
       </AnimatePresence>
     </>
-  );
+  )
 }
 ```
 
@@ -306,7 +304,7 @@ export function MenuSidebar() {
 In `components/sections/NewLandingPage.tsx`, add import:
 
 ```tsx
-import { MenuSidebar } from '@/components/layout/MenuSidebar';
+import { MenuSidebar } from '@/components/layout/MenuSidebar'
 ```
 
 And inside the returned JSX, as first child of the outer `<div className="flex w-full flex-col">`:
@@ -345,71 +343,61 @@ Replace the collapsing pill with a minimal flat bar: logo left (hidden on deskto
 Replace the entire content of `components/layout/Header.tsx` with:
 
 ```tsx
-'use client';
+'use client'
 
-import { AnimatePresence, motion } from 'framer-motion';
-import { X } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion'
+import { X } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { useEffect, useState } from 'react'
 
-import { LocaleSwitcher } from '@/components/locale-switcher';
-import { AnaqioTypographyLogo } from '@/components/ui/anaqio-typography-logo';
-import { ScrollLink } from '@/components/ui/scroll-link';
-import { Link } from '@/i18n/routing';
-import { cn } from '@/lib/utils';
+import { LocaleSwitcher } from '@/components/locale-switcher'
+import { AnaqioTypographyLogo } from '@/components/ui/anaqio-typography-logo'
+import { ScrollLink } from '@/components/ui/scroll-link'
+import { Link } from '@/i18n/routing'
+import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
   { label: 'Solution', targetId: 'solution' },
   { label: 'Comment', targetId: 'how-it-works' },
   { label: 'Pourquoi', targetId: 'why-anaqio' },
   { label: 'Vision', targetId: 'vision' },
-] as const;
+] as const
 
 const PAGE_LINKS = [
   { label: 'À propos', href: '/about' },
   { label: 'Contact', href: '/contact' },
-] as const;
+] as const
 
 export function Header() {
-  const t = useTranslations('header');
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const t = useTranslations('header')
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileOpen, setIsMobileOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 60);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    const onScroll = () => setIsScrolled(window.scrollY > 60)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   useEffect(() => {
-    document.body.style.overflow = isMobileOpen ? 'hidden' : '';
+    document.body.style.overflow = isMobileOpen ? 'hidden' : ''
     return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isMobileOpen]);
+      document.body.style.overflow = ''
+    }
+  }, [isMobileOpen])
 
   return (
     <header
       className={cn(
         'fixed left-0 right-0 top-0 z-[9980] transition-all duration-500',
         'md:left-16', // offset for sidebar
-        isScrolled
-          ? 'bg-[#2B3AE7]/95 shadow-sm backdrop-blur-md'
-          : 'bg-transparent'
+        isScrolled ? 'bg-[#2B3AE7]/95 shadow-sm backdrop-blur-md' : 'bg-transparent'
       )}
     >
       <div className="flex h-14 items-center justify-between px-6 md:px-8">
         {/* Mobile: logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-2 md:hidden"
-          aria-label="Anaqio"
-        >
-          <AnaqioTypographyLogo
-            instanceId="header-logo-mobile"
-            className="w-20"
-            variant="none"
-          />
+        <Link href="/" className="flex items-center gap-2 md:hidden" aria-label="Anaqio">
+          <AnaqioTypographyLogo instanceId="header-logo-mobile" className="w-20" variant="none" />
         </Link>
 
         {/* Desktop nav — right-aligned */}
@@ -504,7 +492,7 @@ export function Header() {
         )}
       </AnimatePresence>
     </header>
-  );
+  )
 }
 ```
 
@@ -539,22 +527,22 @@ The hero is the signature piece: full-viewport electric blue, giant "ANAQIO" spa
 Create `components/sections/VoobanHeroSection.tsx`:
 
 ```tsx
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { ArrowDownRight } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion'
+import { ArrowDownRight } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
-import { HeroVideoPlayer } from './atoms/HeroVideoPlayer';
+import { HeroVideoPlayer } from './atoms/HeroVideoPlayer'
 
-import { Button } from '@/components/ui/button';
-import { MagneticButton } from '@/components/ui/MagneticButton';
-import { ScrollLink } from '@/components/ui/scroll-link';
-import { useAnimationReady } from '@/hooks/use-animation-ready';
+import { Button } from '@/components/ui/button'
+import { MagneticButton } from '@/components/ui/MagneticButton'
+import { ScrollLink } from '@/components/ui/scroll-link'
+import { useAnimationReady } from '@/hooks/use-animation-ready'
 
 export function VoobanHeroSection() {
-  const t = useTranslations('landing.hero');
-  const { animated, tier } = useAnimationReady();
+  const t = useTranslations('landing.hero')
+  const { animated, tier } = useAnimationReady()
 
   return (
     <section
@@ -658,7 +646,7 @@ export function VoobanHeroSection() {
         </motion.p>
       </div>
     </section>
-  );
+  )
 }
 ```
 
@@ -669,13 +657,13 @@ In `components/sections/NewLandingPage.tsx`:
 Replace:
 
 ```tsx
-import { VideoHeroSection } from './VideoHeroSection';
+import { VideoHeroSection } from './VideoHeroSection'
 ```
 
 With:
 
 ```tsx
-import { VoobanHeroSection } from './VoobanHeroSection';
+import { VoobanHeroSection } from './VoobanHeroSection'
 ```
 
 Replace:
@@ -734,10 +722,7 @@ The section should:
 Concrete wrapper replacement (adapt inner copy to your existing i18n keys):
 
 ```tsx
-<section
-  id="problem"
-  className="vb-blue relative overflow-hidden px-8 py-32 md:px-16 md:py-48"
->
+<section id="problem" className="vb-blue relative overflow-hidden px-8 py-32 md:px-16 md:py-48">
   {/* Small label */}
   <p className="mb-12 text-[10px] font-bold uppercase tracking-[0.3em] text-white/50">
     {t('label')} {/* or hardcode "Le Problème" */}
@@ -748,9 +733,7 @@ Concrete wrapper replacement (adapt inner copy to your existing i18n keys):
     className="font-display max-w-5xl font-black text-white"
     style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', lineHeight: 1.1 }}
   >
-    {t('statement.a')}{' '}
-    <span className="vb-underline">{t('statement.key')}</span>{' '}
-    {t('statement.b')}
+    {t('statement.a')} <span className="vb-underline">{t('statement.key')}</span> {t('statement.b')}
   </h2>
 </section>
 ```
@@ -816,9 +799,7 @@ cat components/sections/SolutionSection.tsx
         <p className="mb-3 text-[9px] font-bold uppercase tracking-[0.3em] text-white/40">
           {t('cardLabel')}
         </p>
-        <h3 className="font-display text-xl font-bold text-white">
-          {item.title}
-        </h3>
+        <h3 className="font-display text-xl font-bold text-white">{item.title}</h3>
         <p className="mt-2 text-sm text-white/60">{item.desc}</p>
       </div>
     ))}
@@ -869,9 +850,7 @@ cat components/sections/FeaturesSection.tsx
         <div className="mb-4 flex h-10 w-10 items-center justify-center rounded bg-[#2B3AE7] text-white">
           {f.icon}
         </div>
-        <h3 className="font-display mb-2 text-lg font-bold text-black">
-          {f.title}
-        </h3>
+        <h3 className="font-display mb-2 text-lg font-bold text-black">{f.title}</h3>
         <p className="text-sm text-black/60">{f.desc}</p>
       </div>
     ))}
@@ -977,9 +956,7 @@ cat components/sections/SegmentsSection.tsx
         <h3 className="font-display text-xl font-bold text-black group-hover:text-white">
           {seg.title}
         </h3>
-        <p className="mt-2 text-sm text-black/60 group-hover:text-white/70">
-          {seg.desc}
-        </p>
+        <p className="mt-2 text-sm text-black/60 group-hover:text-white/70">{seg.desc}</p>
       </div>
     ))}
   </div>
@@ -1025,10 +1002,7 @@ cat components/sections/HowItWorksSection.tsx
 
   <div className="flex flex-col divide-y divide-black/10">
     {steps.map((step, i) => (
-      <div
-        key={step.id}
-        className="grid grid-cols-[80px_1fr] gap-8 py-10 md:grid-cols-[120px_1fr]"
-      >
+      <div key={step.id} className="grid grid-cols-[80px_1fr] gap-8 py-10 md:grid-cols-[120px_1fr]">
         <p
           className="font-display font-black text-black/10"
           style={{ fontSize: 'clamp(3rem, 6vw, 6rem)', lineHeight: 1 }}
@@ -1169,8 +1143,7 @@ cat components/sections/VisionSection.tsx
     className="font-display mb-12 max-w-4xl font-black text-white"
     style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', lineHeight: 1.1 }}
   >
-    {t('statement.a')}{' '}
-    <span className="vb-underline">{t('statement.key')}</span>
+    {t('statement.a')} <span className="vb-underline">{t('statement.key')}</span>
     {'. '}
     {t('statement.b')}
   </h2>
@@ -1215,7 +1188,7 @@ Replace background logic:
 
 ```tsx
 interface MarqueeSectionProps {
-  variant?: 'blue' | 'white';
+  variant?: 'blue' | 'white'
 }
 
 export function MarqueeSection({ variant = 'white' }: MarqueeSectionProps) {
@@ -1230,7 +1203,7 @@ export function MarqueeSection({ variant = 'white' }: MarqueeSectionProps) {
     >
       {/* existing marquee inner content */}
     </div>
-  );
+  )
 }
 ```
 
@@ -1293,11 +1266,7 @@ Key structure:
   <div className="mb-12 grid grid-cols-1 gap-12 md:grid-cols-[1fr_auto_auto_auto]">
     {/* Brand */}
     <div>
-      <AnaqioTypographyLogo
-        instanceId="footer-logo"
-        className="mb-3 w-24"
-        variant="none"
-      />
+      <AnaqioTypographyLogo instanceId="footer-logo" className="mb-3 w-24" variant="none" />
       <p className="max-w-xs text-sm text-black/50">{t('tagline')}</p>
     </div>
 

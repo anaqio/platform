@@ -17,14 +17,14 @@ components/sections/benefits-section.tsx
 ## 2. Import the primitives
 
 ```tsx
-'use client';
+'use client'
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion'
 
-import { fadeIn } from '@/lib/motion';
-import { FeatureCard } from '@/components/ui/feature-card';
-import { GradientText, SectionHeader } from '@/components/ui/section-header';
-import { Section, SectionContainer } from '@/components/ui/section';
+import { fadeIn } from '@/lib/motion'
+import { FeatureCard } from '@/components/ui/feature-card'
+import { GradientText, SectionHeader } from '@/components/ui/section-header'
+import { Section, SectionContainer } from '@/components/ui/section'
 ```
 
 > The `'use client'` directive is required whenever you use `useReducedMotion()` or any `motion.*` element.
@@ -50,14 +50,14 @@ const BENEFITS = [
     body: 'Produce luxury fashion videos from static imagery, no studio required.',
     icon: Video,
   },
-];
+]
 ```
 
 ## 4. Build the component
 
 ```tsx
 export function BenefitsSection() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotion()
 
   return (
     <Section id="benefits">
@@ -89,7 +89,7 @@ export function BenefitsSection() {
         </div>
       </SectionContainer>
     </Section>
-  );
+  )
 }
 ```
 
@@ -98,15 +98,12 @@ export function BenefitsSection() {
 In `app/page.tsx`, add a dynamic import so the section is code-split:
 
 ```tsx
-import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic'
 
 const BenefitsSection = dynamic(
-  () =>
-    import('@/components/sections/benefits-section').then(
-      (m) => m.BenefitsSection
-    ),
+  () => import('@/components/sections/benefits-section').then((m) => m.BenefitsSection),
   { ssr: true }
-);
+)
 
 export default function Page() {
   return (
@@ -114,7 +111,7 @@ export default function Page() {
       {/* … other sections … */}
       <BenefitsSection />
     </main>
-  );
+  )
 }
 ```
 

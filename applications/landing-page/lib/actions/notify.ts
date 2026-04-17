@@ -1,15 +1,15 @@
-'use server';
+'use server'
 
-import { z } from 'zod';
+import { z } from 'zod'
 
-import { utmFieldsSchema } from '@/lib/actions/shared';
-import { ERROR_MESSAGES } from '@/lib/constants/errors';
-import { createClient } from '@/lib/supabase/server';
+import { utmFieldsSchema } from '@/lib/actions/shared'
+import { ERROR_MESSAGES } from '@/lib/constants/errors'
+import { createClient } from '@/lib/supabase/server'
 
 const NotifySchema = z.object({
   email: z.email(ERROR_MESSAGES.VALID_EMAIL),
   ...utmFieldsSchema,
-});
+})
 
 /**
  * Lightweight email-only notify action for the Coming Soon page.
@@ -26,27 +26,20 @@ export async function notifyMe(formData: FormData) {
     utm_content: formData.get('utm_content') ?? null,
     utm_term: formData.get('utm_term') ?? null,
     referrer: formData.get('referrer') ?? null,
-  });
+  })
 
   if (!parsed.success) {
     return {
       success: false,
       message: parsed.error.issues[0].message,
-    };
+    }
   }
 
-  const {
-    email,
-    utm_source,
-    utm_medium,
-    utm_campaign,
-    utm_content,
-    utm_term,
-    referrer,
-  } = parsed.data;
+  const { email, utm_source, utm_medium, utm_campaign, utm_content, utm_term, referrer } =
+    parsed.data
 
   try {
-    const supabase = await createClient();
+    const supabase = await createClient()
 
     const { error } = await supabase.from('waitlist').insert({
       email: email.toLowerCase().trim(),
@@ -59,31 +52,31 @@ export async function notifyMe(formData: FormData) {
       utm_content: utm_content ?? null,
       utm_term: utm_term ?? null,
       referrer: referrer ?? null,
-    });
+    })
 
     if (error) {
       if (error.code === '23505') {
         return {
           success: false,
           message: 'This email is already on the list.',
-        };
+        }
       }
-      console.error('Notify insert error:', error);
+      console.error('Notify insert error:', error)
       return {
         success: false,
         message: ERROR_MESSAGES.GENERIC_SHORT,
-      };
+      }
     }
 
     return {
       success: true,
       message: "You're in. We'll reach out when the studio opens.",
-    };
+    }
   } catch (err) {
-    console.error('Notify error:', err);
+    console.error('Notify error:', err)
     return {
       success: false,
       message: ERROR_MESSAGES.GENERIC_SHORT,
-    };
+    }
   }
 }

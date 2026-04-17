@@ -1,20 +1,20 @@
-'use client';
+'use client'
 
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/button'
 
 interface AtelierNavProps {
-  isFirstStep: boolean;
-  isLastStep: boolean;
-  isSelectStep: boolean;
-  isPending: boolean;
-  prevAriaLabel: string;
-  continueLabel: string;
-  submitLabel: string;
-  sendingLabel: string;
-  onBack: () => void;
-  onContinue: () => void;
+  isFirstStep: boolean
+  isLastStep: boolean
+  isSelectStep: boolean
+  isPending: boolean
+  prevAriaLabel: string
+  continueLabel: string
+  submitLabel: string
+  sendingLabel: string
+  onBack: () => void
+  onContinue: () => void
 }
 
 export function AtelierNav({
@@ -64,5 +64,5 @@ export function AtelierNav({
         </Button>
       )}
     </div>
-  );
+  )
 }

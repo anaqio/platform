@@ -1,5 +1,5 @@
-import { type MotionValue, motion, useTransform } from 'framer-motion';
-import { type LucideIcon } from 'lucide-react';
+import { type MotionValue, motion, useTransform } from 'framer-motion'
+import { type LucideIcon } from 'lucide-react'
 
 export function VisionPointAtom({
   point,
@@ -7,22 +7,18 @@ export function VisionPointAtom({
   scrollYProgress,
   animated,
 }: {
-  point: { text: string; icon: LucideIcon };
-  index: number;
-  scrollYProgress: MotionValue<number>;
-  animated: boolean;
+  point: { text: string; icon: LucideIcon }
+  index: number
+  scrollYProgress: MotionValue<number>
+  animated: boolean
 }) {
   const pointY = useTransform(
     scrollYProgress,
     [0.1 + index * 0.08, 0.45 + index * 0.08],
     ['30px', '0px']
-  );
-  const pointOp = useTransform(
-    scrollYProgress,
-    [0.1 + index * 0.08, 0.4 + index * 0.08],
-    [0, 1]
-  );
-  const Icon = point.icon;
+  )
+  const pointOp = useTransform(scrollYProgress, [0.1 + index * 0.08, 0.4 + index * 0.08], [0, 1])
+  const Icon = point.icon
 
   return (
     <motion.div
@@ -37,5 +33,5 @@ export function VisionPointAtom({
         {point.text}
       </p>
     </motion.div>
-  );
+  )
 }

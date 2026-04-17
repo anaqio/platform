@@ -1,24 +1,24 @@
 // dangerouslySetInnerHTML is safe here — contactLd is built from static strings and trusted env vars only, never from user input.
-import { getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server'
 
-import type { Metadata } from 'next';
+import type { Metadata } from 'next'
 
-import { Link } from '@/i18n/routing';
+import { Link } from '@/i18n/routing'
 
 const getBaseUrl = () => {
-  if (process.env.NEXT_PUBLIC_APP_URL) return process.env.NEXT_PUBLIC_APP_URL;
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return 'https://anaqio.com';
-};
+  if (process.env.NEXT_PUBLIC_APP_URL) return process.env.NEXT_PUBLIC_APP_URL
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`
+  return 'https://anaqio.com'
+}
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>
 }): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'meta' });
-  const baseUrl = getBaseUrl();
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'meta' })
+  const baseUrl = getBaseUrl()
 
   return {
     title: t('contact.title'),
@@ -47,18 +47,14 @@ export async function generateMetadata({
       description: t('contact.desc'),
       images: ['/twitter-image.png'],
     },
-  };
+  }
 }
 
-export default async function ContactPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'contact' });
-  const tSocial = await getTranslations({ locale, namespace: 'social' });
-  const baseUrl = getBaseUrl();
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'contact' })
+  const tSocial = await getTranslations({ locale, namespace: 'social' })
+  const baseUrl = getBaseUrl()
 
   const contactLd = {
     '@context': 'https://schema.org',
@@ -70,13 +66,10 @@ export default async function ContactPage({
       '@type': 'ContactAction',
       target: `${baseUrl}/contact`,
     },
-  };
+  }
 
   return (
-    <main
-      id="main-content"
-      className="relative mx-auto max-w-3xl px-4 py-16 text-foreground"
-    >
+    <main id="main-content" className="relative mx-auto max-w-3xl px-4 py-16 text-foreground">
       <script
         id="contact-jsonld"
         type="application/ld+json"
@@ -84,19 +77,12 @@ export default async function ContactPage({
       />
 
       {/* Microdata duplication for broader parsing */}
-      <div
-        className="sr-only"
-        aria-hidden
-        itemScope
-        itemType="https://schema.org/ContactPage"
-      >
+      <div className="sr-only" aria-hidden itemScope itemType="https://schema.org/ContactPage">
         <meta itemProp="name" content="Contact Anaqio" />
         <link itemProp="url" href={`${baseUrl}/contact`} />
       </div>
 
-      <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-        {t('title')}
-      </h1>
+      <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">{t('title')}</h1>
       <p className="mt-3 max-w-prose text-muted-foreground">
         {t('desc')} {t('waitlistNote')}{' '}
         <Link href="/early-access" className="underline underline-offset-4">
@@ -106,9 +92,7 @@ export default async function ContactPage({
       </p>
 
       <section className="mt-10 rounded-2xl border border-border bg-card p-6">
-        <h2 className="font-display text-xl font-semibold">
-          {t('section.heading')}
-        </h2>
+        <h2 className="font-display text-xl font-semibold">{t('section.heading')}</h2>
         <ul className="mt-4 space-y-2 text-sm">
           <li>
             {t('labels.website')}:{' '}
@@ -177,5 +161,5 @@ export default async function ContactPage({
         </form>
       </section>
     </main>
-  );
+  )
 }

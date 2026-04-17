@@ -20,6 +20,6 @@ const YoutubeIcon = (props: React.SVGProps<SVGSVGElement>) => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
-export default YoutubeIcon;
+export default YoutubeIcon

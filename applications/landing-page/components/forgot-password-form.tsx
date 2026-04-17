@@ -1,51 +1,43 @@
-'use client';
+'use client'
 
-import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useTranslations } from 'next-intl'
+import { useState } from 'react'
 
-import { AuthCard } from '@/components/ui/auth-card';
-import { AuthField } from '@/components/ui/auth-field';
-import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Link } from '@/i18n/routing';
-import { ERROR_MESSAGES } from '@/lib/constants/errors';
-import { createClient } from '@/lib/supabase/client';
-import { cn } from '@/lib/utils';
+import { AuthCard } from '@/components/ui/auth-card'
+import { AuthField } from '@/components/ui/auth-field'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Link } from '@/i18n/routing'
+import { ERROR_MESSAGES } from '@/lib/constants/errors'
+import { createClient } from '@/lib/supabase/client'
+import { cn } from '@/lib/utils'
 
-export function ForgotPasswordForm({
-  className,
-}: React.ComponentPropsWithoutRef<'div'>) {
-  const t = useTranslations('auth.forgot');
-  const tLogin = useTranslations('auth.login');
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+export function ForgotPasswordForm({ className }: React.ComponentPropsWithoutRef<'div'>) {
+  const t = useTranslations('auth.forgot')
+  const tLogin = useTranslations('auth.login')
+  const [email, setEmail] = useState('')
+  const [error, setError] = useState<string | null>(null)
+  const [success, setSuccess] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleForgotPassword = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const supabase = createClient();
-    setIsLoading(true);
-    setError(null);
+    e.preventDefault()
+    const supabase = createClient()
+    setIsLoading(true)
+    setError(null)
 
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo: `${window.location.origin}/auth/update-password`,
-      });
-      if (error) throw error;
-      setSuccess(true);
+      })
+      if (error) throw error
+      setSuccess(true)
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : ERROR_MESSAGES.AUTH);
+      setError(error instanceof Error ? error.message : ERROR_MESSAGES.AUTH)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   return (
     <div className={cn('flex flex-col gap-6', className)}>
@@ -55,9 +47,7 @@ export function ForgotPasswordForm({
             <CardTitle className="font-display text-3xl font-bold tracking-tight">
               {t('success.title')}
             </CardTitle>
-            <CardDescription className="pt-2 font-body">
-              {t('success.desc')}
-            </CardDescription>
+            <CardDescription className="pt-2 font-body">{t('success.desc')}</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="font-body text-sm leading-relaxed text-muted-foreground">
@@ -78,15 +68,8 @@ export function ForgotPasswordForm({
                 value={email}
                 onChange={setEmail}
               />
-              {error && (
-                <p className="text-xs font-medium text-destructive">{error}</p>
-              )}
-              <Button
-                type="submit"
-                variant="brand"
-                className="h-11 w-full"
-                disabled={isLoading}
-              >
+              {error && <p className="text-xs font-medium text-destructive">{error}</p>}
+              <Button type="submit" variant="brand" className="h-11 w-full" disabled={isLoading}>
                 {isLoading ? t('submitPending') : t('submit')}
               </Button>
             </div>
@@ -102,5 +85,5 @@ export function ForgotPasswordForm({
         </AuthCard>
       )}
     </div>
-  );
+  )
 }

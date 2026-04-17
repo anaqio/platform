@@ -1,8 +1,8 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest'
 
-const mockPush = vi.fn();
-const mockUpdateUser = vi.fn();
+const mockPush = vi.fn()
+const mockUpdateUser = vi.fn()
 
 vi.mock('@/lib/supabase/client', () => ({
   createClient: vi.fn(() => ({
@@ -10,7 +10,7 @@ vi.mock('@/lib/supabase/client', () => ({
       updateUser: mockUpdateUser,
     },
   })),
-}));
+}))
 
 vi.mock('@/i18n/routing', () => ({
   useRouter: () => ({ push: mockPush }),
@@ -20,154 +20,150 @@ vi.mock('@/i18n/routing', () => ({
       {children}
     </a>
   ),
-}));
+}))
 
-import { UpdatePasswordForm } from '@/components/update-password-form';
-import { ERROR_MESSAGES } from '@/lib/constants/errors';
+import { UpdatePasswordForm } from '@/components/update-password-form'
+import { ERROR_MESSAGES } from '@/lib/constants/errors'
 
 describe('UpdatePasswordForm', () => {
   beforeEach(() => {
-    mockPush.mockClear();
-    mockUpdateUser.mockClear();
-  });
+    mockPush.mockClear()
+    mockUpdateUser.mockClear()
+  })
 
   afterEach(() => {
-    vi.clearAllMocks();
-  });
+    vi.clearAllMocks()
+  })
 
   it('renders the update password form with title and description', () => {
-    render(<UpdatePasswordForm />);
+    render(<UpdatePasswordForm />)
 
-    expect(screen.getByText('title')).toBeInTheDocument();
-    expect(screen.getByText('desc')).toBeInTheDocument();
-  });
+    expect(screen.getByText('title')).toBeInTheDocument()
+    expect(screen.getByText('desc')).toBeInTheDocument()
+  })
 
   it('renders the password field', () => {
-    render(<UpdatePasswordForm />);
+    render(<UpdatePasswordForm />)
 
-    expect(screen.getByLabelText('password.label')).toBeInTheDocument();
-  });
+    expect(screen.getByLabelText('password.label')).toBeInTheDocument()
+  })
 
   it('renders the submit button', () => {
-    render(<UpdatePasswordForm />);
+    render(<UpdatePasswordForm />)
 
-    expect(screen.getByRole('button', { name: 'submit' })).toBeInTheDocument();
-  });
+    expect(screen.getByRole('button', { name: 'submit' })).toBeInTheDocument()
+  })
 
   it('calls updateUser and redirects on success', async () => {
-    mockUpdateUser.mockResolvedValue({ error: null });
+    mockUpdateUser.mockResolvedValue({ error: null })
 
-    render(<UpdatePasswordForm />);
+    render(<UpdatePasswordForm />)
 
-    const passwordInput = screen.getByLabelText('password.label');
-    const submitButton = screen.getByRole('button', { name: 'submit' });
+    const passwordInput = screen.getByLabelText('password.label')
+    const submitButton = screen.getByRole('button', { name: 'submit' })
 
-    fireEvent.change(passwordInput, { target: { value: 'newpassword123' } });
-    fireEvent.click(submitButton);
+    fireEvent.change(passwordInput, { target: { value: 'newpassword123' } })
+    fireEvent.click(submitButton)
 
     await waitFor(() => {
       expect(mockUpdateUser).toHaveBeenCalledWith({
         password: 'newpassword123',
-      });
-    });
+      })
+    })
 
     await waitFor(() => {
-      expect(mockPush).toHaveBeenCalledWith('/protected');
-    });
-  });
+      expect(mockPush).toHaveBeenCalledWith('/protected')
+    })
+  })
 
   it('displays error message on update failure', async () => {
     mockUpdateUser.mockResolvedValue({
       error: new Error('Password too weak'),
-    });
+    })
 
-    render(<UpdatePasswordForm />);
+    render(<UpdatePasswordForm />)
 
-    const passwordInput = screen.getByLabelText('password.label');
-    const submitButton = screen.getByRole('button', { name: 'submit' });
+    const passwordInput = screen.getByLabelText('password.label')
+    const submitButton = screen.getByRole('button', { name: 'submit' })
 
-    fireEvent.change(passwordInput, { target: { value: 'weak' } });
-    fireEvent.click(submitButton);
+    fireEvent.change(passwordInput, { target: { value: 'weak' } })
+    fireEvent.click(submitButton)
 
     await waitFor(() => {
-      expect(screen.getByText('Password too weak')).toBeInTheDocument();
-    });
-  });
+      expect(screen.getByText('Password too weak')).toBeInTheDocument()
+    })
+  })
 
   it('displays generic error message on non-Error throw', async () => {
-    mockUpdateUser.mockRejectedValue('unexpected');
+    mockUpdateUser.mockRejectedValue('unexpected')
 
-    render(<UpdatePasswordForm />);
+    render(<UpdatePasswordForm />)
 
-    const passwordInput = screen.getByLabelText('password.label');
-    const submitButton = screen.getByRole('button', { name: 'submit' });
+    const passwordInput = screen.getByLabelText('password.label')
+    const submitButton = screen.getByRole('button', { name: 'submit' })
 
-    fireEvent.change(passwordInput, { target: { value: 'newpassword123' } });
-    fireEvent.click(submitButton);
+    fireEvent.change(passwordInput, { target: { value: 'newpassword123' } })
+    fireEvent.click(submitButton)
 
     await waitFor(() => {
-      expect(screen.getByText(ERROR_MESSAGES.AUTH)).toBeInTheDocument();
-    });
-  });
+      expect(screen.getByText(ERROR_MESSAGES.AUTH)).toBeInTheDocument()
+    })
+  })
 
   it('shows loading state during submission', async () => {
-    let resolveUpdate: (value: any) => void;
+    let resolveUpdate: (value: any) => void
     mockUpdateUser.mockReturnValue(
       new Promise((resolve) => {
-        resolveUpdate = resolve;
+        resolveUpdate = resolve
       })
-    );
+    )
 
-    render(<UpdatePasswordForm />);
+    render(<UpdatePasswordForm />)
 
-    const passwordInput = screen.getByLabelText('password.label');
-    const submitButton = screen.getByRole('button', { name: 'submit' });
+    const passwordInput = screen.getByLabelText('password.label')
+    const submitButton = screen.getByRole('button', { name: 'submit' })
 
-    fireEvent.change(passwordInput, { target: { value: 'newpassword123' } });
-    fireEvent.click(submitButton);
+    fireEvent.change(passwordInput, { target: { value: 'newpassword123' } })
+    fireEvent.click(submitButton)
 
     await waitFor(() => {
-      expect(
-        screen.getByRole('button', { name: 'submitPending' })
-      ).toBeInTheDocument();
-    });
+      expect(screen.getByRole('button', { name: 'submitPending' })).toBeInTheDocument()
+    })
 
-    resolveUpdate!({ error: null });
-  });
+    resolveUpdate!({ error: null })
+  })
 
   it('forwards className to AuthCard', () => {
-    const { container } = render(
-      <UpdatePasswordForm className="custom-class" />
-    );
+    const { container } = render(<UpdatePasswordForm className="custom-class" />)
 
-    const wrapper = container.firstChild as HTMLElement;
-    expect(wrapper).toHaveClass('custom-class');
-  });
+    const wrapper = container.firstChild as HTMLElement
+    expect(wrapper).toHaveClass('custom-class')
+  })
 
   it('does not redirect on update failure', async () => {
     mockUpdateUser.mockResolvedValue({
       error: new Error('Password too weak'),
-    });
+    })
 
-    render(<UpdatePasswordForm />);
+    render(<UpdatePasswordForm />)
 
-    const passwordInput = screen.getByLabelText('password.label');
-    const submitButton = screen.getByRole('button', { name: 'submit' });
+    const passwordInput = screen.getByLabelText('password.label')
+    const submitButton = screen.getByRole('button', { name: 'submit' })
 
-    fireEvent.change(passwordInput, { target: { value: 'weak' } });
-    fireEvent.click(submitButton);
+    fireEvent.change(passwordInput, { target: { value: 'weak' } })
+    fireEvent.click(submitButton)
 
     await waitFor(() => {
-      expect(screen.getByText('Password too weak')).toBeInTheDocument();
-    });
+      expect(screen.getByText('Password too weak')).toBeInTheDocument()
+    })
 
-    expect(mockPush).not.toHaveBeenCalled();
-  });
+    expect(mockPush).not.toHaveBeenCalled()
+  })
 
   it('password input has type password', () => {
-    render(<UpdatePasswordForm />);
+    render(<UpdatePasswordForm />)
 
-    const passwordInput = screen.getByLabelText('password.label');
-    expect(passwordInput).toHaveAttribute('type', 'password');
-  });
-});
+    const passwordInput = screen.getByLabelText('password.label')
+    expect(passwordInput).toHaveAttribute('type', 'password')
+  })
+})

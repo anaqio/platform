@@ -1,30 +1,25 @@
-'use client';
+'use client'
 
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/button'
 
 export default function Error({
   error,
   reset,
 }: {
-  error: Error & { digest?: string };
-  reset: () => void;
+  error: Error & { digest?: string }
+  reset: () => void
 }) {
   useEffect(() => {
-    console.error(error);
-  }, [error]);
+    console.error(error)
+  }, [error])
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-aq-ink px-6">
       <div className="glass-strong w-full max-w-md space-y-8 rounded-[2.5rem] border-white/5 p-12 text-center">
         <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-destructive/10 text-destructive">
-          <svg
-            className="h-10 w-10"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
+          <svg className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -39,17 +34,13 @@ export default function Error({
             Something went wrong
           </h2>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            Our virtual studio hit an unexpected error. We&apos;ve been notified
-            and are working on it.
+            Our virtual studio hit an unexpected error. We&apos;ve been notified and are working on
+            it.
           </p>
         </div>
 
         <div className="flex flex-col gap-3">
-          <Button
-            onClick={() => reset()}
-            variant="brand"
-            className="h-12 rounded-xl font-bold"
-          >
+          <Button onClick={() => reset()} variant="brand" className="h-12 rounded-xl font-bold">
             Try again
           </Button>
           <Button
@@ -62,5 +53,5 @@ export default function Error({
         </div>
       </div>
     </div>
-  );
+  )
 }

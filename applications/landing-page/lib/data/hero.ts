@@ -17,4 +17,4 @@ export const HeroSectionText = {
     act: 'Join the Waitlist',
     learn: 'See How It Works',
   },
-};
+}

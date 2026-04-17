@@ -191,7 +191,7 @@ export function buildPrompt(options: GenerationOptions): string {
   let step = 4
   if (options.fashionPose) {
     lines.push(
-      `${step}. **Pose:** The model must be in the following pose: ${options.fashionPose}.`,
+      `${step}. **Pose:** The model must be in the following pose: ${options.fashionPose}.`
     )
     step++
   }
@@ -204,7 +204,7 @@ export function buildPrompt(options: GenerationOptions): string {
     `${step}. **Set the Scene:** Place the model in ${bg}. Use soft, diffused, realistic studio lighting.`,
     `${step + 1}. **Final Aesthetic:** The final image must have a high-fashion, sophisticated editorial photography aesthetic. It must be indistinguishable from a real professional photograph, with realistic skin texture and natural lighting. ${quality}`,
     '',
-    'Output a single high-quality image only.',
+    'Output a single high-quality image only.'
   )
 
   return lines.join('\n')

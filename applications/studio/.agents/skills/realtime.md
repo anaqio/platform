@@ -60,7 +60,7 @@ export function useRealtimeGeneration(generationId: string | null): RealtimeGene
             error: row.error_message ?? null,
             inferenceMs: row.inference_ms ?? null,
           })
-        },
+        }
       )
       .subscribe((status, err) => {
         if (status === 'CHANNEL_ERROR') {

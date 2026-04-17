@@ -179,10 +179,10 @@ Paste into browser console to highlight overflowing elements:
 ```js
 document.querySelectorAll('*').forEach((el) => {
   if (el.offsetWidth > document.body.offsetWidth) {
-    el.style.outline = '2px solid red';
-    console.log('OVERFLOW:', el);
+    el.style.outline = '2px solid red'
+    console.log('OVERFLOW:', el)
   }
-});
+})
 ```
 
 ### Step 3 — Playwright screenshot audit

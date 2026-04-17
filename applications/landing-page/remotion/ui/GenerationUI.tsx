@@ -1,6 +1,6 @@
-import { interpolate } from 'remotion';
+import { interpolate } from 'remotion'
 
-import { COLORS, FONTS, GRADIENT } from '../lib/brand';
+import { COLORS, FONTS, GRADIENT } from '../lib/brand'
 
 const BACKGROUNDS = [
   'Studio White',
@@ -8,28 +8,23 @@ const BACKGROUNDS = [
   'Paris Rooftop',
   'Dark Editorial',
   'Natural Outdoor',
-];
-const LIGHTING = [
-  'Natural Soft',
-  'Studio Flash',
-  'Golden Hour',
-  'Dramatic Spot',
-];
-const STYLES = ['Editorial', 'E-commerce Clean', 'Lookbook', 'Cinematic'];
+]
+const LIGHTING = ['Natural Soft', 'Studio Flash', 'Golden Hour', 'Dramatic Spot']
+const STYLES = ['Editorial', 'E-commerce Clean', 'Lookbook', 'Cinematic']
 
 export function GenerationUI({
   generationProgress = 0,
   scale = 1,
 }: {
-  generationProgress?: number;
-  scale?: number;
+  generationProgress?: number
+  scale?: number
 }) {
-  const isGenerating = generationProgress > 0;
+  const isGenerating = generationProgress > 0
   const progressPct = interpolate(generationProgress, [0, 1], [0, 100], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
-  });
-  const isDone = generationProgress >= 1;
+  })
+  const isDone = generationProgress >= 1
 
   return (
     <div
@@ -89,12 +84,7 @@ export function GenerationUI({
               stroke="#94A3B8"
               strokeWidth="1.5"
             />
-            <path
-              d="M32 28Q50 22 68 28"
-              fill="none"
-              stroke="#94A3B8"
-              strokeWidth="1.5"
-            />
+            <path d="M32 28Q50 22 68 28" fill="none" stroke="#94A3B8" strokeWidth="1.5" />
             <path
               d="M26 40L10 60L22 64L26 56L28 48Z"
               fill="#94A3B815"
@@ -124,14 +114,10 @@ export function GenerationUI({
           gap: 20,
         }}
       >
-        <div style={{ fontSize: 20, fontWeight: 600, color: COLORS.text }}>
-          Scene Configuration
-        </div>
+        <div style={{ fontSize: 20, fontWeight: 600, color: COLORS.text }}>Scene Configuration</div>
 
         {/* Settings grid */}
-        <div
-          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}
-        >
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
           {[
             { label: 'Background', options: BACKGROUNDS, selected: 0 },
             { label: 'Lighting', options: LIGHTING, selected: 0 },
@@ -210,14 +196,10 @@ export function GenerationUI({
                   marginBottom: 8,
                 }}
               >
-                <div
-                  style={{ fontSize: 13, color: COLORS.text, fontWeight: 500 }}
-                >
+                <div style={{ fontSize: 13, color: COLORS.text, fontWeight: 500 }}>
                   {isDone ? '✓ Generation Complete' : 'Generating 4 outputs...'}
                 </div>
-                <div style={{ fontSize: 13, color: COLORS.blue }}>
-                  {Math.round(progressPct)}%
-                </div>
+                <div style={{ fontSize: 13, color: COLORS.blue }}>{Math.round(progressPct)}%</div>
               </div>
               <div
                 style={{
@@ -251,17 +233,11 @@ export function GenerationUI({
                       style={{
                         flex: 1,
                         padding: '6px 8px',
-                        background:
-                          progressPct > i * 25 + 10
-                            ? `${COLORS.blue}20`
-                            : COLORS.bgCard,
+                        background: progressPct > i * 25 + 10 ? `${COLORS.blue}20` : COLORS.bgCard,
                         border: `1px solid ${progressPct > i * 25 + 10 ? COLORS.blue + '40' : COLORS.border}`,
                         borderRadius: 6,
                         fontSize: 9,
-                        color:
-                          progressPct > i * 25 + 10
-                            ? COLORS.blueLight
-                            : COLORS.muted,
+                        color: progressPct > i * 25 + 10 ? COLORS.blueLight : COLORS.muted,
                         textAlign: 'center',
                       }}
                     >
@@ -275,5 +251,5 @@ export function GenerationUI({
         </div>
       </div>
     </div>
-  );
+  )
 }

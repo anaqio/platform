@@ -8,5 +8,5 @@ export function DepthGrid() {
       <div className="grid-shimmer pointer-events-none absolute inset-0 opacity-20" />
       <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-background to-transparent" />
     </aside>
-  );
+  )
 }

@@ -216,8 +216,7 @@ Standard heading pattern used across all content sections. Consistent structure:
   <span className="text-muted-foreground block w-full text-center text-sm uppercase tracking-[0.2em]">
     {eyebrow}
   </span>
-  {headlineText}{' '}
-  <span className="text-brand-gradient font-bold italic">{accentText}</span>
+  {headlineText} <span className="text-brand-gradient font-bold italic">{accentText}</span>
 </motion.h2>
 ```
 

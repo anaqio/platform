@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { motion } from 'framer-motion'
+import Image from 'next/image'
 
-import heroModelImage from '@/public/images/model-t.png';
+import heroModelImage from '@/public/images/model-t.png'
 
 export default function ModelSection() {
   return (
@@ -27,5 +27,5 @@ export default function ModelSection() {
         />
       </motion.div>
     </motion.div>
-  );
+  )
 }

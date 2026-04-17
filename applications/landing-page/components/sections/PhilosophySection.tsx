@@ -1,25 +1,25 @@
-'use client';
+'use client'
 
-import { useScroll } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import { useRef } from 'react';
+import { useScroll } from 'framer-motion'
+import { useTranslations } from 'next-intl'
+import { useRef } from 'react'
 
-import { ScrollWord } from './atoms/scroll-word';
+import { ScrollWord } from './atoms/scroll-word'
 
-import { useAnimationReady } from '@/hooks/use-animation-ready';
+import { useAnimationReady } from '@/hooks/use-animation-ready'
 
 export function PhilosophySection() {
-  const t = useTranslations('landing.philosophy');
-  const sectionRef = useRef<HTMLElement>(null);
-  const { animated } = useAnimationReady();
+  const t = useTranslations('landing.philosophy')
+  const sectionRef = useRef<HTMLElement>(null)
+  const { animated } = useAnimationReady()
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start center', 'end center'],
-  });
+  })
 
-  const words = t('body').split(' ');
-  const wordCount = words.length;
+  const words = t('body').split(' ')
+  const wordCount = words.length
 
   return (
     <section
@@ -45,8 +45,8 @@ export function PhilosophySection() {
 
       <div className="relative z-10 mx-auto max-w-5xl text-left">
         {words.map((word, i) => {
-          const start = i / wordCount;
-          const end = start + 3 / wordCount;
+          const start = i / wordCount
+          const end = start + 3 / wordCount
 
           return (
             <ScrollWord
@@ -57,9 +57,9 @@ export function PhilosophySection() {
               scrollYProgress={scrollYProgress}
               animated={animated}
             />
-          );
+          )
         })}
       </div>
     </section>
-  );
+  )
 }

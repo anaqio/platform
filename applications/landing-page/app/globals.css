@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'tw-animate-css';
 
 /* ==============================
    View Transition API
@@ -459,6 +460,12 @@ body.has-sidebar {
       rgba(0, 0, 0, 0.55) 50%,
       rgba(0, 0, 0, 0) 100%
     );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.55) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
     animation: grid-pan 30s linear infinite;
   }
 
@@ -581,37 +588,17 @@ body.has-sidebar {
 
   /* Gravitate wrapper uses mouse-based offsets */
   .gravitate {
-    transform: translate3d(
-      calc(var(--grav-x, 0) * 30px),
-      calc(var(--grav-y, 0) * 30px),
-      0
-    );
+    transform: translate3d(calc(var(--grav-x, 0) * 30px), calc(var(--grav-y, 0) * 30px), 0);
     transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform;
   }
 
   .hero-gradient {
     background:
-      radial-gradient(
-        ellipse 100% 60% at 50% 0%,
-        rgba(37, 99, 235, 0.12),
-        transparent 70%
-      ),
-      radial-gradient(
-        ellipse 70% 50% at 80% 60%,
-        rgba(124, 58, 237, 0.06),
-        transparent 70%
-      ),
-      radial-gradient(
-        ellipse 70% 50% at 20% 70%,
-        rgba(63, 87, 175, 0.06),
-        transparent 70%
-      ),
-      radial-gradient(
-        ellipse 120% 80% at 50% 50%,
-        rgba(37, 99, 235, 0.02),
-        transparent
-      );
+      radial-gradient(ellipse 100% 60% at 50% 0%, rgba(37, 99, 235, 0.12), transparent 70%),
+      radial-gradient(ellipse 70% 50% at 80% 60%, rgba(124, 58, 237, 0.06), transparent 70%),
+      radial-gradient(ellipse 70% 50% at 20% 70%, rgba(63, 87, 175, 0.06), transparent 70%),
+      radial-gradient(ellipse 120% 80% at 50% 50%, rgba(37, 99, 235, 0.02), transparent);
   }
 }
 
@@ -783,11 +770,7 @@ body.has-sidebar {
   width: var(--blob-size);
   height: var(--blob-size);
   border-radius: 40% 60% 55% 45% / 55% 40% 60% 45%;
-  background: radial-gradient(
-    circle at 30% 30%,
-    var(--blob-color),
-    transparent 70%
-  );
+  background: radial-gradient(circle at 30% 30%, var(--blob-color), transparent 70%);
   translate: calc(
       (var(--mouse-x, 0.5) - 0.5) * var(--blob-parallax) * 600px +
         (var(--gyro-x, 0) * var(--blob-parallax) * 300px)
@@ -838,8 +821,7 @@ body.has-sidebar {
   filter: blur(4px);
 }
 .glass-bubble {
-  translate: calc((var(--mouse-x, 0.5) - 0.5) * 60px)
-    calc((var(--mouse-y, 0.5) - 0.5) * 60px);
+  translate: calc((var(--mouse-x, 0.5) - 0.5) * 60px) calc((var(--mouse-y, 0.5) - 0.5) * 60px);
 }
 
 @media (prefers-reduced-motion: reduce) {

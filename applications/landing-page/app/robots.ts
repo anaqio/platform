@@ -1,9 +1,9 @@
-import { type MetadataRoute } from 'next';
+import { type MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
-    : 'https://anaqio.com';
+    : 'https://anaqio.com'
 
   return {
     host: baseUrl.replace(/^https?:\/\//, ''),
@@ -11,14 +11,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: [
-          '/auth/',
-          '/protected/',
-          '/playground',
-          '/api/',
-          '/_next/',
-          '/legal-mentions',
-        ],
+        disallow: ['/auth/', '/protected/', '/playground', '/api/', '/_next/', '/legal-mentions'],
       },
       {
         userAgent: ['Googlebot', 'Bingbot'],
@@ -40,5 +33,5 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
-  };
+  }
 }

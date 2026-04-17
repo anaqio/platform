@@ -20,10 +20,7 @@ This document outlines the custom and library-provided hooks used in the ANAQIO 
 **Example:**
 
 ```tsx
-const [formData, setFormData] = useLocalStorage(
-  'anaqio-form-data',
-  initialValues
-);
+const [formData, setFormData] = useLocalStorage('anaqio-form-data', initialValues)
 ```
 
 ---
@@ -44,8 +41,8 @@ const [formData, setFormData] = useLocalStorage(
 **Example:**
 
 ```tsx
-const { width } = useWindowSize();
-const isDesktop = width > 1024;
+const { width } = useWindowSize()
+const isDesktop = width > 1024
 ```
 
 ---
@@ -66,7 +63,7 @@ const isDesktop = width > 1024;
 **Example:**
 
 ```tsx
-const debouncedSearch = useDebounce(searchTerm, 300);
+const debouncedSearch = useDebounce(searchTerm, 300)
 ```
 
 ---
@@ -87,8 +84,8 @@ const debouncedSearch = useDebounce(searchTerm, 300);
 **Example:**
 
 ```tsx
-const [ref, entry] = useIntersectionObserver({ threshold: 0.1 });
-const isVisible = entry?.isIntersecting;
+const [ref, entry] = useIntersectionObserver({ threshold: 0.1 })
+const isVisible = entry?.isIntersecting
 ```
 
 ---

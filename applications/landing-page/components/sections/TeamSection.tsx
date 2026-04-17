@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { Linkedin } from 'lucide-react';
-import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion'
+import { Linkedin } from 'lucide-react'
+import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
-import { useAnimationReady } from '@/hooks/use-animation-ready';
+import { useAnimationReady } from '@/hooks/use-animation-ready'
 
 const TEAM_STATIC = [
   {
@@ -20,13 +20,13 @@ const TEAM_STATIC = [
     photo: '/media/images/people/mohamed-moughamir-cofounder.jpg',
     initials: 'MM',
   },
-];
+]
 
 export function TeamSection() {
-  const t = useTranslations('landing.team');
-  const { animated } = useAnimationReady();
+  const t = useTranslations('landing.team')
+  const { animated } = useAnimationReady()
 
-  const members = t.raw('members') as Array<{ role: string; bio: string }>;
+  const members = t.raw('members') as Array<{ role: string; bio: string }>
 
   return (
     <section
@@ -113,5 +113,5 @@ export function TeamSection() {
         ))}
       </div>
     </section>
-  );
+  )
 }

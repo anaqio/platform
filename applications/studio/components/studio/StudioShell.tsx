@@ -83,7 +83,7 @@ export function StudioShell({ presets }: StudioShellProps) {
   return (
     <div className="flex min-h-[80vh] flex-col px-4">
       {/* Progress bar */}
-      <div className="mx-auto w-full max-w-lg pb-2 pt-4">
+      <div className="mx-auto w-full max-w-lg pt-4 pb-2">
         <div className="mb-1 flex items-center justify-between">
           <span className="text-muted-foreground text-xs">
             Step {store.step} of {TOTAL_STUDIO_STEPS}

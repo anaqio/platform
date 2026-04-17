@@ -1,54 +1,50 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
 interface BeforeInstallPromptEvent extends Event {
-  userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
-  prompt: () => Promise<void>;
+  userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>
+  prompt: () => Promise<void>
 }
 
 export function PWAInstallPrompt() {
-  const [deferredPrompt, setDeferredPrompt] =
-    useState<BeforeInstallPromptEvent | null>(null);
-  const [showPrompt, setShowPrompt] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null)
+  const [showPrompt, setShowPrompt] = useState(false)
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e: Event) => {
-      e.preventDefault();
-      setDeferredPrompt(e as BeforeInstallPromptEvent);
+      e.preventDefault()
+      setDeferredPrompt(e as BeforeInstallPromptEvent)
       // Don't show immediately - wait for user engagement
       setTimeout(() => {
-        setShowPrompt(true);
-      }, 8000);
-    };
+        setShowPrompt(true)
+      }, 8000)
+    }
 
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
 
     return () => {
-      window.removeEventListener(
-        'beforeinstallprompt',
-        handleBeforeInstallPrompt
-      );
-    };
-  }, []);
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+    }
+  }, [])
 
   const handleInstall = async () => {
-    if (!deferredPrompt) return;
+    if (!deferredPrompt) return
 
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
+    deferredPrompt.prompt()
+    const { outcome } = await deferredPrompt.userChoice
 
     if (outcome === 'accepted') {
-      setShowPrompt(false);
-      setDeferredPrompt(null);
+      setShowPrompt(false)
+      setDeferredPrompt(null)
     }
-  };
+  }
 
   const handleDismiss = () => {
-    setShowPrompt(false);
-  };
+    setShowPrompt(false)
+  }
 
-  if (!showPrompt) return null;
+  if (!showPrompt) return null
 
   return (
     <div className="fixed bottom-4 left-4 right-4 z-[100] flex max-w-md items-center justify-between gap-4 rounded-lg bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60 sm:bottom-auto sm:top-4">
@@ -75,5 +71,5 @@ export function PWAInstallPrompt() {
         </button>
       </div>
     </div>
-  );
+  )
 }

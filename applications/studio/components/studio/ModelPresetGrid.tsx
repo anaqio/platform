@@ -24,7 +24,7 @@ export function ModelPresetGrid({ presets, selectedId, onSelect }: ModelPresetGr
             'group relative overflow-hidden rounded-lg border-2 transition-all',
             selectedId === preset.id
               ? 'border-primary ring-primary/20 ring-2'
-              : 'border-border hover:border-primary/50',
+              : 'border-border hover:border-primary/50'
           )}
         >
           <div className="bg-muted relative flex aspect-[3/4] items-center justify-center">

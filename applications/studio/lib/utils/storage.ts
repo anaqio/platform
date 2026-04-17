@@ -10,7 +10,7 @@ export async function getSignedUrl(bucket: string, path: string, expiresIn = 300
 export async function uploadGarment(
   fileBuffer: ArrayBuffer,
   contentType: string,
-  ownerId: string,
+  ownerId: string
 ): Promise<string> {
   const admin = createClient()
   const ext = contentType.split('/')[1] ?? 'webp'

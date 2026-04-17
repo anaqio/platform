@@ -1,16 +1,16 @@
-import { AbsoluteFill, useCurrentFrame } from 'remotion';
+import { AbsoluteFill, useCurrentFrame } from 'remotion'
 
-import { COLORS, FONTS, GRADIENT } from '../lib/brand';
-import { loadFonts } from '../lib/fonts';
-import { fadeIn } from '../lib/helpers';
-import { SceneCTA } from '../scenes/SceneCTA';
-import { SceneGenerate } from '../scenes/SceneGenerate';
-import { SceneIntro } from '../scenes/SceneIntro';
-import { SceneProblem } from '../scenes/SceneProblem';
-import { SceneResults } from '../scenes/SceneResults';
-import { SceneUpload } from '../scenes/SceneUpload';
+import { COLORS, FONTS, GRADIENT } from '../lib/brand'
+import { loadFonts } from '../lib/fonts'
+import { fadeIn } from '../lib/helpers'
+import { SceneCTA } from '../scenes/SceneCTA'
+import { SceneGenerate } from '../scenes/SceneGenerate'
+import { SceneIntro } from '../scenes/SceneIntro'
+import { SceneProblem } from '../scenes/SceneProblem'
+import { SceneResults } from '../scenes/SceneResults'
+import { SceneUpload } from '../scenes/SceneUpload'
 
-loadFonts();
+loadFonts()
 
 // 9:16 canvas: 1080 × 1920
 // Scenes are designed for 1920 × 1080 (16:9 reference)
@@ -19,13 +19,13 @@ loadFonts();
 //   • Width  1421px > 1080px canvas  → clip 170px each side (fine — content is centered)
 //   • Height  800px < 1920px canvas  → 560px above + 560px below for brand framing
 //
-const CONTENT_SCALE = 0.74;
-const CONTENT_HEIGHT = Math.round(1080 * CONTENT_SCALE); // 799
-const BAND_HEIGHT = Math.round((1920 - CONTENT_HEIGHT) / 2); // 560
+const CONTENT_SCALE = 0.74
+const CONTENT_HEIGHT = Math.round(1080 * CONTENT_SCALE) // 799
+const BAND_HEIGHT = Math.round((1920 - CONTENT_HEIGHT) / 2) // 560
 
 function BrandHeader() {
-  const frame = useCurrentFrame();
-  const opacity = fadeIn(frame, 0, 25);
+  const frame = useCurrentFrame()
+  const opacity = fadeIn(frame, 0, 25)
   return (
     <div
       style={{
@@ -88,12 +88,12 @@ function BrandHeader() {
         }}
       />
     </div>
-  );
+  )
 }
 
 function BrandFooter() {
-  const frame = useCurrentFrame();
-  const opacity = fadeIn(frame, 10, 25);
+  const frame = useCurrentFrame()
+  const opacity = fadeIn(frame, 10, 25)
   return (
     <div
       style={{
@@ -159,7 +159,7 @@ function BrandFooter() {
         Launching Q3 2026 · Casablanca
       </div>
     </div>
-  );
+  )
 }
 
 export function AnaqioDemo9x16() {
@@ -194,5 +194,5 @@ export function AnaqioDemo9x16() {
       {/* Bottom brand band */}
       <BrandFooter />
     </AbsoluteFill>
-  );
+  )
 }

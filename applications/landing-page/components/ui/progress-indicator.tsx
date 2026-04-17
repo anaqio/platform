@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { memo } from 'react';
+import { motion } from 'framer-motion'
+import { memo } from 'react'
 
-import type { StepIndicatorProps } from '@/lib/types/waitlist-form';
+import type { StepIndicatorProps } from '@/lib/types/waitlist-form'
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils'
 
 export const ProgressIndicator = memo(function ProgressIndicator({
   currentStep,
@@ -21,10 +21,10 @@ export const ProgressIndicator = memo(function ProgressIndicator({
       aria-valuemax={totalSteps}
     >
       {Array.from({ length: totalSteps }, (_, index) => {
-        const stepNumber = index + 1;
-        const isCompleted = stepNumber < currentStep;
-        const isCurrent = stepNumber === currentStep;
-        const isUpcoming = stepNumber > currentStep;
+        const stepNumber = index + 1
+        const isCompleted = stepNumber < currentStep
+        const isCurrent = stepNumber === currentStep
+        const isUpcoming = stepNumber > currentStep
 
         return (
           <div key={stepNumber} className="flex items-center">
@@ -71,8 +71,8 @@ export const ProgressIndicator = memo(function ProgressIndicator({
               />
             )}
           </div>
-        );
+        )
       })}
     </div>
-  );
-});
+  )
+})

@@ -145,17 +145,17 @@ Each atom maps scroll progress (`0 → 1`) to one or more visual properties:
 const { scrollYProgress } = useScroll({
   target: sectionRef,
   offset: ['start end', 'end start'], // enters at bottom, exits at top
-});
+})
 
 // Atom A: rises as section scrolls into view
-const atomAY = useTransform(scrollYProgress, [0, 0.4], ['60px', '0px']);
-const atomAOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+const atomAY = useTransform(scrollYProgress, [0, 0.4], ['60px', '0px'])
+const atomAOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1])
 
 // Atom B: rises slightly later (stagger via different input range)
-const atomBY = useTransform(scrollYProgress, [0.1, 0.5], ['60px', '0px']);
+const atomBY = useTransform(scrollYProgress, [0.1, 0.5], ['60px', '0px'])
 
 // Atom C: parallax drift (continues past midpoint)
-const atomCY = useTransform(scrollYProgress, [0, 1], ['0%', '-20%']);
+const atomCY = useTransform(scrollYProgress, [0, 1], ['0%', '-20%'])
 ```
 
 ### Choreography types
@@ -176,10 +176,10 @@ Traditional stagger: "animate this list of children with 0.1s delay per child." 
 
 ```typescript
 // Instead of delay-based stagger:
-const atoms = [0, 0.05, 0.1, 0.15, 0.2]; // offset start points
+const atoms = [0, 0.05, 0.1, 0.15, 0.2] // offset start points
 
 const atomY = (offset: number) =>
-  useTransform(scrollYProgress, [offset, offset + 0.35], ['50px', '0px']);
+  useTransform(scrollYProgress, [offset, offset + 0.35], ['50px', '0px'])
 
 // Atom 0 starts rising at T=0.00
 // Atom 1 starts rising at T=0.05
@@ -297,11 +297,11 @@ Activated by `prefers-reduced-motion: reduce` OR by detecting slow hardware (see
 
 ```typescript
 // In every choreography function:
-const reduced = useReducedMotion();
+const reduced = useReducedMotion()
 
 const atomY = reduced
   ? '0px' // Tier 2: already in place
-  : useTransform(scrollYProgress, [0, 0.3], ['60px', '0px']); // Tier 3: animated
+  : useTransform(scrollYProgress, [0, 0.3], ['60px', '0px']) // Tier 3: animated
 ```
 
 ### Tier 1 strategy: Static layout
@@ -342,28 +342,23 @@ Use the Navigator API to detect constrained devices:
 ```typescript
 // hooks/use-device-tier.ts
 export function useDeviceTier(): 'high' | 'mid' | 'low' {
-  const [tier, setTier] = useState<'high' | 'mid' | 'low'>('high');
+  const [tier, setTier] = useState<'high' | 'mid' | 'low'>('high')
 
   useEffect(() => {
-    const cores = navigator.hardwareConcurrency ?? 4;
-    const memory = (navigator as any).deviceMemory ?? 4; // GB, Chrome-only
-    const connection = (navigator as any).connection?.effectiveType ?? '4g';
+    const cores = navigator.hardwareConcurrency ?? 4
+    const memory = (navigator as any).deviceMemory ?? 4 // GB, Chrome-only
+    const connection = (navigator as any).connection?.effectiveType ?? '4g'
 
-    if (
-      cores <= 2 ||
-      memory <= 1 ||
-      connection === '2g' ||
-      connection === 'slow-2g'
-    ) {
-      setTier('low');
+    if (cores <= 2 || memory <= 1 || connection === '2g' || connection === 'slow-2g') {
+      setTier('low')
     } else if (cores <= 4 || memory <= 2 || connection === '3g') {
-      setTier('mid');
+      setTier('mid')
     } else {
-      setTier('high');
+      setTier('high')
     }
-  }, []);
+  }, [])
 
-  return tier;
+  return tier
 }
 ```
 
@@ -528,12 +523,12 @@ A minimal React atom component for Omnizya:
 
 ```tsx
 // components/ui/atom.tsx
-import { motion, type HTMLMotionProps } from 'framer-motion';
+import { motion, type HTMLMotionProps } from 'framer-motion'
 
 type AtomProps = HTMLMotionProps<'div'> & {
-  decorative?: boolean;
-  tier?: 'high' | 'mid' | 'low';
-};
+  decorative?: boolean
+  tier?: 'high' | 'mid' | 'low'
+}
 
 export function Atom({ decorative, children, ...props }: AtomProps) {
   return (
@@ -545,7 +540,7 @@ export function Atom({ decorative, children, ...props }: AtomProps) {
     >
       {children}
     </motion.div>
-  );
+  )
 }
 ```
 
@@ -556,31 +551,27 @@ export function Atom({ decorative, children, ...props }: AtomProps) {
 ```tsx
 // Template for an Omnizya composition section
 export function ExampleSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const reduced = useReducedMotion();
-  const tier = useDeviceTier();
+  const sectionRef = useRef<HTMLElement>(null)
+  const reduced = useReducedMotion()
+  const tier = useDeviceTier()
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start'],
-  });
+  })
 
   // Atom choreography
-  const eyebrowY = useTransform(scrollYProgress, [0, 0.3], ['30px', '0px']);
-  const headlineY = useTransform(scrollYProgress, [0.05, 0.4], ['60px', '0px']);
-  const headlineOpacity = useTransform(scrollYProgress, [0.05, 0.35], [0, 1]);
-  const imageScale = useTransform(scrollYProgress, [0, 0.5], [1.05, 1]);
-  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '-12%']);
+  const eyebrowY = useTransform(scrollYProgress, [0, 0.3], ['30px', '0px'])
+  const headlineY = useTransform(scrollYProgress, [0.05, 0.4], ['60px', '0px'])
+  const headlineOpacity = useTransform(scrollYProgress, [0.05, 0.35], [0, 1])
+  const imageScale = useTransform(scrollYProgress, [0, 0.5], [1.05, 1])
+  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '-12%'])
 
   // Tier 2/1: disable scroll-linked motion
-  const isAnimated = !reduced && tier !== 'low';
+  const isAnimated = !reduced && tier !== 'low'
 
   return (
-    <section
-      ref={sectionRef}
-      aria-labelledby="example-headline"
-      className="relative min-h-screen"
-    >
+    <section ref={sectionRef} aria-labelledby="example-headline" className="relative min-h-screen">
       {/* Semantic backbone — normal flow, invisible visually */}
       <h2 id="example-headline" className="sr-only">
         Section title for SEO
@@ -600,9 +591,7 @@ export function ExampleSection() {
         data-atom
         aria-hidden="true" // visual duplicate of sr-only above
         className="font-display absolute left-[8.33%] top-[18%] text-[clamp(3rem,6vw,8rem)] leading-[0.9]"
-        style={
-          isAnimated ? { y: headlineY, opacity: headlineOpacity } : undefined
-        }
+        style={isAnimated ? { y: headlineY, opacity: headlineOpacity } : undefined}
       >
         Visual Headline
       </motion.h2>
@@ -650,7 +639,7 @@ export function ExampleSection() {
         01
       </span>
     </section>
-  );
+  )
 }
 ```
 

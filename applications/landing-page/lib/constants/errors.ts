@@ -4,4 +4,4 @@ export const ERROR_MESSAGES = {
   GENERIC_SHORT: 'Something went wrong. Please try again.',
   AUTH: 'An error occurred',
   VALID_EMAIL: 'Please provide a valid email address.',
-} as const;
+} as const

@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import {
   AnimatePresence,
@@ -7,149 +7,142 @@ import {
   useMotionValueEvent,
   animate,
   useTransform,
-} from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import { useEffect, useRef, useState } from 'react';
+} from 'framer-motion'
+import { useTranslations } from 'next-intl'
+import { useEffect, useRef, useState } from 'react'
 
-import { AnaqioTypographyLogo } from '@/components/ui/anaqio-typography-logo';
-import { useAnimationReady } from '@/hooks/use-animation-ready';
-import { ease } from '@/lib/data/motion';
+import { AnaqioTypographyLogo } from '@/components/ui/anaqio-typography-logo'
+import { useAnimationReady } from '@/hooks/use-animation-ready'
+import { ease } from '@/lib/data/motion'
 import {
   getConnectionTier,
   getBytesDecoded,
   getBytesTransferred,
   getSafetyTimeout,
   resolveStage,
-} from '@/lib/loading-stages';
-import { cn } from '@/lib/utils';
+} from '@/lib/loading-stages'
+import { cn } from '@/lib/utils'
 
 // ─── Component ───────────────────────────────────────────────────────────────
 export default function Loading() {
-  const t = useTranslations('loading');
-  const [visible, setVisible] = useState(true);
-  const { tier, animated } = useAnimationReady();
+  const t = useTranslations('loading')
+  const [visible, setVisible] = useState(true)
+  const { tier, animated } = useAnimationReady()
 
   // Performance optimization: use MotionValue for high-frequency updates
-  const progressMv = useMotionValue(0);
-  const progressTextRef = useRef<HTMLSpanElement>(null);
-  const [currentStageKey, setCurrentStageKey] = useState(resolveStage(0).key);
+  const progressMv = useMotionValue(0)
+  const progressTextRef = useRef<HTMLSpanElement>(null)
+  const [currentStageKey, setCurrentStageKey] = useState(resolveStage(0).key)
 
   // Derived values for smooth updates without re-renders
-  const scaleX = useTransform(progressMv, [0, 100], [0, 1]);
-  const widthPercent = useTransform(progressMv, (v) => `${v}%`);
+  const scaleX = useTransform(progressMv, [0, 100], [0, 1])
+  const widthPercent = useTransform(progressMv, (v) => `${v}%`)
 
   // Synchronize percentage text and stage state without full re-renders
   useMotionValueEvent(progressMv, 'change', (latest) => {
-    const rounded = Math.round(latest);
+    const rounded = Math.round(latest)
 
     // Direct DOM update for percentage text
     if (progressTextRef.current) {
-      progressTextRef.current.textContent = `${rounded}%`;
+      progressTextRef.current.textContent = `${rounded}%`
     }
 
     // Update stage state only when it actually changes
-    const stage = resolveStage(rounded);
+    const stage = resolveStage(rounded)
     if (stage.key !== currentStageKey) {
-      setCurrentStageKey(stage.key);
+      setCurrentStageKey(stage.key)
     }
-  });
+  })
 
   useEffect(() => {
-    const conn = getConnectionTier();
-    const safetyMs = getSafetyTimeout(tier, conn);
+    const conn = getConnectionTier()
+    const safetyMs = getSafetyTimeout(tier, conn)
 
     // duration: faster connections feel snappier
-    const duration = conn === 'fast' ? 0.6 : conn === 'moderate' ? 0.8 : 1.2;
+    const duration = conn === 'fast' ? 0.6 : conn === 'moderate' ? 0.8 : 1.2
 
     // ── Smooth eased animation toward target ──────────────────────────────
     const animateTo = (to: number, onDone?: () => void) => {
       if (!animated) {
-        progressMv.set(to);
-        onDone?.();
-        return;
+        progressMv.set(to)
+        onDone?.()
+        return
       }
 
       animate(progressMv, to, {
         duration,
         ease: 'easeOut',
         onComplete: onDone,
-      });
-    };
+      })
+    }
 
-    const complete = () =>
-      animateTo(100, () => setTimeout(() => setVisible(false), 350));
+    const complete = () => animateTo(100, () => setTimeout(() => setVisible(false), 350))
 
     // ── Initial jump — faster for faster connections ───────────────────────
-    const initialJump = conn === 'fast' ? 28 : conn === 'moderate' ? 18 : 10;
-    animateTo(initialJump);
+    const initialJump = conn === 'fast' ? 28 : conn === 'moderate' ? 18 : 10
+    animateTo(initialJump)
 
     // ── Real-time resource tracking via bytes ─────────────────────────────
-    let expectedTotalBytes = 0;
+    let expectedTotalBytes = 0
 
     const updateFromResources = () => {
-      const transferred = getBytesTransferred();
-      const decoded = getBytesDecoded();
+      const transferred = getBytesTransferred()
+      const decoded = getBytesDecoded()
 
-      expectedTotalBytes = Math.max(expectedTotalBytes, decoded, transferred);
+      expectedTotalBytes = Math.max(expectedTotalBytes, decoded, transferred)
 
       if (expectedTotalBytes > 0 && transferred > 0) {
-        const ratio = Math.min(0.85, transferred / expectedTotalBytes);
-        const byteProgress = Math.round(
-          initialJump + ratio * (85 - initialJump)
-        );
-        if (byteProgress > progressMv.get()) animateTo(byteProgress);
+        const ratio = Math.min(0.85, transferred / expectedTotalBytes)
+        const byteProgress = Math.round(initialJump + ratio * (85 - initialJump))
+        if (byteProgress > progressMv.get()) animateTo(byteProgress)
       } else {
-        const baseline = conn === 'fast' ? 18 : conn === 'moderate' ? 12 : 8;
-        const entries = performance.getEntriesByType('resource').length;
-        const countProgress = Math.min(
-          85,
-          progressMv.get() + (entries / baseline) * 25
-        );
-        if (countProgress > progressMv.get()) animateTo(countProgress);
+        const baseline = conn === 'fast' ? 18 : conn === 'moderate' ? 12 : 8
+        const entries = performance.getEntriesByType('resource').length
+        const countProgress = Math.min(85, progressMv.get() + (entries / baseline) * 25)
+        if (countProgress > progressMv.get()) animateTo(countProgress)
       }
-    };
+    }
 
-    let po: PerformanceObserver | null = null;
+    let po: PerformanceObserver | null = null
     try {
-      po = new PerformanceObserver(() => updateFromResources());
-      po.observe({ type: 'resource', buffered: true });
+      po = new PerformanceObserver(() => updateFromResources())
+      po.observe({ type: 'resource', buffered: true })
     } catch {
       // PerformanceObserver not supported
     }
 
     // ── DOM lifecycle milestones ──────────────────────────────────────────
     const onReadyState = () => {
-      if (document.readyState === 'interactive' && progressMv.get() < 40)
-        animateTo(40);
-      if (document.readyState === 'complete') animateTo(90);
-    };
-    document.addEventListener('readystatechange', onReadyState);
-    onReadyState();
+      if (document.readyState === 'interactive' && progressMv.get() < 40) animateTo(40)
+      if (document.readyState === 'complete') animateTo(90)
+    }
+    document.addEventListener('readystatechange', onReadyState)
+    onReadyState()
 
     // ── Web fonts resolved (blocks first paint) ───────────────────────────
     document.fonts?.ready.then(() => {
-      if (progressMv.get() < 85) animateTo(85);
-    });
+      if (progressMv.get() < 85) animateTo(85)
+    })
 
     // ── window.onload (all sub-resources including images) ────────────────
     if (document.readyState === 'complete') {
-      complete();
+      complete()
     } else {
-      window.addEventListener('load', complete, { once: true });
+      window.addEventListener('load', complete, { once: true })
     }
 
     // ── Adaptive safety net ───────────────────────────────────────────────
-    const safety = setTimeout(complete, safetyMs);
+    const safety = setTimeout(complete, safetyMs)
 
     return () => {
-      document.removeEventListener('readystatechange', onReadyState);
-      clearTimeout(safety);
-      po?.disconnect();
-    };
+      document.removeEventListener('readystatechange', onReadyState)
+      clearTimeout(safety)
+      po?.disconnect()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
-  const connTier = getConnectionTier();
+  const connTier = getConnectionTier()
 
   return (
     <AnimatePresence>
@@ -282,5 +275,5 @@ export default function Loading() {
         </motion.div>
       )}
     </AnimatePresence>
-  );
+  )
 }

@@ -60,8 +60,8 @@ describe('Generate button disabled states', () => {
           const garmentFile = garmentFileName ? new File([''], garmentFileName) : null
           useStudioStore.setState({ fashionPose: '', garmentFile, selectedPresetId })
           expect(useStudioStore.getState().canProceed(3)).toBe(false)
-        },
-      ),
+        }
+      )
     )
   })
 })

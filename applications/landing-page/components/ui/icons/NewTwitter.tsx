@@ -23,6 +23,6 @@ const NewTwitterIcon = (props: React.SVGProps<SVGSVGElement>) => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
-export default NewTwitterIcon;
+export default NewTwitterIcon

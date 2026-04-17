@@ -298,15 +298,15 @@ The `2027` is typeset at `20rem`, blurred (`blur(80px)`), colored `aq-blue/8` â€
 **Magnetic button implementation:**
 
 ```tsx
-const ref = useRef<HTMLButtonElement>(null);
-const [position, setPosition] = useState({ x: 0, y: 0 });
+const ref = useRef<HTMLButtonElement>(null)
+const [position, setPosition] = useState({ x: 0, y: 0 })
 
 const handleMouseMove = (e) => {
-  const rect = ref.current.getBoundingClientRect();
-  const x = e.clientX - rect.left - rect.width / 2;
-  const y = e.clientY - rect.top - rect.height / 2;
-  setPosition({ x: x * 0.3, y: y * 0.3 });
-};
+  const rect = ref.current.getBoundingClientRect()
+  const x = e.clientX - rect.left - rect.width / 2
+  const y = e.clientY - rect.top - rect.height / 2
+  setPosition({ x: x * 0.3, y: y * 0.3 })
+}
 
 // motion.button animate={{ x: position.x, y: position.y }}
 ```
@@ -368,7 +368,7 @@ export const clipReveal = (reduced: boolean, delay = 0) => ({
   whileInView: { clipPath: 'inset(0 0% 0 0)' },
   transition: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] },
   viewport: { once: true, margin: '-60px' },
-});
+})
 
 // 3D card flip (perspective reveal)
 export const flipReveal = (reduced: boolean, index = 0) => ({
@@ -377,14 +377,14 @@ export const flipReveal = (reduced: boolean, index = 0) => ({
   transition: { duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] },
   viewport: { once: true, margin: '-60px' },
   style: { perspective: 1000 },
-});
+})
 
 // Character stagger (for letter-by-letter reveals)
 export const charReveal = (reduced: boolean, index = 0) => ({
   initial: reduced ? {} : { rotateX: 90, opacity: 0 },
   animate: { rotateX: 0, opacity: 1 },
   transition: { duration: 0.5, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] },
-});
+})
 
 // Scroll-linked word highlight (returns a MotionValue transform)
 // Used in Philosophy section â€” see implementation below
@@ -601,12 +601,11 @@ All new sections/components use `dynamic()` with `ssr: true` unless client-only 
 ```tsx
 const Preloader = dynamic(() => import('@/components/sections/Preloader'), {
   ssr: false,
-});
-const SocialProofCounter = dynamic(
-  () => import('@/components/sections/SocialProofCounter'),
-  { ssr: true }
-);
-const Cursor = dynamic(() => import('@/components/ui/Cursor'), { ssr: false });
+})
+const SocialProofCounter = dynamic(() => import('@/components/sections/SocialProofCounter'), {
+  ssr: true,
+})
+const Cursor = dynamic(() => import('@/components/ui/Cursor'), { ssr: false })
 ```
 
 ---

@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils'
 
 type SectionProps = React.HTMLAttributes<HTMLElement> & {
-  id?: string;
-};
+  id?: string
+}
 
 /** Full-viewport section with standard horizontal padding and vertical centering. */
 export const Section = React.forwardRef<HTMLElement, SectionProps>(
@@ -21,10 +21,10 @@ export const Section = React.forwardRef<HTMLElement, SectionProps>(
       >
         {children}
       </section>
-    );
+    )
   }
-);
-Section.displayName = 'Section';
+)
+Section.displayName = 'Section'
 
 /** Centered max-width content container used inside Section. */
 export function SectionContainer({
@@ -36,5 +36,5 @@ export function SectionContainer({
     <div className={cn('mx-auto w-full max-w-[1200px]', className)} {...props}>
       {children}
     </div>
-  );
+  )
 }

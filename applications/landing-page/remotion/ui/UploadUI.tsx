@@ -1,21 +1,15 @@
-import { interpolate } from 'remotion';
+import { interpolate } from 'remotion'
 
-import { COLORS, FONTS, GRADIENT } from '../lib/brand';
+import { COLORS, FONTS, GRADIENT } from '../lib/brand'
 
-export function UploadUI({
-  progress = 0,
-  scale = 1,
-}: {
-  progress?: number;
-  scale?: number;
-}) {
+export function UploadUI({ progress = 0, scale = 1 }: { progress?: number; scale?: number }) {
   // progress 0 = empty dropzone, 0.5 = uploading, 1 = complete
-  const showFile = progress > 0.2;
+  const showFile = progress > 0.2
   const uploadProgress = interpolate(progress, [0.3, 0.9], [0, 100], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
-  });
-  const isDone = progress > 0.9;
+  })
+  const isDone = progress > 0.9
 
   return (
     <div
@@ -143,9 +137,7 @@ export function UploadUI({
               </svg>
             </div>
             <div style={{ flex: 1 }}>
-              <div
-                style={{ fontSize: 14, fontWeight: 500, color: COLORS.text }}
-              >
+              <div style={{ fontSize: 14, fontWeight: 500, color: COLORS.text }}>
                 robe-kaftane-marrakech.jpg
               </div>
               <div style={{ fontSize: 12, color: COLORS.muted, marginTop: 2 }}>
@@ -202,13 +194,7 @@ export function UploadUI({
               }}
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <circle
-                  cx="8"
-                  cy="8"
-                  r="7"
-                  stroke="#10B981"
-                  strokeWidth="1.5"
-                />
+                <circle cx="8" cy="8" r="7" stroke="#10B981" strokeWidth="1.5" />
                 <path
                   d="M5 8l2 2 4-4"
                   stroke="#10B981"
@@ -241,5 +227,5 @@ export function UploadUI({
         </div>
       )}
     </div>
-  );
+  )
 }

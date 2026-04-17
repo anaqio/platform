@@ -1,32 +1,33 @@
-'use client';
+'use client'
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { Briefcase, LayoutGrid, Palette, Store } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion'
+import { Briefcase, LayoutGrid, Palette, Store } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { useState } from 'react'
 
-import { useAnimationReady } from '@/hooks/use-animation-ready';
-import { useInterval } from '@/hooks/use-interval';
-import { slideInLeft, ease } from '@/lib/data/motion';
+import { useAnimationReady } from '@/hooks/use-animation-ready'
+import { useInterval } from '@/hooks/use-interval'
+import { slideInLeft, ease } from '@/lib/data/motion'
 
 export function WhoItsForSection() {
-  const t = useTranslations('landing.whoItsFor');
-  const AUDIENCE_ICONS = [Store, Palette, Briefcase, LayoutGrid];
-  const audiences = (
-    t.raw('audiences') as Array<{ title: string; body: string }>
-  ).map((a, i) => ({ ...a, icon: AUDIENCE_ICONS[i] }));
-  const features = t.raw('features') as string[];
+  const t = useTranslations('landing.whoItsFor')
+  const AUDIENCE_ICONS = [Store, Palette, Briefcase, LayoutGrid]
+  const audiences = (t.raw('audiences') as Array<{ title: string; body: string }>).map((a, i) => ({
+    ...a,
+    icon: AUDIENCE_ICONS[i],
+  }))
+  const features = t.raw('features') as string[]
 
-  const [active, setActive] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const { reduced, animated } = useAnimationReady();
+  const [active, setActive] = useState(0)
+  const [isHovered, setIsHovered] = useState(false)
+  const { reduced, animated } = useAnimationReady()
 
   useInterval(() => {
-    if (!isHovered) setActive((a) => (a + 1) % audiences.length);
-  }, 4000);
+    if (!isHovered) setActive((a) => (a + 1) % audiences.length)
+  }, 4000)
 
-  const audience = audiences[active];
-  const CurrentIcon = audience.icon;
+  const audience = audiences[active]
+  const CurrentIcon = audience.icon
 
   return (
     <section
@@ -58,9 +59,7 @@ export function WhoItsForSection() {
           className="mb-16 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-light leading-tight"
         >
           {t('headline.pre')}{' '}
-          <em className="text-brand-gradient not-italic">
-            {t('headline.gradient')}
-          </em>
+          <em className="text-brand-gradient not-italic">{t('headline.gradient')}</em>
         </p>
 
         {/* Tab Nav */}
@@ -99,13 +98,9 @@ export function WhoItsForSection() {
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
-              initial={
-                animated ? { opacity: 0, x: 20, filter: 'blur(10px)' } : false
-              }
+              initial={animated ? { opacity: 0, x: 20, filter: 'blur(10px)' } : false}
               animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-              exit={
-                animated ? { opacity: 0, x: -20, filter: 'blur(10px)' } : {}
-              }
+              exit={animated ? { opacity: 0, x: -20, filter: 'blur(10px)' } : {}}
               transition={{ duration: 0.4, ease }}
               className="relative rounded-[2.5rem] border border-border/10 bg-white/[0.02] p-8 backdrop-blur-md sm:p-16 md:w-[85%] lg:w-[75%]"
             >
@@ -114,9 +109,7 @@ export function WhoItsForSection() {
                 aria-hidden="true"
                 data-atom
                 data-decorative
-                initial={
-                  animated ? { scale: 0.8, opacity: 0, rotate: -15 } : false
-                }
+                initial={animated ? { scale: 0.8, opacity: 0, rotate: -15 } : false}
                 animate={{ scale: 1, opacity: 1, rotate: 0 }}
                 transition={{ duration: 0.8, ease, delay: 0.1 }}
                 className="absolute right-[-5%] top-[-10%] z-0 hidden text-aq-blue/[0.03] md:block lg:right-[-10%]"
@@ -148,10 +141,7 @@ export function WhoItsForSection() {
                       {...(animated ? slideInLeft(reduced, i) : {})}
                       className="flex items-center gap-3"
                     >
-                      <div
-                        className="h-1.5 w-1.5 rounded-full bg-aq-blue"
-                        aria-hidden="true"
-                      />
+                      <div className="h-1.5 w-1.5 rounded-full bg-aq-blue" aria-hidden="true" />
                       <span className="font-label text-xs uppercase tracking-label text-foreground/70">
                         {f}
                       </span>
@@ -164,5 +154,5 @@ export function WhoItsForSection() {
         </div>
       </motion.div>
     </section>
-  );
+  )
 }

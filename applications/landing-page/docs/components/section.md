@@ -30,14 +30,14 @@ flex min-h-screen w-full flex-col justify-center px-4 py-24 sm:px-8 lg:px-12
 ### Usage
 
 ```tsx
-import { Section, SectionContainer } from '@/components/ui/section';
+import { Section, SectionContainer } from '@/components/ui/section'
 
 export function BenefitsSection() {
   return (
     <Section id="benefits">
       <SectionContainer>{/* content */}</SectionContainer>
     </Section>
-  );
+  )
 }
 ```
 

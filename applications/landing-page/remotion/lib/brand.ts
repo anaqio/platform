@@ -12,12 +12,12 @@ export const COLORS = {
   mutedLight: '#CBD5E1',
   success: '#10B981',
   white: '#FFFFFF',
-} as const;
+} as const
 
-export const GRADIENT = `linear-gradient(135deg, ${COLORS.blue}, ${COLORS.purple})`;
-export const GRADIENT_SUBTLE = `linear-gradient(135deg, ${COLORS.blue}22, ${COLORS.purple}22)`;
+export const GRADIENT = `linear-gradient(135deg, ${COLORS.blue}, ${COLORS.purple})`
+export const GRADIENT_SUBTLE = `linear-gradient(135deg, ${COLORS.blue}22, ${COLORS.purple}22)`
 
 export const FONTS = {
   display: '"Cormorant Garamond", Georgia, serif',
   body: '"DM Sans", system-ui, sans-serif',
-} as const;
+} as const

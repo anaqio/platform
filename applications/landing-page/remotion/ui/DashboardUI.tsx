@@ -1,10 +1,10 @@
-import { COLORS, FONTS, GRADIENT } from '../lib/brand';
+import { COLORS, FONTS, GRADIENT } from '../lib/brand'
 
 const projects = [
   { name: 'Batoul Collection', count: 24, color: COLORS.blue },
   { name: 'Riad SS26', count: 18, color: COLORS.purple },
   { name: 'Medina Nights', count: 31, color: COLORS.blueLight },
-];
+]
 
 export function DashboardUI({ scale = 1 }: { scale?: number }) {
   return (
@@ -71,10 +71,7 @@ export function DashboardUI({ scale = 1 }: { scale?: number }) {
               fontSize: 13,
               color: i === 0 ? COLORS.text : COLORS.muted,
               background: i === 0 ? `${COLORS.blue}20` : 'transparent',
-              border:
-                i === 0
-                  ? `1px solid ${COLORS.blue}40`
-                  : '1px solid transparent',
+              border: i === 0 ? `1px solid ${COLORS.blue}40` : '1px solid transparent',
               cursor: 'pointer',
             }}
           >
@@ -91,9 +88,7 @@ export function DashboardUI({ scale = 1 }: { scale?: number }) {
             border: `1px solid ${COLORS.border}`,
           }}
         >
-          <div style={{ fontSize: 10, color: COLORS.muted, marginBottom: 6 }}>
-            Credits Used
-          </div>
+          <div style={{ fontSize: 10, color: COLORS.muted, marginBottom: 6 }}>Credits Used</div>
           <div
             style={{
               height: 4,
@@ -102,13 +97,9 @@ export function DashboardUI({ scale = 1 }: { scale?: number }) {
               overflow: 'hidden',
             }}
           >
-            <div
-              style={{ width: '62%', height: '100%', background: GRADIENT }}
-            />
+            <div style={{ width: '62%', height: '100%', background: GRADIENT }} />
           </div>
-          <div style={{ fontSize: 10, color: COLORS.muted, marginTop: 4 }}>
-            62 / 100
-          </div>
+          <div style={{ fontSize: 10, color: COLORS.muted, marginTop: 4 }}>62 / 100</div>
         </div>
       </div>
       {/* Main content */}
@@ -122,9 +113,7 @@ export function DashboardUI({ scale = 1 }: { scale?: number }) {
           }}
         >
           <div>
-            <div style={{ fontSize: 22, fontWeight: 600, color: COLORS.text }}>
-              Dashboard
-            </div>
+            <div style={{ fontSize: 22, fontWeight: 600, color: COLORS.text }}>Dashboard</div>
             <div style={{ fontSize: 12, color: COLORS.muted, marginTop: 2 }}>
               Welcome back, Nour
             </div>
@@ -159,14 +148,8 @@ export function DashboardUI({ scale = 1 }: { scale?: number }) {
                 padding: '14px 16px',
               }}
             >
-              <div
-                style={{ fontSize: 24, fontWeight: 700, color: COLORS.text }}
-              >
-                {value}
-              </div>
-              <div style={{ fontSize: 11, color: COLORS.muted, marginTop: 2 }}>
-                {label}
-              </div>
+              <div style={{ fontSize: 24, fontWeight: 700, color: COLORS.text }}>{value}</div>
+              <div style={{ fontSize: 11, color: COLORS.muted, marginTop: 2 }}>{label}</div>
             </div>
           ))}
         </div>
@@ -214,14 +197,8 @@ export function DashboardUI({ scale = 1 }: { scale?: number }) {
                 </svg>
               </div>
               <div style={{ padding: '10px 12px' }}>
-                <div
-                  style={{ fontSize: 12, fontWeight: 600, color: COLORS.text }}
-                >
-                  {p.name}
-                </div>
-                <div
-                  style={{ fontSize: 10, color: COLORS.muted, marginTop: 2 }}
-                >
+                <div style={{ fontSize: 12, fontWeight: 600, color: COLORS.text }}>{p.name}</div>
+                <div style={{ fontSize: 10, color: COLORS.muted, marginTop: 2 }}>
                   {p.count} outputs
                 </div>
               </div>
@@ -230,5 +207,5 @@ export function DashboardUI({ scale = 1 }: { scale?: number }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

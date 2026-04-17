@@ -1,46 +1,44 @@
-'use client';
+'use client'
 
-import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useTranslations } from 'next-intl'
+import { useState } from 'react'
 
-import { AuthCard } from '@/components/ui/auth-card';
-import { AuthField } from '@/components/ui/auth-field';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Link, useRouter } from '@/i18n/routing';
-import { ERROR_MESSAGES } from '@/lib/constants/errors';
-import { createClient } from '@/lib/supabase/client';
+import { AuthCard } from '@/components/ui/auth-card'
+import { AuthField } from '@/components/ui/auth-field'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Link, useRouter } from '@/i18n/routing'
+import { ERROR_MESSAGES } from '@/lib/constants/errors'
+import { createClient } from '@/lib/supabase/client'
 
-export function LoginForm({
-  className,
-}: React.ComponentPropsWithoutRef<'div'>) {
-  const t = useTranslations('auth.login');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
+export function LoginForm({ className }: React.ComponentPropsWithoutRef<'div'>) {
+  const t = useTranslations('auth.login')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const supabase = createClient();
-    setIsLoading(true);
-    setError(null);
+    e.preventDefault()
+    const supabase = createClient()
+    setIsLoading(true)
+    setError(null)
 
     try {
       const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
-      });
-      if (error) throw error;
-      router.push('/protected');
+      })
+      if (error) throw error
+      router.push('/protected')
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : ERROR_MESSAGES.AUTH);
+      setError(error instanceof Error ? error.message : ERROR_MESSAGES.AUTH)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   return (
     <AuthCard title={t('title')} description={t('desc')} className={className}>
@@ -79,15 +77,8 @@ export function LoginForm({
               className="border-white/10 bg-background/50"
             />
           </div>
-          {error && (
-            <p className="text-xs font-medium text-destructive">{error}</p>
-          )}
-          <Button
-            type="submit"
-            variant="brand"
-            className="h-11 w-full"
-            disabled={isLoading}
-          >
+          {error && <p className="text-xs font-medium text-destructive">{error}</p>}
+          <Button type="submit" variant="brand" className="h-11 w-full" disabled={isLoading}>
             {isLoading ? t('submitPending') : t('submit')}
           </Button>
         </div>
@@ -102,5 +93,5 @@ export function LoginForm({
         </div>
       </form>
     </AuthCard>
-  );
+  )
 }

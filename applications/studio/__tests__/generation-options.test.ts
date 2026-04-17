@@ -10,7 +10,7 @@ describe('buildPrompt pose behaviour', () => {
       fc.property(fc.string({ minLength: 1 }), (fashionPose) => {
         const result = buildPrompt({ ...DEFAULT_OPTIONS, fashionPose })
         expect(result).toContain(fashionPose)
-      }),
+      })
     )
   })
 
@@ -20,7 +20,7 @@ describe('buildPrompt pose behaviour', () => {
       fc.property(fc.constant(''), (_fashionPose) => {
         const result = buildPrompt({ ...DEFAULT_OPTIONS, fashionPose: '' })
         expect(result).not.toContain('following pose')
-      }),
+      })
     )
   })
 
@@ -40,7 +40,7 @@ describe('buildPrompt pose behaviour', () => {
 
         expect(poseIndex).toBeGreaterThan(fitIndex)
         expect(fitIndex).toBeLessThan(sceneIndex)
-      }),
+      })
     )
   })
 })

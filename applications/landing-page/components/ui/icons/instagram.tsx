@@ -27,6 +27,6 @@ const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
-export default InstagramIcon;
+export default InstagramIcon

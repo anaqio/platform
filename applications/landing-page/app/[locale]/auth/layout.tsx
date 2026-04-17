@@ -1,16 +1,16 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server'
 
-import { Link } from '@/i18n/routing';
+import { Link } from '@/i18n/routing'
 
 export default async function AuthLayout({
   children,
   params,
 }: {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  children: React.ReactNode
+  params: Promise<{ locale: string }>
 }) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'footer' });
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'footer' })
 
   return (
     <div className="noise-overlay relative flex min-h-screen flex-col bg-background">
@@ -33,5 +33,5 @@ export default async function AuthLayout({
         </p>
       </footer>
     </div>
-  );
+  )
 }

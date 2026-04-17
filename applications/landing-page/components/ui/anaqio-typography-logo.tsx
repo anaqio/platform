@@ -1,14 +1,9 @@
-'use client';
+'use client'
 
-import {
-  motion,
-  useMotionValue,
-  useTransform,
-  type MotionValue,
-} from 'framer-motion';
-import * as React from 'react';
+import { motion, useMotionValue, useTransform, type MotionValue } from 'framer-motion'
+import * as React from 'react'
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils'
 
 export type LogoAnimationVariant =
   | 'none'
@@ -19,23 +14,23 @@ export type LogoAnimationVariant =
   | 'spring-hover'
   | 'cinematic-reveal'
   | 'breathing'
-  | 'lock-in';
+  | 'lock-in'
 
 export interface AnaqioTypographyLogoProps extends React.SVGProps<SVGSVGElement> {
-  variant?: LogoAnimationVariant;
+  variant?: LogoAnimationVariant
   /**
    * Loading progress (0–100). Only used when `variant="outline-fill"`.
    * Phase 1 (0–40%): stroke draws on via pathLength.
    * Phase 2 (40–100%): fill fades in, stroke fades out.
    */
-  progress?: number | MotionValue<number>;
+  progress?: number | MotionValue<number>
   /**
    * Stable instance ID for SVG gradient namespacing.
    * Pass a static string when the component is rendered after dynamic imports
    * to avoid React hydration mismatches caused by useId() counter drift.
    */
-  instanceId?: string;
-  animated?: boolean;
+  instanceId?: string
+  animated?: boolean
 }
 
 const letterPaths = [
@@ -70,7 +65,7 @@ const letterPaths = [
     label: 'O',
     d: 'M667 288c12-33 59-42 83-17 26 26 16 76-22 86l-14 2c-35 0-60-35-47-71m44-19c-43 3-43 72-2 77 27 3 41-18 41-38s-12-39-36-39z',
   },
-];
+]
 
 const gradientConfigs: { id: string; transform: string }[] = [
   { id: 'a', transform: 'matrix(114 0 0 -114 461 298)' },
@@ -79,7 +74,7 @@ const gradientConfigs: { id: string; transform: string }[] = [
   { id: 'd', transform: 'matrix(96 0 0 -96 335 308)' },
   { id: 'e', transform: 'matrix(97 0 0 -97 77 308)' },
   { id: 'f', transform: 'matrix(13 0 0 -13 606 308)' },
-];
+]
 
 const gradientStops = [
   { offset: '0', color: '#3f57af' },
@@ -88,7 +83,7 @@ const gradientStops = [
   { offset: '.4', color: '#484da9' },
   { offset: '.7', color: '#6049a8' },
   { offset: '1', color: '#6f47a7' },
-];
+]
 
 function LogoGradientDefs({ instanceId }: { instanceId: string }) {
   return (
@@ -111,7 +106,7 @@ function LogoGradientDefs({ instanceId }: { instanceId: string }) {
         </linearGradient>
       ))}
     </>
-  );
+  )
 }
 
 function StaticLetters({ instanceId }: { instanceId: string }) {
@@ -126,7 +121,7 @@ function StaticLetters({ instanceId }: { instanceId: string }) {
         />
       ))}
     </>
-  );
+  )
 }
 
 // ─── Variant: Stagger Fade-Up ───────────────────────────────────────────────
@@ -152,7 +147,7 @@ function StaggerLetters({ instanceId }: { instanceId: string }) {
         </motion.g>
       ))}
     </>
-  );
+  )
 }
 
 function OutlineFillLetter({
@@ -161,20 +156,16 @@ function OutlineFillLetter({
   instanceId,
   progressMv,
 }: {
-  letter: (typeof letterPaths)[number];
-  index: number;
-  instanceId: string;
-  progressMv: ReturnType<typeof useMotionValue<number>>;
+  letter: (typeof letterPaths)[number]
+  index: number
+  instanceId: string
+  progressMv: ReturnType<typeof useMotionValue<number>>
 }) {
-  const staggerStart = index * 0.04; // 0, 0.04, 0.08 … max ~0.24
-  const strokeEnd = 0.4;
-  const pathLength = useTransform(
-    progressMv,
-    [staggerStart * 100, strokeEnd * 100],
-    [0, 1]
-  );
-  const strokeOpacity = useTransform(progressMv, [40, 70], [1, 0]);
-  const fillOpacity = useTransform(progressMv, [40, 80], [0, 1]);
+  const staggerStart = index * 0.04 // 0, 0.04, 0.08 … max ~0.24
+  const strokeEnd = 0.4
+  const pathLength = useTransform(progressMv, [staggerStart * 100, strokeEnd * 100], [0, 1])
+  const strokeOpacity = useTransform(progressMv, [40, 70], [1, 0])
+  const fillOpacity = useTransform(progressMv, [40, 80], [0, 1])
 
   return (
     <g>
@@ -193,33 +184,32 @@ function OutlineFillLetter({
         style={{ opacity: fillOpacity }}
       />
     </g>
-  );
+  )
 }
 
 function OutlineFillLetters({
   instanceId,
   progress,
 }: {
-  instanceId: string;
-  progress?: number | MotionValue<number>;
+  instanceId: string
+  progress?: number | MotionValue<number>
 }) {
   const initialValue = React.useMemo(() => {
-    if (typeof progress === 'number') return progress;
-    if (progress && 'get' in progress) return progress.get();
-    return 0;
-  }, [progress]);
+    if (typeof progress === 'number') return progress
+    if (progress && 'get' in progress) return progress.get()
+    return 0
+  }, [progress])
 
-  const internalProgressMv = useMotionValue(initialValue);
+  const internalProgressMv = useMotionValue(initialValue)
 
   // Sync the MotionValue when the progress prop changes (if it's a number)
   React.useEffect(() => {
     if (typeof progress === 'number') {
-      internalProgressMv.set(progress);
+      internalProgressMv.set(progress)
     }
-  }, [progress, internalProgressMv]);
+  }, [progress, internalProgressMv])
 
-  const progressMv =
-    progress && typeof progress !== 'number' ? progress : internalProgressMv;
+  const progressMv = progress && typeof progress !== 'number' ? progress : internalProgressMv
 
   return (
     <>
@@ -233,7 +223,7 @@ function OutlineFillLetters({
         />
       ))}
     </>
-  );
+  )
 }
 
 function OutlineLetters({ instanceId: _instanceId }: { instanceId: string }) {
@@ -261,7 +251,7 @@ function OutlineLetters({ instanceId: _instanceId }: { instanceId: string }) {
         />
       ))}
     </>
-  );
+  )
 }
 
 function SpinLetters({ instanceId }: { instanceId: string }) {
@@ -274,7 +264,7 @@ function SpinLetters({ instanceId }: { instanceId: string }) {
     >
       <StaticLetters instanceId={instanceId} />
     </motion.g>
-  );
+  )
 }
 
 function SpringHoverLetters({ instanceId }: { instanceId: string }) {
@@ -303,7 +293,7 @@ function SpringHoverLetters({ instanceId }: { instanceId: string }) {
         </motion.g>
       ))}
     </motion.g>
-  );
+  )
 }
 
 function CinematicRevealLetters({ instanceId }: { instanceId: string }) {
@@ -328,7 +318,7 @@ function CinematicRevealLetters({ instanceId }: { instanceId: string }) {
         </motion.g>
       ))}
     </>
-  );
+  )
 }
 
 function BreathingLetters({ instanceId }: { instanceId: string }) {
@@ -340,7 +330,7 @@ function BreathingLetters({ instanceId }: { instanceId: string }) {
     >
       <StaticLetters instanceId={instanceId} />
     </motion.g>
-  );
+  )
 }
 
 function LockInLetters({ instanceId }: { instanceId: string }) {
@@ -367,7 +357,7 @@ function LockInLetters({ instanceId }: { instanceId: string }) {
         </motion.g>
       ))}
     </>
-  );
+  )
 }
 
 export function AnaqioTypographyLogo({
@@ -379,39 +369,36 @@ export function AnaqioTypographyLogo({
   ...props
 }: AnaqioTypographyLogoProps) {
   // Backwards compat: `animated` maps to 'stagger'
-  const resolvedVariant: LogoAnimationVariant =
-    variant ?? (animated ? 'stagger' : 'none');
+  const resolvedVariant: LogoAnimationVariant = variant ?? (animated ? 'stagger' : 'none')
 
   // Unique instance id so multiple logos on a page don't clash gradient ids.
   // useId() can drift when dynamic (ssr:false) imports add extra hook calls
   // client-side — pass instanceId prop for stable usages (e.g. Footer watermark).
-  const generatedId = React.useId().replace(/:/g, '');
-  const instanceId = instanceIdProp ?? generatedId;
+  const generatedId = React.useId().replace(/:/g, '')
+  const instanceId = instanceIdProp ?? generatedId
 
   const renderLetters = () => {
     switch (resolvedVariant) {
       case 'stagger':
-        return <StaggerLetters instanceId={instanceId} />;
+        return <StaggerLetters instanceId={instanceId} />
       case 'outline':
-        return <OutlineLetters instanceId={instanceId} />;
+        return <OutlineLetters instanceId={instanceId} />
       case 'outline-fill':
-        return (
-          <OutlineFillLetters instanceId={instanceId} progress={progress} />
-        );
+        return <OutlineFillLetters instanceId={instanceId} progress={progress} />
       case 'spin':
-        return <SpinLetters instanceId={instanceId} />;
+        return <SpinLetters instanceId={instanceId} />
       case 'spring-hover':
-        return <SpringHoverLetters instanceId={instanceId} />;
+        return <SpringHoverLetters instanceId={instanceId} />
       case 'cinematic-reveal':
-        return <CinematicRevealLetters instanceId={instanceId} />;
+        return <CinematicRevealLetters instanceId={instanceId} />
       case 'breathing':
-        return <BreathingLetters instanceId={instanceId} />;
+        return <BreathingLetters instanceId={instanceId} />
       case 'lock-in':
-        return <LockInLetters instanceId={instanceId} />;
+        return <LockInLetters instanceId={instanceId} />
       default:
-        return <StaticLetters instanceId={instanceId} />;
+        return <StaticLetters instanceId={instanceId} />
     }
-  };
+  }
 
   return (
     <svg
@@ -427,5 +414,5 @@ export function AnaqioTypographyLogo({
       </defs>
       {renderLetters()}
     </svg>
-  );
+  )
 }

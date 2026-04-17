@@ -1,20 +1,20 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import { useRef } from 'react';
+import { motion } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { useRef } from 'react'
 
-import { HeroCTAs } from './atoms/HeroCTAs';
-import { HeroText } from './atoms/HeroText';
-import { HeroVideoPlayer } from './atoms/HeroVideoPlayer';
+import { HeroCTAs } from './atoms/HeroCTAs'
+import { HeroText } from './atoms/HeroText'
+import { HeroVideoPlayer } from './atoms/HeroVideoPlayer'
 
-import { useAnimationReady } from '@/hooks/use-animation-ready';
+import { useAnimationReady } from '@/hooks/use-animation-ready'
 
 export function VideoHeroSection() {
-  const t = useTranslations('landing.hero');
-  const sectionRef = useRef<HTMLElement>(null);
-  const { reduced, tier, animated } = useAnimationReady();
+  const t = useTranslations('landing.hero')
+  const sectionRef = useRef<HTMLElement>(null)
+  const { reduced, tier, animated } = useAnimationReady()
 
   return (
     <section
@@ -59,5 +59,5 @@ export function VideoHeroSection() {
         <ChevronDown className="h-5 w-5" />
       </motion.div>
     </section>
-  );
+  )
 }

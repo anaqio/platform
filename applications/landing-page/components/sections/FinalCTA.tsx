@@ -1,28 +1,28 @@
-'use client';
+'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useTranslations } from 'next-intl'
+import { useRef } from 'react'
 
-import { Button } from '@/components/ui/button';
-import { MagneticButton } from '@/components/ui/MagneticButton';
-import { useAnimationReady } from '@/hooks/use-animation-ready';
-import { Link } from '@/i18n/routing';
-import { ease } from '@/lib/data/motion';
+import { Button } from '@/components/ui/button'
+import { MagneticButton } from '@/components/ui/MagneticButton'
+import { useAnimationReady } from '@/hooks/use-animation-ready'
+import { Link } from '@/i18n/routing'
+import { ease } from '@/lib/data/motion'
 
 export function FinalCTA() {
-  const t = useTranslations('landing.finalCta');
-  const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('landing.finalCta')
+  const sectionRef = useRef<HTMLElement>(null)
 
-  const { tier, animated } = useAnimationReady();
+  const { tier, animated } = useAnimationReady()
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start'],
-  });
+  })
 
-  const headlineY = useTransform(scrollYProgress, [0, 0.4], ['60px', '0px']);
-  const headlineOp = useTransform(scrollYProgress, [0, 0.35], [0, 1]);
+  const headlineY = useTransform(scrollYProgress, [0, 0.4], ['60px', '0px'])
+  const headlineOp = useTransform(scrollYProgress, [0, 0.35], [0, 1])
 
   return (
     <section
@@ -61,10 +61,7 @@ export function FinalCTA() {
         style={animated ? { y: headlineY, opacity: headlineOp } : {}}
         className="absolute text-center font-display font-light leading-[0.95]"
       >
-        <span
-          className="text-brand-gradient"
-          style={{ fontSize: 'clamp(2.5rem,6vw,6.5rem)' }}
-        >
+        <span className="text-brand-gradient" style={{ fontSize: 'clamp(2.5rem,6vw,6.5rem)' }}>
           {t('headline.gradient')}
         </span>
       </motion.div>
@@ -103,5 +100,5 @@ export function FinalCTA() {
           */}
       </motion.div>
     </section>
-  );
+  )
 }

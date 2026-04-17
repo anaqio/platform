@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import { Instagram, Linkedin } from 'lucide-react';
+import { Instagram, Linkedin } from 'lucide-react'
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils'
 
 // ─── TikTok Icon (not available in lucide-react) ───────────────────────────
 function TikTokIcon({ className }: { className?: string }) {
@@ -20,7 +20,7 @@ function TikTokIcon({ className }: { className?: string }) {
     >
       <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
     </svg>
-  );
+  )
 }
 
 // ─── Social Links Data ─────────────────────────────────────────────────────
@@ -40,19 +40,16 @@ const SOCIAL_LINKS = [
     href: 'https://www.linkedin.com/company/anaqio',
     icon: Linkedin,
   },
-] as const;
+] as const
 
 // ─── Component ──────────────────────────────────────────────────────────────
 interface SocialLinksProps {
-  className?: string;
+  className?: string
 }
 
 export function SocialLinks({ className }: SocialLinksProps) {
   return (
-    <nav
-      aria-label="Social media links"
-      className={cn('flex gap-5', className)}
-    >
+    <nav aria-label="Social media links" className={cn('flex gap-5', className)}>
       {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
         <a
           key={label}
@@ -66,5 +63,5 @@ export function SocialLinks({ className }: SocialLinksProps) {
         </a>
       ))}
     </nav>
-  );
+  )
 }

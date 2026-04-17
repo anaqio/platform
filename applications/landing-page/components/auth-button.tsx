@@ -1,19 +1,19 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server'
 
-import { LogoutButton } from './logout-button';
-import { Button } from './ui/button';
+import { LogoutButton } from './logout-button'
+import { Button } from './ui/button'
 
-import { Link } from '@/i18n/routing';
-import { createClient } from '@/lib/supabase/server';
+import { Link } from '@/i18n/routing'
+import { createClient } from '@/lib/supabase/server'
 
 export async function AuthButton() {
-  const supabase = await createClient();
-  const t = await getTranslations('auth.button');
+  const supabase = await createClient()
+  const t = await getTranslations('auth.button')
 
   // You can also use getUser() which will be slower.
-  const { data } = await supabase.auth.getClaims();
+  const { data } = await supabase.auth.getClaims()
 
-  const user = data?.claims;
+  const user = data?.claims
 
   return user ? (
     <div className="flex items-center gap-4">
@@ -29,5 +29,5 @@ export async function AuthButton() {
         <Link href="/auth/sign-up">{t('signUp')}</Link>
       </Button>
     </div>
-  );
+  )
 }

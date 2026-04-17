@@ -1,37 +1,35 @@
-'use client';
+'use client'
 
-import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useTranslations } from 'next-intl'
+import { useState } from 'react'
 
-import { AuthCard } from '@/components/ui/auth-card';
-import { AuthField } from '@/components/ui/auth-field';
-import { Button } from '@/components/ui/button';
-import { Link, useRouter } from '@/i18n/routing';
-import { ERROR_MESSAGES } from '@/lib/constants/errors';
-import { createClient } from '@/lib/supabase/client';
+import { AuthCard } from '@/components/ui/auth-card'
+import { AuthField } from '@/components/ui/auth-field'
+import { Button } from '@/components/ui/button'
+import { Link, useRouter } from '@/i18n/routing'
+import { ERROR_MESSAGES } from '@/lib/constants/errors'
+import { createClient } from '@/lib/supabase/client'
 
-export function SignUpForm({
-  className,
-}: React.ComponentPropsWithoutRef<'div'>) {
-  const t = useTranslations('auth.signup');
-  const tLogin = useTranslations('auth.login');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
+export function SignUpForm({ className }: React.ComponentPropsWithoutRef<'div'>) {
+  const t = useTranslations('auth.signup')
+  const tLogin = useTranslations('auth.login')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [repeatPassword, setRepeatPassword] = useState('')
+  const [error, setError] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   const handleSignUp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const supabase = createClient();
-    setIsLoading(true);
-    setError(null);
+    e.preventDefault()
+    const supabase = createClient()
+    setIsLoading(true)
+    setError(null)
 
     if (password !== repeatPassword) {
-      setError('Passwords do not match');
-      setIsLoading(false);
-      return;
+      setError('Passwords do not match')
+      setIsLoading(false)
+      return
     }
 
     try {
@@ -41,15 +39,15 @@ export function SignUpForm({
         options: {
           emailRedirectTo: `${window.location.origin}/protected`,
         },
-      });
-      if (error) throw error;
-      router.push('/auth/sign-up-success');
+      })
+      if (error) throw error
+      router.push('/auth/sign-up-success')
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : ERROR_MESSAGES.AUTH);
+      setError(error instanceof Error ? error.message : ERROR_MESSAGES.AUTH)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   return (
     <AuthCard title={t('title')} description={t('desc')} className={className}>
@@ -80,15 +78,8 @@ export function SignUpForm({
             value={repeatPassword}
             onChange={setRepeatPassword}
           />
-          {error && (
-            <p className="text-xs font-medium text-destructive">{error}</p>
-          )}
-          <Button
-            type="submit"
-            variant="brand"
-            className="h-11 w-full"
-            disabled={isLoading}
-          >
+          {error && <p className="text-xs font-medium text-destructive">{error}</p>}
+          <Button type="submit" variant="brand" className="h-11 w-full" disabled={isLoading}>
             {isLoading ? t('submitPending') : t('submit')}
           </Button>
         </div>
@@ -103,5 +94,5 @@ export function SignUpForm({
         </div>
       </form>
     </AuthCard>
-  );
+  )
 }

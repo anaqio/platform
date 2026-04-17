@@ -1,9 +1,9 @@
-import { cookies } from 'next/headers';
+import { cookies } from 'next/headers'
 
-import { BrandIdentityContent } from './brand-content';
-import { BrandGate } from './brand-gate';
+import { BrandIdentityContent } from './brand-content'
+import { BrandGate } from './brand-gate'
 
-import type { Metadata } from 'next';
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Brand Identity Guidelines — Anaqio',
@@ -13,15 +13,15 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-};
+}
 
 export default async function BrandIdentityPage() {
-  const cookieStore = await cookies();
-  const isAuthorized = cookieStore.get('brand_authorized')?.value === 'true';
+  const cookieStore = await cookies()
+  const isAuthorized = cookieStore.get('brand_authorized')?.value === 'true'
 
   if (!isAuthorized) {
-    return <BrandGate />;
+    return <BrandGate />
   }
 
-  return <BrandIdentityContent />;
+  return <BrandIdentityContent />
 }

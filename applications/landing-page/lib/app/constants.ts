@@ -1,6 +1,6 @@
 export const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
-  : 'https://anaqio.com';
+  : 'https://anaqio.com'
 
 export const appConstants = {
   name: 'Anaqio',
@@ -24,7 +24,7 @@ export const appConstants = {
   ],
   authors: [{ name: 'Anaqio Team' }],
   creator: 'Anaqio',
-};
+}
 
 export const appFounders = [
   {
@@ -37,7 +37,7 @@ export const appFounders = [
     role: 'Co-Founder & CTO',
     linkedin: 'https://www.linkedin.com/in/moughamir/',
   },
-];
+]
 
 // Non-founder team members — kept separate so they are never emitted as
 // schema.org founders in structured data or layout microdata.
@@ -48,11 +48,11 @@ export const appTeam = [
     linkedin: 'https://shazo.anaqio.com',
     email: 'marketing@anaqio.com',
   },
-];
+]
 
 export const appSocials = {
   twitter: 'https://twitter.com/anaqio',
   twitterHandle: '@anaqio',
   linkedin: 'https://www.linkedin.com/company/anaqio',
   instagram: 'https://www.instagram.com/anaqio',
-};
+}

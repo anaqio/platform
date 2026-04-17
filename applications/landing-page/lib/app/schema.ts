@@ -1,4 +1,4 @@
-import { defaultUrl, appConstants, appFounders, appSocials } from './constants';
+import { defaultUrl, appConstants, appFounders, appSocials } from './constants'
 
 export const orgLd = {
   '@context': 'https://schema.org',
@@ -24,7 +24,7 @@ export const orgLd = {
       areaServed: 'MA',
     },
   ],
-};
+}
 
 export const softwareLd = {
   '@context': 'https://schema.org',
@@ -47,7 +47,7 @@ export const softwareLd = {
     ratingValue: '4.9',
     ratingCount: '120',
   },
-};
+}
 
 export const websiteLd = {
   '@context': 'https://schema.org',
@@ -56,7 +56,7 @@ export const websiteLd = {
   url: defaultUrl,
   inLanguage: 'en',
   publisher: { '@type': 'Organization', name: appConstants.name },
-};
+}
 
 export const webpageLd = {
   '@context': 'https://schema.org',
@@ -65,7 +65,6 @@ export const webpageLd = {
   url: defaultUrl,
   isPartOf: { '@type': 'WebSite', url: defaultUrl },
   about: { '@type': 'Organization', name: appConstants.name },
-  description:
-    "Generate studio-quality fashion imagery instantly with Anaqio's AI Visual Studio.",
+  description: "Generate studio-quality fashion imagery instantly with Anaqio's AI Visual Studio.",
   inLanguage: 'en',
-};
+}

@@ -1,23 +1,23 @@
-import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
+import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion'
 
-import { COLORS, FONTS } from '../lib/brand';
-import { fadeIn, fadeOut, slideUp } from '../lib/helpers';
-import { SCENES } from '../lib/timing';
+import { COLORS, FONTS } from '../lib/brand'
+import { fadeIn, fadeOut, slideUp } from '../lib/helpers'
+import { SCENES } from '../lib/timing'
 
 const PAIN_POINTS = [
   { icon: '📸', text: 'Expensive photographers' },
   { icon: '🏛', text: 'Studio rentals & setup' },
   { icon: '⏳', text: 'Weeks of production time' },
   { icon: '💸', text: 'Thousands per collection' },
-];
+]
 
 export function SceneProblem() {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const local = Math.max(0, frame - SCENES.problem.start);
-  const sceneDur = SCENES.problem.end - SCENES.problem.start;
+  const frame = useCurrentFrame()
+  const { fps } = useVideoConfig()
+  const local = Math.max(0, frame - SCENES.problem.start)
+  const sceneDur = SCENES.problem.end - SCENES.problem.start
 
-  const fadeOutOpacity = fadeOut(local, sceneDur - 20, 15);
+  const fadeOutOpacity = fadeOut(local, sceneDur - 20, 15)
 
   return (
     <AbsoluteFill
@@ -57,9 +57,7 @@ export function SceneProblem() {
       >
         Fashion content is expensive.
         <br />
-        <span style={{ color: COLORS.muted, fontWeight: 400 }}>
-          And painfully slow.
-        </span>
+        <span style={{ color: COLORS.muted, fontWeight: 400 }}>And painfully slow.</span>
       </div>
 
       {/* Pain points */}
@@ -72,8 +70,8 @@ export function SceneProblem() {
         }}
       >
         {PAIN_POINTS.map(({ icon, text }, i) => {
-          const cardOpacity = fadeIn(local, 20 + i * 15, 18);
-          const cardY = slideUp(local, 20 + i * 15, fps);
+          const cardOpacity = fadeIn(local, 20 + i * 15, 18)
+          const cardY = slideUp(local, 20 + i * 15, fps)
           return (
             <div
               key={text}
@@ -101,7 +99,7 @@ export function SceneProblem() {
                 {text}
               </span>
             </div>
-          );
+          )
         })}
       </div>
 
@@ -120,5 +118,5 @@ export function SceneProblem() {
         There&#39;s a better way.
       </div>
     </AbsoluteFill>
-  );
+  )
 }

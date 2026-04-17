@@ -1,19 +1,19 @@
-'use client';
+'use client'
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion'
 
-import type { ReactNode } from 'react';
+import type { ReactNode } from 'react'
 
-import { fadeUp } from '@/lib/data/motion';
-import { cn } from '@/lib/utils';
+import { fadeUp } from '@/lib/data/motion'
+import { cn } from '@/lib/utils'
 
 type SectionHeaderProps = {
   /** Small uppercase label above the heading. */
-  eyebrow: string;
+  eyebrow: string
   /** h2 content — use GradientText for the accented word. */
-  children: ReactNode;
-  className?: string;
-};
+  children: ReactNode
+  className?: string
+}
 
 /**
  * Animated section heading: eyebrow label + h2 with gradient accent.
@@ -23,12 +23,8 @@ type SectionHeaderProps = {
  *   Why <GradientText>Anaqio</GradientText> is Better?
  * </SectionHeader>
  */
-export function SectionHeader({
-  eyebrow,
-  children,
-  className,
-}: SectionHeaderProps) {
-  const reduced = useReducedMotion();
+export function SectionHeader({ eyebrow, children, className }: SectionHeaderProps) {
+  const reduced = useReducedMotion()
 
   return (
     <motion.h2
@@ -43,7 +39,7 @@ export function SectionHeader({
       </span>
       {children}
     </motion.h2>
-  );
+  )
 }
 
 /**
@@ -52,16 +48,6 @@ export function SectionHeader({
  * @example
  * Why <GradientText>Anaqio</GradientText> is Better?
  */
-export function GradientText({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <span className={cn('text-brand-gradient font-bold italic', className)}>
-      {children}
-    </span>
-  );
+export function GradientText({ children, className }: { children: ReactNode; className?: string }) {
+  return <span className={cn('text-brand-gradient font-bold italic', className)}>{children}</span>
 }

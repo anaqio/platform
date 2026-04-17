@@ -1,28 +1,28 @@
-'use client';
+'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import Image from 'next/image';
-import { useTranslations } from 'next-intl';
-import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion'
+import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+import { useRef } from 'react'
 
-import { Section, SectionContainer } from '@/components/ui/section';
-import { useAnimationReady } from '@/hooks/use-animation-ready';
-import { ease } from '@/lib/data/motion';
-import { NANOBANANA_VISUALS } from '@/lib/data/nanobanana-assets';
+import { Section, SectionContainer } from '@/components/ui/section'
+import { useAnimationReady } from '@/hooks/use-animation-ready'
+import { ease } from '@/lib/data/motion'
+import { NANOBANANA_VISUALS } from '@/lib/data/nanobanana-assets'
 
 export function StyleShowcase() {
-  const t = useTranslations('landing.styleShowcase');
-  const sectionRef = useRef<HTMLElement>(null);
-  const { animated } = useAnimationReady();
+  const t = useTranslations('landing.styleShowcase')
+  const sectionRef = useRef<HTMLElement>(null)
+  const { animated } = useAnimationReady()
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start'],
-  });
+  })
 
-  const y1 = useTransform(scrollYProgress, [0, 1], ['0px', '-100px']);
-  const y2 = useTransform(scrollYProgress, [0, 1], ['0px', '100px']);
-  const y3 = useTransform(scrollYProgress, [0, 1], ['0px', '-150px']);
+  const y1 = useTransform(scrollYProgress, [0, 1], ['0px', '-100px'])
+  const y2 = useTransform(scrollYProgress, [0, 1], ['0px', '100px'])
+  const y3 = useTransform(scrollYProgress, [0, 1], ['0px', '-150px'])
 
   const images = [
     {
@@ -55,14 +55,10 @@ export function StyleShowcase() {
       y: y2,
       className: 'col-span-2 row-span-1 h-[250px]',
     },
-  ];
+  ]
 
   return (
-    <Section
-      ref={sectionRef}
-      id="showcase"
-      className="overflow-hidden bg-background py-32"
-    >
+    <Section ref={sectionRef} id="showcase" className="overflow-hidden bg-background py-32">
       <SectionContainer>
         <div className="flex flex-col gap-16 lg:flex-row lg:items-center">
           <div className="flex-1 space-y-8">
@@ -84,9 +80,7 @@ export function StyleShowcase() {
             >
               {t('title.pre')}
               <br />
-              <span className="text-brand-gradient italic">
-                {t('title.accent')}
-              </span>
+              <span className="text-brand-gradient italic">{t('title.accent')}</span>
             </motion.h2>
             <motion.p
               initial={animated ? { opacity: 0 } : false}
@@ -121,5 +115,5 @@ export function StyleShowcase() {
         </div>
       </SectionContainer>
     </Section>
-  );
+  )
 }

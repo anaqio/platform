@@ -1,1 +1,1 @@
-export { AtelierInvitationForm } from './atelier-invitation-form';
+export { AtelierInvitationForm } from './atelier-invitation-form'

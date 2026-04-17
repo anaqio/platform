@@ -1,15 +1,15 @@
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
 type AuthFieldProps = {
-  id: string;
-  label: string;
-  type?: string;
-  placeholder?: string;
-  required?: boolean;
-  value: string;
-  onChange: (value: string) => void;
-};
+  id: string
+  label: string
+  type?: string
+  placeholder?: string
+  required?: boolean
+  value: string
+  onChange: (value: string) => void
+}
 
 export function AuthField({
   id,
@@ -38,5 +38,5 @@ export function AuthField({
         className="border-white/10 bg-background/50"
       />
     </div>
-  );
+  )
 }

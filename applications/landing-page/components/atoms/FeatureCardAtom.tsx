@@ -1,19 +1,19 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
 
-import type { Feature } from '@/lib/data/features-section';
+import type { Feature } from '@/lib/data/features-section'
 
-import { useAnimationReady } from '@/hooks/use-animation-ready';
-import { fadeUpCard } from '@/lib/data/motion';
+import { useAnimationReady } from '@/hooks/use-animation-ready'
+import { fadeUpCard } from '@/lib/data/motion'
 
 interface FeatureCardAtomProps {
-  feature: Feature;
-  index?: number;
+  feature: Feature
+  index?: number
 }
 
 export function FeatureCardAtom({ feature, index = 0 }: FeatureCardAtomProps) {
-  const { reduced } = useAnimationReady();
+  const { reduced } = useAnimationReady()
 
   return (
     <motion.div
@@ -28,12 +28,8 @@ export function FeatureCardAtom({ feature, index = 0 }: FeatureCardAtomProps) {
         {feature.icon}
       </div>
       <div>
-        <h3 className="text-lg font-semibold text-foreground">
-          {feature.title}
-        </h3>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {feature.description}
-        </p>
+        <h3 className="text-lg font-semibold text-foreground">{feature.title}</h3>
+        <p className="mt-2 text-sm text-muted-foreground">{feature.description}</p>
       </div>
       <motion.div
         className="h-px w-0 bg-gradient-to-r from-aq-blue to-aq-purple"
@@ -41,5 +37,5 @@ export function FeatureCardAtom({ feature, index = 0 }: FeatureCardAtomProps) {
         transition={{ duration: 0.3 }}
       />
     </motion.div>
-  );
+  )
 }

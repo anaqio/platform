@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
 
 interface AtelierProgressBarProps {
-  progress: number; // 0–100
+  progress: number // 0–100
 }
 
 export function AtelierProgressBar({ progress }: AtelierProgressBarProps) {
@@ -15,5 +15,5 @@ export function AtelierProgressBar({ progress }: AtelierProgressBarProps) {
         transition={{ duration: 0.4, ease: 'easeOut' }}
       />
     </div>
-  );
+  )
 }

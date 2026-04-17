@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
 /**
  * Hook to track component mount status.
@@ -9,11 +9,11 @@ import { useEffect, useState } from 'react';
  * @returns {boolean} True if the component is mounted on the client.
  */
 export function useMounted() {
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    setMounted(true)
+  }, [])
 
-  return mounted;
+  return mounted
 }

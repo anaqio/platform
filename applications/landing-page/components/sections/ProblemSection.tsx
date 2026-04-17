@@ -1,13 +1,13 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 
-import { useAnimationReady } from '@/hooks/use-animation-ready';
+import { useAnimationReady } from '@/hooks/use-animation-ready'
 
 export function ProblemSection() {
-  const t = useTranslations('landing.problem');
-  const { animated } = useAnimationReady();
+  const t = useTranslations('landing.problem')
+  const { animated } = useAnimationReady()
 
   return (
     <section
@@ -40,5 +40,5 @@ export function ProblemSection() {
         <span className="vb-underline">{t('visualHeadline.line2')}</span>
       </motion.h2>
     </section>
-  );
+  )
 }

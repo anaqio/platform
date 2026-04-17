@@ -8,8 +8,8 @@ Typed accessor for `next-intl` raw translation data. Replaces the repeated `t.ra
 
 ```ts
 export type TranslationFn = {
-  raw(key: string): unknown;
-};
+  raw(key: string): unknown
+}
 ```
 
 Minimal interface satisfied by the return value of `useTranslations()`. Keeps the utility decoupled from `next-intl` internals.
@@ -17,7 +17,7 @@ Minimal interface satisfied by the return value of `useTranslations()`. Keeps th
 ## `DataManager<T>`
 
 ```ts
-function DataManager<T>(t: TranslationFn, key: string): T;
+function DataManager<T>(t: TranslationFn, key: string): T
 ```
 
 Extracts and casts raw translation data in one call.
@@ -32,21 +32,18 @@ Extracts and casts raw translation data in one call.
 ### Example
 
 ```tsx
-const t = useTranslations('landing.howItWorks');
-const steps = DataManager<Array<{ num: string; title: string; body: string }>>(
-  t,
-  'steps'
-);
+const t = useTranslations('landing.howItWorks')
+const steps = DataManager<Array<{ num: string; title: string; body: string }>>(t, 'steps')
 ```
 
 **Before (inline pattern):**
 
 ```tsx
 const steps = t.raw('steps') as Array<{
-  num: string;
-  title: string;
-  body: string;
-}>;
+  num: string
+  title: string
+  body: string
+}>
 ```
 
 ## `DataManagerWithExtras<TRaw, TExtra, TResult>`
@@ -57,7 +54,7 @@ function DataManagerWithExtras<TRaw, TExtra, TResult>(
   key: string,
   extras: TExtra[],
   merge: (item: TRaw, extra: TExtra, index: number) => TResult
-): TResult[];
+): TResult[]
 ```
 
 Extracts a raw translation array and merges a parallel array of non-serializable values (icons, colors, callbacks) onto each item.
@@ -74,23 +71,22 @@ Extracts a raw translation array and merges a parallel array of non-serializable
 ### Example
 
 ```tsx
-const t = useTranslations('landing.whoItsFor');
-const AUDIENCE_ICONS = [Store, Palette, Briefcase, LayoutGrid];
+const t = useTranslations('landing.whoItsFor')
+const AUDIENCE_ICONS = [Store, Palette, Briefcase, LayoutGrid]
 
-const audiences = DataManagerWithExtras(
-  t,
-  'audiences',
-  AUDIENCE_ICONS,
-  (a, icon) => ({ ...a, icon })
-);
+const audiences = DataManagerWithExtras(t, 'audiences', AUDIENCE_ICONS, (a, icon) => ({
+  ...a,
+  icon,
+}))
 ```
 
 **Before (inline pattern):**
 
 ```tsx
-const audiences = (
-  t.raw('audiences') as Array<{ title: string; body: string }>
-).map((a, i) => ({ ...a, icon: AUDIENCE_ICONS[i] }));
+const audiences = (t.raw('audiences') as Array<{ title: string; body: string }>).map((a, i) => ({
+  ...a,
+  icon: AUDIENCE_ICONS[i],
+}))
 ```
 
 ## Sections using this pattern

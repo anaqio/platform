@@ -1,10 +1,10 @@
 // lib/data/segments-section.ts
 export interface Segment {
-  icon: string;
-  name: string;
-  role: string;
-  problem: string;
-  solution: string;
+  icon: string
+  name: string
+  role: string
+  problem: string
+  solution: string
 }
 
 export const SEGMENTS: Segment[] = [
@@ -36,4 +36,4 @@ export const SEGMENTS: Segment[] = [
     problem: 'High equipment and location costs per project',
     solution: 'Offer clients premium output without overhead',
   },
-];
+]

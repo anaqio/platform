@@ -1,19 +1,19 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
 
-import type { Segment } from '@/lib/data/segments-section';
+import type { Segment } from '@/lib/data/segments-section'
 
-import { useAnimationReady } from '@/hooks/use-animation-ready';
-import { slideInLeft } from '@/lib/data/motion';
+import { useAnimationReady } from '@/hooks/use-animation-ready'
+import { slideInLeft } from '@/lib/data/motion'
 
 interface SegmentCardAtomProps {
-  segment: Segment;
-  index?: number;
+  segment: Segment
+  index?: number
 }
 
 export function SegmentCardAtom({ segment, index = 0 }: SegmentCardAtomProps) {
-  const { reduced } = useAnimationReady();
+  const { reduced } = useAnimationReady()
 
   return (
     <motion.div
@@ -26,9 +26,7 @@ export function SegmentCardAtom({ segment, index = 0 }: SegmentCardAtomProps) {
       <div className="min-w-0 flex-1">
         <div>
           <h3 className="font-semibold text-foreground">{segment.name}</h3>
-          <p className="text-xs font-medium text-muted-foreground">
-            {segment.role}
-          </p>
+          <p className="text-xs font-medium text-muted-foreground">{segment.role}</p>
         </div>
 
         <motion.div
@@ -48,12 +46,10 @@ export function SegmentCardAtom({ segment, index = 0 }: SegmentCardAtomProps) {
             <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
               Solution
             </p>
-            <p className="text-sm font-medium text-aq-purple">
-              {segment.solution}
-            </p>
+            <p className="text-sm font-medium text-aq-purple">{segment.solution}</p>
           </div>
         </motion.div>
       </div>
     </motion.div>
-  );
+  )
 }

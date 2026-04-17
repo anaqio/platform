@@ -1,43 +1,38 @@
-'use client';
+'use client'
 
-import { AnimatePresence, motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import { useCallback, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
+import { useCallback, useState } from 'react'
 
-import { type Phase } from './Phase';
-import { SocialLinks } from '../layout/SocialLinks';
-import { NotifyForm } from './atoms/notify';
+import { type Phase } from './Phase'
+import { SocialLinks } from '../layout/SocialLinks'
+import { NotifyForm } from './atoms/notify'
 
-import { LocaleSwitcher } from '@/components/locale-switcher';
-import { LoadingScreen } from '@/components/sections/LoadingScreen';
-import AbstractBackground from '@/components/ui/AbstractBackground';
-import { AnaqioTypographyLogo } from '@/components/ui/anaqio-typography-logo';
-import { PerspectiveGrid } from '@/components/ui/PerspectiveGrid';
-import { useAnimationReady } from '@/hooks/use-animation-ready';
-import { Link } from '@/i18n/routing';
-import { ease, fadeIn, fadeUp } from '@/lib/data/motion';
+import { LocaleSwitcher } from '@/components/locale-switcher'
+import { LoadingScreen } from '@/components/sections/LoadingScreen'
+import AbstractBackground from '@/components/ui/AbstractBackground'
+import { AnaqioTypographyLogo } from '@/components/ui/anaqio-typography-logo'
+import { PerspectiveGrid } from '@/components/ui/PerspectiveGrid'
+import { useAnimationReady } from '@/hooks/use-animation-ready'
+import { Link } from '@/i18n/routing'
+import { ease, fadeIn, fadeUp } from '@/lib/data/motion'
 
 // ─── Main Component ──────────────────────────────────────────────────────────
 
 export function ComingSoonPage() {
-  const t = useTranslations('comingSoon');
-  const { reduced, animated } = useAnimationReady();
+  const t = useTranslations('comingSoon')
+  const { reduced, animated } = useAnimationReady()
 
-  const [phase, setPhase] = useState<Phase>('loading');
+  const [phase, setPhase] = useState<Phase>('loading')
 
   const handleLoadingComplete = useCallback(() => {
-    setPhase('reveal');
-  }, []);
+    setPhase('reveal')
+  }, [])
 
   return (
     <>
       {/* Ambient background — z-0 */}
-      <div
-        data-atom
-        data-decorative
-        aria-hidden="true"
-        className="fixed inset-0 z-0"
-      >
+      <div data-atom data-decorative aria-hidden="true" className="fixed inset-0 z-0">
         <AbstractBackground />
       </div>
 
@@ -54,11 +49,7 @@ export function ComingSoonPage() {
 
       <AnimatePresence mode="wait">
         {phase === 'loading' && (
-          <LoadingScreen
-            key="loader"
-            onComplete={handleLoadingComplete}
-            animated={animated}
-          />
+          <LoadingScreen key="loader" onComplete={handleLoadingComplete} animated={animated} />
         )}
       </AnimatePresence>
 
@@ -101,11 +92,7 @@ export function ComingSoonPage() {
             <h1 className="sr-only">ANAQIO — AI Fashion Studio Coming Soon</h1>
 
             {/* Logo wordmark — top center */}
-            <motion.div
-              data-atom
-              className="z-20 mb-12 w-[min(80vw,600px)]"
-              {...fadeUp(reduced)}
-            >
+            <motion.div data-atom className="z-20 mb-12 w-[min(80vw,600px)]" {...fadeUp(reduced)}>
               <AnaqioTypographyLogo
                 instanceId="anaqio-coming-soon-logo"
                 variant="none"
@@ -123,9 +110,7 @@ export function ComingSoonPage() {
               {...fadeUp(reduced, 0.1)}
             >
               <p className="text-base font-bold sm:text-lg">{t('hero.main')}</p>
-              <p className="mt-2 text-sm italic sm:mt-1 sm:text-base">
-                {t('hero.sub1')}
-              </p>
+              <p className="mt-2 text-sm italic sm:mt-1 sm:text-base">{t('hero.sub1')}</p>
               <p className="mt-2 text-right text-sm italic sm:mt-1 sm:text-base">
                 {t('hero.sub2')}
               </p>
@@ -168,46 +153,28 @@ export function ComingSoonPage() {
                   <p>{t('footer.launch')}</p>
                   <span className="hidden sm:inline">&middot;</span>
                   <p className="hidden sm:block">
-                    <Link
-                      href="/"
-                      className="transition-colors hover:text-foreground"
-                    >
+                    <Link href="/" className="transition-colors hover:text-foreground">
                       {t('footer.copyright')}
                     </Link>
                   </p>
                 </div>
                 <div className="flex items-center justify-center gap-3">
                   <p className="sm:hidden">
-                    <Link
-                      href="/"
-                      className="transition-colors hover:text-foreground"
-                    >
+                    <Link href="/" className="transition-colors hover:text-foreground">
                       {t('footer.copyright')}
                     </Link>
                   </p>
                   <span className="sm:hidden">&middot;</span>
-                  <Link
-                    href="/about"
-                    className="transition-colors hover:text-foreground"
-                  >
+                  <Link href="/about" className="transition-colors hover:text-foreground">
                     {t('footer.links.about')}
                   </Link>
-                  <Link
-                    href="/terms"
-                    className="transition-colors hover:text-foreground"
-                  >
+                  <Link href="/terms" className="transition-colors hover:text-foreground">
                     {t('footer.links.terms')}
                   </Link>
-                  <Link
-                    href="/privacy"
-                    className="transition-colors hover:text-foreground"
-                  >
+                  <Link href="/privacy" className="transition-colors hover:text-foreground">
                     {t('footer.links.policy')}
                   </Link>
-                  <Link
-                    href="/legal-mentions"
-                    className="transition-colors hover:text-foreground"
-                  >
+                  <Link href="/legal-mentions" className="transition-colors hover:text-foreground">
                     {t('footer.links.legal')}
                   </Link>
                 </div>
@@ -217,5 +184,5 @@ export function ComingSoonPage() {
         )}
       </AnimatePresence>
     </>
-  );
+  )
 }

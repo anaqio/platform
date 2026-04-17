@@ -6,4 +6,4 @@ export const FinalCTAText = {
     secondary: 'See How It Works',
     tertiary: 'or scroll to learn more',
   },
-} as const;
+} as const

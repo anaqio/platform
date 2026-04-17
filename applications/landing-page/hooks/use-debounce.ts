@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { useDebounce } from '@uidotdev/usehooks';
+import { useDebounce } from '@uidotdev/usehooks'
 
 /**
  * Hook to debounce a value.
@@ -10,4 +10,4 @@ import { useDebounce } from '@uidotdev/usehooks';
  * @example
  * const debouncedSearch = useDebounce(searchTerm, 300);
  */
-export { useDebounce };
+export { useDebounce }

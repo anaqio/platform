@@ -1,24 +1,24 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
+import { useState } from 'react'
 
-import { LegalPageLayout } from '@/components/layout/LegalPageLayout';
-import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Label } from '@/components/ui/label';
+import { LegalPageLayout } from '@/components/layout/LegalPageLayout'
+import { Button } from '@/components/ui/button'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
 
 export function CookiePolicyContent() {
   const [preferences, setPreferences] = useState({
     analytics: false,
     functional: false,
     marketing: false,
-  });
-  const [showConfirm, setShowConfirm] = useState(false);
+  })
+  const [showConfirm, setShowConfirm] = useState(false)
 
   const savePreferences = () => {
-    setShowConfirm(true);
-    setTimeout(() => setShowConfirm(false), 3000);
-  };
+    setShowConfirm(true)
+    setTimeout(() => setShowConfirm(false), 3000)
+  }
 
   return (
     <LegalPageLayout
@@ -29,10 +29,10 @@ export function CookiePolicyContent() {
     >
       <div className="mb-12 rounded-r-xl border-l-2 border-aq-blue bg-secondary/30 p-6">
         <p className="text-sm leading-relaxed text-muted-foreground">
-          <strong className="text-foreground">Consent &amp; Control.</strong>{' '}
-          This policy complies with
-          <strong className="text-aq-blue"> Law No. 09-08</strong>.
-          Non-essential cookies are deployed only with your explicit consent.
+          <strong className="text-foreground">Consent &amp; Control.</strong> This policy complies
+          with
+          <strong className="text-aq-blue"> Law No. 09-08</strong>. Non-essential cookies are
+          deployed only with your explicit consent.
         </p>
       </div>
 
@@ -42,9 +42,8 @@ export function CookiePolicyContent() {
             1. What Are Cookies?
           </h2>
           <p className="leading-relaxed text-muted-foreground">
-            Cookies are small text files placed on your device to remember
-            actions and preferences. They help us provide a seamless experience
-            in the anaqio studio.
+            Cookies are small text files placed on your device to remember actions and preferences.
+            They help us provide a seamless experience in the anaqio studio.
           </p>
         </section>
 
@@ -89,8 +88,7 @@ export function CookiePolicyContent() {
                   Marketing
                 </Label>
                 <p className="text-xs leading-relaxed text-muted-foreground">
-                  Used to share relevant updates about anaqio on other
-                  platforms.
+                  Used to share relevant updates about anaqio on other platforms.
                 </p>
               </div>
               <Checkbox
@@ -103,15 +101,11 @@ export function CookiePolicyContent() {
             </div>
 
             <div className="flex flex-col items-center gap-4 pt-4">
-              <Button
-                variant="brand"
-                className="w-full px-12 sm:w-auto"
-                onClick={savePreferences}
-              >
+              <Button variant="brand" className="w-full px-12 sm:w-auto" onClick={savePreferences}>
                 Save Preferences
               </Button>
               {showConfirm && (
-                <p className="text-xs font-bold uppercase tracking-widest text-aq-blue animate-in fade-in slide-in-from-bottom-2">
+                <p className="animate-in fade-in slide-in-from-bottom-2 text-xs font-bold uppercase tracking-widest text-aq-blue">
                   ✦ Choices Persisted
                 </p>
               )}
@@ -129,19 +123,14 @@ export function CookiePolicyContent() {
             </h3>
             <p className="mb-2 text-muted-foreground">
               Email:{' '}
-              <a
-                href="mailto:privacy@anaqio.com"
-                className="text-aq-blue hover:underline"
-              >
+              <a href="mailto:privacy@anaqio.com" className="text-aq-blue hover:underline">
                 privacy@anaqio.com
               </a>
             </p>
-            <p className="mb-4 text-muted-foreground">
-              Location: Casablanca, Morocco
-            </p>
+            <p className="mb-4 text-muted-foreground">Location: Casablanca, Morocco</p>
           </div>
         </section>
       </article>
     </LegalPageLayout>
-  );
+  )
 }

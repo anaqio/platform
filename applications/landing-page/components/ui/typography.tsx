@@ -1,7 +1,7 @@
-import { cva, type VariantProps } from 'class-variance-authority';
-import { type ElementType, type ReactNode } from 'react';
+import { cva, type VariantProps } from 'class-variance-authority'
+import { type ElementType, type ReactNode } from 'react'
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils'
 
 // ─── Variant definitions ───────────────────────────────────────────────────────
 //
@@ -40,14 +40,11 @@ const typographyVariants = cva('', {
       // ── Editorial / Accent ──────────────────────────────────────────────────
       blockquote:
         'font-editorial mt-6 border-l-2 border-aq-blue/40 pl-6 text-lg italic leading-relaxed tracking-editorial text-foreground/80',
-      quote:
-        'font-editorial text-xl italic leading-relaxed tracking-editorial sm:text-2xl',
+      quote: 'font-editorial text-xl italic leading-relaxed tracking-editorial sm:text-2xl',
 
       // ── Labels / UI chrome ──────────────────────────────────────────────────
-      eyebrow:
-        'font-label text-[0.65rem] font-bold uppercase tracking-label text-muted-foreground',
-      label:
-        'font-label text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground',
+      eyebrow: 'font-label text-[0.65rem] font-bold uppercase tracking-label text-muted-foreground',
+      label: 'font-label text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground',
       caption:
         'font-body text-[0.72rem] font-light leading-snug tracking-wide text-muted-foreground',
 
@@ -58,7 +55,7 @@ const typographyVariants = cva('', {
   defaultVariants: {
     variant: 'p',
   },
-});
+})
 
 // ─── Default HTML element per variant ────────────────────────────────────────
 
@@ -84,18 +81,16 @@ const DEFAULT_ELEMENT: Record<
   label: 'p',
   caption: 'p',
   code: 'code',
-};
+}
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export interface TypographyProps extends VariantProps<
-  typeof typographyVariants
-> {
+export interface TypographyProps extends VariantProps<typeof typographyVariants> {
   /** Override the rendered HTML element (polymorphic). */
-  as?: ElementType;
-  children?: ReactNode;
-  className?: string;
-  id?: string;
+  as?: ElementType
+  children?: ReactNode
+  className?: string
+  id?: string
 }
 
 /**
@@ -131,16 +126,12 @@ export function Typography({
   id,
   ...props
 }: TypographyProps) {
-  const Element = as ?? DEFAULT_ELEMENT[variant ?? 'p'];
+  const Element = as ?? DEFAULT_ELEMENT[variant ?? 'p']
   return (
-    <Element
-      id={id}
-      className={cn(typographyVariants({ variant }), className)}
-      {...props}
-    >
+    <Element id={id} className={cn(typographyVariants({ variant }), className)} {...props}>
       {children}
     </Element>
-  );
+  )
 }
 
 // ─── Named shorthands for even cleaner imports ────────────────────────────────
@@ -150,40 +141,40 @@ export function Typography({
 
 export const Display = (props: Omit<TypographyProps, 'variant'>) => (
   <Typography variant="display" {...props} />
-);
+)
 export const H1 = (props: Omit<TypographyProps, 'variant'>) => (
   <Typography variant="h1" {...props} />
-);
+)
 export const H2 = (props: Omit<TypographyProps, 'variant'>) => (
   <Typography variant="h2" {...props} />
-);
+)
 export const H3 = (props: Omit<TypographyProps, 'variant'>) => (
   <Typography variant="h3" {...props} />
-);
+)
 export const H4 = (props: Omit<TypographyProps, 'variant'>) => (
   <Typography variant="h4" {...props} />
-);
+)
 export const Lead = (props: Omit<TypographyProps, 'variant'>) => (
   <Typography variant="lead" {...props} />
-);
+)
 export const BodyLarge = (props: Omit<TypographyProps, 'variant'>) => (
   <Typography variant="large" {...props} />
-);
+)
 export const BodySmall = (props: Omit<TypographyProps, 'variant'>) => (
   <Typography variant="small" {...props} />
-);
+)
 export const Muted = (props: Omit<TypographyProps, 'variant'>) => (
   <Typography variant="muted" {...props} />
-);
+)
 export const Eyebrow = (props: Omit<TypographyProps, 'variant'>) => (
   <Typography variant="eyebrow" {...props} />
-);
+)
 export const Caption = (props: Omit<TypographyProps, 'variant'>) => (
   <Typography variant="caption" {...props} />
-);
+)
 export const Blockquote = (props: Omit<TypographyProps, 'variant'>) => (
   <Typography variant="blockquote" {...props} />
-);
+)
 export const InlineCode = (props: Omit<TypographyProps, 'variant'>) => (
   <Typography variant="code" {...props} />
-);
+)

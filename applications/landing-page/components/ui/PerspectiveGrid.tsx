@@ -1,10 +1,10 @@
-'use client';
+'use client'
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils'
 
 type Props = {
-  className?: string;
-};
+  className?: string
+}
 
 export function PerspectiveGrid({ className }: Props) {
   return (
@@ -19,7 +19,7 @@ export function PerspectiveGrid({ className }: Props) {
       {/* Shimmer sweep */}
       <div className="grid-shimmer" />
     </div>
-  );
+  )
 }
 
-export default PerspectiveGrid;
+export default PerspectiveGrid

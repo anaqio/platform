@@ -1,15 +1,15 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
 
-import Loading from '@/app/[locale]/loading';
-import { ease } from '@/lib/data/motion';
+import Loading from '@/app/[locale]/loading'
+import { ease } from '@/lib/data/motion'
 
 interface LoadingScreenProps {
   /** Called when the loading animation completes (progress bar full). */
-  onComplete: () => void;
+  onComplete: () => void
   /** Whether to skip animations (reduced motion or low-tier device). */
-  animated: boolean;
+  animated: boolean
 }
 
 /**
@@ -38,10 +38,7 @@ export function LoadingScreen({ onComplete, animated }: LoadingScreenProps) {
       </motion.p>
 
       {/* Progress bar */}
-      <div
-        data-atom
-        className="absolute bottom-0 left-0 right-0 h-[2px] bg-border/20"
-      >
+      <div data-atom className="absolute bottom-0 left-0 right-0 h-[2px] bg-border/20">
         <motion.div
           className="h-full origin-left bg-aq-blue"
           initial={{ scaleX: 0 }}
@@ -51,5 +48,5 @@ export function LoadingScreen({ onComplete, animated }: LoadingScreenProps) {
         />
       </div>
     </motion.div>
-  );
+  )
 }

@@ -1,27 +1,25 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { motion } from 'framer-motion'
+import { Check } from 'lucide-react'
 
-import type { PricingTier } from '@/lib/data/pricing-section';
+import type { PricingTier } from '@/lib/data/pricing-section'
 
-import { useAnimationReady } from '@/hooks/use-animation-ready';
-import { fadeUpCard, ease } from '@/lib/data/motion';
+import { useAnimationReady } from '@/hooks/use-animation-ready'
+import { fadeUpCard, ease } from '@/lib/data/motion'
 
 interface PricingTierAtomProps {
-  tier: PricingTier;
-  index?: number;
+  tier: PricingTier
+  index?: number
 }
 
 export function PricingTierAtom({ tier, index = 0 }: PricingTierAtomProps) {
-  const { reduced } = useAnimationReady();
+  const { reduced } = useAnimationReady()
 
   return (
     <motion.div
       {...fadeUpCard(reduced, index)}
-      whileHover={
-        tier.highlighted ? { y: -8, transition: { duration: 0.3, ease } } : {}
-      }
+      whileHover={tier.highlighted ? { y: -8, transition: { duration: 0.3, ease } } : {}}
       className={`group relative flex flex-col rounded-xl border transition-all ${
         tier.highlighted
           ? 'border-aq-blue bg-gradient-to-b from-aq-blue/5 to-transparent shadow-xl ring-1 ring-aq-blue/20'
@@ -51,9 +49,7 @@ export function PricingTierAtom({ tier, index = 0 }: PricingTierAtomProps) {
               </span>
             </>
           ) : (
-            <span className="text-3xl font-bold text-foreground">
-              {tier.price}
-            </span>
+            <span className="text-3xl font-bold text-foreground">{tier.price}</span>
           )}
         </div>
 
@@ -87,5 +83,5 @@ export function PricingTierAtom({ tier, index = 0 }: PricingTierAtomProps) {
         </ul>
       </div>
     </motion.div>
-  );
+  )
 }

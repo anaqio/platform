@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
-import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
+import { useEffect, useRef, useState, useCallback } from 'react'
 
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import {
   Card,
   CardHeader,
@@ -13,10 +13,10 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { cn } from '@/lib/utils';
+} from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { cn } from '@/lib/utils'
 
 /* ─────────────────────────────────────────────
    Navigation Sections
@@ -32,7 +32,7 @@ const NAV_SECTIONS = [
   { id: 'animations', label: 'Animations', icon: '◎' },
   { id: 'gradients', label: 'Gradients', icon: '◐' },
   { id: 'spacing', label: 'Spacing', icon: '⊞' },
-] as const;
+] as const
 
 /* ─────────────────────────────────────────────
    Color Definitions
@@ -47,14 +47,14 @@ const BRAND_COLORS = [
   { name: 'aq-muted', value: '#94A3B8', tw: 'bg-aq-muted' },
   { name: 'aq-border', value: '#E2E8F0', tw: 'bg-aq-border' },
   { name: 'aq-surface', value: '#F1F5F9', tw: 'bg-aq-surface' },
-];
+]
 
 const GRADIENT_COLORS = [
   { name: 'grad-start', value: '#3F57AF', tw: 'bg-aq-grad-start' },
   { name: 'grad-mid1', value: '#484DA9', tw: 'bg-aq-grad-mid1' },
   { name: 'grad-mid2', value: '#6049A8', tw: 'bg-aq-grad-mid2' },
   { name: 'grad-end', value: '#6F47A7', tw: 'bg-aq-grad-end' },
-];
+]
 
 const SEMANTIC_COLORS = [
   { name: 'background', value: 'hsl(210 40% 98%)', cssVar: '--background' },
@@ -64,7 +64,7 @@ const SEMANTIC_COLORS = [
   { name: 'muted', value: 'hsl(214 32% 91%)', cssVar: '--muted' },
   { name: 'accent', value: 'hsl(263 83% 58%)', cssVar: '--accent' },
   { name: 'destructive', value: 'hsl(0 84.2% 60.2%)', cssVar: '--destructive' },
-];
+]
 
 /* ─────────────────────────────────────────────
    Helper Components
@@ -75,16 +75,16 @@ function SectionHeading({
   title,
   description,
 }: {
-  id: string;
-  title: string;
-  description: string;
+  id: string
+  title: string
+  description: string
 }) {
   return (
     <div id={id} className="mb-8 scroll-mt-8">
       <h2 className="text-display mb-2 text-3xl text-foreground">{title}</h2>
       <p className="text-body max-w-2xl text-muted-foreground">{description}</p>
     </div>
-  );
+  )
 }
 
 function ColorSwatch({
@@ -92,17 +92,17 @@ function ColorSwatch({
   value,
   className,
 }: {
-  name: string;
-  value: string;
-  className?: string;
+  name: string
+  value: string
+  className?: string
 }) {
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState(false)
 
   const handleCopy = useCallback(() => {
-    navigator.clipboard.writeText(value);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1500);
-  }, [value]);
+    navigator.clipboard.writeText(value)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 1500)
+  }, [value])
 
   return (
     <button
@@ -130,11 +130,9 @@ function ColorSwatch({
         </AnimatePresence>
       </div>
       <span className="text-caption text-muted-foreground">{name}</span>
-      <span className="font-mono text-[10px] text-muted-foreground/60">
-        {value}
-      </span>
+      <span className="font-mono text-[10px] text-muted-foreground/60">{value}</span>
     </button>
-  );
+  )
 }
 
 /* ─────────────────────────────────────────────
@@ -142,8 +140,8 @@ function ColorSwatch({
    ───────────────────────────────────────────── */
 
 export default function PlaygroundPage() {
-  const [activeSection, setActiveSection] = useState('colors');
-  const observerRef = useRef<IntersectionObserver | null>(null);
+  const [activeSection, setActiveSection] = useState('colors')
+  const observerRef = useRef<IntersectionObserver | null>(null)
 
   // Intersection Observer for sidebar highlighting
   useEffect(() => {
@@ -151,20 +149,18 @@ export default function PlaygroundPage() {
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+            setActiveSection(entry.target.id)
           }
         }
       },
       { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
-    );
+    )
 
-    const sections = NAV_SECTIONS.map((s) =>
-      document.getElementById(s.id)
-    ).filter(Boolean);
-    sections.forEach((el) => observerRef.current?.observe(el!));
+    const sections = NAV_SECTIONS.map((s) => document.getElementById(s.id)).filter(Boolean)
+    sections.forEach((el) => observerRef.current?.observe(el!))
 
-    return () => observerRef.current?.disconnect();
-  }, []);
+    return () => observerRef.current?.disconnect()
+  }, [])
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -181,9 +177,7 @@ export default function PlaygroundPage() {
               <h1 className="font-display text-lg font-semibold text-foreground">
                 Design Playground
               </h1>
-              <p className="text-caption text-muted-foreground">
-                Anaqio Design System
-              </p>
+              <p className="text-caption text-muted-foreground">Anaqio Design System</p>
             </div>
           </div>
           <Badge variant="brand">Dev Only</Badge>
@@ -222,37 +216,21 @@ export default function PlaygroundPage() {
               description="The complete Anaqio color system. Click any swatch to copy its value."
             />
 
-            <h3 className="text-headline mb-4 text-lg text-foreground">
-              Brand Colors
-            </h3>
+            <h3 className="text-headline mb-4 text-lg text-foreground">Brand Colors</h3>
             <div className="mb-10 flex flex-wrap gap-6">
               {BRAND_COLORS.map((c) => (
-                <ColorSwatch
-                  key={c.name}
-                  name={c.name}
-                  value={c.value}
-                  className={c.tw}
-                />
+                <ColorSwatch key={c.name} name={c.name} value={c.value} className={c.tw} />
               ))}
             </div>
 
-            <h3 className="text-headline mb-4 text-lg text-foreground">
-              Gradient Stops
-            </h3>
+            <h3 className="text-headline mb-4 text-lg text-foreground">Gradient Stops</h3>
             <div className="mb-10 flex flex-wrap gap-6">
               {GRADIENT_COLORS.map((c) => (
-                <ColorSwatch
-                  key={c.name}
-                  name={c.name}
-                  value={c.value}
-                  className={c.tw}
-                />
+                <ColorSwatch key={c.name} name={c.name} value={c.value} className={c.tw} />
               ))}
             </div>
 
-            <h3 className="text-headline mb-4 text-lg text-foreground">
-              Semantic Tokens
-            </h3>
+            <h3 className="text-headline mb-4 text-lg text-foreground">Semantic Tokens</h3>
             <div className="flex flex-wrap gap-6">
               {SEMANTIC_COLORS.map((c) => (
                 <ColorSwatch key={c.name} name={c.name} value={c.value} />
@@ -315,22 +293,14 @@ export default function PlaygroundPage() {
                   key={family.label}
                   className="rounded-xl border border-border bg-secondary/30 p-6"
                 >
-                  <p className="text-caption mb-4 uppercase text-aq-blue">
-                    {family.label}
-                  </p>
+                  <p className="text-caption mb-4 uppercase text-aq-blue">{family.label}</p>
                   <div className="space-y-3">
                     {family.sizes.map((size) => (
                       <div key={size} className="flex items-baseline gap-4">
                         <span className="w-20 shrink-0 font-mono text-[10px] text-muted-foreground/50">
                           {size}
                         </span>
-                        <p
-                          className={cn(
-                            family.className,
-                            size,
-                            'text-foreground'
-                          )}
-                        >
+                        <p className={cn(family.className, size, 'text-foreground')}>
                           The quick brown fox jumps
                         </p>
                       </div>
@@ -350,15 +320,7 @@ export default function PlaygroundPage() {
             />
 
             {(
-              [
-                'default',
-                'brand',
-                'destructive',
-                'outline',
-                'secondary',
-                'ghost',
-                'link',
-              ] as const
+              ['default', 'brand', 'destructive', 'outline', 'secondary', 'ghost', 'link'] as const
             ).map((variant) => (
               <div key={variant} className="mb-8">
                 <p className="text-caption mb-3 uppercase text-aq-blue">
@@ -373,12 +335,7 @@ export default function PlaygroundPage() {
                     Small
                   </Button>
                   <Button variant={variant} size="icon">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="currentColor"
-                    >
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                       <path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 12.5a5.5 5.5 0 110-11 5.5 5.5 0 010 11zM8 4a.75.75 0 01.75.75v2.5h2.5a.75.75 0 010 1.5h-2.5v2.5a.75.75 0 01-1.5 0v-2.5h-2.5a.75.75 0 010-1.5h2.5v-2.5A.75.75 0 018 4z" />
                     </svg>
                   </Button>
@@ -403,14 +360,11 @@ export default function PlaygroundPage() {
               <Card>
                 <CardHeader>
                   <CardTitle>Standard Card</CardTitle>
-                  <CardDescription>
-                    Default card component from shadcn/ui
-                  </CardDescription>
+                  <CardDescription>Default card component from shadcn/ui</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground">
-                    Uses the default card styling with rounded corners, border,
-                    and shadow.
+                    Uses the default card styling with rounded corners, border, and shadow.
                   </p>
                 </CardContent>
                 <CardFooter>
@@ -422,42 +376,31 @@ export default function PlaygroundPage() {
 
               {/* Glass */}
               <div className="glass rounded-xl p-6">
-                <h3 className="text-headline mb-2 text-lg text-foreground">
-                  .glass
-                </h3>
+                <h3 className="text-headline mb-2 text-lg text-foreground">.glass</h3>
                 <p className="text-sm text-muted-foreground">
-                  backdrop-blur-xl · bg-card/60 · border-border/30 · noise
-                  overlay
+                  backdrop-blur-xl · bg-card/60 · border-border/30 · noise overlay
                 </p>
               </div>
 
               {/* Glass Strong */}
               <div className="glass-strong rounded-xl p-6">
-                <h3 className="text-headline mb-2 text-lg text-foreground">
-                  .glass-strong
-                </h3>
+                <h3 className="text-headline mb-2 text-lg text-foreground">.glass-strong</h3>
                 <p className="text-sm text-muted-foreground">
-                  backdrop-blur-2xl · bg-card/80 · border-border/20 · heavier
-                  noise
+                  backdrop-blur-2xl · bg-card/80 · border-border/20 · heavier noise
                 </p>
               </div>
 
               {/* Glass Card */}
               <div className="glass-card rounded-xl p-6">
-                <h3 className="text-headline mb-2 text-lg text-foreground">
-                  .glass-card
-                </h3>
+                <h3 className="text-headline mb-2 text-lg text-foreground">.glass-card</h3>
                 <p className="text-sm text-muted-foreground">
-                  backdrop-blur-lg · bg-card/40 · border-border/10 · subtle
-                  noise
+                  backdrop-blur-lg · bg-card/40 · border-border/10 · subtle noise
                 </p>
               </div>
 
               {/* Noise Overlay */}
               <div className="noise-overlay rounded-xl bg-aq-blue/10 p-6">
-                <h3 className="text-headline mb-2 text-lg text-foreground">
-                  .noise-overlay
-                </h3>
+                <h3 className="text-headline mb-2 text-lg text-foreground">.noise-overlay</h3>
                 <p className="text-sm text-muted-foreground">
                   Film-grain texture overlay for depth
                 </p>
@@ -474,22 +417,16 @@ export default function PlaygroundPage() {
             />
 
             <div className="flex flex-wrap gap-4">
-              {(
-                [
-                  'default',
-                  'brand',
-                  'secondary',
-                  'destructive',
-                  'outline',
-                ] as const
-              ).map((variant) => (
-                <div key={variant} className="flex flex-col items-center gap-2">
-                  <Badge variant={variant}>{variant}</Badge>
-                  <span className="font-mono text-[10px] text-muted-foreground/50">
-                    {variant}
-                  </span>
-                </div>
-              ))}
+              {(['default', 'brand', 'secondary', 'destructive', 'outline'] as const).map(
+                (variant) => (
+                  <div key={variant} className="flex flex-col items-center gap-2">
+                    <Badge variant={variant}>{variant}</Badge>
+                    <span className="font-mono text-[10px] text-muted-foreground/50">
+                      {variant}
+                    </span>
+                  </div>
+                )
+              )}
             </div>
           </section>
 
@@ -524,9 +461,7 @@ export default function PlaygroundPage() {
                   className="border-destructive focus-visible:ring-destructive"
                   defaultValue="invalid@"
                 />
-                <p className="text-xs text-destructive">
-                  Please enter a valid email address.
-                </p>
+                <p className="text-xs text-destructive">Please enter a valid email address.</p>
               </div>
             </div>
           </section>
@@ -608,44 +543,28 @@ export default function PlaygroundPage() {
 
             <div className="grid gap-6 sm:grid-cols-2">
               <div className="rounded-xl border border-border bg-secondary/30 p-8">
-                <p className="text-caption mb-3 uppercase text-aq-blue">
-                  .text-brand-gradient
-                </p>
-                <p className="text-brand-gradient text-display text-4xl">
-                  Anaqio Studio
-                </p>
+                <p className="text-caption mb-3 uppercase text-aq-blue">.text-brand-gradient</p>
+                <p className="text-brand-gradient text-display text-4xl">Anaqio Studio</p>
               </div>
 
               <div className="overflow-hidden rounded-xl">
                 <div className="bg-brand-gradient p-8">
-                  <p className="text-caption mb-3 uppercase text-white/60">
-                    .bg-brand-gradient
-                  </p>
-                  <p className="text-display text-2xl text-white">
-                    Background Gradient
-                  </p>
+                  <p className="text-caption mb-3 uppercase text-white/60">.bg-brand-gradient</p>
+                  <p className="text-display text-2xl text-white">Background Gradient</p>
                 </div>
               </div>
 
               <div className="overflow-hidden rounded-xl">
                 <div className="bg-brand-diag p-8">
-                  <p className="text-caption mb-3 uppercase text-white/60">
-                    .bg-brand-diag
-                  </p>
-                  <p className="text-display text-2xl text-white">
-                    Diagonal + Hover
-                  </p>
+                  <p className="text-caption mb-3 uppercase text-white/60">.bg-brand-diag</p>
+                  <p className="text-display text-2xl text-white">Diagonal + Hover</p>
                 </div>
               </div>
 
               <div className="overflow-hidden rounded-xl border border-border">
                 <div className="hero-gradient bg-background p-8">
-                  <p className="text-caption mb-3 uppercase text-aq-blue">
-                    .hero-gradient
-                  </p>
-                  <p className="text-display text-2xl text-foreground">
-                    Radial Hero Glow
-                  </p>
+                  <p className="text-caption mb-3 uppercase text-aq-blue">.hero-gradient</p>
+                  <p className="text-display text-2xl text-foreground">Radial Hero Glow</p>
                   <p className="mt-2 text-sm text-muted-foreground">
                     Multi-layered radial gradients for hero sections
                   </p>
@@ -685,9 +604,7 @@ export default function PlaygroundPage() {
                     className="h-5 rounded border border-aq-blue/15 bg-aq-blue/20"
                     style={{ width: s.px }}
                   />
-                  <span className="font-mono text-[10px] text-muted-foreground/40">
-                    {s.px}
-                  </span>
+                  <span className="font-mono text-[10px] text-muted-foreground/40">{s.px}</span>
                 </div>
               ))}
             </div>
@@ -702,7 +619,7 @@ export default function PlaygroundPage() {
         </main>
       </div>
     </div>
-  );
+  )
 }
 
 /* ─────────────────────────────────────────────
@@ -714,32 +631,27 @@ function AnimationCard({
   className,
   children,
 }: {
-  title: string;
-  className?: string;
-  children?: React.ReactNode;
+  title: string
+  className?: string
+  children?: React.ReactNode
 }) {
   return (
     <div className="rounded-xl border border-border bg-secondary/30 p-6">
       <p className="text-caption mb-4 uppercase text-aq-blue">{title}</p>
       {children ? (
-        <div className="flex min-h-[80px] items-center justify-center">
-          {children}
-        </div>
+        <div className="flex min-h-[80px] items-center justify-center">{children}</div>
       ) : (
         <div className={cn('h-20 w-full rounded-lg', className)} />
       )}
     </div>
-  );
+  )
 }
 
 function EntranceDemo() {
-  const [key, setKey] = useState(0);
+  const [key, setKey] = useState(0)
   return (
     <div className="flex flex-col items-center gap-3">
-      <div
-        key={key}
-        className="page-entrance h-10 w-10 rounded-lg bg-aq-blue"
-      />
+      <div key={key} className="page-entrance h-10 w-10 rounded-lg bg-aq-blue" />
       <button
         onClick={() => setKey((k) => k + 1)}
         className="font-mono text-[10px] text-aq-blue/60 transition-colors hover:text-aq-blue"
@@ -747,5 +659,5 @@ function EntranceDemo() {
         Replay ↻
       </button>
     </div>
-  );
+  )
 }

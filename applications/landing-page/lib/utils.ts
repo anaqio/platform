@@ -1,6 +1,5 @@
-export { cn } from '@anaqio/utils/cn';
+export { cn } from '@anaqio/utils/cn'
 
 // This check can be removed, it is just for tutorial purposes
 export const hasEnvVars =
-  process.env.NEXT_PUBLIC_SUPABASE_URL &&
-  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY;
+  process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY
