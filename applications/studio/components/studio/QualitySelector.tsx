@@ -1,9 +1,9 @@
 'use client'
 
+import { ToggleGroup, ToggleGroupItem } from '@anaqio/ui'
 import { Crown, Sparkles, Zap } from 'lucide-react'
 
 import type { ImageQuality } from '@/lib/generation-options'
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
 interface QualitySelectorProps {
   value: ImageQuality

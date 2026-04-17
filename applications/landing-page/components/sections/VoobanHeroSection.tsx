@@ -8,7 +8,7 @@ import { useLayoutEffect, useRef, useState } from 'react'
 import { AnaqioTypographyLogo } from '../ui/anaqio-typography-logo'
 
 import { AnaqioLogo } from '@/components/ui/AnaqioLogo'
-import { Button } from '@/components/ui/button'
+import { Button } from '@anaqio/ui'
 import { MagneticButton } from '@/components/ui/MagneticButton'
 import { ScrollLink } from '@/components/ui/scroll-link'
 import { useAnimationReady } from '@/hooks/use-animation-ready'

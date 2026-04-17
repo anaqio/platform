@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect } from 'react'
+import { Badge } from '@anaqio/ui'
 
 import { useRealtimeGeneration } from '@/hooks/useRealtimeGeneration'
-import { Badge } from '@/components/ui/badge'
 
 interface GenerationStatusProps {
   generationId: string | null

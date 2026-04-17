@@ -2,14 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { createRef } from 'react'
 import { describe, expect, it } from 'vitest'
 
-import {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from '@/components/ui/card'
+import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from '@anaqio/ui'
 
 describe('Card Components', () => {
   describe('Card', () => {

@@ -1,9 +1,9 @@
 'use client'
 
+import { ToggleGroup, ToggleGroupItem } from '@anaqio/ui'
 import { Shirt, Users } from 'lucide-react'
 
 import type { GenerationMode } from '@/lib/generation-options'
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
 interface ModeSelectorProps {
   value: GenerationMode

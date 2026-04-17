@@ -9,25 +9,25 @@
 
 These are independent quick fixes. Can be done in any order.
 
-- [x] **T-01** Remove accidental `"backoffice"` npm dependency
+- [ ] **T-01** Remove accidental `"backoffice"` npm dependency
   - File: `applications/backoffice/package.json` line 37
   - Action: delete `"backoffice": "^4.4.0"` from dependencies, run `bun install`
   - Risk: none
   - Effort: 1 min
 
-- [x] **T-02** Fix `public.events` FK → `landing.campaigns`
+- [ ] **T-02** Fix `public.events` FK → `landing.campaigns`
   - File: `supabase/migrations/20260408000001_backoffice_events.sql` line 21
   - Action: change `references public.campaigns(id)` → `references landing.campaigns(id)`
   - Risk: production already has this applied manually; migration file fix only affects `db reset`
   - Effort: 5 min
 
-- [x] **T-03** Fix backoffice browser client schema (`landing` → default `public`)
+- [ ] **T-03** Fix backoffice browser client schema (`landing` → default `public`)
   - File: `applications/backoffice/src/lib/supabase/client.ts` line 7
   - Action: remove `{ schema: 'landing' }` or change to `{ schema: 'public' }` (public is default)
   - Risk: low — backoffice CRM reads `public.*` views
   - Effort: 2 min
 
-- [x] **T-04** Fix port swap (studio ↔ landing-page)
+- [ ] **T-04** Fix port swap (studio ↔ landing-page)
   - Files:
     - `applications/studio/package.json` → change `"dev": "next dev -p 3002"` to `"dev": "next dev -p 3000"`
     - `applications/landing-page/package.json` → change `"dev": "next dev -p 3000"` to `"dev": "next dev -p 3002"`
@@ -41,13 +41,13 @@ These are independent quick fixes. Can be done in any order.
 
 ### Independent (no dependencies)
 
-- [x] **T-05** Add `db` to commitlint allowed types
+- [ ] **T-05** Add `db` to commitlint allowed types
   - File: `commitlint.config.mjs`
   - Action: extend config to allow `db` type alongside the conventional ones
   - Depends on: nothing
   - Effort: 2 min
 
-- [x] **T-06** Add `test` step to CI workflows
+- [ ] **T-06** Add `test` step to CI workflows
   - Files: `.github/workflows/ci.yml`, `.github/workflows/main.yml`
   - Action: add `test` to the `turbo run lint type-check build` command
   - Depends on: nothing
@@ -55,7 +55,7 @@ These are independent quick fixes. Can be done in any order.
 
 ### Requires decision
 
-- [x] **T-07** Unify Prettier config across apps
+- [ ] **T-07** Unify Prettier config across apps
   - Problem: studio (no semi, 100 width, trailingComma: all) vs landing-page (semi, 80 width, trailingComma: es5) vs doc claims (no semi, 100 width, es5)
   - **Decision: Option A** → `semi: false`, `printWidth: 100`, `trailingComma: es5`
   - Then update: landing-page `.prettierrc`, studio `.prettierrc`, AGENTS.md
@@ -63,7 +63,7 @@ These are independent quick fixes. Can be done in any order.
   - Risk: large git diff from reformatting — commit separately
   - Effort: 15 min + reformat
 
-- [x] **T-08** Replace `tailwindcss-animate` with `tw-animate-css` in landing-page
+- [ ] **T-08** Replace `tailwindcss-animate` with `tw-animate-css` in landing-page
   - Files: `applications/landing-page/package.json`, `applications/landing-page/tailwind.config.ts`
   - Action: uninstall `tailwindcss-animate`, install `tw-animate-css`, update config accordingly
   - Depends on: nothing (but note landing-page is still Tailwind v3 — `tw-animate-css` import style differs)

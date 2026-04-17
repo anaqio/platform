@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { forwardRef } from 'react'
 
-import { Input } from '@/components/ui/input'
+import { Input } from '@anaqio/ui'
 import { cn } from '@/lib/utils'
 
 interface AtelierTextInputProps {

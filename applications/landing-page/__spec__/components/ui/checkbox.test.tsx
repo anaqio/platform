@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event'
 import { createRef } from 'react'
 import { describe, expect, it } from 'vitest'
 
-import { Checkbox } from '@/components/ui/checkbox'
+import { Checkbox } from '@anaqio/ui'
 
 describe('Checkbox', () => {
   it('should render correctly', () => {

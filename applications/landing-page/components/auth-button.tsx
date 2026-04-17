@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 
 import { LogoutButton } from './logout-button'
-import { Button } from './ui/button'
+import { Button } from '@anaqio/ui'
 
 import { Link } from '@/i18n/routing'
 import { createClient } from '@/lib/supabase/server'

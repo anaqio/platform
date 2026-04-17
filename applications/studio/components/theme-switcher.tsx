@@ -1,17 +1,16 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Laptop, Moon, Sun } from 'lucide-react'
-import { useTheme } from 'next-themes'
-
-import { Button } from '@/components/ui/button'
 import {
+  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from '@anaqio/ui'
+import { Laptop, Moon, Sun } from 'lucide-react'
+import { useTheme } from 'next-themes'
 
 const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false)

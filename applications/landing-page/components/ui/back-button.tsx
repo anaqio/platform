@@ -2,7 +2,7 @@
 
 import { ArrowLeft } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@anaqio/ui'
 import { useRouter } from '@/i18n/routing'
 import { cn } from '@/lib/utils'
 

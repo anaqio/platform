@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@anaqio/ui'
 import { ScrollLink } from '@/components/ui/scroll-link'
 import { useAnimationReady } from '@/hooks/use-animation-ready'
 

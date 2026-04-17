@@ -3,9 +3,9 @@
 import { useState } from 'react'
 
 import { LegalPageLayout } from '@/components/layout/LegalPageLayout'
-import { Button } from '@/components/ui/button'
-import { Checkbox } from '@/components/ui/checkbox'
-import { Label } from '@/components/ui/label'
+import { Button } from '@anaqio/ui'
+import { Checkbox } from '@anaqio/ui'
+import { Label } from '@anaqio/ui'
 
 export function CookiePolicyContent() {
   const [preferences, setPreferences] = useState({

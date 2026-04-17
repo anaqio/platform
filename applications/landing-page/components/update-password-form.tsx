@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 import { AuthCard } from '@/components/ui/auth-card'
 import { AuthField } from '@/components/ui/auth-field'
-import { Button } from '@/components/ui/button'
+import { Button } from '@anaqio/ui'
 import { useRouter } from '@/i18n/routing'
 import { ERROR_MESSAGES } from '@/lib/constants/errors'
 import { createClient } from '@/lib/supabase/client'

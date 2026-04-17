@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@anaqio/ui'
 
 describe('Button', () => {
   it('should render correctly with default props', () => {

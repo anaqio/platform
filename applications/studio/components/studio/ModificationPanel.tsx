@@ -1,11 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import { Button, Textarea } from '@anaqio/ui'
 import { Loader2 } from 'lucide-react'
 
 import { cn } from '@/lib/utils/cn'
-import { Button } from '@/components/ui/button'
-import { Textarea } from '@/components/ui/textarea'
 
 interface ModificationPanelProps {
   currentImageBase64: string

@@ -24,6 +24,8 @@
     "@radix-ui/react-dropdown-menu": "^2.1.14",
     "@radix-ui/react-label": "^2.1.6",
     "@radix-ui/react-slot": "^1.2.2",
+    "@anaqio/schemas": "workspace:*",
+    "@anaqio/ui": "workspace:*",
     "@anaqio/supabase": "workspace:*",
     "@anaqio/utils": "workspace:*",
     "@supabase/ssr": "^0.10.2",

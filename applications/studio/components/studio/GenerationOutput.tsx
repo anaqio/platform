@@ -1,11 +1,10 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { Button, Skeleton } from '@anaqio/ui'
 import { Download, Maximize2, RotateCcw } from 'lucide-react'
 
 import { createClient } from '@/lib/supabase/client'
-import { Button } from '@/components/ui/button'
-import { Skeleton } from '@/components/ui/skeleton'
 
 import { ImageModal } from './ImageModal'
 import { ModificationPanel } from './ModificationPanel'

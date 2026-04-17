@@ -5,7 +5,7 @@ import { Suspense } from 'react'
 
 import type { Metadata } from 'next'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@anaqio/ui'
 import { createClient } from '@/lib/supabase/server'
 
 export async function generateMetadata({

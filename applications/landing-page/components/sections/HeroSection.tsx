@@ -5,7 +5,7 @@ import { ArrowDownRight, ChevronDown } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
 import { useRef } from 'react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@anaqio/ui'
 import { MagneticButton } from '@/components/ui/MagneticButton'
 import { ScrollLink } from '@/components/ui/scroll-link'
 import { useAnimationReady } from '@/hooks/use-animation-ready'

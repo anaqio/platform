@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 import { type ReactNode, useMemo } from 'react'
 
 import { AtelierInvitationForm } from '@/components/sections/atelier-invitation'
-import { Button } from '@/components/ui/button'
+import { Button } from '@anaqio/ui'
 import {
   Drawer,
   DrawerContent,

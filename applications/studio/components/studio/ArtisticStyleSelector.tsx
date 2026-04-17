@@ -63,7 +63,7 @@ export function ArtisticStyleSelector({ value, onChange }: ArtisticStyleSelector
             <style.icon
               className={cn('h-4 w-4', isSelected ? 'text-brand-gold' : 'text-muted-foreground')}
             />
-            <span className="text-[11px] leading-tight font-medium">{style.label}</span>
+            <span className="text-[11px] font-medium leading-tight">{style.label}</span>
           </button>
         )
       })}

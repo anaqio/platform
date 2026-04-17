@@ -1,8 +1,9 @@
 'use client'
 
+import { Badge } from '@anaqio/ui'
+
 import type { Database } from '@/types/supabase'
 import { cn } from '@/lib/utils/cn'
-import { Badge } from '@/components/ui/badge'
 
 type PresetModel = Database['public']['Tables']['preset_models']['Row']
 

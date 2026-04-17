@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, Syne } from 'next/font/google'
+import { Toaster } from '@anaqio/ui'
 import { ThemeProvider } from 'next-themes'
-
-import { Toaster } from '@/components/ui/sonner'
 
 import './globals.css'
 

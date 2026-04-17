@@ -1,8 +1,7 @@
 'use client'
 
+import { Button } from '@anaqio/ui'
 import { Loader2, Sparkles } from 'lucide-react'
-
-import { Button } from '@/components/ui/button'
 
 interface GenerateButtonProps {
   disabled: boolean

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { ArrowDownRight } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@anaqio/ui'
 import { MagneticButton } from '@/components/ui/MagneticButton'
 import { ScrollLink } from '@/components/ui/scroll-link'
 import { Link } from '@/i18n/routing'

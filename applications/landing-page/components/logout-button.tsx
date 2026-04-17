@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@anaqio/ui'
 import { useRouter } from '@/i18n/routing'
 import { createClient } from '@/lib/supabase/client'
 

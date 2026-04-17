@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { createRef } from 'react'
 import { describe, expect, it } from 'vitest'
 
-import { Label } from '@/components/ui/label'
+import { Label } from '@anaqio/ui'
 
 describe('Label', () => {
   it('should render correctly', () => {

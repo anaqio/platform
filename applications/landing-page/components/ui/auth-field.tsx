@@ -1,5 +1,5 @@
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { Input } from '@anaqio/ui'
+import { Label } from '@anaqio/ui'
 
 type AuthFieldProps = {
   id: string

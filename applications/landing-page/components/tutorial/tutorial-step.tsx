@@ -1,4 +1,4 @@
-import { Checkbox } from '../ui/checkbox'
+import { Checkbox } from '@anaqio/ui'
 
 export function TutorialStep({ title, children }: { title: string; children: React.ReactNode }) {
   return (

@@ -28,6 +28,8 @@
     "@remotion/cli": "4",
     "@remotion/google-fonts": "4",
     "@remotion/player": "4",
+    "@anaqio/schemas": "workspace:*",
+    "@anaqio/ui": "workspace:*",
     "@anaqio/supabase": "workspace:*",
     "@anaqio/utils": "workspace:*",
     "@supabase/ssr": "latest",

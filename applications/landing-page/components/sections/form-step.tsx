@@ -4,7 +4,7 @@ import { memo } from 'react'
 
 import type { FormStepProps } from '@/lib/types/waitlist-form'
 
-import { Input } from '@/components/ui/input'
+import { Input } from '@anaqio/ui'
 import { cn } from '@/lib/utils'
 
 export const FormStep = memo(function FormStep({

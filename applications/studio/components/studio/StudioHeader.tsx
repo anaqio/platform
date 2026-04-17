@@ -1,10 +1,10 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { Button } from '@anaqio/ui'
 import { LogOut } from 'lucide-react'
 
 import { createClient } from '@/lib/supabase/client'
-import { Button } from '@/components/ui/button'
 
 export function StudioHeader() {
   const router = useRouter()

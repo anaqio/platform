@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event'
 import { createRef } from 'react'
 import { describe, expect, it } from 'vitest'
 
-import { Input } from '@/components/ui/input'
+import { Input } from '@anaqio/ui'
 
 describe('Input', () => {
   it('should render correctly', () => {

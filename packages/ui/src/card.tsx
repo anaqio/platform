@@ -2,31 +2,36 @@ import * as React from 'react'
 
 import { cn } from './cn'
 
-const Card = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+const Card = ({ className, ref, ...props }: React.ComponentProps<'div'>) => (
   <div
+    ref={ref}
     className={cn('bg-card text-card-foreground rounded-xl border shadow', className)}
     {...props}
   />
 )
 
-const CardHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('flex flex-col space-y-1.5 p-6', className)} {...props} />
+const CardHeader = ({ className, ref, ...props }: React.ComponentProps<'div'>) => (
+  <div ref={ref} className={cn('flex flex-col space-y-1.5 p-6', className)} {...props} />
 )
 
-const CardTitle = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('leading-none font-semibold tracking-tight', className)} {...props} />
+const CardTitle = ({ className, ref, ...props }: React.ComponentProps<'div'>) => (
+  <div
+    ref={ref}
+    className={cn('leading-none font-semibold tracking-tight', className)}
+    {...props}
+  />
 )
 
-const CardDescription = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('text-muted-foreground text-sm', className)} {...props} />
+const CardDescription = ({ className, ref, ...props }: React.ComponentProps<'div'>) => (
+  <div ref={ref} className={cn('text-muted-foreground text-sm', className)} {...props} />
 )
 
-const CardContent = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('p-6 pt-0', className)} {...props} />
+const CardContent = ({ className, ref, ...props }: React.ComponentProps<'div'>) => (
+  <div ref={ref} className={cn('p-6 pt-0', className)} {...props} />
 )
 
-const CardFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('flex items-center p-6 pt-0', className)} {...props} />
+const CardFooter = ({ className, ref, ...props }: React.ComponentProps<'div'>) => (
+  <div ref={ref} className={cn('flex items-center p-6 pt-0', className)} {...props} />
 )
 
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }

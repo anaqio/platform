@@ -2,12 +2,10 @@
 
 import { useCallback } from 'react'
 import { TOTAL_STUDIO_STEPS, useStudioStore } from '@/stores/studio-store'
+import { Button, Card, Progress } from '@anaqio/ui'
 import { ChevronLeft, ChevronRight, Loader2, Sparkles } from 'lucide-react'
 
 import type { Database } from '@/types/supabase'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Progress } from '@/components/ui/progress'
 
 import { ArtisticStyleSelector } from './ArtisticStyleSelector'
 import { BackgroundColorPicker } from './BackgroundColorPicker'

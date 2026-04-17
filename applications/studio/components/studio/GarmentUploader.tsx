@@ -1,11 +1,11 @@
 'use client'
 
 import { useCallback, useState } from 'react'
+import { Button } from '@anaqio/ui'
 import { Upload, X } from 'lucide-react'
 
 import { cn } from '@/lib/utils/cn'
 import { validateGarmentFile } from '@/lib/utils/upload'
-import { Button } from '@/components/ui/button'
 
 interface GarmentUploaderProps {
   onFileSelect: (file: File) => void
@@ -61,7 +61,7 @@ export function GarmentUploader({ onFileSelect, selectedFile, onClear }: Garment
         <Button
           variant="destructive"
           size="icon"
-          className="absolute top-2 right-2 h-8 w-8"
+          className="absolute right-2 top-2 h-8 w-8"
           onClick={handleClear}
         >
           <X className="h-4 w-4" />

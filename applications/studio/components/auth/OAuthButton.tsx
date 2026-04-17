@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import { Button } from '@anaqio/ui'
 
 import { createClient } from '@/lib/supabase/client'
-import { Button } from '@/components/ui/button'
 
 export function OAuthButton() {
   const [loading, setLoading] = useState(false)

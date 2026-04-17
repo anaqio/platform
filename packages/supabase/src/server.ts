@@ -25,7 +25,6 @@ export function createServerSupabaseClient<Database>(
             cookieStore.set(name, value, options)
           }
         } catch {
-          // Server Component — can't write cookies; middleware handles the refresh
         }
       },
     },

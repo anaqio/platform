@@ -1,6 +1,6 @@
 'use client'
 
-import { Textarea } from '@/components/ui/textarea'
+import { Textarea } from '@anaqio/ui'
 
 interface GarmentDescriptionProps {
   value: string

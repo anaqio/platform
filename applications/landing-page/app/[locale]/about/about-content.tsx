@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@anaqio/ui'
 import { MagneticButton } from '@/components/ui/MagneticButton'
 import { Link } from '@/i18n/routing'
 import { getAboutTeam } from '@/lib/data/about-page-content'

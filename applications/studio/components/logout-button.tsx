@@ -1,9 +1,9 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { Button } from '@anaqio/ui'
 
 import { createClient } from '@/lib/supabase/client'
-import { Button } from '@/components/ui/button'
 
 export function LogoutButton() {
   const router = useRouter()

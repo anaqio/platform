@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useRef } from 'react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@anaqio/ui'
 import { MagneticButton } from '@/components/ui/MagneticButton'
 import { useAnimationReady } from '@/hooks/use-animation-ready'
 import { Link } from '@/i18n/routing'
