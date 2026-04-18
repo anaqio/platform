@@ -61,7 +61,7 @@ export function GarmentUploader({ onFileSelect, selectedFile, onClear }: Garment
         <Button
           variant="destructive"
           size="icon"
-          className="absolute right-2 top-2 h-8 w-8"
+          className="absolute top-2 right-2 h-8 w-8"
           onClick={handleClear}
         >
           <X className="h-4 w-4" />

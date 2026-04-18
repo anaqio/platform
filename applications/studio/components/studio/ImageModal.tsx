@@ -33,7 +33,7 @@ export function ImageModal({ src, onClose }: ImageModalProps) {
         />
         <button
           onClick={onClose}
-          className="bg-background/80 text-foreground hover:bg-destructive hover:text-destructive-foreground absolute -right-3 -top-3 rounded-full p-1.5 transition-all duration-200 active:scale-90"
+          className="bg-background/80 text-foreground hover:bg-destructive hover:text-destructive-foreground absolute -top-3 -right-3 rounded-full p-1.5 transition-all duration-200 active:scale-90"
           aria-label="Close image viewer"
         >
           <X className="h-6 w-6" />

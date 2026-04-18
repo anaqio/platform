@@ -1,5 +1,5 @@
 {
-  "extends": "@anaqio/tsconfig/base.json",
+  "extends": "@anaqio/tsconfig/base",
   "compilerOptions": {
     "composite": true,
     "lib": ["DOM", "DOM.Iterable", "ES2022"],

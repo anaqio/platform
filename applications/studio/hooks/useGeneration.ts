@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import type { GenerationOptions } from '@/lib/generation-options'
 import { buildPrompt, QUALITY_STEPS } from '@/lib/generation-options'
+import { readApiError } from '@/lib/utils/api-errors'
 
 type State = 'idle' | 'uploading' | 'generating' | 'completed' | 'error'
 
@@ -24,7 +25,7 @@ export function useGeneration() {
       const formData = new FormData()
       formData.append('garment', garmentFile)
       const uploadRes = await fetch('/api/upload', { method: 'POST', body: formData })
-      if (!uploadRes.ok) throw new Error('Upload failed')
+      if (!uploadRes.ok) throw new Error(await readApiError(uploadRes, 'Upload failed'))
       const { garmentPath } = await uploadRes.json()
 
       setState('generating')
@@ -43,7 +44,7 @@ export function useGeneration() {
           aiProvider: options.aiProvider,
         }),
       })
-      if (!genRes.ok) throw new Error('Generation request failed')
+      if (!genRes.ok) throw new Error(await readApiError(genRes, 'Generation request failed'))
       const data = await genRes.json()
       setGenerationId(data.generationId)
     } catch (err) {

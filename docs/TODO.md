@@ -2,6 +2,7 @@
 
 > Generated from full monorepo audit on 2026-04-17.
 > Scope: only issues detected in the audit. No new features.
+> Verified against repo state on 2026-04-17. Items already completed in code are marked `[x]`.
 
 ---
 
@@ -9,25 +10,25 @@
 
 These are independent quick fixes. Can be done in any order.
 
-- [ ] **T-01** Remove accidental `"backoffice"` npm dependency
+- [x] **T-01** Remove accidental `"backoffice"` npm dependency
   - File: `applications/backoffice/package.json` line 37
   - Action: delete `"backoffice": "^4.4.0"` from dependencies, run `bun install`
   - Risk: none
   - Effort: 1 min
 
-- [ ] **T-02** Fix `public.events` FK → `landing.campaigns`
+- [x] **T-02** Fix `public.events` FK → `landing.campaigns`
   - File: `supabase/migrations/20260408000001_backoffice_events.sql` line 21
   - Action: change `references public.campaigns(id)` → `references landing.campaigns(id)`
   - Risk: production already has this applied manually; migration file fix only affects `db reset`
   - Effort: 5 min
 
-- [ ] **T-03** Fix backoffice browser client schema (`landing` → default `public`)
+- [x] **T-03** Fix backoffice browser client schema (`landing` → default `public`)
   - File: `applications/backoffice/src/lib/supabase/client.ts` line 7
   - Action: remove `{ schema: 'landing' }` or change to `{ schema: 'public' }` (public is default)
   - Risk: low — backoffice CRM reads `public.*` views
   - Effort: 2 min
 
-- [ ] **T-04** Fix port swap (studio ↔ landing-page)
+- [x] **T-04** Fix port swap (studio ↔ landing-page)
   - Files:
     - `applications/studio/package.json` → change `"dev": "next dev -p 3002"` to `"dev": "next dev -p 3000"`
     - `applications/landing-page/package.json` → change `"dev": "next dev -p 3000"` to `"dev": "next dev -p 3002"`
@@ -41,13 +42,13 @@ These are independent quick fixes. Can be done in any order.
 
 ### Independent (no dependencies)
 
-- [ ] **T-05** Add `db` to commitlint allowed types
+- [x] **T-05** Add `db` to commitlint allowed types
   - File: `commitlint.config.mjs`
   - Action: extend config to allow `db` type alongside the conventional ones
   - Depends on: nothing
   - Effort: 2 min
 
-- [ ] **T-06** Add `test` step to CI workflows
+- [x] **T-06** Add `test` step to CI workflows
   - Files: `.github/workflows/ci.yml`, `.github/workflows/main.yml`
   - Action: add `test` to the `turbo run lint type-check build` command
   - Depends on: nothing
@@ -63,7 +64,7 @@ These are independent quick fixes. Can be done in any order.
   - Risk: large git diff from reformatting — commit separately
   - Effort: 15 min + reformat
 
-- [ ] **T-08** Replace `tailwindcss-animate` with `tw-animate-css` in landing-page
+- [x] **T-08** Replace `tailwindcss-animate` with `tw-animate-css` in landing-page
   - Files: `applications/landing-page/package.json`, `applications/landing-page/tailwind.config.ts`
   - Action: uninstall `tailwindcss-animate`, install `tw-animate-css`, update config accordingly
   - Depends on: nothing (but note landing-page is still Tailwind v3 — `tw-animate-css` import style differs)
@@ -91,7 +92,7 @@ These are larger efforts. Listed by dependency order.
   - Effort: 2–3 hours
   - Depends on: nothing (but nice to batch after T-09 to avoid double-touching landing-page)
 
-- [ ] **T-11** Decide fate of `@anaqio/ui` and `@anaqio/schemas` packages
+- [x] **T-11** Decide fate of `@anaqio/ui` and `@anaqio/schemas` packages
   - Both exist in `packages/` but no app imports them
   - **Decision: Option A** — Wire apps to use them (add to `package.json` dependencies, replace local copies)
   - Depends on: nothing (decided)

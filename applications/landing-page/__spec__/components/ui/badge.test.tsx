@@ -13,7 +13,8 @@ describe('Badge', () => {
   it('should apply variant classes correctly', () => {
     render(<Badge variant="brand">Brand Badge</Badge>)
     const badge = screen.getByText(/brand badge/i)
-    expect(badge).toHaveClass('bg-brand-gradient')
+    expect(badge).toHaveClass('bg-aq-gold')
+    expect(badge).toHaveClass('text-aq-navy')
   })
 
   it('should apply custom classes', () => {

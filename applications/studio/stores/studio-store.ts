@@ -7,6 +7,7 @@ import type {
   ImageQuality,
 } from '@/lib/generation-options'
 import { buildPrompt, DEFAULT_OPTIONS, QUALITY_STEPS } from '@/lib/generation-options'
+import { readApiError } from '@/lib/utils/api-errors'
 
 type WorkflowState = 'idle' | 'uploading' | 'generating' | 'completed' | 'error'
 
@@ -117,7 +118,7 @@ export const useStudioStore = create<StudioState & StudioActions>((set, get) => 
       const formData = new FormData()
       formData.append('garment', state.garmentFile)
       const uploadRes = await fetch('/api/upload', { method: 'POST', body: formData })
-      if (!uploadRes.ok) throw new Error('Upload failed')
+      if (!uploadRes.ok) throw new Error(await readApiError(uploadRes, 'Upload failed'))
       const { garmentPath } = await uploadRes.json()
 
       // 2. Generate
@@ -147,8 +148,7 @@ export const useStudioStore = create<StudioState & StudioActions>((set, get) => 
         }),
       })
       if (!genRes.ok) {
-        const body = await genRes.json().catch(() => null)
-        throw new Error(body?.error ?? `Generation failed (${genRes.status})`)
+        throw new Error(await readApiError(genRes, 'Generation failed'))
       }
       const data = await genRes.json()
       set({

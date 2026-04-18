@@ -15,19 +15,5 @@ export async function getEvents(): Promise<Event[]> {
   return data as Event[]
 }
 
-export interface EventStats {
-  total: number
-  active: number
-  upcoming: number
-  past: number
-}
-
-export function computeEventStats(events: Event[]): EventStats {
-  const now = new Date()
-  return {
-    total: events.length,
-    active: events.filter((e) => e.is_active).length,
-    upcoming: events.filter((e) => e.start_at && new Date(e.start_at) > now).length,
-    past: events.filter((e) => e.end_at && new Date(e.end_at) < now).length,
-  }
-}
+export { computeEventStats } from './event-stats'
+export type { EventStats } from './event-stats'

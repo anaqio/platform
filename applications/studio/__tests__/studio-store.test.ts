@@ -1,5 +1,5 @@
 import fc from 'fast-check'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { useStudioStore } from '../stores/studio-store'
 
@@ -63,5 +63,30 @@ describe('Generate button disabled states', () => {
         }
       )
     )
+  })
+})
+
+describe('startGeneration error handling', () => {
+  beforeEach(() => {
+    vi.restoreAllMocks()
+  })
+
+  it('surfaces upload API errors instead of using a generic message', async () => {
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: false,
+      status: 500,
+      json: () => Promise.resolve({ error: 'Bucket not found' }),
+    }) as typeof fetch
+
+    useStudioStore.setState({
+      garmentFile: new File(['image'], 'garment.png', { type: 'image/png' }),
+      selectedPresetId: 'preset-1',
+    })
+
+    await useStudioStore.getState().startGeneration()
+
+    const state = useStudioStore.getState()
+    expect(state.workflowState).toBe('error')
+    expect(state.errorMessage).toBe('Bucket not found')
   })
 })

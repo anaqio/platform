@@ -8,7 +8,7 @@
     "start": "next start -p 3001",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
-    "test": "echo 'no tests yet'",
+    "test": "bun test",
     "clean": "rm -rf .next",
     "db:push": "supabase db push",
     "db:reset": "supabase db reset"

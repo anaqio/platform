@@ -24,8 +24,7 @@ export function createServerSupabaseClient<Database>(
           for (const { name, value, options } of cookiesToSet) {
             cookieStore.set(name, value, options)
           }
-        } catch {
-        }
+        } catch {}
       },
     },
   } as any) as SupabaseClient<Database>
