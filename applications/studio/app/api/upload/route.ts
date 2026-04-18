@@ -37,8 +37,12 @@ export async function POST(request: NextRequest) {
     const garmentPath = await uploadGarment(buffer, file.type, ownerId)
     return NextResponse.json({ garmentPath })
   } catch (err) {
+    console.error('[upload-api] Failure:', err)
     return NextResponse.json(
-      { error: err instanceof Error ? err.message : 'Upload failed' },
+      {
+        error: err instanceof Error ? err.message : 'Upload failed',
+        details: process.env.NODE_ENV === 'development' ? String(err) : undefined,
+      },
       { status: 500 }
     )
   }

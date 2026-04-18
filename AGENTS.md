@@ -86,6 +86,8 @@ Each app requires `.env.local` (copy from `.env.example`). Never commit secrets.
 
 | Package                 | Path                      | Export             |
 | ----------------------- | ------------------------- | ------------------ |
+| `@anaqio/ui`            | `packages/ui/`            | Shared UI components|
+| `@anaqio/schemas`       | `packages/schemas/`       | Shared Zod schemas |
 | `@anaqio/tsconfig`      | `packages/tsconfig/`      | TypeScript presets |
 | `@anaqio/eslint-config` | `packages/eslint-config/` | ESLint flat config |
 | `@anaqio/utils`         | `packages/utils/`         | `cn()` utility     |

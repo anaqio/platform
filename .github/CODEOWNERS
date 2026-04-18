@@ -14,5 +14,5 @@
 # CI/CD — Moughamir owns infra
 /.github/workflows/ @moughamir
 
-# Brand/design assets — Amal reviews
+# Brand/design assets — Moughamir reviews
 /applications/landing-page/public/ @moughamir

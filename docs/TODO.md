@@ -56,7 +56,7 @@ These are independent quick fixes. Can be done in any order.
 
 ### Requires decision
 
-- [ ] **T-07** Unify Prettier config across apps
+- [x] **T-07** Unify Prettier config across apps
   - Problem: studio (no semi, 100 width, trailingComma: all) vs landing-page (semi, 80 width, trailingComma: es5) vs doc claims (no semi, 100 width, es5)
   - **Decision: Option A** → `semi: false`, `printWidth: 100`, `trailingComma: es5`
   - Then update: landing-page `.prettierrc`, studio `.prettierrc`, AGENTS.md
@@ -98,13 +98,13 @@ These are larger efforts. Listed by dependency order.
   - Depends on: nothing (decided)
   - Effort: 1 hour
 
-- [ ] **T-12** Update all agent context docs with actual package list
+- [x] **T-12** Update all agent context docs with actual package list
   - Files: `AGENTS.md`, `CLAUDE.md`, `QWEN.md`, `README.md`
   - Action: add `@anaqio/ui` and `@anaqio/schemas` to shared packages table (or remove if T-11 goes with Option B)
   - Depends on: **T-11**
   - Effort: 30 min
 
-- [ ] **T-13** Fix CODEOWNERS to match intent
+- [x] **T-13** Fix CODEOWNERS to match intent
   - File: `.github/CODEOWNERS` line 18
   - Comment says "Amal reviews" but assigns `@moughamir`
   - **Decision: Moughamir** — fix the comment to match the assignment
@@ -119,18 +119,18 @@ These are larger efforts. Listed by dependency order.
   - Replace `<ref>` with actual Supabase project ref
   - Effort: 5 min (needs the project ref value)
 
-- [ ] **T-15** Consolidate `cn()` implementations
+- [x] **T-15** Consolidate `cn()` implementations
   - 3 copies: `packages/utils/src/cn.ts`, `packages/ui/src/cn.ts`, and per-app `lib/utils/cn.ts`
   - Action: single source in `@anaqio/utils/cn`, re-export in apps
   - Effort: 15 min
 
-- [ ] **T-16** Clean up stale files in landing-page
+- [x] **T-16** Clean up stale files in landing-page
   - `applications/landing-page/error.txt` — debug log
   - `applications/landing-page/resume.txt` — temp file
   - `applications/landing-page/skills-lock.json` — AI lock file (gitignore?)
   - Effort: 5 min
 
-- [ ] **T-17** Resolve `studio/supabase/` subdirectory
+- [x] **T-17** Resolve `studio/supabase/` subdirectory
   - `applications/studio/supabase/` exists alongside root `supabase/` (the canonical one)
   - Action: delete if legacy, or document its purpose
   - Effort: 5 min

@@ -26,6 +26,13 @@ function isDuplicateBucketError(message: string) {
 }
 
 async function ensureBucket(bucket: ManagedBucket) {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+  if (!url || !key) {
+    throw new Error(`[storage.env] Missing Supabase configuration. URL: ${!!url}, Key: ${!!key}`)
+  }
+
   const admin = createClient()
   const { error: bucketError } = await admin.storage.getBucket(bucket)
 
@@ -39,7 +46,7 @@ async function ensureBucket(bucket: ManagedBucket) {
 
   const { error: createError } = await admin.storage.createBucket(bucket, MANAGED_BUCKETS[bucket])
   if (createError && !isDuplicateBucketError(createError.message)) {
-    throw new Error(`[storage.bucket] ${createError.message}`)
+    throw new Error(`[storage.create] ${createError.message}`)
   }
 
   return admin

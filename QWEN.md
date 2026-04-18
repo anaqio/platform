@@ -17,6 +17,8 @@ com.anaqio/
 │   ├── landing-page/    # Brand site + waitlist      →  anaqio.com
 │   └── backoffice/      # Internal CRM + dashboard   →  backoffice.anaqio.com
 ├── packages/
+│   ├── @anaqio/ui          # Shared UI components (shadcn/ui New York style)
+│   ├── @anaqio/schemas     # Shared Zod validation schemas
 │   ├── @anaqio/supabase    # Supabase client factories (browser / server / admin)
 │   ├── @anaqio/utils       # cn() utility (clsx + tailwind-merge)
 │   ├── @anaqio/tsconfig    # Shared TypeScript config presets

@@ -22,6 +22,8 @@ This directory is a **Bun workspaces monorepo** orchestrated by Turborepo. Each 
 
 | Package                 | What                                                  |
 | ----------------------- | ----------------------------------------------------- |
+| `@anaqio/ui`            | Shared UI components (shadcn/ui New York style)       |
+| `@anaqio/schemas`       | Shared Zod validation schemas                         |
 | `@anaqio/tsconfig`      | Base tsconfig presets (`base.json`, `nextjs.json`)    |
 | `@anaqio/eslint-config` | Shared ESLint flat config (`index.mjs`, `nextjs.mjs`) |
 | `@anaqio/utils`         | `cn()` utility (clsx + tailwind-merge)                |
