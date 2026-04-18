@@ -115,7 +115,7 @@ These are larger efforts. Listed by dependency order.
 
 ## P3 — Backlog (5 items, no urgency)
 
-- [ ] **T-14** Fix `db:types` placeholder in studio `package.json`
+- [x] **T-14** Fix `db:types` placeholder in studio `package.json`
   - Replace `<ref>` with actual Supabase project ref
   - Effort: 5 min (needs the project ref value)
 

@@ -1,50 +1,12 @@
-import { z } from 'zod/v4'
+import {
+  type ArtisticStyle,
+  type FitStyle,
+  type GenerationMode,
+  type GenerationOptions,
+  type ImageQuality,
+} from '@anaqio/schemas'
 
-// ── Zod schemas ──────────────────────────────────────────────
-
-export const generationModeSchema = z.enum(['single_item', 'full_outfit'])
-export const imageQualitySchema = z.enum(['draft', 'standard', 'high'])
-export const aiProviderSchema = z.literal('gemini')
-export const fitStyleSchema = z.enum(['standard', 'loose', 'oversized', 'slim'])
-export const artisticStyleSchema = z.enum([
-  'default',
-  'cinematic',
-  'ethereal',
-  'minimalist',
-  'street',
-])
-
-export const generationOptionsSchema = z.object({
-  mode: generationModeSchema,
-  description: z.string().max(200).default(''),
-  backgroundColor: z.string().default('Cool Grey'),
-  quality: imageQualitySchema,
-  aiProvider: aiProviderSchema,
-  fitStyle: fitStyleSchema,
-  artisticStyle: artisticStyleSchema,
-  presetModelId: z.string().default(''),
-  fashionPose: z.string().default(''),
-})
-
-/** Zod schema for the /api/generate request body */
-export const generateRequestSchema = z.object({
-  garmentPath: z.string().min(1),
-  presetModelId: z.string().min(1),
-  sessionId: z.string().nullable().optional(),
-  description: z.string().optional(),
-  denoiseSteps: z.number().int().min(1).max(100).optional(),
-  aiProvider: z.literal('gemini').optional(),
-})
-
-// ── Inferred types ───────────────────────────────────────────
-
-export type GenerationMode = z.infer<typeof generationModeSchema>
-export type ImageQuality = z.infer<typeof imageQualitySchema>
-export type AIProvider = z.infer<typeof aiProviderSchema>
-export type FitStyle = z.infer<typeof fitStyleSchema>
-export type ArtisticStyle = z.infer<typeof artisticStyleSchema>
-export type GenerationOptions = z.infer<typeof generationOptionsSchema>
-export type GenerateRequest = z.infer<typeof generateRequestSchema>
+export * from '@anaqio/schemas'
 
 // ── Constants ────────────────────────────────────────────────
 
@@ -91,7 +53,7 @@ export const BACKGROUND_PROMPTS: Record<string, string> = {
   Charcoal: 'a seamless, dark charcoal grey studio background',
 }
 
-const ARTISTIC_STYLE_TEMPLATES: Record<string, string> = {
+const ARTISTIC_STYLE_TEMPLATES: Record<ArtisticStyle, string> = {
   cinematic:
     'An ultra-realistic, stunning, high-fashion photograph of {{MODEL_PLACEHOLDER}} wearing the garment. The composition is centered. Dramatic, cinematic lighting from the upper right creates intense, warm highlights and ethereal, glowing rim light effect that sharply contrasts with cooler shadows. The background is {{BACKGROUND_PLACEHOLDER}}. The overall aesthetic is clean, modern, and elegant, rendered with photorealistic precision, emphasizing the delicate texture and luxurious feel of the fabric, achieved with a shallow depth of field. The final image must be indistinguishable from a real photograph.',
   ethereal:
@@ -100,6 +62,7 @@ const ARTISTIC_STYLE_TEMPLATES: Record<string, string> = {
     'An ultra-realistic, high-key, minimalist studio product photograph of {{MODEL_PLACEHOLDER}} wearing the garment, dynamically posed. The garment exhibits natural folds and creases. The composition features the model against a clean, seamless background which is {{BACKGROUND_PLACEHOLDER}}. Soft, diffused professional studio lighting illuminates the garment from above and slightly in front, creating subtle volumetric shadows. A soft, elongated shadow is cast beneath the model. Shot with a shallow depth of field, sharp focus, evoking a clean, contemporary aesthetic. The final image must be indistinguishable from a real photograph.',
   street:
     'An ultra-realistic, full-body, high-fashion studio shot of {{MODEL_PLACEHOLDER}}, dynamically posed. The background is a clean, minimalist seamless studio setup which is {{BACKGROUND_PLACEHOLDER}}. Dramatic, high-contrast, directional natural light originates from the upper left, casting intricate, sharp, elongated shadow patterns resembling palm fronds or window blinds across the entire background and subtly onto the subject. The lighting creates strong specular highlights on the fabric. The overall aesthetic is modern, clean, editorial, and sophisticated with a strong focus on light and shadow play. The final image must be indistinguishable from a real photograph.',
+  default: '',
 }
 
 const QUALITY_PROMPTS: Record<ImageQuality, string> = {

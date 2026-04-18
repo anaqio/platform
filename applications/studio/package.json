@@ -11,7 +11,7 @@
     "test:watch": "bunx vitest",
     "test:coverage": "bunx vitest --coverage",
     "test:e2e": "bunx playwright test",
-    "db:types": "bunx supabase gen types typescript --project-id <ref> > types/supabase.ts",
+    "db:types": "bunx supabase gen types typescript --project-id anaqio-platform > types/supabase.ts",
     "db:push": "bunx supabase db push",
     "db:reset": "bunx supabase db reset",
     "format": "bunx prettier --write .",

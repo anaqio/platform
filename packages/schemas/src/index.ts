@@ -1,3 +1,5 @@
+export { ERROR_MESSAGES } from './errors'
+
 export { utmFieldsSchema } from './shared'
 export type { UtmFields } from './shared'
 
@@ -8,3 +10,5 @@ export type { WaitlistInput } from './waitlist'
 
 export { AtelierInvitationSchema } from './atelier'
 export type { AtelierInvitationInput } from './atelier'
+
+export * from './studio'
