@@ -8,9 +8,9 @@ import { ERROR_MESSAGES } from '@/lib/constants/errors'
 import { createClient } from '@/lib/supabase/server'
 
 const WaitlistSchema = z.object({
-  email: z.email(ERROR_MESSAGES.VALID_EMAIL),
-  full_name: z.string().min(2, 'Name is too short.').max(100, 'Name is too long.'),
-  role: z.string().min(1, 'Please select your role.'),
+  email: z.string().email(ERROR_MESSAGES.VALID_EMAIL),
+  full_name: z.string().min(2, ERROR_MESSAGES.NAME_REQUIRED).max(100),
+  role: z.string().min(1, ERROR_MESSAGES.ROLE_REQUIRED),
   company: z
     .string()
     .max(100)
@@ -135,7 +135,7 @@ export async function joinWaitlist(formData: FormData) {
       if (error.code === '23505') {
         return {
           success: false,
-          message: 'This email is already on the waitlist!',
+          message: ERROR_MESSAGES.ALREADY_JOINED,
         }
       }
       console.error('Waitlist insert error:', error)
@@ -155,7 +155,7 @@ export async function joinWaitlist(formData: FormData) {
 
     return {
       success: true,
-      message: "You're on the list! We'll be in touch soon.",
+      message: 'Vous êtes sur la liste ! Nous vous contacterons bientôt.',
     }
   } catch (err) {
     console.error('Waitlist error:', err)

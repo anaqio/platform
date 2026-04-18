@@ -36,9 +36,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Only gemini provider is supported' }, { status: 400 })
   }
 
-  const admin = createAdmin()
-
-  // 1. Insert pending generation row
   const { data: generation, error: insertError } = await admin
     .from('generations')
     .insert({
@@ -56,7 +53,13 @@ export async function POST(request: NextRequest) {
 
   if (insertError || !generation) {
     console.error('[generate] Insert error:', insertError)
-    return NextResponse.json({ error: 'Failed to create generation' }, { status: 500 })
+    return NextResponse.json(
+      {
+        error: 'Failed to initiate generation',
+        diagnostic: insertError?.message ?? 'Insert failed',
+      },
+      { status: 500 }
+    )
   }
 
   // 2. Update to processing (Realtime fires)
@@ -66,48 +69,58 @@ export async function POST(request: NextRequest) {
     .eq('id', generation.id)
 
   // 3. Get signed URL for garment
-  const { data: garmentSigned } = await admin.storage
+  const { data: garmentSigned, error: signedError } = await admin.storage
     .from('garments')
     .createSignedUrl(garmentPath, 300)
 
-  if (!garmentSigned?.signedUrl) {
+  if (signedError || !garmentSigned?.signedUrl) {
+    const msg = signedError?.message ?? 'Could not read garment file'
     await admin
       .from('generations')
       .update({
         status: 'failed' as const,
-        error_message: 'Could not read garment file',
+        error_message: msg,
       })
       .eq('id', generation.id)
-    return NextResponse.json({ error: 'Storage error' }, { status: 500 })
+    return NextResponse.json({ error: 'Storage access error', diagnostic: msg }, { status: 500 })
   }
 
   // 4. Get preset model image URL (public bucket)
-  const { data: preset } = await admin
+  const { data: preset, error: presetError } = await admin
     .from('preset_models')
     .select('preview_path')
     .eq('id', presetModelId)
     .single()
 
-  if (!preset?.preview_path) {
+  if (presetError || !preset?.preview_path) {
+    const msg = presetError?.message ?? 'Preset model not found'
     await admin
       .from('generations')
-      .update({ status: 'failed' as const, error_message: 'Preset model not found' })
+      .update({ status: 'failed' as const, error_message: msg })
       .eq('id', generation.id)
-    return NextResponse.json({ error: 'Preset not found' }, { status: 404 })
+    return NextResponse.json({ error: 'Preset not found', diagnostic: msg }, { status: 404 })
   }
 
   const modelUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/presets/${preset.preview_path}`
 
   // 4b. Verify model image is reachable (presets bucket may be empty)
-  const modelCheck = await fetch(modelUrl, { method: 'HEAD' })
-  if (!modelCheck.ok) {
-    const msg = `Preset model image not found in storage: ${preset.preview_path}`
-    console.error('[generate]', msg, modelCheck.status)
-    await admin
-      .from('generations')
-      .update({ status: 'failed' as const, error_message: msg })
-      .eq('id', generation.id)
-    return NextResponse.json({ error: msg }, { status: 404 })
+  try {
+    const modelCheck = await fetch(modelUrl, { method: 'HEAD' })
+    if (!modelCheck.ok) {
+      const msg = `Preset model image not found: ${preset.preview_path} (${modelCheck.status})`
+      console.error('[generate]', msg)
+      await admin
+        .from('generations')
+        .update({ status: 'failed' as const, error_message: msg })
+        .eq('id', generation.id)
+      return NextResponse.json({ error: 'Model asset missing', diagnostic: msg }, { status: 404 })
+    }
+  } catch (e) {
+    const msg = `Failed to verify model asset: ${String(e)}`
+    return NextResponse.json(
+      { error: 'Asset verification failed', diagnostic: msg },
+      { status: 500 }
+    )
   }
 
   // 5. Run inference
@@ -156,6 +169,13 @@ export async function POST(request: NextRequest) {
         inference_ms: Date.now() - start,
       })
       .eq('id', generation.id)
-    return NextResponse.json({ error: errorMessage }, { status: 500 })
+    return NextResponse.json(
+      {
+        error: 'AI generation failed',
+        diagnostic: errorMessage,
+        details: process.env.NODE_ENV === 'development' ? String(err) : undefined,
+      },
+      { status: 500 }
+    )
   }
 }
